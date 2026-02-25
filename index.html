@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0">
     <title>🍼 年糕宝宝早教日历</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,95 +14,118 @@
             box-sizing: border-box;
         }
 
-        body {
+        html, body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
             font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            position: relative;
-            overflow-x: hidden;
         }
 
-        /* 背景动画气泡 */
-        .bubble {
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            position: relative;
+        }
+
+        /* 背景动画粒子 */
+        .particles {
             position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
-            animation: float 20s infinite ease-in-out;
-            pointer-events: none;
+            animation: float 25s infinite ease-in-out;
         }
-
-        .bubble:nth-child(1) { width: 80px; height: 80px; left: 10%; top: 20%; animation-delay: 0s; }
-        .bubble:nth-child(2) { width: 120px; height: 120px; right: 15%; top: 30%; animation-delay: 2s; }
-        .bubble:nth-child(3) { width: 60px; height: 60px; left: 20%; bottom: 20%; animation-delay: 4s; }
-        .bubble:nth-child(4) { width: 100px; height: 100px; right: 10%; bottom: 30%; animation-delay: 6s; }
-        .bubble:nth-child(5) { width: 70px; height: 70px; left: 50%; top: 10%; animation-delay: 3s; }
-        .bubble:nth-child(6) { width: 90px; height: 90px; left: 30%; bottom: 40%; animation-delay: 5s; }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
-            50% { transform: translateY(-30px) rotate(180deg); opacity: 0.8; }
+            0%, 100% { 
+                transform: translateY(0) translateX(0); 
+                opacity: 0.3; 
+            }
+            50% { 
+                transform: translateY(-40px) translateX(20px); 
+                opacity: 0.6; 
+            }
         }
 
+        /* 主容器 - 16:9 全屏布局 */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            width: 100%;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 40px;
+            padding: 40px;
             position: relative;
             z-index: 1;
         }
 
-        /* 头部 */
+        /* 左侧面板 */
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* 头部信息 */
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            animation: slideDown 0.8s ease-out;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
         .baby-icon {
             font-size: 80px;
             display: block;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite ease-in-out;
+            margin-bottom: 15px;
+            animation: bounce 3s infinite ease-in-out;
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.05); }
         }
 
         .title {
-            font-size: 3rem;
+            font-size: 2.2rem;
             font-weight: 900;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             margin-bottom: 10px;
             font-family: 'Fredoka', sans-serif;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .date {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
             font-weight: 300;
         }
 
-        /* 年龄信息卡片 */
+        /* 年龄卡片 */
         .age-card {
-            background: white;
-            border-radius: 24px;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-            animation: scaleIn 0.6s ease-out 0.2s both;
-        }
-
-        @keyframes scaleIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            animation: slideIn 0.8s ease-out 0.2s both;
         }
 
         .age-title {
-            font-size: 1.5rem;
-            color: #667eea;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -111,161 +134,50 @@
 
         .age-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
         }
 
         .age-item {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf3 100%);
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 18px;
             border-radius: 16px;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .age-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
         }
 
         .age-label {
-            font-size: 0.9rem;
-            color: #888;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
             margin-bottom: 8px;
         }
 
         .age-value {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: #667eea;
+            color: #4fc3f7;
             font-family: 'Fredoka', sans-serif;
         }
 
-        /* 活动卡片 */
-        .activities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .activity-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: slideUp 0.6s ease-out both;
-        }
-
-        .activity-card:nth-child(1) { animation-delay: 0.3s; }
-        .activity-card:nth-child(2) { animation-delay: 0.4s; }
-        .activity-card:nth-child(3) { animation-delay: 0.5s; }
-        .activity-card:nth-child(4) { animation-delay: 0.6s; }
-        .activity-card:nth-child(5) { animation-delay: 0.7s; }
-
-        @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .activity-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-        }
-
-        .activity-number {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            font-size: 2rem;
-            font-weight: 700;
-            font-family: 'Fredoka', sans-serif;
-        }
-
-        .activity-content {
-            padding: 25px;
-        }
-
-        .activity-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .activity-badge {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .activity-description {
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
-
-        .activity-benefits {
-            background: #f5f7fa;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-        }
-
-        .benefit-label {
-            font-size: 0.85rem;
-            color: #667eea;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .benefit-text {
-            color: #555;
-            font-size: 0.95rem;
-        }
-
-        .activity-source {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf3 100%);
-            border-radius: 10px;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .activity-source a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-            word-break: break-all;
-        }
-
-        .activity-source a:hover {
-            text-decoration: underline;
-        }
-
-        /* 底部提示 */
+        /* 提示卡片 */
         .tips-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            animation: slideUp 0.6s ease-out 0.8s both;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            flex: 1;
+            animation: slideIn 0.8s ease-out 0.4s both;
         }
 
         .tips-title {
-            font-size: 1.5rem;
-            color: #667eea;
-            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -276,175 +188,273 @@
         }
 
         .tips-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #f0f0f0;
-            color: #555;
+            padding: 10px 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
             display: flex;
             align-items: center;
             gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .tips-list li:last-child {
             border-bottom: none;
         }
 
-        .tip-icon {
-            font-size: 1.2rem;
+        /* 右侧活动区域 */
+        .right-panel {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 25px;
         }
 
-        /* 页脚 */
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-            animation: fadeIn 0.6s ease-out 1s both;
+        .activity-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
+            animation: scaleIn 0.6s ease-out both;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .activity-card:nth-child(1) { animation-delay: 0.1s; }
+        .activity-card:nth-child(2) { animation-delay: 0.2s; }
+        .activity-card:nth-child(3) { animation-delay: 0.3s; }
+        .activity-card:nth-child(4) { animation-delay: 0.4s; }
+        .activity-card:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
-        .footer a {
+        .activity-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .activity-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .activity-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #4fc3f7 0%, #00b0ff 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: white;
+            font-family: 'Fredoka', sans-serif;
+            flex-shrink: 0;
+        }
+
+        .activity-title-wrap {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .activity-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        .activity-badge {
+            display: inline-block;
+            background: rgba(79, 195, 247, 0.2);
+            color: #4fc3f7;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .activity-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .activity-description {
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.6;
+            font-size: 0.9rem;
+            flex: 1;
+        }
+
+        .activity-benefits {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .benefit-label {
+            font-size: 0.8rem;
+            color: #4fc3f7;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .benefit-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+        }
+
+        .activity-source {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .activity-source a {
+            color: #4fc3f7;
             text-decoration: none;
             font-weight: 500;
         }
 
-        .footer a:hover {
-            text-decoration: underline;
+        /* 页脚 */
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            right: 40px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            text-align: right;
+            z-index: 10;
         }
 
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .title {
-                font-size: 2rem;
-            }
-
-            .age-card, .activity-card, .tips-card {
-                padding: 20px;
-            }
-
-            .activities-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .baby-icon {
-                font-size: 60px;
-            }
+        .footer a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
         }
 
-        /* 加载动画 */
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 40px;
+        /* 日期动画 */
+        .date-updated {
+            animation: pulse 2s infinite;
         }
 
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid white;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
     </style>
 </head>
 <body>
-    <!-- 背景气泡 -->
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
+    <!-- 背景粒子 -->
+    <div class="particles" id="particles"></div>
 
     <div class="container">
-        <!-- 头部 -->
-        <div class="header">
-            <span class="baby-icon">🍼</span>
-            <h1 class="title">年糕宝宝早教日历</h1>
-            <p class="date" id="currentDate"></p>
-        </div>
-
-        <!-- 年龄信息 -->
-        <div class="age-card">
-            <div class="age-title">
-                <span>📊</span>
-                <span>宝宝年龄信息</span>
+        <!-- 左侧面板 -->
+        <div class="left-panel">
+            <!-- 头部 -->
+            <div class="header">
+                <span class="baby-icon">🍼</span>
+                <h1 class="title">年糕宝宝早教日历</h1>
+                <p class="date" id="currentDate"></p>
             </div>
-            <div class="age-grid">
-                <div class="age-item">
-                    <div class="age-label">🎂 出生日期</div>
-                    <div class="age-value">2026-01-09</div>
+
+            <!-- 年龄信息 -->
+            <div class="age-card">
+                <div class="age-title">
+                    <span>📊</span>
+                    <span>宝宝年龄信息</span>
                 </div>
-                <div class="age-item">
-                    <div class="age-label">⏱️ 天龄</div>
-                    <div class="age-value" id="daysOld">47天</div>
+                <div class="age-grid">
+                    <div class="age-item">
+                        <div class="age-label">🎂 出生日期</div>
+                        <div class="age-value">01-09</div>
+                    </div>
+                    <div class="age-item">
+                        <div class="age-label">⏱️ 天龄</div>
+                        <div class="age-value" id="daysOld">47天</div>
+                    </div>
+                    <div class="age-item">
+                        <div class="age-label">📊 周龄</div>
+                        <div class="age-value" id="weeksOld">6周5天</div>
+                    </div>
+                    <div class="age-item">
+                        <div class="age-label">👶 月龄</div>
+                        <div class="age-value" id="monthsOld">1月16天</div>
+                    </div>
                 </div>
-                <div class="age-item">
-                    <div class="age-label">📊 周龄</div>
-                    <div class="age-value" id="weeksOld">6周5天</div>
+            </div>
+
+            <!-- 提示 -->
+            <div class="tips-card">
+                <div class="tips-title">
+                    <span>💡</span>
+                    <span>温馨提示</span>
                 </div>
-                <div class="age-item">
-                    <div class="age-label">👶 月龄</div>
-                    <div class="age-value" id="monthsOld">1个月16天</div>
-                </div>
+                <ul class="tips-list">
+                    <li><span>⚠️</span> 所有活动需成人全程看护</li>
+                    <li><span>👶</span> 宝宝哭闹或不适时立即停止</li>
+                    <li><span>⏰</span> 每次活动2-5分钟</li>
+                    <li><span>🌤️</span> 最佳时机：清醒、吃饱、心情好</li>
+                </ul>
             </div>
         </div>
 
-        <!-- 活动列表 -->
-        <div class="activities-grid" id="activitiesGrid">
-            <!-- 活动卡片将通过 JavaScript 动态生成 -->
-        </div>
-
-        <!-- 注意事项 -->
-        <div class="tips-card">
-            <div class="tips-title">
-                <span>💡</span>
-                <span>温馨提示</span>
-            </div>
-            <ul class="tips-list">
-                <li><span class="tip-icon">⚠️</span> 所有活动需成人全程看护</li>
-                <li><span class="tip-icon">👶</span> 宝宝哭闹或不适时立即停止</li>
-                <li><span class="tip-icon">⏰</span> 每次活动2-5分钟，根据宝宝状态调整</li>
-                <li><span class="tip-icon">🌤️</span> 最佳时机：清醒、吃饱、心情好时</li>
-            </ul>
-        </div>
-
-        <!-- 页脚 -->
-        <div class="footer">
-            <p>🤖 由 AI 育儿顾问自动生成 | 数据来源：CDC、AAP、Pathways.org</p>
-            <p style="margin-top: 10px; font-size: 0.8rem;">
-                更新时间：<span id="updateTime"></span>
-            </p>
+        <!-- 右侧活动区域 -->
+        <div class="right-panel" id="activitiesGrid">
+            <!-- 活动卡片通过 JS 生成 -->
         </div>
     </div>
 
+    <!-- 页脚 -->
+    <div class="footer">
+        <p>🤖 AI 育儿顾问自动生成 | CDC、AAP、Pathways.org</p>
+        <p class="date-updated">更新：<span id="updateTime"></span></p>
+    </div>
+
     <script>
-        // 设置当前日期
+        // 设置日期
         const now = new Date();
         const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
         document.getElementById('currentDate').textContent = now.toLocaleDateString('zh-CN', options);
-        document.getElementById('updateTime').textContent = now.toLocaleString('zh-CN');
+        document.getElementById('updateTime').textContent = now.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
+
+        // 生成背景粒子
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 100 + 40;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 20 + 15) + 's';
+            particlesContainer.appendChild(particle);
+        }
 
         // 活动数据
         const activities = [
             {
                 number: 1,
-                title: "俯卧练习（Tummy Time）",
+                title: "俯卧练习 Tummy Time",
                 badge: "⭐ 核心活动",
-                description: "宝宝清醒时，让TA趴在干净的毯子上。你可以躺在宝宝对面，用脸吸引TA抬头。",
-                benefits: "预防扁头综合征，锻炼颈部和肩部肌肉，为翻身、坐起、爬行打基础",
-                duration: "每次2-5分钟，每天多次",
+                description: "宝宝清醒时趴在干净毯子上，每次2-5分钟。你躺在对面，用脸吸引TA抬头。",
+                benefits: "预防扁头，锻炼颈部肩部肌肉",
                 source: "https://pathways.org/topics-of-development/tummy-time",
                 sourceName: "Pathways.org"
             },
@@ -452,9 +462,8 @@
                 number: 2,
                 title: "高对比度视觉追踪",
                 badge: "👀 视觉发展",
-                description: "使用黑白或红白高对比度图案卡片，距离宝宝眼睛20-30厘米（最佳聚焦距离），缓慢左右移动，让宝宝用眼睛追踪物体。",
-                benefits: "促进视觉神经发育，提升专注力和认知能力",
-                duration: "每次2-3分钟",
+                description: "用黑白或红白卡片，距离20-30厘米，缓慢左右移动让宝宝追踪。",
+                benefits: "促进视觉神经发育，提升专注力",
                 source: "https://pathways.org/videos/sensory-activities-0-3-months",
                 sourceName: "Pathways.org"
             },
@@ -462,30 +471,27 @@
                 number: 3,
                 title: "袜子手偶游戏",
                 badge: "🎭 社交情感",
-                description: "用干净袜子做成简单手偶，在宝宝视野内（20-30厘米）上下左右移动，边动边唱儿歌或说话。",
-                benefits: "促进社交情感发展，提升视觉追踪和听觉能力",
-                duration: "每次3-5分钟",
-                source: "https://www.healthychildren.org/English/family-life/power-of-play/Pages/simple-ways-to-entertain-and-boost-your-babys-development-at-home.aspx",
-                sourceName: "AAP/HealthyChildren"
+                description: "用袜子做手偶，在宝宝视野内移动，边动边唱儿歌或说话。",
+                benefits: "促进社交情感，提升视觉追踪",
+                source: "https://www.healthychildren.org",
+                sourceName: "AAP"
             },
             {
                 number: 4,
                 title: "肌肤接触 + 摇篮对话",
                 badge: "💕 亲子依恋",
-                description: "让宝宝趴在你裸露的胸口，用不同声调说话、唱歌。描述日常活动：\"妈妈正在给你换尿布呢~\" 当宝宝发出声音时，积极回应。",
-                benefits: "建立安全依恋关系，促进大脑发育和语言能力",
-                duration: "随时进行",
-                source: "https://pathways.org/sensory-activities-for-baby-activities-baby",
+                description: "让宝宝趴在你胸口，用不同声调说话唱歌，积极回应宝宝的声音。",
+                benefits: "建立安全依恋，促进语言能力",
+                source: "https://pathways.org",
                 sourceName: "Pathways.org"
             },
             {
                 number: 5,
                 title: "镜子游戏",
                 badge: "🪞 自我认知",
-                description: "抱宝宝面对安全镜子，指着镜子说\"这是年糕！\" 指认身体部位：\"这是年糕的鼻子、眼睛...\" 做各种表情让宝宝观察。",
-                benefits: "促进自我认知萌芽，提升视觉发展和社交能力",
-                duration: "每次3-5分钟",
-                source: "https://www.zerotothree.org/resource/activities-for-bonding-and-learning-from-birth-to-12-months/",
+                description: "抱宝宝面对镜子，指着说\"这是年糕！\"，指认身体部位。",
+                benefits: "促进自我认知，提升社交能力",
+                source: "https://www.zerotothree.org",
                 sourceName: "ZERO TO THREE"
             }
         ];
@@ -496,20 +502,22 @@
             const card = document.createElement('div');
             card.className = 'activity-card';
             card.innerHTML = `
-                <div class="activity-number">${activity.number}</div>
-                <div class="activity-content">
-                    <div class="activity-title">
-                        ${activity.title}
+                <div class="activity-header">
+                    <div class="activity-number">${activity.number}</div>
+                    <div class="activity-title-wrap">
+                        <div class="activity-title">${activity.title}</div>
                         <span class="activity-badge">${activity.badge}</span>
                     </div>
+                </div>
+                <div class="activity-content">
                     <div class="activity-description">${activity.description}</div>
                     <div class="activity-benefits">
-                        <div class="benefit-label">💡 发展益处</div>
+                        <div class="benefit-label">💡 益处</div>
                         <div class="benefit-text">${activity.benefits}</div>
                     </div>
                     <div class="activity-source">
                         <span>📚</span>
-                        <span>来源：<a href="${activity.source}" target="_blank">${activity.sourceName}</a></span>
+                        <a href="${activity.source}" target="_blank">${activity.sourceName}</a>
                     </div>
                 </div>
             `;
