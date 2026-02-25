@@ -63,30 +63,53 @@
             }
         }
 
-        /* Floating bubbles */
-        .bubble {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), rgba(100,200,255,0.1));
-            animation: bubbleFloat linear infinite;
+        /* Sun rays animation */
+        .sun-container {
+            position: fixed;
+            top: 50px;
+            right: 100px;
+            width: 200px;
+            height: 200px;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        @keyframes bubbleFloat {
-            0% {
-                transform: translateY(1100px) scale(0);
-                opacity: 0;
+        .sun-core {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #ffd700 0%, #ffaa00 100%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.8), 0 0 100px rgba(255, 170, 0, 0.6);
+            animation: sunPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes sunPulse {
+            0%, 100% {
+                box-shadow: 0 0 60px rgba(255, 215, 0, 0.8), 0 0 100px rgba(255, 170, 0, 0.6);
             }
-            10% {
-                opacity: 0.6;
-                transform: translateY(1000px) scale(1);
+            50% {
+                box-shadow: 0 0 80px rgba(255, 215, 0, 1), 0 0 120px rgba(255, 170, 0, 0.8);
             }
-            90% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-100px) scale(0.5);
-                opacity: 0;
-            }
+        }
+
+        .sun-ray {
+            position: absolute;
+            width: 4px;
+            height: 60px;
+            background: linear-gradient(to top, transparent, rgba(255, 215, 0, 0.6));
+            top: 50%;
+            left: 50%;
+            transform-origin: center bottom;
+            animation: rayRotate 20s linear infinite;
+        }
+
+        @keyframes rayRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .main-container {
@@ -106,6 +129,115 @@
             flex-direction: column;
             background: linear-gradient(180deg, rgba(13, 79, 79, 0.9) 0%, rgba(26, 58, 82, 0.95) 100%);
             border-right: 3px solid rgba(100, 200, 255, 0.3);
+        }
+
+        /* Weather Card */
+        .weather-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 170, 0, 0.1) 100%);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(10px);
+            animation: weatherGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes weatherGlow {
+            from { box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+            to { box-shadow: 0 0 30px rgba(255, 215, 0, 0.4); }
+        }
+
+        .weather-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .weather-title {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .weather-location {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+        }
+
+        .weather-main {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .weather-icon {
+            font-size: 4rem;
+            animation: sunBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes sunBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(10deg); }
+        }
+
+        .weather-temp {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .temp-current {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffd700;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .temp-range {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .weather-condition {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .weather-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .weather-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .weather-detail-item .icon {
+            font-size: 1rem;
+        }
+
+        .outdoor-tip {
+            background: rgba(76, 175, 80, 0.2);
+            border-left: 3px solid #4caf50;
+            padding: 10px;
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .outdoor-tip .tip-icon {
+            margin-right: 5px;
         }
 
         .solar-term-badge {
@@ -406,12 +538,56 @@
     </style>
 </head>
 <body>
-    <!-- Rain Background -->
+    <!-- Rain Background (keeping for rainy days) -->
     <div class="rain-container" id="rainContainer"></div>
+
+    <!-- Sun Animation (for sunny weather) -->
+    <div class="sun-container" id="sunContainer">
+        <div class="sun-core"></div>
+    </div>
 
     <div class="main-container">
         <!-- Left Panel -->
         <div class="left-panel">
+            <!-- Weather Card -->
+            <div class="weather-card">
+                <div class="weather-header">
+                    <div class="weather-title">今日天气</div>
+                    <div class="weather-location">📍 上海青浦</div>
+                </div>
+                <div class="weather-main">
+                    <span class="weather-icon">☀️</span>
+                    <div class="weather-temp">
+                        <div class="temp-current">10°C</div>
+                        <div class="temp-range">7°C ~ 10°C</div>
+                    </div>
+                </div>
+                <div class="weather-condition">晴朗</div>
+                <div class="weather-details">
+                    <div class="weather-detail-item">
+                        <span class="icon">💧</span>
+                        <span>湿度 87%</span>
+                    </div>
+                    <div class="weather-detail-item">
+                        <span class="icon">🌬️</span>
+                        <span>北风 9km/h</span>
+                    </div>
+                    <div class="weather-detail-item">
+                        <span class="icon">🌡️</span>
+                        <span>体感 7°C</span>
+                    </div>
+                    <div class="weather-detail-item">
+                        <span class="icon">👁️</span>
+                        <span>能见度 10km</span>
+                    </div>
+                </div>
+                <div class="outdoor-tip">
+                    <span class="tip-icon">✅</span>
+                    <strong>适合户外活动</strong><br>
+                    天气晴朗，阳光充足，可以带宝宝到户外晒太阳（注意保暖），促进维生素D合成！
+                </div>
+            </div>
+
             <div class="solar-term-badge">
                 <div class="icon">🌧️</div>
                 <div class="text">雨水 · 万物萌动</div>
@@ -575,17 +751,15 @@
     <div class="refresh-indicator">🔄 10分钟自动刷新</div>
 
     <script>
-        // Create rain drops
-        function createRain() {
-            const container = document.getElementById('rainContainer');
-            for (let i = 0; i < 80; i++) {
-                const drop = document.createElement('div');
-                drop.className = 'rain-drop';
-                drop.style.left = Math.random() * 100 + '%';
-                drop.style.animationDuration = (1 + Math.random() * 0.5) + 's';
-                drop.style.animationDelay = Math.random() * 2 + 's';
-                drop.style.opacity = 0.3 + Math.random() * 0.4;
-                container.appendChild(drop);
+        // Create sun rays
+        function createSunRays() {
+            const container = document.getElementById('sunContainer');
+            for (let i = 0; i < 12; i++) {
+                const ray = document.createElement('div');
+                ray.className = 'sun-ray';
+                ray.style.transform = `rotate(${i * 30}deg) translateY(-80px)`;
+                ray.style.animationDelay = `${i * 0.2}s`;
+                container.appendChild(ray);
             }
         }
 
@@ -610,7 +784,7 @@
         }
 
         // Initialize
-        createRain();
+        createSunRays();
 
         // Animate age values
         setTimeout(() => {
