@@ -2,8 +2,11 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🍼 年糕宝宝的早教日记 | 第6周</title>
+    <meta name="viewport" content="width=1920, height=1080">
+    <title>🍼 年糕宝宝的早教日记 | 雨水时节</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,45 +14,41 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            overflow-x: hidden;
+            background: linear-gradient(135deg, #0a1628 0%, #1a3a52 50%, #0d4f4f 100%);
+            position: relative;
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Floating particles background */
-        .particles {
+        /* Rain drops background */
+        .rain-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            overflow: hidden;
             z-index: 0;
+            overflow: hidden;
         }
 
-        .particle {
+        .rain-drop {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: float 20s infinite;
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(to bottom, transparent, rgba(100, 200, 255, 0.6));
+            animation: rainFall linear infinite;
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(100vh) rotate(0deg);
+        @keyframes rainFall {
+            0% {
+                transform: translateY(-100px);
                 opacity: 0;
             }
             10% {
@@ -59,602 +58,585 @@
                 opacity: 1;
             }
             100% {
-                transform: translateY(-100vh) rotate(720deg);
+                transform: translateY(1100px);
                 opacity: 0;
             }
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
+        /* Floating bubbles */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), rgba(100,200,255,0.1));
+            animation: bubbleFloat linear infinite;
+        }
+
+        @keyframes bubbleFloat {
+            0% {
+                transform: translateY(1100px) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+                transform: translateY(1000px) scale(1);
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        .main-container {
+            display: flex;
+            width: 1920px;
+            height: 1080px;
             position: relative;
             z-index: 1;
         }
 
-        /* Header */
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-            animation: slideDown 1s ease-out;
+        /* Left Panel - Baby Info */
+        .left-panel {
+            width: 400px;
+            height: 100%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(180deg, rgba(13, 79, 79, 0.9) 0%, rgba(26, 58, 82, 0.95) 100%);
+            border-right: 3px solid rgba(100, 200, 255, 0.3);
         }
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .solar-term-badge {
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            padding: 12px 20px;
+            border-radius: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: glow 2s ease-in-out infinite alternate;
+            box-shadow: 0 0 20px rgba(0, 180, 219, 0.5);
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(0, 180, 219, 0.5); }
+            to { box-shadow: 0 0 40px rgba(0, 180, 219, 0.8); }
+        }
+
+        .solar-term-badge .icon {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .solar-term-badge .text {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .baby-avatar {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #00d9ff, #00b4db);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            box-shadow: 0 10px 40px rgba(0, 217, 255, 0.4);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .baby-name {
+            text-align: center;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3rem;
+            color: #00d9ff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+        }
+
+        .baby-date {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .age-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .age-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(100, 200, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .age-card:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .age-card .icon {
+            font-size: 2.5rem;
+            margin-right: 20px;
+        }
+
+        .age-card .info {
+            flex: 1;
+        }
+
+        .age-card .label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+        }
+
+        .age-card .value {
+            color: #00d9ff;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .quote-box {
+            margin-top: auto;
+            background: rgba(0, 180, 219, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            border-left: 4px solid #00d9ff;
+        }
+
+        .quote-box p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* Right Panel - Activities */
+        .right-panel {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
         }
 
         .header h1 {
-            font-size: 2.5em;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.8rem;
             color: white;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
         }
 
         .header .date {
-            color: rgba(255,255,255,0.9);
-            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.3rem;
         }
 
-        /* Age Card */
-        .age-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 20px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-            animation: popIn 0.8s ease-out 0.3s both;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .age-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
-        }
-
-        @keyframes popIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .age-card h2 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 1.5em;
-        }
-
-        .age-grid {
+        .activities-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .age-item {
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 15px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .age-item:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .age-item .number {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: white;
-        }
-
-        .age-item .unit {
-            font-size: 0.9em;
-            color: rgba(255,255,255,0.9);
-            margin-top: 5px;
-        }
-
-        /* Activities Section */
-        .activities {
-            margin-top: 30px;
-        }
-
-        .activities h2 {
-            color: white;
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 25px;
+            flex: 1;
         }
 
         .activity-card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             padding: 25px;
-            margin: 15px 0;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: slideUp 0.6s ease-out both;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: cardSlideIn 0.8s ease-out both;
+            display: flex;
+            flex-direction: column;
         }
 
-        .activity-card:nth-child(1) { animation-delay: 0.4s; }
-        .activity-card:nth-child(2) { animation-delay: 0.5s; }
-        .activity-card:nth-child(3) { animation-delay: 0.6s; }
-        .activity-card:nth-child(4) { animation-delay: 0.7s; }
-        .activity-card:nth-child(5) { animation-delay: 0.8s; }
+        .activity-card:nth-child(1) { animation-delay: 0.1s; }
+        .activity-card:nth-child(2) { animation-delay: 0.2s; }
+        .activity-card:nth-child(3) { animation-delay: 0.3s; }
+        .activity-card:nth-child(4) { animation-delay: 0.4s; }
+        .activity-card:nth-child(5) { animation-delay: 0.5s; }
+        .activity-card:nth-child(6) { animation-delay: 0.6s; }
 
-        @keyframes slideUp {
+        @keyframes cardSlideIn {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(50px) scale(0.9);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
-        }
-
-        .activity-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
         }
 
         .activity-card::before {
             content: '';
             position: absolute;
-            left: 0;
             top: 0;
-            bottom: 0;
-            width: 5px;
-            background: linear-gradient(180deg, #667eea, #764ba2);
-        }
-
-        .activity-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .activity-number {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-right: 15px;
-        }
-
-        .activity-title {
-            font-size: 1.3em;
-            color: #333;
-            flex: 1;
-        }
-
-        .activity-star {
-            font-size: 1.5em;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-
-        .activity-meta {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
-        .meta-tag {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
-        }
-
-        .activity-description {
-            color: #555;
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-
-        .activity-steps {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-
-        .activity-steps h4 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .activity-steps ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .activity-steps li {
-            padding: 8px 0;
-            padding-left: 25px;
-            position: relative;
-            color: #555;
-        }
-
-        .activity-steps li::before {
-            content: '✓';
-            position: absolute;
             left: 0;
-            color: #667eea;
-            font-weight: bold;
+            right: 0;
+            height: 5px;
         }
 
-        .activity-source {
-            font-size: 0.9em;
-            color: #888;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
+        .activity-card:nth-child(1)::before { background: linear-gradient(90deg, #ff6b35, #f7931e); }
+        .activity-card:nth-child(2)::before { background: linear-gradient(90deg, #00b4db, #0083b0); }
+        .activity-card:nth-child(3)::before { background: linear-gradient(90deg, #11998e, #38ef7d); }
+        .activity-card:nth-child(4)::before { background: linear-gradient(90deg, #f7971e, #ffd200); }
+        .activity-card:nth-child(5)::before { background: linear-gradient(90deg, #ee0979, #ff6a00); }
+        .activity-card:nth-child(6)::before { background: linear-gradient(90deg, #0052d4, #4364f7); }
+
+        .activity-card.featured {
+            background: linear-gradient(135deg, #fff 0%, #fffde7 100%);
+            box-shadow: 0 15px 50px rgba(255, 193, 7, 0.4);
         }
 
-        .activity-source a {
-            color: #667eea;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .activity-source a:hover {
-            color: #764ba2;
-            text-decoration: underline;
-        }
-
-        /* Tips Section */
-        .tips-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 25px;
-            margin: 30px 0;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            animation: slideUp 0.6s ease-out 0.9s both;
-        }
-
-        .tips-card h3 {
-            color: #333;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .tips-card h3 span {
-            margin-right: 10px;
-            font-size: 1.5em;
-        }
-
-        .tips-list {
-            list-style: none;
-        }
-
-        .tips-list li {
-            padding: 10px 0;
-            padding-left: 30px;
-            position: relative;
-            color: #555;
-            border-bottom: 1px solid #eee;
-        }
-
-        .tips-list li:last-child {
-            border-bottom: none;
-        }
-
-        .tips-list li::before {
-            content: '💡';
-            position: absolute;
-            left: 0;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 30px;
-            color: rgba(255,255,255,0.8);
-        }
-
-        .footer a {
-            color: white;
-            text-decoration: none;
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            .age-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header h1 {
-                font-size: 1.8em;
-            }
-            
-            .activity-meta {
-                flex-direction: column;
-            }
-        }
-
-        /* Sparkle effect for featured activity */
-        .featured {
-            background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(255,250,240,0.98) 100%);
-        }
-
-        .featured::after {
+        .activity-card.featured::after {
             content: '⭐ 今日重点';
             position: absolute;
             top: 15px;
             right: 15px;
             background: linear-gradient(135deg, #ffd700, #ffaa00);
             color: white;
-            padding: 5px 15px;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .activity-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .activity-number {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .activity-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a3a52;
+        }
+
+        .activity-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .tag.time { background: #e3f2fd; color: #1565c0; }
+        .tag.skill { background: #e8f5e9; color: #2e7d32; }
+        .tag.age { background: #fff3e0; color: #ef6c00; }
+
+        .activity-desc {
+            color: #455a64;
+            font-size: 1rem;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .activity-source {
+            margin-top: auto;
+            padding-top: 10px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.85rem;
+            color: #78909c;
+        }
+
+        .activity-source a {
+            color: #0083b0;
+            text-decoration: none;
+        }
+
+        /* Refresh indicator */
+        .refresh-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 180, 219, 0.9);
+            color: white;
+            padding: 10px 20px;
             border-radius: 20px;
-            font-size: 0.85em;
+            font-size: 0.9rem;
+            z-index: 100;
         }
     </style>
 </head>
 <body>
-    <!-- Floating particles -->
-    <div class="particles" id="particles"></div>
+    <!-- Rain Background -->
+    <div class="rain-container" id="rainContainer"></div>
 
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1>🍼 年糕宝宝的早教日记</h1>
-            <p class="date">📅 2026年2月25日 星期三</p>
-        </div>
+    <div class="main-container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <div class="solar-term-badge">
+                <div class="icon">🌧️</div>
+                <div class="text">雨水 · 万物萌动</div>
+            </div>
 
-        <!-- Age Card -->
-        <div class="age-card">
-            <h2>📊 宝宝年龄</h2>
-            <div class="age-grid">
-                <div class="age-item">
-                    <div class="number">47</div>
-                    <div class="unit">天龄</div>
+            <div class="baby-avatar">🍼</div>
+
+            <h2 class="baby-name">年糕宝宝</h2>
+            <p class="baby-date">出生于 2026年1月9日</p>
+
+            <div class="age-cards">
+                <div class="age-card">
+                    <span class="icon">📅</span>
+                    <div class="info">
+                        <div class="label">天龄</div>
+                        <div class="value" id="days">0</div>
+                    </div>
                 </div>
-                <div class="age-item">
-                    <div class="number">6周5天</div>
-                    <div class="unit">周龄</div>
+                <div class="age-card">
+                    <span class="icon">📆</span>
+                    <div class="info">
+                        <div class="label">周龄</div>
+                        <div class="value" id="weeks">0周0天</div>
+                    </div>
                 </div>
-                <div class="age-item">
-                    <div class="number">1月16天</div>
-                    <div class="unit">月龄</div>
+                <div class="age-card">
+                    <span class="icon">🗓️</span>
+                    <div class="info">
+                        <div class="label">月龄</div>
+                        <div class="value" id="months">0个月0天</div>
+                    </div>
                 </div>
+            </div>
+
+            <div class="quote-box">
+                <p>💧 雨水时节，春雨润物。就像爸爸妈妈的爱，滋润着年糕宝宝茁壮成长！</p>
             </div>
         </div>
 
-        <!-- Activities -->
-        <div class="activities">
-            <h2>🎯 今日早教活动</h2>
-
-            <!-- Activity 1 -->
-            <div class="activity-card featured">
-                <div class="activity-header">
-                    <div class="activity-number">1</div>
-                    <div class="activity-title">俯卧练习 (Tummy Time)</div>
-                    <div class="activity-star">⭐</div>
-                </div>
-                <div class="activity-meta">
-                    <span class="meta-tag">🏃 运动发展</span>
-                    <span class="meta-tag">⏱️ 每次3-5分钟</span>
-                    <span class="meta-tag">🔄 每天2-3次</span>
-                </div>
-                <div class="activity-description">
-                    俯卧练习是宝宝最重要的"第一运动"！让宝宝趴着可以锻炼颈部、肩部和核心肌肉，为将来的翻身、坐起、爬行打下基础。
-                </div>
-                <div class="activity-steps">
-                    <h4>怎么做：</h4>
-                    <ul>
-                        <li>在宝宝清醒、有人看护时进行</li>
-                        <li>让宝宝趴在干净、平坦的毯子上</li>
-                        <li>躺在宝宝对面，用你的脸吸引TA抬头</li>
-                        <li>用彩色玩具或镜子增加趣味</li>
-                        <li>目标：到2个月时每天累计15-30分钟</li>
-                    </ul>
-                </div>
-                <div class="activity-source">
-                    📚 来源：<a href="https://pathways.org/topics-of-development/tummy-time" target="_blank">Pathways.org - Tummy Time Tips</a>
-                </div>
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <div class="header">
+                <h1>🎯 今日早教活动</h1>
+                <div class="date">2026年2月25日 星期三</div>
             </div>
 
-            <!-- Activity 2 -->
-            <div class="activity-card">
-                <div class="activity-header">
-                    <div class="activity-number">2</div>
-                    <div class="activity-title">高对比度视觉追踪</div>
+            <div class="activities-grid">
+                <!-- Activity 1 - Featured -->
+                <div class="activity-card featured">
+                    <div class="activity-header">
+                        <div class="activity-number">1</div>
+                        <div class="activity-title">俯卧练习 Tummy Time</div>
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag skill">🏃 运动发展</span>
+                        <span class="tag time">⏱️ 3-5分钟/次</span>
+                    </div>
+                    <div class="activity-desc">
+                        宝宝最重要的"第一运动"！趴着练习可以锻炼颈部、肩部和核心肌肉，预防扁头综合征。
+                    </div>
+                    <div class="activity-source">
+                        📚 <a href="https://pathways.org/topics-of-development/tummy-time" target="_blank">Pathways.org</a>
+                    </div>
                 </div>
-                <div class="activity-meta">
-                    <span class="meta-tag">👁️ 视觉发展</span>
-                    <span class="meta-tag">⏱️ 每次2-3分钟</span>
-                    <span class="meta-tag">🔄 每天3-4次</span>
+
+                <!-- Activity 2 -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-number">2</div>
+                        <div class="activity-title">高对比度视觉追踪</div>
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag skill">👁️ 视觉发展</span>
+                        <span class="tag time">⏱️ 2-3分钟</span>
+                    </div>
+                    <div class="activity-desc">
+                        使用黑白图案卡片，距离20-30厘米，缓慢移动让宝宝追踪。促进视觉神经发育。
+                    </div>
+                    <div class="activity-source">
+                        📚 <a href="https://pathways.org/videos/sensory-activities-0-3-months" target="_blank">Pathways.org</a>
+                    </div>
                 </div>
-                <div class="activity-description">
-                    这个阶段的宝宝最喜欢看高对比度的黑白图案！视觉追踪练习可以促进视觉神经发育和专注力。
+
+                <!-- Activity 3 -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-number">3</div>
+                        <div class="activity-title">袜子手偶游戏</div>
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag skill">🎭 社交情感</span>
+                        <span class="tag time">⏱️ 3-5分钟</span>
+                    </div>
+                    <div class="activity-desc">
+                        用袜子做成手偶，在宝宝视野内移动，边动边唱歌。促进视觉追踪和听觉发展。
+                    </div>
+                    <div class="activity-source">
+                        📚 <a href="https://www.healthychildren.org" target="_blank">AAP HealthyChildren</a>
+                    </div>
                 </div>
-                <div class="activity-steps">
-                    <h4>怎么做：</h4>
-                    <ul>
-                        <li>准备黑白或红白高对比度卡片/玩具</li>
-                        <li>距离宝宝眼睛20-30厘米（最佳聚焦距离）</li>
-                        <li>缓慢左右移动，让宝宝用眼睛追踪</li>
-                        <li>也可以做上下、弧线运动</li>
-                    </ul>
+
+                <!-- Activity 4 -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-number">4</div>
+                        <div class="activity-title">肌肤接触·摇篮对话</div>
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag skill">💕 亲子依恋</span>
+                        <span class="tag time">⏱️ 5-10分钟</span>
+                    </div>
+                    <div class="activity-desc">
+                        让宝宝趴在你胸口，说话唱歌互动。促进大脑发育、建立安全依恋、启蒙语言。
+                    </div>
+                    <div class="activity-source">
+                        📚 <a href="https://www.zerotothree.org" target="_blank">ZERO TO THREE</a>
+                    </div>
                 </div>
-                <div class="activity-source">
-                    📚 来源：<a href="https://pathways.org/videos/sensory-activities-0-3-months" target="_blank">Pathways.org - Sensory Activities 0-3 Months</a> | 
-                    <a href="https://www.healthychildren.org/English/ages-stages/baby/Pages/Developmental-Milestones-1-Month.aspx" target="_blank">AAP - 1 Month Milestones</a>
+
+                <!-- Activity 5 -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-number">5</div>
+                        <div class="activity-title">镜子游戏</div>
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag skill">🪞 自我认知</span>
+                        <span class="tag time">⏱️ 2-3分钟</span>
+                    </div>
+                    <div class="activity-desc">
+                        抱宝宝照镜子，指认身体部位，做各种表情。帮助发展自我认知和社交能力。
+                    </div>
+                    <div class="activity-source">
+                        📚 <a href="https://www.zerotothree.org" target="_blank">ZERO TO THREE</a>
+                    </div>
+                </div>
+
+                <!-- Activity 6 - Tips -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-number">💡</div>
+                        <div class="activity-title">今日小贴士</div>
+                    </div>
+                    <div class="activity-tags">
+                        <span class="tag age">适合1-2月龄</span>
+                    </div>
+                    <div class="activity-desc">
+                        • 宝宝最爱看：黑白图案 + 爸妈的脸<br>
+                        • 最佳聚焦距离：20-30厘米<br>
+                        • 最佳时机：清醒、吃饱、心情好<br>
+                        • 俯卧时你的脸就是最好的玩具！
+                    </div>
+                    <div class="activity-source">
+                        📚 权威来源：AAP · CDC · Pathways.org
+                    </div>
                 </div>
             </div>
-
-            <!-- Activity 3 -->
-            <div class="activity-card">
-                <div class="activity-header">
-                    <div class="activity-number">3</div>
-                    <div class="activity-title">袜子手偶游戏</div>
-                </div>
-                <div class="activity-meta">
-                    <span class="meta-tag">🎭 社交情感</span>
-                    <span class="meta-tag">⏱️ 每次3-5分钟</span>
-                    <span class="meta-tag">🔄 随时进行</span>
-                </div>
-                <div class="activity-description">
-                    用简单的袜子做成手偶，和宝宝玩互动游戏！这个活动可以促进视觉追踪、听觉发展和社交情感联结。
-                </div>
-                <div class="activity-steps">
-                    <h4>怎么做：</h4>
-                    <ul>
-                        <li>用干净袜子做成简单手偶（画上眼睛嘴巴）</li>
-                        <li>在宝宝视野内（20-30厘米）移动</li>
-                        <li>边动边唱儿歌或说话</li>
-                        <li>让手偶"亲吻"宝宝的小脸</li>
-                    </ul>
-                </div>
-                <div class="activity-source">
-                    📚 来源：<a href="https://www.healthychildren.org/English/family-life/power-of-play/Pages/simple-ways-to-entertain-and-boost-your-babys-development-at-home.aspx" target="_blank">AAP - Simple Ways to Entertain & Boost Development</a>
-                </div>
-            </div>
-
-            <!-- Activity 4 -->
-            <div class="activity-card">
-                <div class="activity-header">
-                    <div class="activity-number">4</div>
-                    <div class="activity-title">肌肤接触 + 摇篮对话</div>
-                </div>
-                <div class="activity-meta">
-                    <span class="meta-tag">💕 亲子依恋</span>
-                    <span class="meta-tag">🗣️ 语言启蒙</span>
-                    <span class="meta-tag">⏱️ 每次5-10分钟</span>
-                </div>
-                <div class="activity-description">
-                    肌肤接触是最温暖的亲子活动！配合说话、唱歌，可以促进大脑发育、建立安全依恋、启蒙语言能力。
-                </div>
-                <div class="activity-steps">
-                    <h4>怎么做：</h4>
-                    <ul>
-                        <li>让宝宝趴在你裸露的胸口（肌肤接触）</li>
-                        <li>用不同声调和宝宝说话、唱歌</li>
-                        <li>描述日常活动："妈妈正在给你换尿布呢~"</li>
-                        <li>当宝宝发出声音时，积极回应</li>
-                    </ul>
-                </div>
-                <div class="activity-source">
-                    📚 来源：<a href="https://pathways.org/sensory-activities-for-baby-activities-baby" target="_blank">Pathways.org - Sensory Activities for Baby</a> | 
-                    <a href="https://www.zerotothree.org/resource/supporting-brain-development-first-three-years/" target="_blank">ZERO TO THREE - Brain Development</a>
-                </div>
-            </div>
-
-            <!-- Activity 5 -->
-            <div class="activity-card">
-                <div class="activity-header">
-                    <div class="activity-number">5</div>
-                    <div class="activity-title">镜子游戏</div>
-                </div>
-                <div class="activity-meta">
-                    <span class="meta-tag">🪞 自我认知</span>
-                    <span class="meta-tag">😊 社交能力</span>
-                    <span class="meta-tag">⏱️ 每次2-3分钟</span>
-                </div>
-                <div class="activity-description">
-                    让宝宝照镜子可以帮助TA发展自我认知能力，虽然现在还不知道镜子里是自己，但这个活动非常有趣！
-                </div>
-                <div class="activity-steps">
-                    <h4>怎么做：</h4>
-                    <ul>
-                        <li>抱宝宝面对安全镜子（不易碎）</li>
-                        <li>指着镜子说"这是年糕宝宝！"</li>
-                        <li>指认身体部位："这是年糕的鼻子、眼睛..."</li>
-                        <li>做各种表情让宝宝观察</li>
-                    </ul>
-                </div>
-                <div class="activity-source">
-                    📚 来源：<a href="https://www.zerotothree.org/resource/activities-for-bonding-and-learning-from-birth-to-12-months/" target="_blank">ZERO TO THREE - Bonding & Learning Activities</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tips -->
-        <div class="tips-card">
-            <h3><span>💡</span> 今日小贴士</h3>
-            <ul class="tips-list">
-                <li>年糕宝宝现在最喜欢看：<strong>高对比度黑白图案</strong> 和 <strong>爸爸妈妈的脸</strong>（20-30厘米距离）</li>
-                <li>俯卧练习时躺在宝宝对面，你的脸就是最好的"玩具"！</li>
-                <li>所有活动都需要成人全程看护，宝宝哭闹或不适时立即停止</li>
-                <li>最佳活动时机：宝宝清醒、吃饱、心情好的时候</li>
-            </ul>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <p>📚 权威来源：AAP · CDC · Pathways.org · ZERO TO THREE</p>
-            <p style="margin-top: 10px;">Made with ❤️ for 年糕宝宝</p>
         </div>
     </div>
 
+    <div class="refresh-indicator">🔄 10分钟自动刷新</div>
+
     <script>
-        // Create floating particles
-        function createParticles() {
-            const container = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-                particle.style.width = (5 + Math.random() * 10) + 'px';
-                particle.style.height = particle.style.width;
-                container.appendChild(particle);
+        // Create rain drops
+        function createRain() {
+            const container = document.getElementById('rainContainer');
+            for (let i = 0; i < 80; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'rain-drop';
+                drop.style.left = Math.random() * 100 + '%';
+                drop.style.animationDuration = (1 + Math.random() * 0.5) + 's';
+                drop.style.animationDelay = Math.random() * 2 + 's';
+                drop.style.opacity = 0.3 + Math.random() * 0.4;
+                container.appendChild(drop);
             }
         }
-        
-        createParticles();
 
-        // Add scroll animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+        // Animate counting
+        function animateValue(element, start, end, duration, suffix = '') {
+            const range = end - start;
+            const startTime = performance.now();
+            
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(start + range * easeOut);
+                element.textContent = current + suffix;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
                 }
-            });
-        }, { threshold: 0.1 });
+            }
+            
+            requestAnimationFrame(update);
+        }
 
-        document.querySelectorAll('.activity-card').forEach(card => {
-            observer.observe(card);
-        });
+        // Initialize
+        createRain();
+
+        // Animate age values
+        setTimeout(() => {
+            animateValue(document.getElementById('days'), 0, 47, 1500, '天');
+        }, 300);
+
+        setTimeout(() => {
+            const weeksEl = document.getElementById('weeks');
+            let current = 0;
+            const target = '6周5天';
+            const interval = setInterval(() => {
+                current++;
+                const weeks = Math.floor(current / 7);
+                const days = current % 7;
+                weeksEl.textContent = weeks + '周' + days + '天';
+                if (current >= 47) clearInterval(interval);
+            }, 30);
+        }, 500);
+
+        setTimeout(() => {
+            const monthsEl = document.getElementById('months');
+            monthsEl.textContent = '1个月16天';
+        }, 800);
+
+        // Auto refresh in 10 minutes
+        setTimeout(() => location.reload(), 600000);
     </script>
 </body>
 </html>
