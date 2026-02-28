@@ -46,6 +46,7 @@
             pointer-events: none;
             overflow: hidden;
             z-index: 1;
+            display: none; /* 默认隐藏，只在节气当天显示 */
         }
 
         .raindrop {
@@ -418,11 +419,11 @@
                 <div class="age-value" id="monthsOld">0个月0天</div>
             </div>
 
-            <div class="special-date">
-                <div class="special-date-label">
-                    🌧️ 节气
+            <div class="special-date" id="specialDate">
+                <div class="special-date-label" id="specialDateLabel">
+                    🌟 今日提示
                 </div>
-                <div class="special-date-text">雨水 (Rain Water)</div>
+                <div class="special-date-text" id="specialDateText">每天陪伴，快乐成长</div>
             </div>
         </div>
 
@@ -542,6 +543,85 @@
     <div class="refresh-notice">🔄 每10分钟自动刷新</div>
 
     <script>
+        // 2026年节气数据 (月, 日, 中文名, 英文名, 图标)
+        const solarTerms2026 = [
+            [2, 3, '立春', 'Start of Spring', '🌸'],
+            [2, 18, '雨水', 'Rain Water', '🌧️'],
+            [3, 5, '惊蛰', 'Awakening of Insects', '⚡'],
+            [3, 20, '春分', 'Spring Equinox', '🌱'],
+            [4, 4, '清明', 'Clear and Bright', '🍃'],
+            [4, 20, '谷雨', 'Grain Rain', '🌾'],
+            [5, 5, '立夏', 'Start of Summer', '☀️'],
+            [5, 21, '小满', 'Grain Buds', '🌿'],
+            [6, 5, '芒种', 'Grain in Ear', '🌾'],
+            [6, 21, '夏至', 'Summer Solstice', '🌞'],
+            [7, 7, '小暑', 'Minor Heat', '🔥'],
+            [7, 22, '大暑', 'Major Heat', '🌡️'],
+            [8, 7, '立秋', 'Start of Autumn', '🍂'],
+            [8, 23, '处暑', 'Limit of Heat', '🌤️'],
+            [9, 7, '白露', 'White Dew', '💧'],
+            [9, 23, '秋分', 'Autumn Equinox', '🍁'],
+            [10, 8, '寒露', 'Cold Dew', '❄️'],
+            [10, 23, '霜降', 'Frost Descent', '🌨️'],
+            [11, 7, '立冬', 'Start of Winter', '🌨️'],
+            [11, 22, '小雪', 'Minor Snow', '⛄'],
+            [12, 7, '大雪', 'Major Snow', '❄️'],
+            [12, 22, '冬至', 'Winter Solstice', '🎄'],
+        ];
+
+        // 检查今天是否是节气
+        function getTodaySolarTerm() {
+            const today = new Date('2026-02-28');
+            for (const term of solarTerms2026) {
+                if (today.getMonth() + 1 === term[0] && today.getDate() === term[1]) {
+                    return {
+                        isSolarTerm: true,
+                        name: term[2],
+                        english: term[3],
+                        icon: term[4]
+                    };
+                }
+            }
+            return { isSolarTerm: false };
+        }
+
+        // 更新特殊日期显示
+        function updateSpecialDate() {
+            const solarTerm = getTodaySolarTerm();
+            const label = document.getElementById('specialDateLabel');
+            const text = document.getElementById('specialDateText');
+            const container = document.getElementById('specialDate');
+
+            if (solarTerm.isSolarTerm) {
+                label.innerHTML = `${solarTerm.icon} 节气`;
+                text.textContent = `${solarTerm.name} (${solarTerm.english})`;
+                container.style.background = 'linear-gradient(135deg, #f7971e 0%, #ffd200 100%)';
+                
+                // 根据节气显示对应动效
+                if (solarTerm.name === '雨水') {
+                    document.getElementById('rainContainer').style.display = 'block';
+                }
+            } else {
+                // 非节气天显示今日提示
+                const tips = [
+                    '每天陪伴，快乐成长',
+                    '爱与耐心是最好的教育',
+                    '陪伴是最长情的告白',
+                    '每一个微笑都是成长',
+                    '今天也要开心哦'
+                ];
+                label.innerHTML = '🌟 今日提示';
+                text.textContent = tips[Math.floor(Math.random() * tips.length)];
+                container.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                
+                // 隐藏雨水效果
+                document.getElementById('rainContainer').style.display = 'none';
+            }
+        }
+
+        // 调用更新
+        updateSpecialDate();
+
         // Calculate baby's age
         const birthDate = new Date('2026-01-09');
         const today = new Date('2026-02-28');
@@ -603,17 +683,22 @@
         
         // Create rain drops for 雨水 solar term
         const rainContainer = document.getElementById('rainContainer');
-        for (let i = 0; i < 100; i++) {
-            const drop = document.createElement('div');
-            drop.className = 'raindrop';
-            drop.style.left = Math.random() * 100 + '%';
-            drop.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
-            drop.style.animationDelay = Math.random() * 5 + 's';
-            drop.style.opacity = Math.random() * 0.5 + 0.3;
-            // Add variation to drop sizes
-            const height = Math.random() * 15 + 15;
-            drop.style.height = height + 'px';
-            rainContainer.appendChild(drop);
+        const solarTerm = getTodaySolarTerm();
+        
+        // 只有在雨水节气当天才创建雨滴
+        if (solarTerm.isSolarTerm && solarTerm.name === '雨水') {
+            for (let i = 0; i < 100; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'raindrop';
+                drop.style.left = Math.random() * 100 + '%';
+                drop.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+                drop.style.animationDelay = Math.random() * 5 + 's';
+                drop.style.opacity = Math.random() * 0.5 + 0.3;
+                // Add variation to drop sizes
+                const height = Math.random() * 15 + 15;
+                drop.style.height = height + 'px';
+                rainContainer.appendChild(drop);
+            }
         }
         
         // Create glowing particles
