@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1920, height=1080">
-    <title>🍼 年糕宝宝的早教日记 | 雨水时节</title>
+    <title>年糕宝宝的成长日记</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,39 +14,36 @@
             box-sizing: border-box;
         }
 
-        html, body {
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
             width: 1920px;
             height: 1080px;
             overflow: hidden;
-            font-family: 'Noto Sans SC', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #0d2137 0%, #1e5f74 40%, #2a9d8f 100%);
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             position: relative;
         }
 
-        /* Rain drops background */
+        /* Rain drops animation for 雨水 solar term */
         .rain-container {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 0;
             overflow: hidden;
+            z-index: 1;
         }
 
-        .rain-drop {
+        .raindrop {
             position: absolute;
             width: 2px;
-            height: 25px;
-            background: linear-gradient(to bottom, transparent, rgba(42, 157, 143, 0.5));
-            animation: rainFall linear infinite;
+            height: 20px;
+            background: linear-gradient(to bottom, transparent, rgba(100, 200, 255, 0.6));
+            animation: fall linear infinite;
         }
 
-        @keyframes rainFall {
+        @keyframes fall {
             0% {
                 transform: translateY(-100px);
                 opacity: 0;
@@ -58,173 +55,103 @@
                 opacity: 1;
             }
             100% {
-                transform: translateY(1100px);
-                opacity: 0;
-            }
-        }
-
-        /* Floating bubbles */
-        .bubble {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), rgba(42, 157, 143, 0.1));
-            animation: bubbleFloat linear infinite;
-        }
-
-        @keyframes bubbleFloat {
-            0% {
-                transform: translateY(1100px) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.5;
-                transform: translateY(1000px) scale(1);
-            }
-            90% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(-100px) scale(0.5);
+                transform: translateY(1080px);
                 opacity: 0;
             }
         }
 
         .main-container {
             display: flex;
-            width: 1920px;
-            height: 1080px;
+            width: 100%;
+            height: 100%;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
         /* Left Panel - Baby Info */
         .left-panel {
             width: 400px;
-            height: 100%;
             padding: 40px;
             display: flex;
             flex-direction: column;
-            background: linear-gradient(180deg, rgba(30, 95, 116, 0.95) 0%, rgba(13, 33, 55, 0.98) 100%);
-            border-right: 3px solid rgba(42, 157, 143, 0.4);
-        }
-
-        .solar-term-badge {
-            background: linear-gradient(135deg, #2a9d8f, #264653);
-            padding: 12px 20px;
-            border-radius: 30px;
-            text-align: center;
-            margin-bottom: 30px;
-            animation: glow 2s ease-in-out infinite alternate;
-            box-shadow: 0 0 20px rgba(42, 157, 143, 0.5);
-        }
-
-        @keyframes glow {
-            from { box-shadow: 0 0 20px rgba(42, 157, 143, 0.5); }
-            to { box-shadow: 0 0 40px rgba(42, 157, 143, 0.8); }
-        }
-
-        .solar-term-badge .icon {
-            font-size: 2rem;
-            margin-bottom: 5px;
-        }
-
-        .solar-term-badge .text {
-            color: white;
-            font-size: 1.3rem;
-            font-weight: 600;
+            justify-content: center;
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255,255,255,0.1);
         }
 
         .baby-avatar {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #52b788, #2a9d8f);
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
+            background: linear-gradient(135deg, #ffd89b 0%, #f7971e 100%);
+            margin: 0 auto 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 6rem;
-            box-shadow: 0 10px 40px rgba(82, 183, 136, 0.4);
+            font-size: 5rem;
+            box-shadow: 0 10px 40px rgba(247, 151, 30, 0.3);
             animation: float 3s ease-in-out infinite;
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-10px); }
         }
 
         .baby-name {
-            text-align: center;
             font-family: 'Fredoka', sans-serif;
-            font-size: 3rem;
-            color: #52b788;
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(82, 183, 136, 0.5);
-        }
-
-        .baby-date {
+            font-size: 3.5rem;
+            font-weight: 700;
             text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1rem;
+            color: #fff;
             margin-bottom: 40px;
-        }
-
-        .age-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
         }
 
         .age-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 20px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .age-label {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 8px;
+        }
+
+        .age-value {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #4ecdc4;
+        }
+
+        .special-date {
+            background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(247, 151, 30, 0.3);
+        }
+
+        .special-date-label {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            border: 1px solid rgba(42, 157, 143, 0.3);
-            transition: transform 0.3s ease;
+            gap: 10px;
         }
 
-        .age-card:hover {
-            transform: translateX(10px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .age-card .icon {
-            font-size: 2.5rem;
-            margin-right: 20px;
-        }
-
-        .age-card .info {
-            flex: 1;
-        }
-
-        .age-card .label {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1rem;
-        }
-
-        .age-card .value {
-            color: #52b788;
-            font-family: 'Fredoka', sans-serif;
-            font-size: 2rem;
+        .special-date-text {
+            font-size: 1.5rem;
             font-weight: 700;
-        }
-
-        .quote-box {
-            margin-top: auto;
-            background: rgba(42, 157, 143, 0.2);
-            border-radius: 15px;
-            padding: 20px;
-            border-left: 4px solid #52b788;
-        }
-
-        .quote-box p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
-            line-height: 1.6;
-            font-style: italic;
+            color: #fff;
         }
 
         /* Right Panel - Activities */
@@ -242,16 +169,20 @@
             margin-bottom: 30px;
         }
 
-        .header h1 {
+        .title {
             font-family: 'Fredoka', sans-serif;
-            font-size: 2.8rem;
-            color: white;
-            text-shadow: 0 0 30px rgba(82, 183, 136, 0.5);
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
         }
 
-        .header .date {
-            color: rgba(255, 255, 255, 0.7);
+        .date-display {
             font-size: 1.3rem;
+            color: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.1);
+            padding: 12px 24px;
+            border-radius: 30px;
         }
 
         .activities-grid {
@@ -263,13 +194,15 @@
         }
 
         .activity-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255,255,255,0.12);
             border-radius: 20px;
             padding: 25px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            animation: cardSlideIn 0.8s ease-out both;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.3s ease;
+            animation: slideIn 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
             display: flex;
             flex-direction: column;
         }
@@ -281,325 +214,299 @@
         .activity-card:nth-child(5) { animation-delay: 0.5s; }
         .activity-card:nth-child(6) { animation-delay: 0.6s; }
 
-        @keyframes cardSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(50px) scale(0.9);
-            }
+        @keyframes slideIn {
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0);
             }
         }
 
-        .activity-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
+        .activity-card:hover {
+            background: rgba(255,255,255,0.18);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
-        .activity-card:nth-child(1)::before { background: linear-gradient(90deg, #e76f51, #f4a261); }
-        .activity-card:nth-child(2)::before { background: linear-gradient(90deg, #2a9d8f, #264653); }
-        .activity-card:nth-child(3)::before { background: linear-gradient(90deg, #52b788, #95d5b2); }
-        .activity-card:nth-child(4)::before { background: linear-gradient(90deg, #e9c46a, #f4a261); }
-        .activity-card:nth-child(5)::before { background: linear-gradient(90deg, #f4a261, #e76f51); }
-        .activity-card:nth-child(6)::before { background: linear-gradient(90deg, #264653, #2a9d8f); }
-
-        .activity-card.featured {
-            background: linear-gradient(135deg, #fff 0%, #e8f5e9 100%);
-            box-shadow: 0 15px 50px rgba(82, 183, 136, 0.4);
+        .activity-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
         }
 
-        .activity-card.featured::after {
-            content: '⭐ 今日重点';
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, #52b788, #2a9d8f);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .activity-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .activity-number {
-            width: 35px;
-            height: 35px;
-            background: linear-gradient(135deg, #2a9d8f, #264653);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-right: 12px;
-            flex-shrink: 0;
-        }
-
-        .activity-title {
-            font-size: 1.3rem;
+        .activity-name {
+            font-size: 1.5rem;
             font-weight: 700;
-            color: #1e5f74;
-        }
-
-        .activity-tags {
-            display: flex;
-            gap: 8px;
+            color: #4ecdc4;
             margin-bottom: 10px;
-            flex-wrap: wrap;
         }
 
-        .tag {
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .tag.time { background: #e3f2fd; color: #1565c0; }
-        .tag.skill { background: #e8f5e9; color: #2e7d32; }
-        .tag.age { background: #fff3e0; color: #ef6c00; }
-
-        .activity-desc {
-            color: #455a64;
-            font-size: 1rem;
-            line-height: 1.5;
+        .activity-description {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.6;
+            margin-bottom: 15px;
             flex: 1;
         }
 
-        .activity-source {
+        .activity-benefits {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 12px;
+            padding-left: 15px;
+            border-left: 3px solid #4ecdc4;
+        }
+
+        .activity-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-top: auto;
-            padding-top: 10px;
-            border-top: 1px solid #e0e0e0;
-            font-size: 0.85rem;
-            color: #78909c;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .activity-duration {
+            font-size: 1rem;
+            color: #ffd200;
+            font-weight: 600;
+        }
+
+        .activity-source {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
         }
 
         .activity-source a {
-            color: #2a9d8f;
+            color: #4ecdc4;
             text-decoration: none;
+            transition: color 0.2s;
         }
 
-        /* Refresh indicator */
-        .refresh-indicator {
-            position: fixed;
+        .activity-source a:hover {
+            color: #ffd200;
+            text-decoration: underline;
+        }
+
+        /* Floating bubbles for visual interest */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), rgba(78, 205, 196, 0.1));
+            animation: rise linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(1080px) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .refresh-notice {
+            position: absolute;
             bottom: 20px;
             right: 20px;
-            background: rgba(42, 157, 143, 0.9);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
             font-size: 0.9rem;
-            z-index: 100;
+            color: rgba(255,255,255,0.4);
+            z-index: 10;
         }
     </style>
 </head>
 <body>
-    <!-- Rain Background -->
+    <!-- Rain effect for 雨水 solar term -->
     <div class="rain-container" id="rainContainer"></div>
+    
+    <!-- Floating bubbles -->
+    <div id="bubbleContainer"></div>
 
     <div class="main-container">
         <!-- Left Panel -->
         <div class="left-panel">
-            <div class="solar-term-badge">
-                <div class="icon">🌧️</div>
-                <div class="text">雨水 · 万物萌动</div>
+            <div class="baby-avatar">👶</div>
+            <div class="baby-name">年糕宝宝</div>
+            
+            <div class="age-card">
+                <div class="age-label">📅 天龄</div>
+                <div class="age-value" id="daysOld">0</div>
+            </div>
+            
+            <div class="age-card">
+                <div class="age-label">📊 周龄</div>
+                <div class="age-value" id="weeksOld">0周0天</div>
+            </div>
+            
+            <div class="age-card">
+                <div class="age-label">📆 月龄</div>
+                <div class="age-value" id="monthsOld">0个月0天</div>
             </div>
 
-            <div class="baby-avatar">🍼</div>
-
-            <h2 class="baby-name">年糕宝宝</h2>
-            <p class="baby-date">出生于 2026年1月9日</p>
-
-            <div class="age-cards">
-                <div class="age-card">
-                    <span class="icon">📅</span>
-                    <div class="info">
-                        <div class="label">天龄</div>
-                        <div class="value" id="days">0</div>
-                    </div>
+            <div class="special-date">
+                <div class="special-date-label">
+                    🌧️ 节气
                 </div>
-                <div class="age-card">
-                    <span class="icon">📆</span>
-                    <div class="info">
-                        <div class="label">周龄</div>
-                        <div class="value" id="weeks">0周0天</div>
-                    </div>
-                </div>
-                <div class="age-card">
-                    <span class="icon">🗓️</span>
-                    <div class="info">
-                        <div class="label">月龄</div>
-                        <div class="value" id="months">0个月0天</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="quote-box">
-                <p>🌱 春雨滋润大地，生命蓬勃生长。年糕宝宝每天都在进步，今天又长大了一天！</p>
+                <div class="special-date-text">雨水 (Rain Water)</div>
             </div>
         </div>
 
         <!-- Right Panel -->
         <div class="right-panel">
             <div class="header">
-                <h1>🎯 今日早教活动</h1>
-                <div class="date">2026年2月26日 星期四</div>
+                <div class="title">今日早教活动</div>
+                <div class="date-display" id="currentDate"></div>
             </div>
 
             <div class="activities-grid">
-                <!-- Activity 1 - Featured -->
-                <div class="activity-card featured">
-                    <div class="activity-header">
-                        <div class="activity-number">1</div>
-                        <div class="activity-title">俯卧练习 Tummy Time</div>
+                <!-- Activity 1: Tummy Time -->
+                <div class="activity-card">
+                    <div class="activity-icon">🧸</div>
+                    <div class="activity-name">Tummy Time 俯卧练习</div>
+                    <div class="activity-description">
+                        让宝宝趴在干净的毯子上，在监督下进行短时间的俯卧练习。可以在宝宝前方放置玩具或与宝宝互动。
                     </div>
-                    <div class="activity-tags">
-                        <span class="tag skill">🏃 运动发展</span>
-                        <span class="tag time">⏱️ 3-5分钟/次</span>
+                    <div class="activity-benefits">
+                        💪 增强颈部、肩部、背部和核心肌肉<br>
+                        🛡️ 预防扁头综合征和斜颈
                     </div>
-                    <div class="activity-desc">
-                        宝宝最重要的"第一运动"！趴着练习可以锻炼颈部、肩部和核心肌肉，预防扁头综合征。
-                    </div>
-                    <div class="activity-source">
-                        📚 <a href="https://pathways.org/topics-of-development/tummy-time" target="_blank">Pathways.org</a>
+                    <div class="activity-meta">
+                        <span class="activity-duration">⏱️ 15-30分钟/天</span>
+                        <span class="activity-source"><a href="https://pathways.org/topics-of-development/tummy-time" target="_blank">Pathways.org</a></span>
                     </div>
                 </div>
 
-                <!-- Activity 2 -->
+                <!-- Activity 2: Visual Tracking -->
                 <div class="activity-card">
-                    <div class="activity-header">
-                        <div class="activity-number">2</div>
-                        <div class="activity-title">高对比度视觉追踪</div>
+                    <div class="activity-icon">👁️</div>
+                    <div class="activity-name">Visual Tracking 视觉追踪</div>
+                    <div class="activity-description">
+                        使用高对比度的黑白图案卡片或玩具，在宝宝面前约30厘米处缓慢移动，引导宝宝用眼睛追踪物体。
                     </div>
-                    <div class="activity-tags">
-                        <span class="tag skill">👁️ 视觉发展</span>
-                        <span class="tag time">⏱️ 2-3分钟</span>
+                    <div class="activity-benefits">
+                        👀 发展视觉追踪能力<br>
+                        🎨 刺激视觉发育
                     </div>
-                    <div class="activity-desc">
-                        使用黑白图案卡片，距离20-30厘米，缓慢移动让宝宝追踪。促进视觉神经发育。
-                    </div>
-                    <div class="activity-source">
-                        📚 <a href="https://pathways.org/videos/sensory-activities-0-3-months" target="_blank">Pathways.org</a>
+                    <div class="activity-meta">
+                        <span class="activity-duration">⏱️ 5-10分钟</span>
+                        <span class="activity-source"><a href="https://pathways.org/sensory-activities-0-18-months" target="_blank">Pathways.org</a></span>
                     </div>
                 </div>
 
-                <!-- Activity 3 -->
+                <!-- Activity 3: Mirror Play -->
                 <div class="activity-card">
-                    <div class="activity-header">
-                        <div class="activity-number">3</div>
-                        <div class="activity-title">微笑互动游戏</div>
+                    <div class="activity-icon">🪞</div>
+                    <div class="activity-name">Mirror Play 镜子游戏</div>
+                    <div class="activity-description">
+                        在宝宝面前放置安全的镜子，让宝宝观察自己的倒影。可以做各种表情，引导宝宝探索。
                     </div>
-                    <div class="activity-tags">
-                        <span class="tag skill">😊 社交情感</span>
-                        <span class="tag time">⏱️ 3-5分钟</span>
+                    <div class="activity-benefits">
+                        🧠 发展自我意识<br>
+                        ✨ 视觉探索和社交互动
                     </div>
-                    <div class="activity-desc">
-                        面对面逗宝宝笑，做各种表情。2个月宝宝开始出现社会性微笑，这是重要的情感发展！
-                    </div>
-                    <div class="activity-source">
-                        📚 <a href="https://www.cdc.gov/act-early/milestones/2-months.html" target="_blank">CDC Milestones</a>
+                    <div class="activity-meta">
+                        <span class="activity-duration">⏱️ 5-10分钟</span>
+                        <span class="activity-source"><a href="https://www.rayitoschools.com/blog/15-sensory-play-activities-for-infants/" target="_blank">Rayito de Sol</a></span>
                     </div>
                 </div>
 
-                <!-- Activity 4 -->
+                <!-- Activity 4: Singing and Talking -->
                 <div class="activity-card">
-                    <div class="activity-header">
-                        <div class="activity-number">4</div>
-                        <div class="activity-title">肌肤接触·摇篮对话</div>
+                    <div class="activity-icon">🎵</div>
+                    <div class="activity-name">Singing & Talking 唱歌说话</div>
+                    <div class="activity-description">
+                        经常对宝宝唱歌、说话，使用夸张的语调和表情。可以唱儿歌、讲故事，或描述日常活动。
                     </div>
-                    <div class="activity-tags">
-                        <span class="tag skill">💕 亲子依恋</span>
-                        <span class="tag time">⏱️ 5-10分钟</span>
+                    <div class="activity-benefits">
+                        👂 促进听觉发育<br>
+                        💬 发展语言能力和亲子纽带
                     </div>
-                    <div class="activity-desc">
-                        让宝宝趴在你胸口，说话唱歌互动。促进大脑发育、建立安全依恋、启蒙语言。
-                    </div>
-                    <div class="activity-source">
-                        📚 <a href="https://www.zerotothree.org" target="_blank">ZERO TO THREE</a>
+                    <div class="activity-meta">
+                        <span class="activity-duration">⏱️ 全天随时</span>
+                        <span class="activity-source"><a href="https://www.bbc.co.uk/tiny-happy-people/2-month-old-baby-development-activities" target="_blank">BBC</a></span>
                     </div>
                 </div>
 
-                <!-- Activity 5 -->
+                <!-- Activity 5: Gentle Rocking -->
                 <div class="activity-card">
-                    <div class="activity-header">
-                        <div class="activity-number">5</div>
-                        <div class="activity-title">声音探索游戏</div>
+                    <div class="activity-icon">🌊</div>
+                    <div class="activity-name">Gentle Rocking 温柔摇摆</div>
+                    <div class="activity-description">
+                        轻柔地摇晃、摇摆宝宝，可以尝试不同的姿势和方向。结合轻声哼唱效果更佳。
                     </div>
-                    <div class="activity-tags">
-                        <span class="tag skill">👂 听觉发展</span>
-                        <span class="tag time">⏱️ 2-3分钟</span>
+                    <div class="activity-benefits">
+                        ⚖️ 发展前庭系统<br>
+                        💝 安抚情绪和增强亲子纽带
                     </div>
-                    <div class="activity-desc">
-                        在宝宝不同方向轻摇铃铛或发出声音，观察宝宝是否转头寻找声源。锻炼听觉定位能力。
-                    </div>
-                    <div class="activity-source">
-                        📚 <a href="https://pathways.org/play" target="_blank">Pathways.org Baby Games</a>
+                    <div class="activity-meta">
+                        <span class="activity-duration">⏱️ 按需进行</span>
+                        <span class="activity-source"><a href="https://pathways.org/sensory-activities-for-baby-activities-baby" target="_blank">Pathways.org</a></span>
                     </div>
                 </div>
 
-                <!-- Activity 6 - Tips -->
+                <!-- Activity 6: Sensory Exploration -->
                 <div class="activity-card">
-                    <div class="activity-header">
-                        <div class="activity-number">💡</div>
-                        <div class="activity-title">今日小贴士</div>
+                    <div class="activity-icon">🤲</div>
+                    <div class="activity-name">Touch Exploration 触觉探索</div>
+                    <div class="activity-description">
+                        让宝宝触摸不同材质的物品，如柔软的毛巾、光滑的玩具、粗糙的布料等，丰富触觉体验。
                     </div>
-                    <div class="activity-tags">
-                        <span class="tag age">适合1-2月龄</span>
+                    <div class="activity-benefits">
+                        🖐️ 发展触觉感知<br>
+                        🧩 促进感觉统合
                     </div>
-                    <div class="activity-desc">
-                        • 宝宝最爱看：黑白图案 + 爸妈的脸<br>
-                        • 最佳聚焦距离：20-30厘米<br>
-                        • 俯卧时间：每天累计15-30分钟<br>
-                        • 宝宝开始会对人微笑啦！多互动
-                    </div>
-                    <div class="activity-source">
-                        📚 权威来源：AAP · CDC · Pathways.org
+                    <div class="activity-meta">
+                        <span class="activity-duration">⏱️ 5-15分钟</span>
+                        <span class="activity-source"><a href="https://pathways.org/sensory-activities-for-baby-activities-baby" target="_blank">Pathways.org</a></span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="refresh-indicator">🔄 10分钟自动刷新</div>
+    <div class="refresh-notice">🔄 每10分钟自动刷新</div>
 
     <script>
-        // Create rain drops
-        function createRain() {
-            const container = document.getElementById('rainContainer');
-            for (let i = 0; i < 70; i++) {
-                const drop = document.createElement('div');
-                drop.className = 'rain-drop';
-                drop.style.left = Math.random() * 100 + '%';
-                drop.style.animationDuration = (0.8 + Math.random() * 0.6) + 's';
-                drop.style.animationDelay = Math.random() * 2 + 's';
-                drop.style.opacity = 0.2 + Math.random() * 0.4;
-                container.appendChild(drop);
-            }
+        // Calculate baby's age
+        const birthDate = new Date('2026-01-09');
+        const today = new Date('2026-02-28');
+        
+        // Days old
+        const diffTime = Math.abs(today - birthDate);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        
+        // Weeks and days
+        const weeks = Math.floor(diffDays / 7);
+        const remainingDays = diffDays % 7;
+        
+        // Months and days
+        let months = today.getMonth() - birthDate.getMonth();
+        let monthDays = today.getDate() - birthDate.getDate();
+        if (monthDays < 0) {
+            months--;
+            const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+            monthDays += lastMonth.getDate();
         }
-
-        // Animate counting
-        function animateValue(element, start, end, duration, suffix = '') {
+        months += (today.getFullYear() - birthDate.getFullYear()) * 12;
+        
+        // Animate counters
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
             const range = end - start;
             const startTime = performance.now();
             
             function update(currentTime) {
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / duration, 1);
-                const easeOut = 1 - Math.pow(1 - progress, 3);
-                const current = Math.floor(start + range * easeOut);
-                element.textContent = current + suffix;
+                const value = Math.floor(start + range * progress);
+                obj.textContent = value;
                 
                 if (progress < 1) {
                     requestAnimationFrame(update);
@@ -608,32 +515,60 @@
             
             requestAnimationFrame(update);
         }
-
-        // Initialize
-        createRain();
-
-        // Animate age values - Day 48
+        
+        // Set age values with animation
         setTimeout(() => {
-            animateValue(document.getElementById('days'), 0, 48, 1500, '天');
-        }, 300);
-
-        setTimeout(() => {
-            const weeksEl = document.getElementById('weeks');
-            let current = 0;
-            const interval = setInterval(() => {
-                current++;
-                const weeks = Math.floor(current / 7);
-                const days = current % 7;
-                weeksEl.textContent = weeks + '周' + days + '天';
-                if (current >= 48) clearInterval(interval);
-            }, 25);
+            animateValue('daysOld', 0, diffDays, 1500);
         }, 500);
-
+        
         setTimeout(() => {
-            document.getElementById('months').textContent = '1个月17天';
-        }, 800);
-
-        // Auto refresh in 10 minutes
+            document.getElementById('weeksOld').textContent = `${weeks}周${remainingDays}天`;
+        }, 2000);
+        
+        setTimeout(() => {
+            document.getElementById('monthsOld').textContent = `${months}个月${monthDays}天`;
+        }, 2000);
+        
+        // Set current date
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('currentDate').textContent = today.toLocaleDateString('zh-CN', options);
+        
+        // Create rain drops for 雨水 solar term
+        const rainContainer = document.getElementById('rainContainer');
+        for (let i = 0; i < 50; i++) {
+            const drop = document.createElement('div');
+            drop.className = 'raindrop';
+            drop.style.left = Math.random() * 100 + '%';
+            drop.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+            drop.style.animationDelay = Math.random() * 5 + 's';
+            drop.style.opacity = Math.random() * 0.5 + 0.3;
+            rainContainer.appendChild(drop);
+        }
+        
+        // Create floating bubbles
+        const bubbleContainer = document.getElementById('bubbleContainer');
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            const size = Math.random() * 40 + 20;
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+            bubble.style.left = Math.random() * 100 + '%';
+            bubble.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            bubbleContainer.appendChild(bubble);
+            
+            setTimeout(() => {
+                bubble.remove();
+            }, 20000);
+        }
+        
+        // Create bubbles periodically
+        setInterval(createBubble, 2000);
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createBubble, i * 400);
+        }
+        
+        // Auto refresh every 10 minutes
         setTimeout(() => location.reload(), 600000);
     </script>
 </body>
