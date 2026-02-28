@@ -21,6 +21,19 @@
             overflow: hidden;
             background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             position: relative;
+            animation: gradientShift 20s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            }
+            33% {
+                background: linear-gradient(145deg, #0a1a1f 0%, #1e3540 50%, #274a57 100%);
+            }
+            66% {
+                background: linear-gradient(125deg, #14252b 0%, #253f4a 50%, #305a68 100%);
+            }
         }
 
         /* Rain drops animation for 雨水 solar term */
@@ -56,6 +69,55 @@
             }
             100% {
                 transform: translateY(1080px);
+                opacity: 0;
+            }
+        }
+
+        /* Glowing particles */
+        .glow-particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(100, 200, 255, 0.8), transparent);
+            box-shadow: 0 0 20px rgba(100, 200, 255, 0.4);
+            animation: drift linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes drift {
+            0% {
+                transform: translate(0, 0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(var(--drift-x), var(--drift-y)) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Ripple effects */
+        .ripple {
+            position: absolute;
+            border: 2px solid rgba(100, 200, 255, 0.3);
+            border-radius: 50%;
+            animation: rippleEffect 3s ease-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0.8;
+            }
+            100% {
+                width: 300px;
+                height: 300px;
                 opacity: 0;
             }
         }
@@ -189,14 +251,14 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(2, 1fr);
-            gap: 25px;
+            gap: 18px;
             flex: 1;
         }
 
         .activity-card {
             background: rgba(255,255,255,0.12);
-            border-radius: 20px;
-            padding: 25px;
+            border-radius: 16px;
+            padding: 18px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.15);
             transition: all 0.3s ease;
@@ -228,30 +290,30 @@
         }
 
         .activity-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-
-        .activity-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #4ecdc4;
+            font-size: 2.2rem;
             margin-bottom: 10px;
         }
 
+        .activity-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #4ecdc4;
+            margin-bottom: 8px;
+        }
+
         .activity-description {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             color: rgba(255,255,255,0.9);
-            line-height: 1.6;
-            margin-bottom: 15px;
+            line-height: 1.5;
+            margin-bottom: 10px;
             flex: 1;
         }
 
         .activity-benefits {
-            font-size: 1rem;
+            font-size: 0.85rem;
             color: rgba(255,255,255,0.7);
-            margin-bottom: 12px;
-            padding-left: 15px;
+            margin-bottom: 10px;
+            padding-left: 12px;
             border-left: 3px solid #4ecdc4;
         }
 
@@ -260,18 +322,18 @@
             justify-content: space-between;
             align-items: center;
             margin-top: auto;
-            padding-top: 12px;
+            padding-top: 10px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         .activity-duration {
-            font-size: 1rem;
+            font-size: 0.85rem;
             color: #ffd200;
             font-weight: 600;
         }
 
         .activity-source {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: rgba(255,255,255,0.6);
         }
 
@@ -325,6 +387,12 @@
 <body>
     <!-- Rain effect for 雨水 solar term -->
     <div class="rain-container" id="rainContainer"></div>
+    
+    <!-- Glowing particles -->
+    <div id="glowContainer"></div>
+    
+    <!-- Ripple effects -->
+    <div id="rippleContainer"></div>
     
     <!-- Floating bubbles -->
     <div id="bubbleContainer"></div>
@@ -535,15 +603,68 @@
         
         // Create rain drops for 雨水 solar term
         const rainContainer = document.getElementById('rainContainer');
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 100; i++) {
             const drop = document.createElement('div');
             drop.className = 'raindrop';
             drop.style.left = Math.random() * 100 + '%';
             drop.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
             drop.style.animationDelay = Math.random() * 5 + 's';
             drop.style.opacity = Math.random() * 0.5 + 0.3;
+            // Add variation to drop sizes
+            const height = Math.random() * 15 + 15;
+            drop.style.height = height + 'px';
             rainContainer.appendChild(drop);
         }
+        
+        // Create glowing particles
+        const glowContainer = document.getElementById('glowContainer');
+        function createGlowParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'glow-particle';
+            const size = Math.random() * 8 + 4;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            
+            // Random drift direction
+            const driftX = (Math.random() - 0.5) * 400;
+            const driftY = (Math.random() - 0.5) * 400;
+            particle.style.setProperty('--drift-x', driftX + 'px');
+            particle.style.setProperty('--drift-y', driftY + 'px');
+            
+            particle.style.animationDuration = (Math.random() * 8 + 6) + 's';
+            glowContainer.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 14000);
+        }
+        
+        // Create glow particles periodically
+        setInterval(createGlowParticle, 800);
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createGlowParticle, i * 200);
+        }
+        
+        // Create ripple effects
+        const rippleContainer = document.getElementById('rippleContainer');
+        function createRipple() {
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple';
+            ripple.style.left = Math.random() * 100 + '%';
+            ripple.style.top = Math.random() * 100 + '%';
+            ripple.style.animationDelay = Math.random() * 2 + 's';
+            rippleContainer.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 5000);
+        }
+        
+        // Create ripples periodically
+        setInterval(createRipple, 4000);
+        setTimeout(createRipple, 1000);
         
         // Create floating bubbles
         const bubbleContainer = document.getElementById('bubbleContainer');
