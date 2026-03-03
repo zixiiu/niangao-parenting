@@ -80,7 +80,7 @@ body {
     margin: auto;
     display: flex;
     flex-direction: column;
-    padding: 1.5vh 2vw;
+    padding: 1.2vh 2vw;
     animation: fadeIn 1.5s ease-in;
 }
 
@@ -89,10 +89,10 @@ body {
     to { opacity: 1; }
 }
 
-/* 头部 - 更紧凑 */
+/* 头部 */
 header {
     text-align: center;
-    margin-bottom: 0.8vh;
+    margin-bottom: 0.6vh;
     animation: slideDown 1s ease-out;
     flex-shrink: 0;
 }
@@ -109,7 +109,7 @@ header {
 }
 
 .baby-name {
-    font-size: 4.5vw;
+    font-size: 4vw;
     font-weight: bold;
     text-shadow: 2px 2px 10px rgba(0,0,0,0.25);
     animation: pulse 3s ease-in-out infinite;
@@ -122,8 +122,8 @@ header {
 }
 
 .age-info {
-    font-size: 2vw;
-    margin-top: 0.3vh;
+    font-size: 1.8vw;
+    margin-top: 0.2vh;
 }
 
 .days {
@@ -133,16 +133,47 @@ header {
 
 .months {
     opacity: 0.95;
-    margin-left: 0.6vw;
+    margin-left: 0.5vw;
 }
 
 .date {
-    font-size: 1.3vw;
+    font-size: 1.2vw;
     opacity: 0.85;
-    margin-top: 0.2vh;
+    margin-top: 0.15vh;
 }
 
-/* 主内容 - 占满空间 */
+/* 喂养记录卡片 */
+.feeding-summary {
+    display: flex;
+    justify-content: center;
+    gap: 1.5vw;
+    margin-bottom: 0.6vh;
+    animation: slideUp 0.8s ease-out backwards;
+    animation-delay: 0.1s;
+    flex-shrink: 0;
+}
+
+.feeding-stat {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 10px;
+    padding: 0.6vh 1.2vw;
+    text-align: center;
+}
+
+.feeding-stat-label {
+    font-size: 0.85vw;
+    opacity: 0.8;
+    margin-bottom: 0.2vh;
+}
+
+.feeding-stat-value {
+    font-size: 1.3vw;
+    font-weight: bold;
+    color: #fbbf24;
+}
+
+/* 主内容 */
 main {
     flex: 1;
     display: flex;
@@ -151,17 +182,17 @@ main {
 }
 
 main h2 {
-    font-size: 2vw;
-    margin-bottom: 0.6vh;
+    font-size: 1.8vw;
+    margin-bottom: 0.4vh;
     text-align: center;
     flex-shrink: 0;
 }
 
-/* 活动网格 - 严格适配 */
+/* 活动网格 - 5列 */
 .activities {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 0.6vw;
+    gap: 0.5vw;
     flex: 1;
     min-height: 0;
 }
@@ -169,8 +200,8 @@ main h2 {
 .activity-card {
     background: rgba(255,255,255,0.12);
     backdrop-filter: blur(12px);
-    border-radius: 12px;
-    padding: 1vw;
+    border-radius: 10px;
+    padding: 0.9vw;
     animation: slideUp 0.8s ease-out backwards;
     transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
@@ -178,11 +209,11 @@ main h2 {
     overflow: hidden;
 }
 
-.activity-card:nth-child(1) { animation-delay: 0.15s; }
+.activity-card:nth-child(1) { animation-delay: 0.2s; }
 .activity-card:nth-child(2) { animation-delay: 0.3s; }
-.activity-card:nth-child(3) { animation-delay: 0.45s; }
-.activity-card:nth-child(4) { animation-delay: 0.6s; }
-.activity-card:nth-child(5) { animation-delay: 0.75s; }
+.activity-card:nth-child(3) { animation-delay: 0.4s; }
+.activity-card:nth-child(4) { animation-delay: 0.5s; }
+.activity-card:nth-child(5) { animation-delay: 0.6s; }
 
 @keyframes slideUp {
     from {
@@ -201,24 +232,24 @@ main h2 {
 }
 
 .activity-title {
-    font-size: 1.15vw;
+    font-size: 1.05vw;
     font-weight: bold;
-    margin-bottom: 0.5vh;
+    margin-bottom: 0.4vh;
     flex-shrink: 0;
     line-height: 1.3;
 }
 
 .activity-desc {
-    font-size: 0.9vw;
+    font-size: 0.85vw;
     opacity: 0.92;
-    margin-bottom: 0.5vh;
+    margin-bottom: 0.4vh;
     line-height: 1.35;
     flex: 1;
     overflow: hidden;
 }
 
 .activity-source {
-    font-size: 0.75vw;
+    font-size: 0.7vw;
     opacity: 0.75;
     flex-shrink: 0;
 }
@@ -232,12 +263,12 @@ main h2 {
     text-decoration: underline;
 }
 
-/* 页脚 - 更小 */
+/* 页脚 */
 footer {
     text-align: center;
-    font-size: 0.9vw;
+    font-size: 0.85vw;
     opacity: 0.6;
-    margin-top: 0.6vh;
+    margin-top: 0.5vh;
     flex-shrink: 0;
 }
 
