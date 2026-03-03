@@ -241,32 +241,58 @@ footer {
     flex-shrink: 0;
 }
 
-/* 特殊日子样式 - 柔和版 */
+/* ===== 特殊日子样式 ===== */
+
+/* 元宵节 - 暖红色调 + 灯笼效果 */
+.special-lantern {
+    background: linear-gradient(-45deg, #dc2626, #b91c1c, #ef4444, #f87171, #dc2626);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+.special-lantern .bg-animation::before {
+    background: radial-gradient(circle, rgba(251,191,36,0.3) 0%, transparent 70%);
+    opacity: 0.2;
+    animation: lanternGlow 3s ease-in-out infinite;
+}
+
+.special-lantern .bg-animation::after {
+    background: radial-gradient(circle, rgba(254,215,170,0.25) 0%, transparent 70%);
+    opacity: 0.18;
+}
+
+@keyframes lanternGlow {
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50% { opacity: 0.25; transform: scale(1.1); }
+}
+
+/* 百日 - 红金喜庆 */
 .special-100days {
     background: linear-gradient(-45deg, #dc2626, #b91c1c, #ef4444, #f87171);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
 }
 
+.special-100days .bg-animation::before {
+    background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
+    opacity: 0.15;
+}
+
+/* 周岁 - 金色庆祝 */
 .special-1year {
     background: linear-gradient(-45deg, #d97706, #b45309, #f59e0b, #fbbf24);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
 }
 
+.special-1year .bg-animation::before {
+    background: radial-gradient(circle, rgba(251,211,141,0.25) 0%, transparent 70%);
+    opacity: 0.15;
+}
+
+/* 节气 - 绿色自然 */
 .special-solar-term {
     background: linear-gradient(-45deg, #059669, #047857, #10b981, #34d399);
     background-size: 400% 400%;
     animation: gradientShift 18s ease infinite;
-}
-
-/* 特殊日子光斑 */
-.special-100days .bg-animation::before {
-    background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
-    opacity: 0.15;
-}
-
-.special-1year .bg-animation::before {
-    background: radial-gradient(circle, rgba(251,211,141,0.25) 0%, transparent 70%);
-    opacity: 0.15;
 }
