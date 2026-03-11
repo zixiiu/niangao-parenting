@@ -1,6 +1,5 @@
 /* 年糕宝宝每日早教页面样式 */
 /* 严格 16:9 比例，电视展示优化，男宝宝风格（蓝绿色系） */
-/* 左右布局：左侧信息+喂养 / 右侧活动 */
 
 * {
     margin: 0;
@@ -72,13 +71,16 @@ body {
     75% { transform: translate(-3%, 3%) scale(0.95); }
 }
 
-/* 主容器 - 左右布局 */
+/* 主容器 - 严格16:9 */
 .container {
     width: 100vw;
     height: 100vh;
+    max-width: calc(100vh * 16 / 9);
+    max-height: calc(100vw * 9 / 16);
+    margin: auto;
     display: flex;
-    padding: 1.5vh 1.5vw;
-    gap: 1.5vw;
+    flex-direction: column;
+    padding: 1.2vh 2vw;
     animation: fadeIn 1.5s ease-in;
 }
 
@@ -87,32 +89,27 @@ body {
     to { opacity: 1; }
 }
 
-/* ===== 左侧面板 ===== */
-.left-panel {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
-}
-
-/* 头部信息卡片 */
-.header-card {
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(12px);
-    border-radius: 12px;
-    padding: 1.5vh 1vw;
+/* 头部 */
+header {
     text-align: center;
-    animation: slideDown 0.8s ease-out;
+    margin-bottom: 0.6vh;
+    animation: slideDown 1s ease-out;
     flex-shrink: 0;
 }
 
 @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .baby-name {
-    font-size: 2.8vw;
+    font-size: 4vw;
     font-weight: bold;
     text-shadow: 2px 2px 10px rgba(0,0,0,0.25);
     animation: pulse 3s ease-in-out infinite;
@@ -125,8 +122,8 @@ body {
 }
 
 .age-info {
-    font-size: 1.4vw;
-    margin-top: 0.3vh;
+    font-size: 1.8vw;
+    margin-top: 0.2vh;
 }
 
 .days {
@@ -136,241 +133,123 @@ body {
 
 .months {
     opacity: 0.95;
-    margin-left: 0.3vw;
+    margin-left: 0.5vw;
 }
 
 .date {
-    font-size: 0.9vw;
+    font-size: 1.2vw;
     opacity: 0.85;
-    margin-top: 0.3vh;
-    line-height: 1.4;
+    margin-top: 0.15vh;
 }
 
 /* 喂养记录卡片 */
-.feeding-card {
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(12px);
-    border-radius: 12px;
-    padding: 1vh 0.8vw;
+.feeding-summary {
+    display: flex;
+    justify-content: center;
+    gap: 1.5vw;
+    margin-bottom: 0.6vh;
+    animation: slideUp 0.8s ease-out backwards;
+    animation-delay: 0.1s;
     flex-shrink: 0;
 }
 
-.feeding-title {
-    font-size: 1vw;
-    font-weight: bold;
-    margin-bottom: 0.6vh;
-    text-align: center;
-}
-
-.feeding-summary {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.5vw;
-}
-
 .feeding-stat {
-    background: rgba(255,255,255,0.1);
-    border-radius: 8px;
-    padding: 0.6vh 0.3vw;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 10px;
+    padding: 0.6vh 1.2vw;
     text-align: center;
 }
 
 .feeding-stat-label {
-    font-size: 0.65vw;
+    font-size: 0.85vw;
     opacity: 0.8;
     margin-bottom: 0.2vh;
 }
 
 .feeding-stat-value {
-    font-size: 1.1vw;
+    font-size: 1.3vw;
     font-weight: bold;
     color: #fbbf24;
 }
 
-/* 柱状图卡片 */
-.chart-card {
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(12px);
-    border-radius: 12px;
-    padding: 1vh 0.8vw;
-    flex-shrink: 0;
-}
-
-.chart-title {
-    font-size: 0.9vw;
-    font-weight: bold;
-    margin-bottom: 0.8vh;
-    text-align: center;
-}
-
-.bar-chart {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-around;
-    height: 10vh;
-    padding: 0 0.3vw;
-}
-
-.bar-item {
+/* 主内容 */
+main {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 12%;
-}
-
-.bar {
-    width: 100%;
-    background: linear-gradient(to top, #0891b2, #22d3ee);
-    border-radius: 4px 4px 0 0;
-    min-height: 10%;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.bar::after {
-    content: attr(data-value);
-    position: absolute;
-    top: -1.8vh;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.55vw;
-    color: #fbbf24;
-    font-weight: bold;
-    opacity: 0.9;
-}
-
-.bar.highlight {
-    background: linear-gradient(to top, #059669, #34d399);
-    box-shadow: 0 0 10px rgba(52, 211, 153, 0.4);
-}
-
-.bar-label {
-    font-size: 0.6vw;
-    margin-top: 0.3vh;
-    opacity: 0.8;
-}
-
-/* 间隔看板 */
-.interval-card {
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(12px);
-    border-radius: 12px;
-    padding: 1vh 0.8vw;
-    flex: 1;
     min-height: 0;
-    display: flex;
-    flex-direction: column;
 }
 
-.interval-title {
-    font-size: 0.9vw;
-    font-weight: bold;
-    margin-bottom: 0.6vh;
+main h2 {
+    font-size: 1.8vw;
+    margin-bottom: 0.4vh;
     text-align: center;
     flex-shrink: 0;
 }
 
-.interval-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.4vh 0.4vw;
-    flex: 1;
-    align-content: start;
-}
-
-.interval-item {
-    background: rgba(255,255,255,0.08);
-    border-radius: 6px;
-    padding: 0.4vh 0.3vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 0.6vw;
-}
-
-.int-time {
-    color: #fbbf24;
-    font-weight: bold;
-    font-size: 0.7vw;
-}
-
-.int-gap {
-    opacity: 0.7;
-    font-size: 0.55vw;
-}
-
-/* ===== 右侧面板 ===== */
-.right-panel {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-}
-
-.right-panel h2 {
-    font-size: 1.5vw;
-    margin-bottom: 0.8vh;
-    text-align: center;
-    flex-shrink: 0;
-}
-
-/* 活动网格 - 2列 */
+/* 活动网格 - 5列 */
 .activities {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.8vh 0.8vw;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5vw;
     flex: 1;
-}
-
-/* 第5个活动占满一行 */
-.activity-card:nth-child(5) {
-    grid-column: span 2;
+    min-height: 0;
 }
 
 .activity-card {
     background: rgba(255,255,255,0.12);
     backdrop-filter: blur(12px);
     border-radius: 10px;
-    padding: 1vw;
+    padding: 0.9vw;
     animation: slideUp 0.8s ease-out backwards;
     transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
-.activity-card:nth-child(1) { animation-delay: 0.15s; }
-.activity-card:nth-child(2) { animation-delay: 0.25s; }
-.activity-card:nth-child(3) { animation-delay: 0.35s; }
-.activity-card:nth-child(4) { animation-delay: 0.45s; }
-.activity-card:nth-child(5) { animation-delay: 0.55s; }
+.activity-card:nth-child(1) { animation-delay: 0.2s; }
+.activity-card:nth-child(2) { animation-delay: 0.3s; }
+.activity-card:nth-child(3) { animation-delay: 0.4s; }
+.activity-card:nth-child(4) { animation-delay: 0.5s; }
+.activity-card:nth-child(5) { animation-delay: 0.6s; }
 
 @keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .activity-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 
 .activity-title {
-    font-size: 0.95vw;
+    font-size: 1.05vw;
     font-weight: bold;
-    margin-bottom: 0.5vh;
+    margin-bottom: 0.4vh;
     flex-shrink: 0;
     line-height: 1.3;
 }
 
 .activity-desc {
-    font-size: 0.8vw;
+    font-size: 0.85vw;
     opacity: 0.92;
-    margin-bottom: 0.5vh;
-    line-height: 1.4;
+    margin-bottom: 0.4vh;
+    line-height: 1.35;
     flex: 1;
+    overflow: hidden;
 }
 
 .activity-source {
-    font-size: 0.65vw;
+    font-size: 0.7vw;
     opacity: 0.75;
     flex-shrink: 0;
 }
@@ -386,19 +265,17 @@ body {
 
 /* 页脚 */
 footer {
-    position: fixed;
-    bottom: 0.5vh;
-    left: 0;
-    right: 0;
     text-align: center;
-    font-size: 0.7vw;
+    font-size: 0.85vw;
     opacity: 0.6;
+    margin-top: 0.5vh;
+    flex-shrink: 0;
 }
 
 /* ===== 特殊日子样式 ===== */
 
 /* 元宵节 - 暖红色调 + 灯笼效果 */
-.special-lantern .bg-animation {
+.special-lantern {
     background: linear-gradient(-45deg, #dc2626, #b91c1c, #ef4444, #f87171, #dc2626);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
@@ -421,7 +298,7 @@ footer {
 }
 
 /* 百日 - 红金喜庆 */
-.special-100days .bg-animation {
+.special-100days {
     background: linear-gradient(-45deg, #dc2626, #b91c1c, #ef4444, #f87171);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
@@ -433,7 +310,7 @@ footer {
 }
 
 /* 周岁 - 金色庆祝 */
-.special-1year .bg-animation {
+.special-1year {
     background: linear-gradient(-45deg, #d97706, #b45309, #f59e0b, #fbbf24);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
@@ -445,7 +322,7 @@ footer {
 }
 
 /* 节气 - 绿色自然 */
-.special-solar-term .bg-animation {
+.special-solar-term {
     background: linear-gradient(-45deg, #059669, #047857, #10b981, #34d399);
     background-size: 400% 400%;
     animation: gradientShift 18s ease infinite;
