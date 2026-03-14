@@ -3,376 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>年糕的早教时光 - 2026年03月13日</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .header h1 {
-            font-size: 2.5em;
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-        
-        .date {
-            font-size: 1.2em;
-            color: #888;
-            margin-bottom: 20px;
-        }
-        
-        .age-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .age-card h2 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-        }
-        
-        .age-info {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 15px;
-        }
-        
-        .age-item {
-            text-align: center;
-        }
-        
-        .age-number {
-            font-size: 2.5em;
-            font-weight: bold;
-            display: block;
-        }
-        
-        .age-label {
-            font-size: 0.9em;
-            opacity: 0.9;
-        }
-        
-        .special-day {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        .special-day h3 {
-            font-size: 1.3em;
-            margin-bottom: 10px;
-        }
-        
-        .activities {
-            margin-top: 30px;
-        }
-        
-        .activities h2 {
-            font-size: 1.8em;
-            color: #667eea;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .activity-card {
-            background: #f8f9fa;
-            border-left: 5px solid #667eea;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .activity-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .activity-card h3 {
-            color: #667eea;
-            font-size: 1.3em;
-            margin-bottom: 10px;
-        }
-        
-        .activity-card .description {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-        
-        .activity-card .how-to {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-        
-        .activity-card .how-to strong {
-            color: #f5576c;
-        }
-        
-        .source {
-            font-size: 0.85em;
-            color: #999;
-            margin-top: 10px;
-            font-style: italic;
-        }
-        
-        .countdown {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            padding: 20px;
-            border-radius: 15px;
-            margin-top: 30px;
-            text-align: center;
-        }
-        
-        .countdown h3 {
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        .countdown-item {
-            display: inline-block;
-            margin: 0 15px;
-        }
-        
-        .countdown-number {
-            font-size: 2em;
-            font-weight: bold;
-            color: #667eea;
-            display: block;
-        }
-        
-        .countdown-label {
-            color: #888;
-            font-size: 0.9em;
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #f0f0f0;
-            color: #999;
-            font-size: 0.9em;
-        }
-        
-        .emoji {
-            font-size: 1.5em;
-            margin-right: 10px;
-        }
-        
-        .tip-box {
-            background: #e8f5e9;
-            border-left: 5px solid #4caf50;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-        
-        .tip-box h4 {
-            color: #2e7d32;
-            margin-bottom: 8px;
-        }
-        
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .age-info {
-                flex-direction: column;
-            }
-            
-            .age-item {
-                margin-bottom: 15px;
-            }
-        }
-    </style>
+    <meta http-equiv="refresh" content="600">
+    <title>年糕宝宝的早教时光 - 2026年3月11日</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="bg-animation"></div>
     <div class="container">
-        <div class="header">
-            <h1>🎉 年糕的早教时光 🎉</h1>
-            <div class="date">2026年03月13日 星期五</div>
-        </div>
-        
-        <div class="age-card">
-            <h2>🎂 年糕今天</h2>
-            <div class="age-info">
-                <div class="age-item">
-                    <span class="age-number">63</span>
-                    <span class="age-label">天龄</span>
+        <div class="left-panel">
+            <div class="header-card">
+                <h1 class="baby-name">🌱 年糕宝宝 🌱</h1>
+                <div class="age-info">
+                    <span class="days">🎂 61天</span>
+                    <span class="months">(2个月1天)</span>
                 </div>
-                <div class="age-item">
-                    <span class="age-number">2</span>
-                    <span class="age-label">个月</span>
+                <div class="date">📅 2026年3月11日 星期三<br>⚡ 惊蛰时节 · 万物生长</div>
+            </div>
+
+            <div class="feeding-card">
+                <div class="feeding-title">🍼 昨日喂养 (3/10)</div>
+                <div class="feeding-summary">
+                    <div class="feeding-stat">
+                        <div class="feeding-stat-label">总奶量</div>
+                        <div class="feeding-stat-value">980ml</div>
+                    </div>
+                    <div class="feeding-stat">
+                        <div class="feeding-stat-label">喂养次数</div>
+                        <div class="feeding-stat-value">7次</div>
+                    </div>
+                    <div class="feeding-stat">
+                        <div class="feeding-stat-label">平均间隔</div>
+                        <div class="feeding-stat-value">3.3h</div>
+                    </div>
+                    <div class="feeding-stat">
+                        <div class="feeding-stat-label">奶粉品牌</div>
+                        <div class="feeding-stat-value">Frisolac</div>
+                    </div>
                 </div>
-                <div class="age-item">
-                    <span class="age-number">4</span>
-                    <span class="age-label">天</span>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-title">📊 近6天奶量趋势</div>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar" style="height: 89%;" data-value="1000"></div>
+                        <span class="bar-label">3/4</span>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar" style="height: 75%;" data-value="840"></div>
+                        <span class="bar-label">3/5</span>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar" style="height: 88%;" data-value="980"></div>
+                        <span class="bar-label">3/6</span>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar" style="height: 88%;" data-value="980"></div>
+                        <span class="bar-label">3/7</span>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar" style="height: 88%;" data-value="980"></div>
+                        <span class="bar-label">3/9</span>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar highlight" style="height: 88%;" data-value="980"></div>
+                        <span class="bar-label">3/10</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interval-card">
+                <div class="interval-title">⏱️ 昨日喂养间隔</div>
+                <div class="interval-grid">
+                    <div class="interval-item"><span class="int-time">02:14</span><span class="int-gap">—</span></div>
+                    <div class="interval-item"><span class="int-time">06:04</span><span class="int-gap">3h49m</span></div>
+                    <div class="interval-item"><span class="int-time">09:11</span><span class="int-gap">3h06m</span></div>
+                    <div class="interval-item"><span class="int-time">11:41</span><span class="int-gap">2h29m</span></div>
+                    <div class="interval-item"><span class="int-time">14:32</span><span class="int-gap">2h50m</span></div>
+                    <div class="interval-item"><span class="int-time">17:17</span><span class="int-gap">2h44m</span></div>
+                    <div class="interval-item"><span class="int-time">20:59</span><span class="int-gap">3h41m</span></div>
                 </div>
             </div>
         </div>
-        
-        <div class="special-day">
-            <h3>🌸 今日节气：惊蛰期间</h3>
-            <p>春雷始鸣，万物复苏，正是宝宝感受自然变化的好时节！</p>
-            <p style="font-size: 0.9em; margin-top: 10px; opacity: 0.9;">惊蛰：2026年03月05日 - 03月20日 | 距春分还有7天</p>
-        </div>
-        
-        <div class="tip-box">
-            <h4>💡 2个月宝宝发育特点</h4>
-            <p>63天的宝宝开始能追视移动物体至180度，对声音有定向反应，会发出"咕咕"声，俯卧时能短暂抬头。这是感官发育的黄金期！</p>
-        </div>
-        
-        <div class="activities">
-            <h2>🎯 今日早教活动推荐</h2>
-            
-            <div class="activity-card">
-                <h3><span class="emoji">👁️</span>彩色视觉追踪训练</h3>
-                <div class="description">
-                    2个多月的宝宝开始对颜色有初步感知，可以使用彩色玩具在眼前缓慢移动，训练眼球追随能力，同时刺激色彩视觉发育。
+
+        <div class="right-panel">
+            <h2>🌟 今日早教活动 🎮</h2>
+            <div class="activities">
+                <div class="activity-card">
+                    <div class="activity-title">💪 1. 趴着练习 (Tummy Time)</div>
+                    <div class="activity-desc">目标每天累积20分钟，分多次进行。在宝宝眼前放置玩具，练习抬头。能锻炼颈部和上肢力量。</div>
+                    <div class="activity-source">🔗 <a href="https://pathways.org/topics-of-development/tummy-time" target="_blank">Pathways.org</a></div>
                 </div>
-                <div class="how-to">
-                    <strong>操作方法：</strong><br>
-                    1. 准备红、黄等鲜艳颜色的玩具或球<br>
-                    2. 在宝宝视野中央（距眼睛20-30cm）展示<br>
-                    3. 缓慢从中央向左/右移动至90-180度<br>
-                    4. 让宝宝眼睛跟随物体移动<br>
-                    5. 每次训练1-2分钟，每天3-4次
+
+                <div class="activity-card">
+                    <div class="activity-title">👀 2. 视觉追踪</div>
+                    <div class="activity-desc">在距离20-30cm处缓慢移动黑白卡片或彩色玩具，让宝宝眼睛跟随移动。促进视觉发育。</div>
+                    <div class="activity-source">🔗 <a href="https://www.cdc.gov/act-early/milestones/2-months.html" target="_blank">CDC Milestones</a></div>
                 </div>
-                <div class="source">
-                    来源：知乎《1~36个月宝宝早教课程大全》、澎湃新闻《0-3岁视觉发展敏感期》
+
+                <div class="activity-card">
+                    <div class="activity-title">🎵 3. 音乐与听觉</div>
+                    <div class="activity-desc">播放柔和音乐或唱儿歌，在不同方位摇动摇铃。促进听觉发育，安抚情绪。</div>
+                    <div class="activity-source">🔗 <a href="https://www.healthyyoungminds.com/activities-for-2-month-old/" target="_blank">Healthy Young Minds</a></div>
                 </div>
-            </div>
-            
-            <div class="activity-card">
-                <h3><span class="emoji">🗣️</span>面对面"对话"游戏</h3>
-                <div class="description">
-                    宝宝开始发出"咕咕"声，是语言发展的关键期。家长模仿宝宝的声音，进行"对话"，促进语言和社交能力发展。
+
+                <div class="activity-card">
+                    <div class="activity-title">🧸 4. 触觉探索</div>
+                    <div class="activity-desc">让宝宝触摸不同质地的软玩具、丝绸、毛巾等。多种触觉刺激能促进感官发育。</div>
+                    <div class="activity-source">🔗 <a href="https://www.thepaper.cn/newsDetail_forward_2107302" target="_blank">澎湃新闻</a></div>
                 </div>
-                <div class="how-to">
-                    <strong>操作方法：</strong><br>
-                    1. 抱着宝宝或在宝宝躺卧时，面部距离30cm<br>
-                    2. 等待宝宝发出声音<br>
-                    3. 模仿宝宝的声音并重复<br>
-                    4. 加入简单的"啊""哦"等音节<br>
-                    5. 观察宝宝是否回应，保持眼神交流<br>
-                    6. 每次3-5分钟
-                </div>
-                <div class="source">
-                    来源：医学教育网《1岁前宝宝早教方法》、知乎早教课程
+
+                <div class="activity-card">
+                    <div class="activity-title">💬 5. 亲子对话</div>
+                    <div class="activity-desc">喂奶、换尿布时和宝宝说话，描述你正在做的事。促进语言和社交发展，建立亲密关系。</div>
+                    <div class="activity-source">🔗 <a href="https://kidshealth.org/en/parents/learning-play-1-3mos.html" target="_blank">KidsHealth</a></div>
                 </div>
             </div>
-            
-            <div class="activity-card">
-                <h3><span class="emoji">🧸</span>抬头强化训练</h3>
-                <div class="description">
-                    俯卧时让宝宝练习抬头，锻炼颈部和背部肌肉。2个月宝宝应能短暂抬头45度，这是翻身和爬行的基础。
-                </div>
-                <div class="how-to">
-                    <strong>操作方法：</strong><br>
-                    1. 让宝宝俯卧在平坦的垫子上<br>
-                    2. 在宝宝前方20-30cm处放置彩色玩具<br>
-                    3. 用玩具或声音吸引宝宝抬头<br>
-                    4. 家长可趴在对面与宝宝对视鼓励<br>
-                    5. 每次坚持1-3分钟，每天多次<br>
-                    6. 注意观察宝宝状态，避免过度疲劳
-                </div>
-                <div class="source">
-                    来源：Pathways.org、Huckleberry Care婴幼儿发育指南
-                </div>
-            </div>
-            
-            <div class="activity-card">
-                <h3><span class="emoji">👂</span>声源定位训练</h3>
-                <div class="description">
-                    训练宝宝对声音方向的辨别能力，促进听觉发育和头颈协调。2个月宝宝应能转向声源方向。
-                </div>
-                <div class="how-to">
-                    <strong>操作方法：</strong><br>
-                    1. 在宝宝视线外的左侧轻轻摇铃或说话<br>
-                    2. 观察宝宝是否转头寻找声源<br>
-                    3. 换到右侧重复<br>
-                    4. 使用不同音质的声音（摇铃、拍手、说话）<br>
-                    5. 声音柔和，避免惊吓<br>
-                    6. 每侧2-3次，每天2-3组
-                </div>
-                <div class="source">
-                    来源：知乎《0-6岁儿童视觉追视训练》、澎湃新闻早教系列
-                </div>
-            </div>
-            
-            <div class="activity-card">
-                <h3><span class="emoji">🤲</span>小手触摸感知</h3>
-                <div class="description">
-                    让宝宝的小手接触不同材质的物品，刺激触觉发育，同时观察宝宝是否开始尝试抓握。
-                </div>
-                <div class="how-to">
-                    <strong>操作方法：</strong><br>
-                    1. 准备不同材质的物品：软布、毛绒、光滑塑料等<br>
-                    2. 轻轻触碰宝宝的手掌，让手握住<br>
-                    3. 边触碰边说"软软的""滑滑的"<br>
-                    4. 观察宝宝的反应和表情<br>
-                    5. 每次5-10分钟
-                </div>
-                <div class="source">
-                    来源：知乎《感统训练小游戏》、新浪育儿《感统游戏》
-                </div>
-            </div>
-        </div>
-        
-        <div class="countdown">
-            <h3>⏰ 重要日子倒计时</h3>
-            <div class="countdown-item">
-                <span class="countdown-number">37</span>
-                <span class="countdown-label">天后百日</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number">302</span>
-                <span class="countdown-label">天后周岁</span>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <p>💝 用爱陪伴，科学早教 💝</p>
-            <p style="margin-top: 10px;">页面生成时间：2026-03-13 08:00 | 数据来源：Pathways.org、知乎、澎湃新闻等专业平台</p>
         </div>
     </div>
+
+    <footer>
+        🕐 更新: 2026年3月11日 08:05 | 🍼 数据来自Notion | 🔄 自动刷新
+    </footer>
 </body>
 </html>
