@@ -3,217 +3,359 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="600">
-    <title>年糕宝宝的早教时光 - 2026年3月22日</title>
-    <link rel="stylesheet" href="styles.css?v=1711168800">
+    <title>年糕的早教时光 - 2026年3月2日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .baby-avatar {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .date {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .age-card {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            margin: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .age-title {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .age-display {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+        }
+        
+        .age-item {
+            flex: 1;
+        }
+        
+        .age-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+        
+        .age-label {
+            font-size: 14px;
+            color: #888;
+            margin-top: 5px;
+        }
+        
+        .special-day {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            margin: 0 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .special-day h3 {
+            color: #e67e22;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .special-day p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .activities {
+            padding: 0 20px 20px;
+        }
+        
+        .activities h2 {
+            color: #667eea;
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .activity-card {
+            background: white;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .activity-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .activity-title {
+            display: inline;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .activity-type {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #666;
+            margin-left: 10px;
+        }
+        
+        .activity-desc {
+            margin-top: 12px;
+            color: #666;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        .activity-duration {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .activity-duration span {
+            margin-right: 15px;
+        }
+        
+        .tips {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .tips h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .tips ul {
+            list-style: none;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .tips li:before {
+            content: "💡 ";
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 12px;
+            background: #f8f9fa;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .age-number {
+                font-size: 28px;
+            }
+            
+            .activity-title {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
-    <div class="page-container">
-        <div class="top-section">
-            <div class="left-panel">
-                <div class="header-card">
-                    <h1 class="baby-name">🌱 年糕宝宝 🌱</h1>
-                    <div class="age-info">
-                        <span class="days">🎂 72天</span>
-                        <span class="months">(2个月13天)</span>
-                    </div>
-                    <div class="date">📅 2026年3月22日 星期日<br>🌸 春分时节 · 万物复苏</div>
+    <div class="container">
+        <div class="header">
+            <div class="baby-avatar">👶</div>
+            <h1>年糕的早教时光</h1>
+            <p class="date">2026年3月2日 星期一 | 农历正月十四</p>
+        </div>
+        
+        <div class="age-card">
+            <div class="age-title">🎂 年糕的年龄</div>
+            <div class="age-display">
+                <div class="age-item">
+                    <span class="age-number">52</span>
+                    <div class="age-label">天龄</div>
                 </div>
-
-                <div class="feeding-card">
-                    <div class="feeding-title">🍼 昨日喂养 (3/21)</div>
-                    <div class="feeding-summary">
-                        <div class="feeding-stat">
-                            <div class="feeding-stat-label">总奶量</div>
-                            <div class="feeding-stat-value">980ml</div>
-                        </div>
-                        <div class="feeding-stat">
-                            <div class="feeding-stat-label">喂养次数</div>
-                            <div class="feeding-stat-value">7次</div>
-                        </div>
-                        <div class="feeding-stat">
-                            <div class="feeding-stat-label">平均间隔</div>
-                            <div class="feeding-stat-value">3.3h</div>
-                        </div>
-                        <div class="feeding-stat">
-                            <div class="feeding-stat-label">奶粉品牌</div>
-                            <div class="feeding-stat-value">Frisolac</div>
-                        </div>
-                    </div>
+                <div class="age-item">
+                    <span class="age-number">1.7</span>
+                    <div class="age-label">月龄</div>
                 </div>
-
-                <div class="chart-card">
-                    <div class="chart-title">📊 近6天奶量趋势</div>
-                    <div class="bar-chart">
-                        <div class="bar-item">
-                            <div class="bar" style="height: 75%;" data-value="840"></div>
-                            <span class="bar-label">3/15</span>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar" style="height: 88%;" data-value="980"></div>
-                            <span class="bar-label">3/17</span>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar" style="height: 88%;" data-value="980"></div>
-                            <span class="bar-label">3/18</span>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar" style="height: 75%;" data-value="840"></div>
-                            <span class="bar-label">3/19</span>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar" style="height: 88%;" data-value="980"></div>
-                            <span class="bar-label">3/20</span>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar highlight" style="height: 88%;" data-value="980"></div>
-                            <span class="bar-label">3/21</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="interval-card">
-                    <div class="interval-title">⏱️ 昨日喂养间隔</div>
-                    <div class="interval-grid">
-                        <div class="interval-item"><span class="int-time">01:00</span><span class="int-gap">—</span></div>
-                        <div class="interval-item"><span class="int-time">04:02</span><span class="int-gap">3h02m</span></div>
-                        <div class="interval-item"><span class="int-time">07:37</span><span class="int-gap">3h35m</span></div>
-                        <div class="interval-item"><span class="int-time">11:03</span><span class="int-gap">3h26m</span></div>
-                        <div class="interval-item"><span class="int-time">14:46</span><span class="int-gap">3h43m</span></div>
-                        <div class="interval-item"><span class="int-time">17:50</span><span class="int-gap">3h04m</span></div>
-                        <div class="interval-item"><span class="int-time">20:30</span><span class="int-gap">2h40m</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="right-panel">
-                <h2>🌟 今日早教活动 🎮</h2>
-                <div class="activities">
-                    <div class="activity-card">
-                        <div class="activity-title">👀 1. 黑白卡视觉追踪</div>
-                        <div class="activity-desc">在距离20-30cm处展示黑白卡片或棋盘图，慢慢左右移动，每次20-30秒，每天5-6次。刺激视锥细胞，强化黑白视觉反应，提升关注力。</div>
-                        <div class="activity-source">🔗 <a href="https://zhuanlan.zhihu.com/p/33455669" target="_blank">知乎 - 感统训练游戏</a></div>
-                    </div>
-                    <div class="activity-card">
-                        <div class="activity-title">🎵 2. 音乐听觉训练</div>
-                        <div class="activity-desc">播放优美动听的音乐（舒缓或活泼），在不同方位轻摇摇铃，让宝宝转头寻找声源。丰富听觉感受，促进听觉能力发展。</div>
-                        <div class="activity-source">🔗 <a href="https://m.youjiao.com/e/20090727/4b8bcd1a65bfb.shtml" target="_blank">幼教网 - 感官游戏</a></div>
-                    </div>
-                    <div class="activity-card">
-                        <div class="activity-title">👨‍👩‍👧 3. 面对面亲子互动</div>
-                        <div class="activity-desc">让宝宝躺在腿上或小床上，脸距离30cm左右，建立目光联系后边说话边慢慢移动脸部，引导宝宝追视。宝宝喜欢看人的笑脸！</div>
-                        <div class="activity-source">🔗 <a href="https://www.thepaper.cn/newsDetail_forward_26503831" target="_blank">澎湃新闻 - 在家早教</a></div>
-                    </div>
-                    <div class="activity-card">
-                        <div class="activity-title">💪 4. 趴趴时间 (Tummy Time)</div>
-                        <div class="activity-desc">在清醒时让宝宝趴着，每天累积15-20分钟（分多次）。在面前放置玩具吸引注意力，锻炼颈部和背部肌肉，为抬头做准备。</div>
-                        <div class="activity-source">🔗 <a href="https://zhuanlan.zhihu.com/p/353792671" target="_blank">知乎 - 大运动发育</a></div>
-                    </div>
-                    <div class="activity-card">
-                        <div class="activity-title">🌈 5. 彩色视觉刺激</div>
-                        <div class="activity-desc">3个月后的宝宝开始能区分红、蓝、黄、绿。展示对比强烈的纯色玩具，通过注视、聚焦、追踪刺激视神经，提升感光能力。</div>
-                        <div class="activity-source">🔗 <a href="https://news.suning.com/m/wtoutiao/bcdetail/9918334760.html" target="_blank">苏宁头条 - 视力训练</a></div>
-                    </div>
+                <div class="age-item">
+                    <span class="age-number">7</span>
+                    <div class="age-label">距百日还有 48 天</div>
                 </div>
             </div>
         </div>
-
-        <!-- 下部：喂养时间线 -->
-        <div class="bottom-section">
-            <div class="timeline-title">📊 过去5天喂养时间线</div>
-            <div class="timeline-container">
-                <div class="timeline-labels-left">
-                    <div class="timeline-day-label">3/17</div>
-                    <div class="timeline-day-label">3/18</div>
-                    <div class="timeline-day-label">3/19</div>
-                    <div class="timeline-day-label">3/20</div>
-                    <div class="timeline-day-label">3/21</div>
+        
+        <div class="special-day">
+            <h3>📅 今日特殊日子</h3>
+            <p>正月十四 · 试花灯日<br>传统习俗：家家户户点灯笼、试花灯，准备迎接元宵节</p>
+        </div>
+        
+        <div class="activities">
+            <h2>🎯 今日早教活动</h2>
+            
+            <div class="activity-card">
+                <span class="activity-number">1</span>
+                <span class="activity-title">黑白卡片追视训练</span>
+                <span class="activity-type">视觉</span>
+                <div class="activity-desc">
+                    在宝宝清醒安静时，将黑白对比卡片置于眼前15-20厘米处，让宝宝注视5秒后，缓慢左右移动卡片，引导宝宝视线跟随。每次更换不同图案的卡片。
                 </div>
-                <div class="timeline-bars">
-                    <div class="timeline-row">
-                        <div class="timeline-bar">
-                            <div class="bar-segment" style="left:0%;width:5.07%;background:#1e3a5f;" title="00:00-01:13 (1h13m)"></div>
-                            <div class="bar-segment" style="left:5.07%;width:16.60%;background:#3b82f6;" title="01:13-05:12 (3h59m)"></div>
-                            <div class="bar-segment" style="left:21.67%;width:14.93%;background:#10b981;" title="05:12-08:47 (3h35m)"></div>
-                            <div class="bar-segment" style="left:36.60%;width:12.85%;background:#f59e0b;" title="08:47-11:55 (3h08m)"></div>
-                            <div class="bar-segment" style="left:49.45%;width:12.85%;background:#ef4444;" title="11:55-15:03 (3h08m)"></div>
-                            <div class="bar-segment" style="left:62.30%;width:13.40%;background:#8b5cf6;" title="15:03-18:24 (3h21m)"></div>
-                            <div class="bar-segment" style="left:75.70%;width:14.72%;background:#ec4899;" title="18:24-21:56 (3h32m)"></div>
-                            <div class="bar-segment" style="left:90.42%;width:9.58%;background:#06b6d4;" title="21:56-24:00 (2h04m)"></div>
-                        </div>
-                    </div>
-                    <div class="timeline-row">
-                        <div class="timeline-bar">
-                            <div class="bar-segment" style="left:0%;width:11.74%;background:#1e3a5f;" title="00:00-02:49 (2h49m)"></div>
-                            <div class="bar-segment" style="left:11.74%;width:15.07%;background:#3b82f6;" title="02:49-06:31 (3h42m)"></div>
-                            <div class="bar-segment" style="left:26.81%;width:15.90%;background:#10b981;" title="06:31-10:18 (3h47m)"></div>
-                            <div class="bar-segment" style="left:42.71%;width:18.19%;background:#f59e0b;" title="10:18-14:34 (4h16m)"></div>
-                            <div class="bar-segment" style="left:60.90%;width:13.61%;background:#ef4444;" title="14:34-17:52 (3h18m)"></div>
-                            <div class="bar-segment" style="left:74.51%;width:12.57%;background:#8b5cf6;" title="17:52-20:46 (2h54m)"></div>
-                            <div class="bar-segment" style="left:87.08%;width:12.92%;background:#ec4899;" title="20:46-24:00 (3h14m)"></div>
-                        </div>
-                    </div>
-                    <div class="timeline-row">
-                        <div class="timeline-bar">
-                            <div class="bar-segment" style="left:0%;width:4.17%;background:#1e3a5f;" title="00:00-01:00 (1h00m)"></div>
-                            <div class="bar-segment" style="left:4.17%;width:12.57%;background:#3b82f6;" title="01:00-04:02 (3h02m)"></div>
-                            <div class="bar-segment" style="left:16.74%;width:14.58%;background:#10b981;" title="04:02-07:37 (3h35m)"></div>
-                            <div class="bar-segment" style="left:31.32%;width:13.54%;background:#f59e0b;" title="07:37-11:03 (3h26m)"></div>
-                            <div class="bar-segment" style="left:44.86%;width:15.07%;background:#ef4444;" title="11:03-14:46 (3h43m)"></div>
-                            <div class="bar-segment" style="left:59.93%;width:12.64%;background:#8b5cf6;" title="14:46-17:50 (3h04m)"></div>
-                            <div class="bar-segment" style="left:72.57%;width:11.11%;background:#ec4899;" title="17:50-20:30 (2h40m)"></div>
-                            <div class="bar-segment" style="left:83.68%;width:16.32%;background:#06b6d4;" title="20:30-24:00 (3h30m)"></div>
-                        </div>
-                    </div>
-                    <div class="timeline-row">
-                        <div class="timeline-bar">
-                            <div class="bar-segment" style="left:0%;width:4.17%;background:#1e3a5f;" title="00:00-01:00 (1h00m)"></div>
-                            <div class="bar-segment" style="left:4.17%;width:12.57%;background:#3b82f6;" title="01:00-04:02 (3h02m)"></div>
-                            <div class="bar-segment" style="left:16.74%;width:14.58%;background:#10b981;" title="04:02-07:37 (3h35m)"></div>
-                            <div class="bar-segment" style="left:31.32%;width:13.54%;background:#f59e0b;" title="07:37-11:03 (3h26m)"></div>
-                            <div class="bar-segment" style="left:44.86%;width:15.07%;background:#ef4444;" title="11:03-14:46 (3h43m)"></div>
-                            <div class="bar-segment" style="left:59.93%;width:12.64%;background:#8b5cf6;" title="14:46-17:50 (3h04m)"></div>
-                            <div class="bar-segment" style="left:72.57%;width:11.11%;background:#ec4899;" title="17:50-20:30 (2h40m)"></div>
-                            <div class="bar-segment" style="left:83.68%;width:16.32%;background:#06b6d4;" title="20:30-24:00 (3h30m)"></div>
-                        </div>
-                    </div>
-                    <div class="timeline-row">
-                        <div class="timeline-bar">
-                            <div class="bar-segment" style="left:0%;width:4.17%;background:#1e3a5f;" title="00:00-01:00 (1h00m)"></div>
-                            <div class="bar-segment" style="left:4.17%;width:12.57%;background:#3b82f6;" title="01:00-04:02 (3h02m)"></div>
-                            <div class="bar-segment" style="left:16.74%;width:14.58%;background:#10b981;" title="04:02-07:37 (3h35m)"></div>
-                            <div class="bar-segment" style="left:31.32%;width:13.54%;background:#f59e0b;" title="07:37-11:03 (3h26m)"></div>
-                            <div class="bar-segment" style="left:44.86%;width:15.07%;background:#ef4444;" title="11:03-14:46 (3h43m)"></div>
-                            <div class="bar-segment" style="left:59.93%;width:12.64%;background:#8b5cf6;" title="14:46-17:50 (3h04m)"></div>
-                            <div class="bar-segment" style="left:72.57%;width:11.11%;background:#ec4899;" title="17:50-20:30 (2h40m)"></div>
-                            <div class="bar-segment" style="left:83.68%;width:16.32%;background:#06b6d4;" title="20:30-24:00 (3h30m)"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-labels">
-                    <span class="time-label">00:00</span>
-                    <span class="time-label">06:00</span>
-                    <span class="time-label">12:00</span>
-                    <span class="time-label">18:00</span>
-                    <span class="time-label">24:00</span>
+                <div class="activity-duration">
+                    <span>⏱️ 每次2-3分钟</span>
+                    <span>📅 每日3-4次</span>
                 </div>
             </div>
-            <div class="timeline-legend">
-                <span class="legend-item"><span class="legend-color" style="background:#1e3a5f;"></span>深夜</span>
-                <span class="legend-item"><span class="legend-color" style="background:#3b82f6;"></span>凌晨</span>
-                <span class="legend-item"><span class="legend-color" style="background:#10b981;"></span>早晨</span>
-                <span class="legend-item"><span class="legend-color" style="background:#f59e0b;"></span>上午</span>
-                <span class="legend-item"><span class="legend-color" style="background:#ef4444;"></span>下午</span>
-                <span class="legend-item"><span class="legend-color" style="background:#8b5cf6;"></span>傍晚</span>
-                <span class="legend-item"><span class="legend-color" style="background:#ec4899;"></span>夜间</span>
-                <span class="legend-item"><span class="legend-color" style="background:#06b6d4;"></span>深夜</span>
+            
+            <div class="activity-card">
+                <span class="activity-number">2</span>
+                <span class="activity-title">红色小球追踪游戏</span>
+                <span class="activity-type">视觉</span>
+                <div class="activity-desc">
+                    使用红色小球（新生儿最易识别的颜色），在距宝宝眼睛20-25厘米处，吸引宝宝注意力后，缓慢向左右或上下移动，训练眼球追踪能力。
+                </div>
+                <div class="activity-duration">
+                    <span>⏱️ 每次2分钟</span>
+                    <span>📅 每日2-3次</span>
+                </div>
             </div>
+            
+            <div class="activity-card">
+                <span class="activity-number">3</span>
+                <span class="activity-title">温柔说话与唱歌</span>
+                <span class="activity-type">听觉·语言</span>
+                <div class="activity-desc">
+                    面对面抱着宝宝，用温柔缓慢的语调和宝宝说话，可以描述正在做的事情，或唱简单的儿歌。宝宝喜欢高频、语调变化丰富的声音。
+                </div>
+                <div class="activity-duration">
+                    <span>⏱️ 每次5-10分钟</span>
+                    <span>📅 每日多次</span>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <span class="activity-number">4</span>
+                <span class="activity-title">婴儿抚触按摩</span>
+                <span class="activity-type">触觉·亲子</span>
+                <div class="activity-desc">
+                    在宝宝洗澡后或换尿布时，用温暖的手掌轻轻抚摸宝宝的头部、四肢、背部和腹部。配合温柔的话语，增强亲子感情，促进触觉发育。
+                </div>
+                <div class="activity-duration">
+                    <span>⏱️ 每次10-15分钟</span>
+                    <span>📅 每日1-2次</span>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <span class="activity-number">5</span>
+                <span class="activity-title">俯卧抬头练习</span>
+                <span class="activity-type">运动</span>
+                <div class="activity-desc">
+                    让宝宝趴在干净柔软的平面上，在宝宝前方放置彩色玩具或家长的脸，鼓励宝宝抬头观看。可以在宝宝胸口下方垫一个小毛巾卷帮助支撑。
+                </div>
+                <div class="activity-duration">
+                    <span>⏱️ 每次1-2分钟</span>
+                    <span>📅 每日2-3次</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tips">
+            <h3>💝 温馨提示</h3>
+            <ul>
+                <li>在宝宝清醒、情绪好的时候进行早教活动</li>
+                <li>注意观察宝宝的反应，宝宝疲劳或烦躁时及时停止</li>
+                <li>保持室内光线充足但不刺眼，避免强光直射宝宝眼睛</li>
+                <li>所有活动都要轻柔进行，动作要缓慢</li>
+                <li>最重要的是享受亲子互动的温馨时光 💕</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>活动来源：中国妇女发展基金会、北京市人民政府婴幼儿养育指南</p>
+            <p>Generated with ❤️ by 小龙虾 | <a href="https://github.com/zixiiu/niangao-parenting">GitHub</a></p>
         </div>
     </div>
-
-    <footer>
-        🕐 更新: 2026年3月22日 08:00 | 🍼 数据来自Notion | 🔄 自动刷新
-    </footer>
 </body>
 </html>
