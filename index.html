@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>年糕的早教时光 - 2026年3月2日</title>
+    <title>年糕的早教时光 - 2026年3月26日</title>
     <style>
         * {
             margin: 0;
@@ -16,227 +16,195 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
-            color: #333;
         }
         
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
         }
         
         .header {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            padding: 30px;
             text-align: center;
             color: white;
-        }
-        
-        .baby-avatar {
-            width: 100px;
-            height: 100px;
-            background: white;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
         }
         
         .header h1 {
-            font-size: 28px;
+            font-size: 2.5em;
             margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
         
-        .date {
-            font-size: 16px;
+        .header .date {
+            font-size: 1.2em;
             opacity: 0.9;
         }
         
-        .age-card {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        .card {
+            background: white;
+            border-radius: 20px;
             padding: 25px;
-            margin: 20px;
-            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .age-card {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            color: white;
+        }
+        
+        .age-info {
+            display: flex;
+            justify-content: space-around;
             text-align: center;
         }
         
-        .age-title {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        .age-display {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 15px;
-        }
-        
         .age-item {
-            flex: 1;
+            padding: 10px;
         }
         
         .age-number {
-            font-size: 36px;
+            font-size: 3em;
             font-weight: bold;
-            color: #667eea;
             display: block;
         }
         
         .age-label {
-            font-size: 14px;
-            color: #888;
-            margin-top: 5px;
+            font-size: 1.1em;
+            opacity: 0.9;
         }
         
         .special-day {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            padding: 20px;
-            margin: 0 20px;
-            border-radius: 15px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
             text-align: center;
-            margin-bottom: 20px;
         }
         
         .special-day h3 {
-            color: #e67e22;
+            font-size: 1.5em;
             margin-bottom: 10px;
-            font-size: 18px;
         }
         
-        .special-day p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.6;
+        .countdown {
+            font-size: 2em;
+            font-weight: bold;
         }
         
-        .activities {
-            padding: 0 20px 20px;
-        }
-        
-        .activities h2 {
-            color: #667eea;
-            font-size: 22px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .activity-card {
-            background: white;
-            border: 2px solid #f0f0f0;
-            border-radius: 15px;
-            padding: 20px;
+        .section-title {
+            font-size: 1.5em;
+            color: #333;
             margin-bottom: 15px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
         }
         
-        .activity-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        .activity {
+            display: flex;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: transform 0.2s;
+        }
+        
+        .activity:hover {
+            transform: translateX(5px);
+            background: #e9ecef;
         }
         
         .activity-number {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
             font-weight: bold;
-            margin-right: 10px;
+            margin-right: 15px;
+            flex-shrink: 0;
         }
         
-        .activity-title {
-            display: inline;
-            font-size: 18px;
-            font-weight: bold;
+        .activity-content h4 {
             color: #333;
+            font-size: 1.2em;
+            margin-bottom: 8px;
         }
         
-        .activity-type {
-            display: inline-block;
-            background: #f0f0f0;
-            padding: 3px 10px;
-            border-radius: 10px;
-            font-size: 12px;
-            color: #666;
-            margin-left: 10px;
-        }
-        
-        .activity-desc {
-            margin-top: 12px;
+        .activity-content p {
             color: #666;
             line-height: 1.6;
-            font-size: 14px;
+            margin-bottom: 8px;
         }
         
-        .activity-duration {
-            margin-top: 10px;
-            font-size: 12px;
+        .source {
+            font-size: 0.85em;
             color: #999;
+            font-style: italic;
         }
         
-        .activity-duration span {
-            margin-right: 15px;
-        }
-        
-        .tips {
-            background: #f8f9fa;
-            padding: 20px;
-            margin: 20px;
-            border-radius: 15px;
-            border-left: 4px solid #667eea;
-        }
-        
-        .tips h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-        
-        .tips ul {
-            list-style: none;
-            color: #666;
-            font-size: 14px;
-            line-height: 1.8;
-        }
-        
-        .tips li:before {
-            content: "💡 ";
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 20px;
-            color: #999;
-            font-size: 12px;
-            background: #f8f9fa;
-        }
-        
-        .footer a {
+        .source a {
             color: #667eea;
             text-decoration: none;
         }
         
-        @media (max-width: 480px) {
+        .source a:hover {
+            text-decoration: underline;
+        }
+        
+        .solar-term {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        
+        .solar-term h3 {
+            margin-bottom: 10px;
+        }
+        
+        .tips {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        
+        .tips h4 {
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        
+        .tips p {
+            color: #856404;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 600px) {
             .header h1 {
-                font-size: 24px;
+                font-size: 1.8em;
             }
             
             .age-number {
-                font-size: 28px;
+                font-size: 2em;
             }
             
-            .activity-title {
-                font-size: 16px;
+            .activity {
+                flex-direction: column;
+            }
+            
+            .activity-number {
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -244,117 +212,96 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="baby-avatar">👶</div>
-            <h1>年糕的早教时光</h1>
-            <p class="date">2026年3月2日 星期一 | 农历正月十四</p>
+            <h1>🍼 年糕的早教时光</h1>
+            <p class="date">📅 2026年3月26日 星期四</p>
         </div>
         
-        <div class="age-card">
-            <div class="age-title">🎂 年糕的年龄</div>
-            <div class="age-display">
+        <div class="card age-card">
+            <div class="age-info">
                 <div class="age-item">
-                    <span class="age-number">52</span>
-                    <div class="age-label">天龄</div>
+                    <span class="age-number">76</span>
+                    <span class="age-label">天龄</span>
                 </div>
                 <div class="age-item">
-                    <span class="age-number">1.7</span>
-                    <div class="age-label">月龄</div>
+                    <span class="age-number">2.6</span>
+                    <span class="age-label">月龄</span>
                 </div>
                 <div class="age-item">
-                    <span class="age-number">7</span>
-                    <div class="age-label">距百日还有 48 天</div>
+                    <span class="age-number">24</span>
+                    <span class="age-label">距离百日还有</span>
                 </div>
             </div>
         </div>
         
-        <div class="special-day">
-            <h3>📅 今日特殊日子</h3>
-            <p>正月十四 · 试花灯日<br>传统习俗：家家户户点灯笼、试花灯，准备迎接元宵节</p>
+        <div class="card solar-term">
+            <h3>🌸 当前节气：春分</h3>
+            <p>2026年春分时间：3月20日 22:45 - 4月5日 02:39</p>
+            <p>气候特点：玄鸟至、雷乃发声、始电。昼夜平分，春意盎然，适合带宝宝感受春天的气息！</p>
         </div>
         
-        <div class="activities">
-            <h2>🎯 今日早教活动</h2>
-            
-            <div class="activity-card">
-                <span class="activity-number">1</span>
-                <span class="activity-title">黑白卡片追视训练</span>
-                <span class="activity-type">视觉</span>
-                <div class="activity-desc">
-                    在宝宝清醒安静时，将黑白对比卡片置于眼前15-20厘米处，让宝宝注视5秒后，缓慢左右移动卡片，引导宝宝视线跟随。每次更换不同图案的卡片。
-                </div>
-                <div class="activity-duration">
-                    <span>⏱️ 每次2-3分钟</span>
-                    <span>📅 每日3-4次</span>
-                </div>
-            </div>
-            
-            <div class="activity-card">
-                <span class="activity-number">2</span>
-                <span class="activity-title">红色小球追踪游戏</span>
-                <span class="activity-type">视觉</span>
-                <div class="activity-desc">
-                    使用红色小球（新生儿最易识别的颜色），在距宝宝眼睛20-25厘米处，吸引宝宝注意力后，缓慢向左右或上下移动，训练眼球追踪能力。
-                </div>
-                <div class="activity-duration">
-                    <span>⏱️ 每次2分钟</span>
-                    <span>📅 每日2-3次</span>
-                </div>
-            </div>
-            
-            <div class="activity-card">
-                <span class="activity-number">3</span>
-                <span class="activity-title">温柔说话与唱歌</span>
-                <span class="activity-type">听觉·语言</span>
-                <div class="activity-desc">
-                    面对面抱着宝宝，用温柔缓慢的语调和宝宝说话，可以描述正在做的事情，或唱简单的儿歌。宝宝喜欢高频、语调变化丰富的声音。
-                </div>
-                <div class="activity-duration">
-                    <span>⏱️ 每次5-10分钟</span>
-                    <span>📅 每日多次</span>
-                </div>
-            </div>
-            
-            <div class="activity-card">
-                <span class="activity-number">4</span>
-                <span class="activity-title">婴儿抚触按摩</span>
-                <span class="activity-type">触觉·亲子</span>
-                <div class="activity-desc">
-                    在宝宝洗澡后或换尿布时，用温暖的手掌轻轻抚摸宝宝的头部、四肢、背部和腹部。配合温柔的话语，增强亲子感情，促进触觉发育。
-                </div>
-                <div class="activity-duration">
-                    <span>⏱️ 每次10-15分钟</span>
-                    <span>📅 每日1-2次</span>
-                </div>
-            </div>
-            
-            <div class="activity-card">
-                <span class="activity-number">5</span>
-                <span class="activity-title">俯卧抬头练习</span>
-                <span class="activity-type">运动</span>
-                <div class="activity-desc">
-                    让宝宝趴在干净柔软的平面上，在宝宝前方放置彩色玩具或家长的脸，鼓励宝宝抬头观看。可以在宝宝胸口下方垫一个小毛巾卷帮助支撑。
-                </div>
-                <div class="activity-duration">
-                    <span>⏱️ 每次1-2分钟</span>
-                    <span>📅 每日2-3次</span>
-                </div>
-            </div>
+        <div class="card special-day">
+            <h3>🎉 百日倒计时</h3>
+            <p class="countdown">还有 24 天！</p>
+            <p>年糕的百日是：2026年4月19日</p>
         </div>
         
-        <div class="tips">
-            <h3>💝 温馨提示</h3>
-            <ul>
-                <li>在宝宝清醒、情绪好的时候进行早教活动</li>
-                <li>注意观察宝宝的反应，宝宝疲劳或烦躁时及时停止</li>
-                <li>保持室内光线充足但不刺眼，避免强光直射宝宝眼睛</li>
-                <li>所有活动都要轻柔进行，动作要缓慢</li>
-                <li>最重要的是享受亲子互动的温馨时光 💕</li>
-            </ul>
+        <div class="card">
+            <h3 class="section-title">🎯 今日早教活动（适合2-3个月宝宝）</h3>
+            
+            <div class="activity">
+                <div class="activity-number">1</div>
+                <div class="activity-content">
+                    <h4>俯趴抬头训练</h4>
+                    <p>让宝宝趴在床上或趴在爸爸妈妈身上，练习抬头。2-3个月的宝宝已经可以把头抬到和床面垂直，这是锻炼颈部肌肉、为翻身做准备的重要练习。每天可以进行2-3次，每次3-5分钟，根据宝宝状态调整。</p>
+                    <p class="source">📖 来源：<a href="https://www.thepaper.cn/newsDetail_forward_26676479" target="_blank">澎湃新闻·在家早教系列</a>、<a href="https://www.cdc.gov/act-early/milestones/2-months.html" target="_blank">CDC发育里程碑</a></p>
+                </div>
+            </div>
+            
+            <div class="activity">
+                <div class="activity-number">2</div>
+                <div class="activity-content">
+                    <h4>毛巾翻身游戏</h4>
+                    <p>把一条大毛巾铺在床上，让宝宝躺在毛巾上，爸爸妈妈拉着毛巾慢慢把宝宝往前推动，帮助宝宝体验翻身的乐趣。这个游戏能锻炼宝宝的平衡感和身体控制能力，宝宝会非常喜欢！注意动作要轻柔，确保安全。</p>
+                    <p class="source">📖 来源：<a href="https://www.thepaper.cn/newsDetail_forward_26676479" target="_blank">澎湃新闻·在家早教系列</a></p>
+                </div>
+            </div>
+            
+            <div class="activity">
+                <div class="activity-number">3</div>
+                <div class="activity-content">
+                    <h4>追视训练（彩色气球）</h4>
+                    <p>在宝宝上方悬挂彩色气球（氦气球效果更好），让宝宝观察和追踪移动的气球。2-3个月的宝宝可以看到2-3米范围内的物体，对颜色的分辨能力也在提高。这个游戏能锻炼宝宝的视觉追踪能力和全身大肌肉发展。</p>
+                    <p class="source">📖 来源：<a href="https://www.thepaper.cn/newsDetail_forward_26676479" target="_blank">澎湃新闻·在家早教系列</a></p>
+                </div>
+            </div>
+            
+            <div class="activity">
+                <div class="activity-number">4</div>
+                <div class="activity-content">
+                    <h4>躲猫猫（找妈妈）</h4>
+                    <p>妈妈在宝宝的视线内，用手遮住脸，然后快速打开双手，给宝宝一个大大的笑容，配上有趣的音效。这个经典游戏能逗得宝宝咯咯笑，促进宝宝的社交情感发育和认知能力发展。</p>
+                    <p class="source">📖 来源：<a href="https://www.thepaper.cn/newsDetail_forward_26676479" target="_blank">澎湃新闻·在家早教系列</a>、<a href="https://www.unicef.cn/what-we-do/unicef-emergencies/covid-19/0-3-year-old-family-games" target="_blank">联合国儿童基金会</a></p>
+                </div>
+            </div>
+            
+            <div class="activity">
+                <div class="activity-number">5</div>
+                <div class="activity-content">
+                    <h4>抚触按摩</h4>
+                    <p>给宝宝做抚触按摩，可以一直做到宝宝表示不喜欢为止。对于3个月的宝宝，抚触更像是一种亲密接触的游戏。不必严格按照标准步骤，只要宝宝喜欢就好！抚触能促进亲子关系，对宝宝的身体发育和情感发展都有好处。</p>
+                    <p class="source">📖 来源：<a href="https://www.thepaper.cn/newsDetail_forward_26676479" target="_blank">澎湃新闻·在家早教系列</a>、<a href="https://www.mayoclinic.org/healthy-lifestyle/infant-and-toddler-health/in-depth/infant-development/art-20048012" target="_blank">Mayo Clinic婴儿发育指南</a></p>
+                </div>
+            </div>
+            
+            <div class="tips">
+                <h4>💡 温馨提示</h4>
+                <p>每个宝宝都有自己独一无二的生长发育节奏，以上活动仅供参考，请根据宝宝的实际情况和兴趣来调整。最重要的是让宝宝在快乐的氛围中成长！如果宝宝对某项活动没有兴趣，不要强迫，换一个时间再尝试。</p>
+            </div>
         </div>
         
         <div class="footer">
-            <p>活动来源：中国妇女发展基金会、北京市人民政府婴幼儿养育指南</p>
-            <p>Generated with ❤️ by 小龙虾 | <a href="https://github.com/zixiiu/niangao-parenting">GitHub</a></p>
+            <p>🦞 由小龙虾自动生成 | 数据来源：澎湃新闻、CDC、UNICEF、Mayo Clinic</p>
+            <p>最后更新：2026-03-26 08:00 (Asia/Shanghai)</p>
         </div>
     </div>
 </body>
