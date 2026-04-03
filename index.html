@@ -1,88 +1,449 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>年糕宝宝早教活动 - 2026年3月28日</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 50%, #e8eaf6 100%); min-height: 100vh; padding: 20px; color: #333; }
-  .container { max-width: 600px; margin: 0 auto; }
-  .header { text-align: center; padding: 30px 20px; background: rgba(255,255,255,0.8); border-radius: 20px; margin-bottom: 20px; backdrop-filter: blur(10px); }
-  .header h1 { font-size: 28px; color: #e91e63; margin-bottom: 8px; }
-  .header .age { font-size: 18px; color: #7b1fa2; font-weight: 600; }
-  .header .date { font-size: 14px; color: #888; margin-top: 4px; }
-  .card { background: rgba(255,255,255,0.9); border-radius: 16px; padding: 20px; margin-bottom: 16px; backdrop-filter: blur(10px); transition: transform 0.2s; }
-  .card:hover { transform: translateY(-2px); }
-  .card h2 { font-size: 18px; color: #e91e63; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-  .card .emoji { font-size: 24px; }
-  .card p { font-size: 15px; line-height: 1.7; color: #555; margin-bottom: 8px; }
-  .card .tip { font-size: 13px; color: #9c27b0; background: #f3e5f5; padding: 8px 12px; border-radius: 8px; margin-top: 8px; }
-  .card .source { font-size: 11px; color: #aaa; margin-top: 8px; }
-  .milestone { background: linear-gradient(135deg, #fff3e0, #fce4ec); border-left: 4px solid #ff9800; }
-  .footer { text-align: center; padding: 20px; font-size: 12px; color: #bbb; }
-  .tag { display: inline-block; background: #e8eaf6; color: #3f51b5; padding: 2px 10px; border-radius: 12px; font-size: 12px; margin-right: 6px; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="600">
+    <title>年糕宝宝今日早教 - 2026年4月3日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 100vw; height: 100vh;
+            overflow: hidden;
+            font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+            background: #0a1628;
+            color: #e0e7ff;
+        }
+        .bg-animation {
+            position: fixed; inset: 0; z-index: 0;
+            background: linear-gradient(135deg, #0a1628 0%, #0f2847 30%, #0d3b4f 60%, #0a1628 100%);
+            background-size: 400% 400%;
+            animation: bgShift 20s ease infinite;
+        }
+        .bg-orb {
+            position: fixed; border-radius: 50%; filter: blur(80px); opacity: 0.15;
+            animation: float 15s ease-in-out infinite;
+        }
+        .bg-orb:nth-child(1) { width: 400px; height: 400px; background: #3b82f6; top: -100px; left: -100px; }
+        .bg-orb:nth-child(2) { width: 300px; height: 300px; background: #10b981; bottom: -50px; right: -50px; animation-delay: -5s; }
+        .bg-orb:nth-child(3) { width: 250px; height: 250px; background: #06b6d4; top: 50%; left: 50%; animation-delay: -10s; }
+        @keyframes bgShift { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+        @keyframes float { 0%,100%{transform:translate(0,0)} 33%{transform:translate(30px,-20px)} 66%{transform:translate(-20px,30px)} }
+
+        .page-container {
+            position: relative; z-index: 1;
+            width: 100vw; height: 100vh;
+            display: flex; flex-direction: column;
+            padding: 1.5vh 2vw;
+        }
+        .top-section {
+            flex: 1; display: flex; gap: 2vw;
+            min-height: 0;
+        }
+
+        /* Left panel */
+        .left-panel {
+            width: 28%; display: flex; flex-direction: column; gap: 1.2vh;
+        }
+        .baby-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.5vh 1.2vw;
+            text-align: center;
+        }
+        .baby-name { font-size: 2.2vh; font-weight: bold; color: #60a5fa; }
+        .baby-age { font-size: 1.5vh; color: #94a3b8; margin-top: 0.3vh; }
+        .baby-date { font-size: 1.3vh; color: #64748b; }
+
+        .stats-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0.8vh;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 1vh 0.8vw;
+            text-align: center;
+        }
+        .stat-value { font-size: 2vh; font-weight: bold; color: #34d399; }
+        .stat-label { font-size: 1.1vh; color: #94a3b8; margin-top: 0.2vh; }
+
+        .chart-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 1.2vh 1vw;
+            flex: 1;
+        }
+        .chart-title { font-size: 1.3vh; color: #94a3b8; margin-bottom: 1vh; }
+        .bar-chart {
+            display: flex; align-items: flex-end; gap: 0.5vw;
+            height: 8vh;
+        }
+        .bar-col {
+            flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.3vh;
+        }
+        .bar-val { font-size: 1vh; color: #94a3b8; }
+        .bar-fill {
+            width: 100%; border-radius: 4px 4px 0 0;
+            background: linear-gradient(180deg, #3b82f6, #1e40af);
+            transition: height 0.5s;
+        }
+        .bar-fill.today { background: linear-gradient(180deg, #34d399, #059669); }
+        .bar-day { font-size: 1vh; color: #64748b; }
+
+        .interval-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 1vh 1vw;
+        }
+        .interval-grid {
+            display: flex; flex-wrap: wrap; gap: 0.4vw;
+        }
+        .interval-item {
+            background: rgba(255,255,255,0.04);
+            border-radius: 6px;
+            padding: 0.5vh 0.5vw;
+            font-size: 1.1vh;
+            text-align: center;
+        }
+        .interval-time { color: #e0e7ff; font-weight: bold; }
+        .interval-gap { color: #64748b; font-size: 1vh; }
+
+        /* Right panel */
+        .right-panel {
+            flex: 1; display: flex; flex-direction: column; gap: 1vh;
+        }
+        .section-header {
+            font-size: 1.8vh; font-weight: bold; color: #60a5fa;
+            padding-bottom: 0.5vh;
+            border-bottom: 1px solid rgba(96,165,250,0.3);
+        }
+        .activities-grid {
+            flex: 1; display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1vh;
+            overflow: hidden;
+        }
+        .activity-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 1.2vh 1vw;
+            transition: transform 0.3s, background 0.3s;
+            overflow: hidden;
+        }
+        .activity-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+        .activity-card .num {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            color: white; font-size: 1.2vh; font-weight: bold;
+            width: 2.2vh; height: 2.2vh; line-height: 2.2vh;
+            text-align: center; border-radius: 50%;
+            margin-right: 0.5vw;
+        }
+        .activity-card h3 {
+            font-size: 1.4vh; color: #e0e7ff;
+            display: inline; vertical-align: middle;
+        }
+        .activity-card p {
+            font-size: 1.15vh; color: #94a3b8;
+            margin-top: 0.5vh; line-height: 1.5;
+        }
+        .activity-card .source {
+            font-size: 1vh; color: #475569;
+            margin-top: 0.4vh;
+        }
+        .activity-card .source a { color: #60a5fa; text-decoration: none; }
+        .activity-card .full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* Bottom timeline */
+        .bottom-section {
+            margin-top: 1.2vh;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 1vh 1.5vw;
+        }
+        .timeline-title { font-size: 1.3vh; color: #94a3b8; margin-bottom: 0.8vh; }
+        .timeline-container {
+            display: flex; gap: 0.8vw;
+        }
+        .timeline-labels-left {
+            display: flex; flex-direction: column; justify-content: space-between;
+            width: 4vw;
+        }
+        .timeline-day-label {
+            font-size: 1.1vh; color: #64748b; text-align: right;
+            line-height: 1.8vh;
+        }
+        .timeline-bars {
+            flex: 1; display: flex; flex-direction: column; gap: 0.4vh;
+        }
+        .timeline-row { display: flex; flex-direction: column; }
+        .timeline-bar {
+            position: relative; height: 1.6vh;
+            background: rgba(255,255,255,0.06);
+            border-radius: 3px;
+        }
+        .bar-segment {
+            position: absolute; top: 0; height: 100%;
+            border-radius: 2px; cursor: pointer;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .bar-segment:hover { opacity: 0.75; transform: scaleY(1.3); }
+        .timeline-labels {
+            display: flex; justify-content: space-between;
+            margin-top: 0.3vh;
+        }
+        .time-label { font-size: 1vh; color: #475569; }
+
+        /* Entry animations */
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .baby-card { animation: slideIn 0.6s ease; }
+        .stat-card { animation: slideIn 0.6s ease; }
+        .chart-card { animation: slideIn 0.6s ease 0.1s both; }
+        .activity-card { animation: slideIn 0.5s ease both; }
+        .activity-card:nth-child(1) { animation-delay: 0.1s; }
+        .activity-card:nth-child(2) { animation-delay: 0.2s; }
+        .activity-card:nth-child(3) { animation-delay: 0.3s; }
+        .activity-card:nth-child(4) { animation-delay: 0.4s; }
+        .activity-card:nth-child(5) { animation-delay: 0.5s; }
+        .bottom-section { animation: slideIn 0.6s ease 0.6s both; }
+    </style>
 </head>
 <body>
-<div class="container">
-  <div class="header">
-    <h1>🧒 年糕宝宝的早教时间</h1>
-    <div class="age">2个月19天 · 感官探索期</div>
-    <div class="date">📅 2026年3月28日 星期六</div>
-  </div>
+    <div class="bg-animation"></div>
+    <div class="bg-orb"></div>
+    <div class="bg-orb"></div>
+    <div class="bg-orb"></div>
 
-  <div class="card milestone">
-    <h2><span class="emoji">📊</span> 本月发育重点</h2>
-    <p>年糕现在正处于 <strong>0-3个月感官探索期</strong>。宝宝正在通过所有感官从周围环境吸收海量信息，肌肉力量也在逐渐增强。小拳头开始放松，会试着用手触碰物体。</p>
-    <p><span class="tag">视觉追踪</span><span class="tag">抓握练习</span><span class="tag">抬头训练</span><span class="tag">听觉刺激</span></p>
-  </div>
+    <div class="page-container">
+        <div class="top-section">
+            <!-- Left Panel -->
+            <div class="left-panel">
+                <div class="baby-card">
+                    <div class="baby-name">🌟 年糕宝宝</div>
+                    <div class="baby-age">2个月24天 · 第85天</div>
+                    <div class="baby-date">2026年4月3日 星期五</div>
+                </div>
 
-  <div class="card">
-    <h2><span class="emoji">👀</span> 活动1：视觉追踪游戏</h2>
-    <p>在宝宝眼前20-30cm处缓慢移动颜色鲜艳的玩具（红色、黑色白色对比图），让宝宝的眼睛跟随物体移动。</p>
-    <div class="tip">💡 每天2-3次，每次1-2分钟。可以水平、垂直、画圈移动，锻炼眼部肌肉协调。</div>
-    <div class="source">来源：广州市妇女儿童医疗中心 · 0-3岁宝宝游戏指南</div>
-  </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">980ml</div>
+                        <div class="stat-label">昨日总奶量</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">7次</div>
+                        <div class="stat-label">昨日喂养</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">3h21m</div>
+                        <div class="stat-label">平均间隔</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">140ml</div>
+                        <div class="stat-label">单次奶量</div>
+                    </div>
+                </div>
 
-  <div class="card">
-    <h2><span class="emoji">😊</span> 活动2：面部表情模仿游戏</h2>
-    <p>和宝宝面对面（距离20-30cm），夸张地做各种表情：吐舌头、睁大眼睛、微笑、嘟嘴，等待宝宝回应。</p>
-    <div class="tip">💡 这是早期的社交互动训练，有助于宝宝发展面部识别和模仿能力，建立亲子依恋。</div>
-    <div class="source">来源：美国金宝贝早教游戏教案</div>
-  </div>
+                <div class="chart-card">
+                    <div class="chart-title">📊 近6天奶量趋势</div>
+                    <div class="bar-chart">
+                        <div class="bar-col">
+                            <div class="bar-val">610</div>
+                            <div class="bar-fill" style="height:62%"></div>
+                            <div class="bar-day">3/29</div>
+                        </div>
+                        <div class="bar-col">
+                            <div class="bar-val">850</div>
+                            <div class="bar-fill" style="height:87%"></div>
+                            <div class="bar-day">3/30</div>
+                        </div>
+                        <div class="bar-col">
+                            <div class="bar-val">880</div>
+                            <div class="bar-fill" style="height:90%"></div>
+                            <div class="bar-day">3/31</div>
+                        </div>
+                        <div class="bar-col">
+                            <div class="bar-val">980</div>
+                            <div class="bar-fill" style="height:100%"></div>
+                            <div class="bar-day">4/1</div>
+                        </div>
+                        <div class="bar-col">
+                            <div class="bar-val">980</div>
+                            <div class="bar-fill" style="height:100%"></div>
+                            <div class="bar-day">4/2</div>
+                        </div>
+                        <div class="bar-col">
+                            <div class="bar-val">840</div>
+                            <div class="bar-fill today" style="height:86%"></div>
+                            <div class="bar-day" style="color:#34d399;font-weight:bold">今天</div>
+                        </div>
+                    </div>
+                </div>
 
-  <div class="card">
-    <h2><span class="emoji">🎵</span> 活动3：摇啊摇 - 亲子律动</h2>
-    <p>抱着宝宝轻轻左右摇晃，哼唱儿歌或播放轻柔的音乐。可以在宝宝清醒、情绪好的时候进行。</p>
-    <div class="tip">💡 前庭觉刺激有助于平衡感发育。注意动作要轻柔缓慢，观察宝宝的反应，如果不适立即停止。</div>
-    <div class="source">来源：广州市妇女儿童医疗中心 · 0-3岁宝宝游戏指南</div>
-  </div>
+                <div class="interval-card">
+                    <div class="chart-title">⏰ 昨日喂养间隔</div>
+                    <div class="interval-grid">
+                        <div class="interval-item">
+                            <div class="interval-time">01:52</div>
+                            <div class="interval-gap">—</div>
+                        </div>
+                        <div class="interval-item">
+                            <div class="interval-time">06:09</div>
+                            <div class="interval-gap">4h17m</div>
+                        </div>
+                        <div class="interval-item">
+                            <div class="interval-time">08:59</div>
+                            <div class="interval-gap">2h50m</div>
+                        </div>
+                        <div class="interval-item">
+                            <div class="interval-time">12:24</div>
+                            <div class="interval-gap">3h25m</div>
+                        </div>
+                        <div class="interval-item">
+                            <div class="interval-time">15:38</div>
+                            <div class="interval-gap">3h14m</div>
+                        </div>
+                        <div class="interval-item">
+                            <div class="interval-time">18:31</div>
+                            <div class="interval-gap">2h53m</div>
+                        </div>
+                        <div class="interval-item">
+                            <div class="interval-time">22:17</div>
+                            <div class="interval-gap">3h46m</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  <div class="card">
-    <h2><span class="emoji">🤚</span> 活动4：触摸感知游戏</h2>
-    <p>用不同材质的物品轻轻触碰宝宝的手掌和脚底：柔软的纱布、光滑的丝巾、带纹理的毛巾。观察宝宝的反应。</p>
-    <div class="tip">💡 触觉是最早发育的感觉之一。不同材质的刺激有助于促进神经系统发育和感官整合。</div>
-    <div class="source">来源：国风教育 · 1-3岁幼儿早教游戏（含0-3月段）</div>
-  </div>
+            <!-- Right Panel -->
+            <div class="right-panel">
+                <div class="section-header">🎮 今日早教活动推荐</div>
+                <div class="activities-grid">
+                    <div class="activity-card">
+                        <span class="num">1</span><h3>俯卧练习 Tummy Time</h3>
+                        <p>每天2-3次俯卧，每次3-5分钟。用彩色摇铃在宝宝前方吸引抬头，锻炼颈背部肌肉群，为翻身打基础。</p>
+                        <div class="source">来源：<a href="https://www.zhihu.com/question/414148068/answer/1643256596" target="_blank">知乎 · 欣欣博士</a></div>
+                    </div>
+                    <div class="activity-card">
+                        <span class="num">2</span><h3>视觉追踪训练</h3>
+                        <p>手持红黑高对比色玩具，在宝宝眼前20-30cm处缓慢左右移动，培养眼球追踪能力和注意力集中。</p>
+                        <div class="source">来源：<a href="https://www.unicef.cn/what-we-do/unicef-emergencies/covid-19/0-3-year-old-family-games" target="_blank">联合国儿童基金会</a></div>
+                    </div>
+                    <div class="activity-card">
+                        <span class="num">3</span><h3>语言互动交流</h3>
+                        <p>面对宝宝温柔说话，模仿宝宝发出的咿呀声并回应。描述日常活动，促进语言萌芽和亲子依恋。</p>
+                        <div class="source">来源：<a href="https://www.thepaper.cn/newsDetail_forward_26503831" target="_blank">澎湃新闻 · 在家早教系列</a></div>
+                    </div>
+                    <div class="activity-card">
+                        <span class="num">4</span><h3>触觉感官探索</h3>
+                        <p>让宝宝触摸不同材质物品：柔软毛巾、光滑硅胶球、毛绒玩具。播放轻柔音乐摇动铃铛刺激听觉。</p>
+                        <div class="source">来源：<a href="https://www.youjiao.com/sejy/zaojiao/zjyx/" target="_blank">幼教网 · 早教游戏</a></div>
+                    </div>
+                    <div class="activity-card full-width">
+                        <span class="num">5</span><h3>亲子抚触按摩</h3>
+                        <p>温暖环境下用婴儿油轻柔按摩，从四肢到腹部再到背部。每次10-15分钟，促进血液循环、增强安全感、帮助放松入睡。</p>
+                        <div class="source">来源：<a href="https://baby.39.net/a/201067/1325278.html" target="_blank">39健康网 · 新生儿早教</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  <div class="card">
-    <h2><span class="emoji">🚲</span> 活动5：骑自行车 - 腿部运动</h2>
-    <p>宝宝平躺时，轻轻握住小腿，交替做蹬自行车动作。配合儿歌节奏，让运动更有趣。</p>
-    <div class="tip">💡 促进腿部肌肉发育和关节灵活度，同时也有助于缓解宝宝常见的胀气不适。每次约2分钟。</div>
-    <div class="source">来源：广州市妇女儿童医疗中心 · 0-3岁宝宝游戏指南</div>
-  </div>
-
-  <div class="card milestone">
-    <h2><span class="emoji">📅</span> 特别提醒</h2>
-    <p>🧮 <strong>距离年糕100天还有 22 天</strong>（2026年4月18日）</p>
-    <p>🌸 当前节气：春分期间（3月20日 ~ 4月4日），注意春捂保暖</p>
-  </div>
-
-  <div class="footer">
-    🦞 小龙虾为年糕宝宝生成 · 2026年3月28日<br>
-    内容参考权威育儿机构，仅供参考
-  </div>
-</div>
+        <!-- Bottom Timeline -->
+        <div class="bottom-section">
+            <div class="timeline-title">📊 过去5天喂养时间线</div>
+            <div class="timeline-container">
+                <div class="timeline-labels-left">
+                    <div class="timeline-day-label">3/30</div>
+                    <div class="timeline-day-label">3/31</div>
+                    <div class="timeline-day-label">4/1</div>
+                    <div class="timeline-day-label">4/2</div>
+                    <div class="timeline-day-label">4/3</div>
+                </div>
+                <div class="timeline-bars">
+                    <!-- 3/30 -->
+                    <div class="timeline-row">
+                        <div class="timeline-bar">
+                            <div class="bar-segment" style="left:0%;width:16.39%;background:#1e3a5f;" title="00:00-03:56 (3h56m)"></div>
+                            <div class="bar-segment" style="left:16.39%;width:14.93%;background:#3b82f6;" title="03:56-07:32 (3h36m)"></div>
+                            <div class="bar-segment" style="left:31.32%;width:8.13%;background:#10b981;" title="07:32-09:36 (2h04m)"></div>
+                            <div class="bar-segment" style="left:39.45%;width:17.01%;background:#f59e0b;" title="09:36-13:32 (3h56m)"></div>
+                            <div class="bar-segment" style="left:56.46%;width:11.46%;background:#ef4444;" title="13:32-16:06 (2h34m)"></div>
+                            <div class="bar-segment" style="left:67.92%;width:9.58%;background:#8b5cf6;" title="16:06-18:54 (2h48m)"></div>
+                            <div class="bar-segment" style="left:77.50%;width:18.40%;background:#ec4899;" title="18:54-23:32 (4h38m)"></div>
+                            <div class="bar-segment" style="left:95.90%;width:4.10%;background:#06b6d4;" title="23:32-24:00 (28m)"></div>
+                        </div>
+                    </div>
+                    <!-- 3/31 -->
+                    <div class="timeline-row">
+                        <div class="timeline-bar">
+                            <div class="bar-segment" style="left:0%;width:14.38%;background:#1e3a5f;" title="00:00-03:27 (3h27m)"></div>
+                            <div class="bar-segment" style="left:14.38%;width:12.50%;background:#3b82f6;" title="03:27-07:12 (3h45m)"></div>
+                            <div class="bar-segment" style="left:26.88%;width:9.58%;background:#10b981;" title="07:12-10:03 (2h51m)"></div>
+                            <div class="bar-segment" style="left:36.46%;width:8.13%;background:#f59e0b;" title="10:03-12:48 (2h45m)"></div>
+                            <div class="bar-segment" style="left:44.58%;width:15.42%;background:#ef4444;" title="12:48-16:05 (3h17m)"></div>
+                            <div class="bar-segment" style="left:60.00%;width:7.78%;background:#8b5cf6;" title="16:05-18:32 (2h27m)"></div>
+                            <div class="bar-segment" style="left:67.78%;width:10.83%;background:#ec4899;" title="18:32-21:45 (3h13m)"></div>
+                            <div class="bar-segment" style="left:78.61%;width:14.38%;background:#06b6d4;" title="21:45-24:00 (2h15m)"></div>
+                        </div>
+                    </div>
+                    <!-- 4/1 -->
+                    <div class="timeline-row">
+                        <div class="timeline-bar">
+                            <div class="bar-segment" style="left:0%;width:6.46%;background:#1e3a5f;" title="00:00-01:37 (1h37m)"></div>
+                            <div class="bar-segment" style="left:6.46%;width:15.28%;background:#3b82f6;" title="01:37-05:11 (3h34m)"></div>
+                            <div class="bar-segment" style="left:21.74%;width:11.39%;background:#10b981;" title="05:11-08:28 (3h17m)"></div>
+                            <div class="bar-segment" style="left:33.13%;width:12.50%;background:#f59e0b;" title="08:28-11:16 (2h48m)"></div>
+                            <div class="bar-segment" style="left:45.63%;width:12.22%;background:#ef4444;" title="11:16-14:24 (3h08m)"></div>
+                            <div class="bar-segment" style="left:57.85%;width:11.11%;background:#8b5cf6;" title="14:24-17:36 (3h12m)"></div>
+                            <div class="bar-segment" style="left:68.96%;width:11.67%;background:#ec4899;" title="17:36-20:45 (3h09m)"></div>
+                            <div class="bar-segment" style="left:80.63%;width:19.37%;background:#06b6d4;" title="20:45-24:00 (3h15m)"></div>
+                        </div>
+                    </div>
+                    <!-- 4/2 -->
+                    <div class="timeline-row">
+                        <div class="timeline-bar">
+                            <div class="bar-segment" style="left:0%;width:7.78%;background:#1e3a5f;" title="00:00-01:52 (1h52m)"></div>
+                            <div class="bar-segment" style="left:7.78%;width:16.53%;background:#3b82f6;" title="01:52-06:09 (4h17m)"></div>
+                            <div class="bar-segment" style="left:24.31%;width:9.72%;background:#10b981;" title="06:09-08:59 (2h50m)"></div>
+                            <div class="bar-segment" style="left:34.03%;width:13.19%;background:#f59e0b;" title="08:59-12:24 (3h25m)"></div>
+                            <div class="bar-segment" style="left:47.22%;width:11.53%;background:#ef4444;" title="12:24-15:38 (3h14m)"></div>
+                            <div class="bar-segment" style="left:58.75%;width:9.58%;background:#8b5cf6;" title="15:38-18:31 (2h53m)"></div>
+                            <div class="bar-segment" style="left:68.33%;width:12.71%;background:#ec4899;" title="18:31-22:17 (3h46m)"></div>
+                            <div class="bar-segment" style="left:81.04%;width:18.96%;background:#06b6d4;" title="22:17-24:00 (1h43m)"></div>
+                        </div>
+                    </div>
+                    <!-- 4/3 -->
+                    <div class="timeline-row">
+                        <div class="timeline-bar">
+                            <div class="bar-segment" style="left:0%;width:8.26%;background:#1e3a5f;" title="00:00-01:59 (1h59m)"></div>
+                            <div class="bar-segment" style="left:8.26%;width:17.50%;background:#3b82f6;" title="01:59-07:02 (5h03m)"></div>
+                            <div class="bar-segment" style="left:25.76%;width:10.69%;background:#10b981;" title="07:02-10:32 (3h30m)"></div>
+                            <div class="bar-segment" style="left:36.46%;width:10.14%;background:#f59e0b;" title="10:32-12:58 (2h26m)"></div>
+                            <div class="bar-segment" style="left:46.60%;width:12.22%;background:#ef4444;" title="12:58-16:12 (3h14m)"></div>
+                            <div class="bar-segment" style="left:58.82%;width:12.08%;background:#8b5cf6;" title="16:12-19:09 (2h57m)"></div>
+                            <div class="bar-segment" style="left:70.90%;width:29.10%;background:#06b6d4;" title="19:09-24:00 (4h51m)"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-labels">
+                    <span class="time-label">00:00</span>
+                    <span class="time-label">06:00</span>
+                    <span class="time-label">12:00</span>
+                    <span class="time-label">18:00</span>
+                    <span class="time-label">24:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
