@@ -2,292 +2,260 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1920, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="refresh" content="600">
-<title>年糕宝宝每日早教 - 2026年4月5日</title>
+<title>年糕的早教天地 · 2026年4月6日</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#0a1628;color:#e0f0ff;}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei','Hiragino Sans GB',sans-serif;color:#fff}
+body{background:linear-gradient(135deg,#0a1628 0%,#0d2137 25%,#0a2a3c 50%,#0d1f35 75%,#0a1628 100%);background-size:400% 400%;animation:bgShift 20s ease infinite}
+@keyframes bgShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
-/* 背景动画 */
-.bg-layer{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;overflow:hidden;}
-.bg-gradient{position:absolute;width:100%;height:100%;background:linear-gradient(135deg,#0a1628 0%,#0d2137 30%,#0a2a3c 60%,#0d1f33 100%);animation:bgShift 20s ease-in-out infinite;}
-@keyframes bgShift{0%,100%{background:linear-gradient(135deg,#0a1628 0%,#0d2137 30%,#0a2a3c 60%,#0d1f33 100%);}50%{background:linear-gradient(135deg,#0d1f33 0%,#0a2a3c 30%,#0d2137 60%,#0a1628 100%);}}
+/* Floating orbs */
+.bg-orb{position:fixed;border-radius:50%;filter:blur(60px);opacity:.15;animation:float 15s ease-in-out infinite}
+.bg-orb:nth-child(1){width:300px;height:300px;background:#3b82f6;top:-50px;left:10%;animation-delay:0s}
+.bg-orb:nth-child(2){width:250px;height:250px;background:#06b6d4;bottom:5%;right:15%;animation-delay:-5s}
+.bg-orb:nth-child(3){width:200px;height:200px;background:#10b981;top:40%;left:50%;animation-delay:-10s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-20px) scale(1.05)}66%{transform:translate(-20px,30px) scale(.95)}}
 
-/* 清明节花瓣飘落 */
-.petal{position:absolute;width:12px;height:12px;opacity:0;animation:petalFall linear infinite;}
-@keyframes petalFall{0%{opacity:0;transform:translateY(-20px) rotate(0deg);}10%{opacity:0.4;}90%{opacity:0.3;}100%{opacity:0;transform:translateY(100vh) rotate(720deg);}}
-.petal:nth-child(1){left:5%;background:rgba(255,255,255,0.3);border-radius:50% 0 50% 0;width:10px;height:10px;animation-duration:12s;animation-delay:0s;}
-.petal:nth-child(2){left:15%;background:rgba(144,238,144,0.25);border-radius:50% 0 50% 0;width:8px;height:8px;animation-duration:15s;animation-delay:2s;}
-.petal:nth-child(3){left:28%;background:rgba(255,255,255,0.2);border-radius:0 50% 0 50%;width:11px;height:11px;animation-duration:18s;animation-delay:4s;}
-.petal:nth-child(4){left:40%;background:rgba(173,216,230,0.25);border-radius:50% 0 50% 0;width:9px;height:9px;animation-duration:14s;animation-delay:1s;}
-.petal:nth-child(5){left:55%;background:rgba(255,255,255,0.2);border-radius:50% 0 50% 0;width:7px;height:7px;animation-duration:16s;animation-delay:6s;}
-.petal:nth-child(6){left:65%;background:rgba(144,238,144,0.2);border-radius:0 50% 0 50%;width:10px;height:10px;animation-duration:13s;animation-delay:3s;}
-.petal:nth-child(7){left:78%;background:rgba(173,216,230,0.2);border-radius:50% 0 50% 0;width:8px;height:8px;animation-duration:17s;animation-delay:5s;}
-.petal:nth-child(8){left:90%;background:rgba(255,255,255,0.15);border-radius:0 50% 0 50%;width:12px;height:12px;animation-duration:20s;animation-delay:7s;}
-.petal:nth-child(9){left:35%;background:rgba(200,255,200,0.15);border-radius:50%;width:6px;height:6px;animation-duration:11s;animation-delay:8s;}
-.petal:nth-child(10){left:72%;background:rgba(255,255,255,0.2);border-radius:50% 0 50% 0;width:9px;height:9px;animation-duration:19s;animation-delay:9s;}
-.petal:nth-child(11){left:48%;background:rgba(144,238,144,0.18);border-radius:0 50% 0 50%;width:7px;height:7px;animation-duration:15s;animation-delay:10s;}
-.petal:nth-child(12){left:8%;background:rgba(173,216,230,0.2);border-radius:50%;width:8px;height:8px;animation-duration:16s;animation-delay:3.5s;}
+.page{display:flex;width:100vw;height:100vh;padding:2vh 2.5vw;gap:2vw}
 
-/* 柳条装饰 */
-.willow{position:absolute;top:0;width:2px;background:linear-gradient(to bottom,rgba(144,238,144,0.3),rgba(144,238,144,0));animation:willowSway 6s ease-in-out infinite;transform-origin:top center;}
-.willow:nth-child(13){left:2%;height:30vh;animation-delay:0s;}
-.willow:nth-child(14){left:6%;height:25vh;animation-delay:1s;}
-.willow:nth-child(15){left:92%;height:28vh;animation-delay:2s;}
-.willow:nth-child(16){left:96%;height:32vh;animation-delay:0.5s;}
-@keyframes willowSway{0%,100%{transform:rotate(-3deg);}50%{transform:rotate(3deg);}}
+/* Left panel */
+.left-panel{width:30%;display:flex;flex-direction:column;gap:1.5vh}
+.baby-card{background:rgba(255,255,255,.08);backdrop-filter:blur(10px);border-radius:1.2vh;padding:2vh 2vw;border:1px solid rgba(255,255,255,.1);animation:fadeSlideIn .6s ease both}
+.baby-name{font-size:3.5vh;font-weight:700;background:linear-gradient(90deg,#60a5fa,#06d6a0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.8vh}
+.baby-age{font-size:1.8vh;color:rgba(255,255,255,.7);line-height:1.6}
+.baby-age span{color:#60a5fa;font-weight:600}
 
-/* 光斑 */
-.orb{position:absolute;border-radius:50%;filter:blur(60px);animation:orbFloat 15s ease-in-out infinite;}
-.orb:nth-child(17){width:200px;height:200px;background:rgba(59,130,246,0.08);top:10%;left:20%;animation-delay:0s;}
-.orb:nth-child(18){width:150px;height:150px;background:rgba(16,185,129,0.06);top:60%;right:15%;animation-delay:5s;}
-.orb:nth-child(19){width:180px;height:180px;background:rgba(6,182,212,0.07);bottom:20%;left:40%;animation-delay:10s;}
-@keyframes orbFloat{0%,100%{transform:translate(0,0);}25%{transform:translate(30px,-20px);}50%{transform:translate(-20px,30px);}75%{transform:translate(20px,20px);}}
+.date-display{font-size:1.5vh;color:rgba(255,255,255,.5);margin-top:.5vh}
 
-/* 页面容器 */
-.page{position:relative;z-index:1;width:100vw;height:100vh;display:flex;flex-direction:column;padding:1.5vh 2vw;}
+/* Feed stats */
+.feed-stats{display:grid;grid-template-columns:1fr 1fr;gap:1vh;flex-shrink:0}
+.stat-card{background:rgba(255,255,255,.06);border-radius:1vh;padding:1.5vh 1.2vw;text-align:center;border:1px solid rgba(255,255,255,.06);animation:fadeSlideIn .6s ease both}
+.stat-card:nth-child(1){animation-delay:.1s}
+.stat-card:nth-child(2){animation-delay:.15s}
+.stat-card:nth-child(3){animation-delay:.2s}
+.stat-card:nth-child(4){animation-delay:.25s}
+.stat-value{font-size:2.8vh;font-weight:700;color:#06d6a0}
+.stat-label{font-size:1.3vh;color:rgba(255,255,255,.5);margin-top:.3vh}
 
-/* 顶部 */
-.header{display:flex;justify-content:space-between;align-items:center;padding:0 0 1vh 0;flex-shrink:0;}
-.header-left{display:flex;align-items:center;gap:1.5vw;}
-.baby-name{font-size:2.8vh;font-weight:700;color:#7dd3fc;text-shadow:0 0 20px rgba(125,211,252,0.3);}
-.baby-age{font-size:1.8vh;color:#94a3b8;margin-left:1vw;}
-.header-right{text-align:right;}
-.date-display{font-size:1.6vh;color:#64748b;}
-.solar-term-badge{display:inline-block;background:linear-gradient(135deg,rgba(16,185,129,0.3),rgba(6,182,212,0.3));border:1px solid rgba(16,185,129,0.4);border-radius:20px;padding:0.3vh 1vw;font-size:1.4vh;color:#86efac;margin-top:0.3vh;}
+/* Bar chart */
+.chart-section{background:rgba(255,255,255,.06);border-radius:1.2vh;padding:1.5vh 1.5vw;border:1px solid rgba(255,255,255,.06);flex-shrink:0;animation:fadeSlideIn .6s ease both;animation-delay:.3s}
+.chart-title{font-size:1.5vh;color:rgba(255,255,255,.6);margin-bottom:1vh}
+.bar-chart{display:flex;align-items:flex-end;gap:.6vw;height:10vh}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:.4vh}
+.bar-fill{width:100%;border-radius:.4vh .4vh 0 0;transition:height 1s ease;min-height:.5vh}
+.bar-fill.today{background:linear-gradient(180deg,#06d6a0,#10b981)}
+.bar-fill.normal{background:rgba(59,130,246,.5)}
+.bar-val{font-size:1.2vh;color:rgba(255,255,255,.7);font-weight:600}
+.bar-day{font-size:1.1vh;color:rgba(255,255,255,.4)}
 
-/* 主体 */
-.main{flex:1;display:flex;gap:2vw;min-height:0;}
+/* Feed intervals */
+.intervals{background:rgba(255,255,255,.06);border-radius:1.2vh;padding:1.5vh 1.5vw;border:1px solid rgba(255,255,255,.06);flex:1;overflow:hidden;animation:fadeSlideIn .6s ease both;animation-delay:.35s}
+.intervals-title{font-size:1.5vh;color:rgba(255,255,255,.6);margin-bottom:1vh}
+.interval-grid{display:flex;flex-direction:column;gap:.6vh}
+.interval-row{display:flex;align-items:center;gap:.8vw;padding:.6vh .8vw;background:rgba(255,255,255,.04);border-radius:.6vh}
+.interval-time{font-size:1.4vh;color:#60a5fa;font-weight:600;min-width:4.5vw}
+.interval-gap{font-size:1.2vh;color:rgba(255,255,255,.4)}
 
-/* 左侧面板 */
-.left-panel{width:28%;display:flex;flex-direction:column;gap:1.2vh;flex-shrink:0;}
+/* Right panel */
+.right-panel{width:70%;display:flex;flex-direction:column;gap:1.5vh}
+.section-title{font-size:2.2vh;font-weight:700;margin-bottom:.5vh;animation:fadeSlideIn .6s ease both;animation-delay:.2s}
+.section-title .emoji{margin-right:.5vw}
+.section-sub{font-size:1.3vh;color:rgba(255,255,255,.5);margin-bottom:1vh;animation:fadeSlideIn .6s ease both;animation-delay:.25s}
 
-/* 卡片通用 */
-.card{background:rgba(15,30,50,0.6);border:1px solid rgba(59,130,246,0.15);border-radius:1.2vh;padding:1.5vh 1.2vw;backdrop-filter:blur(10px);animation:fadeInUp 0.6s ease both;}
-@keyframes fadeInUp{from{opacity:0;transform:translateY(15px);}to{opacity:1;transform:translateY(0);}}
-.card:nth-child(1){animation-delay:0.1s;}.card:nth-child(2){animation-delay:0.2s;}.card:nth-child(3){animation-delay:0.3s;}.card:nth-child(4){animation-delay:0.4s;}
+.activities{display:grid;grid-template-columns:1fr 1fr;gap:1.2vh;flex:1}
+.activity-card{background:rgba(255,255,255,.07);backdrop-filter:blur(10px);border-radius:1.2vh;padding:1.8vh 1.8vw;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;animation:fadeSlideIn .6s ease both;transition:transform .3s,border-color .3s}
+.activity-card:hover{transform:translateY(-.3vh);border-color:rgba(96,165,250,.3)}
+.activity-card:nth-child(1){animation-delay:.3s}
+.activity-card:nth-child(2){animation-delay:.4s}
+.activity-card:nth-child(3){animation-delay:.5s}
+.activity-card:nth-child(4){animation-delay:.6s}
+.activity-card:nth-child(5){animation-delay:.7s}
 
-.card-title{font-size:1.3vh;color:#64748b;margin-bottom:1vh;display:flex;align-items:center;gap:0.5vw;}
+.act-header{display:flex;align-items:center;gap:.6vw;margin-bottom:.8vh}
+.act-num{width:2.8vh;height:2.8vh;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:1.4vh;font-weight:700;flex-shrink:0}
+.act-title{font-size:1.8vh;font-weight:600;color:#e0f2fe}
+.act-desc{font-size:1.35vh;color:rgba(255,255,255,.6);line-height:1.5;flex:1;margin-bottom:.8vh}
+.act-source{font-size:1.1vh;color:rgba(255,255,255,.3);margin-top:auto}
+.act-source a{color:rgba(96,165,250,.6);text-decoration:none}
+.act-source a:hover{color:#60a5fa}
 
-/* 统计网格 */
-.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8vh;}
-.stat-item{background:rgba(59,130,246,0.08);border-radius:0.8vh;padding:1vh 0.8vw;text-align:center;}
-.stat-value{font-size:2.2vh;font-weight:700;color:#7dd3fc;}
-.stat-label{font-size:1.1vh;color:#64748b;margin-top:0.3vh;}
+/* Timeline bottom */
+.timeline-section{background:rgba(255,255,255,.05);border-radius:1.2vh;padding:1.5vh 1.5vw;border:1px solid rgba(255,255,255,.06);animation:fadeSlideIn .6s ease both;animation-delay:.4s;flex-shrink:0}
+.timeline-title{font-size:1.4vh;color:rgba(255,255,255,.5);margin-bottom:1vh}
+.timeline-wrap{display:flex;gap:.8vw;align-items:center}
+.timeline-days{display:flex;flex-direction:column;gap:.5vh;flex-shrink:0}
+.timeline-day-label{font-size:1.1vh;color:rgba(255,255,255,.4);height:1.8vh;display:flex;align-items:center}
+.timeline-bars{flex:1;display:flex;flex-direction:column;gap:.5vh}
+.timeline-row{display:flex;align-items:center}
+.timeline-bar{position:relative;width:100%;height:1.8vh;background:rgba(255,255,255,.06);border-radius:.3vh}
+.bar-seg{position:absolute;top:0;height:100%;border-radius:.3vh;opacity:.7;transition:opacity .3s}
+.bar-seg:hover{opacity:1}
+.timeline-labels{display:flex;justify-content:space-between;margin-top:.5vh;padding:0 .1vw}
+.timeline-labels span{font-size:1vh;color:rgba(255,255,255,.3)}
 
-/* 柱状图 */
-.bar-chart{display:flex;align-items:flex-end;justify-content:space-between;height:10vh;gap:0.4vw;padding-top:1vh;}
-.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:0.3vh;}
-.bar-fill{width:80%;border-radius:0.4vh 0.4vh 0 0;transition:height 1s ease;min-height:0.5vh;}
-.bar-fill.today{background:linear-gradient(to top,#3b82f6,#06b6d4);box-shadow:0 0 8px rgba(59,130,246,0.3);}
-.bar-fill.other{background:rgba(59,130,246,0.25);}
-.bar-val{font-size:1vh;color:#94a3b8;}
-.bar-day{font-size:0.9vh;color:#475569;}
-
-/* 间隔看板 */
-.interval-grid{display:flex;flex-direction:column;gap:0.4vh;}
-.interval-row{display:flex;justify-content:space-between;align-items:center;padding:0.4vh 0;border-bottom:1px solid rgba(255,255,255,0.05);}
-.interval-time{font-size:1.2vh;color:#7dd3fc;font-weight:600;}
-.interval-gap{font-size:1vh;color:#64748b;}
-
-/* 右侧面板 */
-.right-panel{flex:1;display:flex;flex-direction:column;gap:1vh;}
-.section-title{font-size:1.5vh;color:#94a3b8;font-weight:600;margin-bottom:0.3vh;animation:fadeInUp 0.5s ease both;}
-
-/* 活动卡片网格 */
-.activities-grid{display:grid;grid-template-columns:1fr 1fr;gap:1vh;flex:1;}
-.activity-card{background:rgba(15,30,50,0.5);border:1px solid rgba(59,130,246,0.12);border-radius:1vh;padding:1.3vh 1vw;backdrop-filter:blur(8px);animation:fadeInUp 0.6s ease both;transition:transform 0.3s ease,border-color 0.3s ease;cursor:default;}
-.activity-card:hover{transform:translateY(-3px);border-color:rgba(59,130,246,0.3);}
-.activity-card:nth-child(1){animation-delay:0.15s;}.activity-card:nth-child(2){animation-delay:0.25s;}.activity-card:nth-child(3){animation-delay:0.35s;}.activity-card:nth-child(4){animation-delay:0.45s;}.activity-card:nth-child(5){animation-delay:0.55s;grid-column:span 2;}
-.activity-icon{font-size:2vh;margin-bottom:0.5vh;}
-.activity-name{font-size:1.5vh;font-weight:600;color:#e0f0ff;margin-bottom:0.4vh;}
-.activity-desc{font-size:1.15vh;color:#94a3b8;line-height:1.5;}
-.activity-source{font-size:0.95vh;color:#475569;margin-top:0.5vh;}
-.activity-source a{color:#3b82f6;text-decoration:none;}
-.activity-source a:hover{text-decoration:underline;}
-
-/* 底部时间线 */
-.bottom-section{flex-shrink:0;margin-top:1vh;animation:fadeInUp 0.7s ease both;animation-delay:0.6s;}
-.timeline-title{font-size:1.3vh;color:#64748b;margin-bottom:0.8vh;}
-.timeline-container{display:flex;gap:0.8vw;align-items:stretch;}
-.timeline-labels-left{display:flex;flex-direction:column;justify-content:space-between;padding:0 0.3vw;min-width:3vw;}
-.timeline-day-label{font-size:1vh;color:#64748b;text-align:right;line-height:1.8vh;}
-.timeline-bars{flex:1;display:flex;flex-direction:column;gap:0.4vh;justify-content:space-between;}
-.timeline-row{display:flex;align-items:center;}
-.timeline-bar{position:relative;width:100%;height:1.8vh;background:rgba(255,255,255,0.05);border-radius:0.3vh;}
-.bar-segment{position:absolute;top:0;height:100%;cursor:pointer;transition:opacity 0.2s,transform 0.2s;border-radius:0.2vh;}
-.bar-segment:hover{opacity:0.8;transform:scaleY(1.3);}
-.timeline-labels{display:flex;justify-content:space-between;padding:0.3vh 0 0 0;min-width:3vw;}
-.time-label{font-size:0.85vh;color:#475569;}
+@keyframes fadeSlideIn{from{opacity:0;transform:translateY(1.5vh)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:.8}50%{opacity:1}}
+.baby-name{animation:pulse 4s ease-in-out infinite}
 </style>
 </head>
 <body>
-<div class="bg-layer">
-<div class="bg-gradient"></div>
-<div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
-<div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
-<div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
-<div class="willow"></div><div class="willow"></div><div class="willow"></div><div class="willow"></div>
-<div class="orb"></div><div class="orb"></div><div class="orb"></div>
-</div>
+<div class="bg-orb"></div>
+<div class="bg-orb"></div>
+<div class="bg-orb"></div>
 
 <div class="page">
-<!-- 头部 -->
-<div class="header">
-<div class="header-left">
-<span class="baby-name">✨ 年糕宝宝</span>
-<span class="baby-age">第86天 · 2个月28天</span>
-</div>
-<div class="header-right">
-<div class="date-display">2026年4月5日 星期日</div>
-<div class="solar-term-badge">🌿 清明 · 气清景明</div>
-</div>
-</div>
+  <!-- Left Panel -->
+  <div class="left-panel">
+    <div class="baby-card">
+      <div class="baby-name">🌟 年糕宝宝</div>
+      <div class="baby-age">
+        <span>87天</span> · 2个月27天<br>
+        快满3个月啦！
+      </div>
+      <div class="date-display">2026年4月6日 · 星期一</div>
+    </div>
 
-<!-- 主体 -->
-<div class="main">
-<!-- 左侧 -->
-<div class="left-panel">
-<div class="card">
-<div class="card-title">📊 昨日喂养统计</div>
-<div class="stats-grid">
-<div class="stat-item"><div class="stat-value">790ml</div><div class="stat-label">总奶量</div></div>
-<div class="stat-item"><div class="stat-value">6次</div><div class="stat-label">喂养次数</div></div>
-<div class="stat-item"><div class="stat-value">2.8h</div><div class="stat-label">平均间隔</div></div>
-<div class="stat-item"><div class="stat-value">Frisolac</div><div class="stat-label">奶粉品牌</div></div>
-</div>
-</div>
+    <div class="feed-stats">
+      <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">昨日总奶量</div></div>
+      <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">喂养次数</div></div>
+      <div class="stat-card"><div class="stat-value">—</div><div class="stat-label">平均间隔</div></div>
+      <div class="stat-card"><div class="stat-value">3月</div><div class="stat-label">当前月龄</div></div>
+    </div>
 
-<div class="card">
-<div class="card-title">📈 近6天喂养次数</div>
-<div class="bar-chart">
-<div class="bar-col"><div class="bar-val">7</div><div class="bar-fill other" style="height:77%"></div><div class="bar-day">3/30</div></div>
-<div class="bar-col"><div class="bar-val">7</div><div class="bar-fill other" style="height:77%"></div><div class="bar-day">3/31</div></div>
-<div class="bar-col"><div class="bar-val">7</div><div class="bar-fill other" style="height:77%"></div><div class="bar-day">4/1</div></div>
-<div class="bar-col"><div class="bar-val">7</div><div class="bar-fill other" style="height:77%"></div><div class="bar-day">4/2</div></div>
-<div class="bar-col"><div class="bar-val">6</div><div class="bar-fill other" style="height:66%"></div><div class="bar-day">4/3</div></div>
-<div class="bar-col"><div class="bar-val">6</div><div class="bar-fill today" style="height:66%"></div><div class="bar-day">4/4</div></div>
-</div>
-</div>
+    <div class="chart-section">
+      <div class="chart-title">📊 近期喂养趋势</div>
+      <div class="bar-chart">
+        <div class="bar-col"><div class="bar-fill normal" style="height:60%"></div><div class="bar-val">8次</div><div class="bar-day">2/27</div></div>
+        <div class="bar-col"><div class="bar-fill normal" style="height:45%"></div><div class="bar-val">6次</div><div class="bar-day">2/28</div></div>
+        <div class="bar-col"><div class="bar-fill normal" style="height:67%"></div><div class="bar-val">8次</div><div class="bar-day">3/1</div></div>
+        <div class="bar-col"><div class="bar-fill normal" style="height:58%"></div><div class="bar-val">7次</div><div class="bar-day">3/2</div></div>
+        <div class="bar-col"><div class="bar-fill normal" style="height:75%"></div><div class="bar-val">9次</div><div class="bar-day">3/3</div></div>
+        <div class="bar-col"><div class="bar-fill normal" style="height:42%"></div><div class="bar-val">5次</div><div class="bar-day">3/4</div></div>
+      </div>
+    </div>
 
-<div class="card">
-<div class="card-title">⏰ 昨日喂养间隔</div>
-<div class="interval-grid">
-<div class="interval-row"><span class="interval-time">08:27</span><span class="interval-gap">— 首次</span></div>
-<div class="interval-row"><span class="interval-time">10:14</span><span class="interval-gap">1h46m</span></div>
-<div class="interval-row"><span class="interval-time">13:03</span><span class="interval-gap">2h48m</span></div>
-<div class="interval-row"><span class="interval-time">15:57</span><span class="interval-gap">2h53m</span></div>
-<div class="interval-row"><span class="interval-time">18:59</span><span class="interval-gap">3h01m</span></div>
-<div class="interval-row"><span class="interval-time">23:00</span><span class="interval-gap">4h00m</span></div>
-</div>
-</div>
-</div>
+    <div class="intervals">
+      <div class="intervals-title">⏰ 3月3日喂养间隔</div>
+      <div class="interval-grid">
+        <div class="interval-row"><span class="interval-time">02:11</span><span class="interval-gap">3h49m</span></div>
+        <div class="interval-row"><span class="interval-time">06:00</span><span class="interval-gap">2h43m</span></div>
+        <div class="interval-row"><span class="interval-time">08:43</span><span class="interval-gap">1h48m</span></div>
+        <div class="interval-row"><span class="interval-time">10:31</span><span class="interval-gap">1h52m</span></div>
+        <div class="interval-row"><span class="interval-time">12:23</span><span class="interval-gap">2h00m</span></div>
+        <div class="interval-row"><span class="interval-time">14:23</span><span class="interval-gap">2h28m</span></div>
+        <div class="interval-row"><span class="interval-time">16:51</span><span class="interval-gap">2h19m</span></div>
+        <div class="interval-row"><span class="interval-time">19:10</span><span class="interval-gap">1h52m</span></div>
+        <div class="interval-row"><span class="interval-time">21:02</span><span class="interval-gap">—</span></div>
+      </div>
+    </div>
+  </div>
 
-<!-- 右侧 -->
-<div class="right-panel">
-<div class="section-title">🌟 今日早教活动推荐</div>
-<div class="activities-grid">
-<div class="activity-card">
-<div class="activity-icon">👀</div>
-<div class="activity-name">彩色追视训练</div>
-<div class="activity-desc">用红、黄、蓝等鲜艳颜色的玩具，在宝宝眼前20-30cm处缓慢移动，引导宝宝目光跟随，锻炼视觉追踪能力。</div>
-<div class="activity-source">📚 来源：<a href="https://www.zhihu.com/question/414148068/answer/1643256596" target="_blank">知乎 - 欣欣博士</a></div>
-</div>
-<div class="activity-card">
-<div class="activity-icon">🤲</div>
-<div class="activity-name">亲子抚触按摩</div>
-<div class="activity-desc">在宝宝安静清醒时进行全身抚触，从头部到脚部轻柔按摩，促进宝宝神经发育，增进亲子依恋关系。</div>
-<div class="activity-source">📚 来源：<a href="https://www.thepaper.cn/newsDetail_forward_26676479" target="_blank">澎湃新闻 - 在家早教系列</a></div>
-</div>
-<div class="activity-card">
-<div class="activity-icon">💪</div>
-<div class="activity-name">Tummy Time 趴趴练习</div>
-<div class="activity-desc">每天让宝宝趴着3-5次，每次2-3分钟，用声音和玩具吸引宝宝抬头，锻炼颈部和背部肌肉力量。</div>
-<div class="activity-source">📚 来源：<a href="https://www.sohu.com/a/45795213_332234" target="_blank">搜狐 - Tummy Time</a></div>
-</div>
-<div class="activity-card">
-<div class="activity-icon">🎵</div>
-<div class="activity-name">躲猫猫互动游戏</div>
-<div class="activity-desc">用手遮住脸再打开，配上夸张表情和声音，培养宝宝客体永久性认知，逗宝宝开心大笑。</div>
-<div class="activity-source">📚 来源：<a href="https://www.thepaper.cn/newsDetail_forward_26676479" target="_blank">澎湃新闻 - 2-3月宝宝游戏</a></div>
-</div>
-<div class="activity-card">
-<div class="activity-icon">🗣️</div>
-<div class="activity-name">咿呀对话回应</div>
-<div class="activity-desc">当宝宝发出"啊""哦"等声音时，模仿并回应，像对话一样轮流发声，促进宝宝语言启蒙和社交互动能力。</div>
-<div class="activity-source">📚 来源：<a href="https://www.unicef.cn/what-we-do/unicef-emergencies/covid-19/0-3-year-old-family-games" target="_blank">联合国儿童基金会 - 0-3岁家庭游戏</a></div>
-</div>
-</div>
-</div>
-</div>
+  <!-- Right Panel -->
+  <div class="right-panel">
+    <div class="section-title"><span class="emoji">🎯</span>今日早教活动推荐</div>
+    <div class="section-sub">适合3个月宝宝的发育训练 · 每天15-30分钟</div>
 
-<!-- 底部时间线 -->
-<div class="bottom-section">
-<div class="timeline-title">📊 过去5天喂养时间线</div>
-<div class="timeline-container">
-<div class="timeline-labels-left">
-<div class="timeline-day-label">3/31</div>
-<div class="timeline-day-label">4/1</div>
-<div class="timeline-day-label">4/2</div>
-<div class="timeline-day-label">4/3</div>
-<div class="timeline-day-label">4/4</div>
-</div>
-<div class="timeline-bars">
-<div class="timeline-row"><div class="timeline-bar">
-<div class="bar-segment" style="left:0%;width:41.88%;background:#1e3a5f;" title="00:00-10:03 (10h3m)"></div>
-<div class="bar-segment" style="left:41.88%;width:15.83%;background:#3b82f6;" title="10:03-13:48 (3h45m)"></div>
-<div class="bar-segment" style="left:57.71%;width:10.42%;background:#10b981;" title="13:48-16:05 (2h17m)"></div>
-<div class="bar-segment" style="left:68.13%;width:8.96%;background:#f59e0b;" title="16:05-18:32 (2h27m)"></div>
-<div class="bar-segment" style="left:77.08%;width:12.5%;background:#ef4444;" title="18:32-21:45 (3h13m)"></div>
-<div class="bar-segment" style="left:89.58%;width:10.42%;background:#8b5cf6;" title="21:45-01:37 (3h52m)"></div>
-</div></div>
-<div class="timeline-row"><div class="timeline-bar">
-<div class="bar-segment" style="left:0%;width:21.53%;background:#1e3a5f;" title="00:00-05:11 (5h11m)"></div>
-<div class="bar-segment" style="left:21.53%;width:20.42%;background:#3b82f6;" title="05:11-10:06 (4h55m)"></div>
-<div class="bar-segment" style="left:41.94%;width:13.33%;background:#10b981;" title="10:06-14:24 (4h18m)"></div>
-<div class="bar-segment" style="left:55.28%;width:15%;background:#f59e0b;" title="14:24-17:36 (3h12m)"></div>
-<div class="bar-segment" style="left:70.28%;width:13.13%;background:#ef4444;" title="17:36-20:45 (3h9m)"></div>
-<div class="bar-segment" style="left:83.4%;width:16.6%;background:#8b5cf6;" title="20:45-01:52 (5h7m)"></div>
-</div></div>
-<div class="timeline-row"><div class="timeline-bar">
-<div class="bar-segment" style="left:0%;width:20.21%;background:#1e3a5f;" title="00:00-04:51 (4h51m)"></div>
-<div class="bar-segment" style="left:20.21%;width:17.29%;background:#3b82f6;" title="04:51-08:59 (4h8m)"></div>
-<div class="bar-segment" style="left:37.5%;width:15.42%;background:#10b981;" title="08:59-12:24 (3h25m)"></div>
-<div class="bar-segment" style="left:52.92%;width:13.13%;background:#f59e0b;" title="12:24-15:38 (3h14m)"></div>
-<div class="bar-segment" style="left:66.04%;width:12.5%;background:#ef4444;" title="15:38-18:31 (2h53m)"></div>
-<div class="bar-segment" style="left:78.54%;width:13.75%;background:#8b5cf6;" title="18:31-22:17 (3h46m)"></div>
-<div class="bar-segment" style="left:92.29%;width:7.71%;background:#ec4899;" title="22:17-01:59 (3h42m)"></div>
-</div></div>
-<div class="timeline-row"><div class="timeline-bar">
-<div class="bar-segment" style="left:0%;width:15.83%;background:#1e3a5f;" title="00:00-03:47 (3h47m)"></div>
-<div class="bar-segment" style="left:15.83%;width:16.67%;background:#3b82f6;" title="03:47-07:38 (3h51m)"></div>
-<div class="bar-segment" style="left:32.5%;width:15.63%;background:#10b981;" title="07:38-11:32 (3h54m)"></div>
-<div class="bar-segment" style="left:48.13%;width:10.42%;background:#f59e0b;" title="11:32-14:58 (3h26m)"></div>
-<div class="bar-segment" style="left:58.54%;width:13.54%;background:#ef4444;" title="14:58-19:09 (4h11m)"></div>
-<div class="bar-segment" style="left:72.08%;width:15.21%;background:#8b5cf6;" title="19:09-00:20 (5h11m)"></div>
-<div class="bar-segment" style="left:87.29%;width:12.71%;background:#ec4899;" title="00:20-05:26 (5h6m)"></div>
-</div></div>
-<div class="timeline-row"><div class="timeline-bar">
-<div class="bar-segment" style="left:0%;width:22.5%;background:#1e3a5f;" title="00:00-05:26 (5h26m)"></div>
-<div class="bar-segment" style="left:22.5%;width:12.5%;background:#3b82f6;" title="05:26-08:27 (3h1m)"></div>
-<div class="bar-segment" style="left:35%;width:6.53%;background:#10b981;" title="08:27-10:14 (1h47m)"></div>
-<div class="bar-segment" style="left:41.54%;width:12.08%;background:#f59e0b;" title="10:14-13:03 (2h49m)"></div>
-<div class="bar-segment" style="left:53.13%;width:11.04%;background:#ef4444;" title="13:03-15:57 (2h54m)"></div>
-<div class="bar-segment" style="left:64.17%;width:12.5%;background:#8b5cf6;" title="15:57-18:59 (3h2m)"></div>
-<div class="bar-segment" style="left:76.67%;width:13.13%;background:#ec4899;" title="18:59-23:00 (4h1m)"></div>
-<div class="bar-segment" style="left:89.79%;width:10.21%;background:#06b6d4;" title="23:00-04:51 (5h51m)"></div>
-</div></div>
-</div>
-<div class="timeline-labels">
-<span class="time-label">00:00</span>
-<span class="time-label">06:00</span>
-<span class="time-label">12:00</span>
-<span class="time-label">18:00</span>
-<span class="time-label">24:00</span>
-</div>
-</div>
-</div>
+    <div class="activities">
+      <div class="activity-card">
+        <div class="act-header"><div class="act-num">1</div><div class="act-title">Tummy Time 趴趴时间</div></div>
+        <div class="act-desc">每天累计1小时，分多次进行。在宝宝面前放彩色玩具或镜子，鼓励抬头和用手臂支撑身体。3个月宝宝已能用前臂支撑，头部能抬起45-90度。</div>
+        <div class="act-source">来源：<a href="https://pathways.org/videos/tummy-time-abilities-at-3-months" target="_blank">Pathways.org</a></div>
+      </div>
+
+      <div class="activity-card">
+        <div class="act-header"><div class="act-num">2</div><div class="act-title">视觉追踪训练</div></div>
+        <div class="act-desc">用黑白卡或彩色摇铃在宝宝眼前慢慢移动（左右、上下、画圆），让宝宝的眼睛跟着物体转动。距离保持20-30cm，每次2-3分钟。</div>
+        <div class="act-source">来源：<a href="https://zhuanlan.zhihu.com/p/66013469" target="_blank">知乎·一妈推荐</a></div>
+      </div>
+
+      <div class="activity-card">
+        <div class="act-header"><div class="act-num">3</div><div class="act-title">追声寻源游戏</div></div>
+        <div class="act-desc">在宝宝视线内用摇铃或轻柔发声玩具吸引注意，然后慢慢移到侧面或身后，让宝宝转头寻找声源。锻炼听觉定位和颈部转动能力。</div>
+        <div class="act-source">来源：<a href="https://www.youshiok.com/blog/15085" target="_blank">幼师OK网</a></div>
+      </div>
+
+      <div class="activity-card">
+        <div class="act-header"><div class="act-num">4</div><div class="act-title">抓握练习</div></div>
+        <div class="act-desc">将手指或轻软的玩具放在宝宝手心，引导抓握。3个月宝宝开始有意识地抓握物体，可以用不同材质的玩具（纱布、软球）刺激触觉发展。</div>
+        <div class="act-source">来源：<a href="https://kidshealth.org/en/parents/tummy-time.html" target="_blank">Nemours KidsHealth</a></div>
+      </div>
+
+      <div class="activity-card">
+        <div class="act-header"><div class="act-num">5</div><div class="act-title">亲子语言互动</div></div>
+        <div class="act-desc">面对宝宝说话、唱歌、模仿宝宝的咿呀声。3个月宝宝开始发出"啊""哦"等元音，积极回应能促进语言发展。可以用夸张的表情和语调逗宝宝笑。</div>
+        <div class="act-source">来源：<a href="https://www.unicef.cn/what-we-do/unicef-emergencies/covid-19/0-3-year-old-family-games" target="_blank">联合国儿童基金会</a></div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline-section">
+      <div class="timeline-title">📊 过去5天喂养时间线</div>
+      <div class="timeline-wrap">
+        <div class="timeline-days">
+          <div class="timeline-day-label">2/27</div>
+          <div class="timeline-day-label">2/28</div>
+          <div class="timeline-day-label">3/1</div>
+          <div class="timeline-day-label">3/2</div>
+          <div class="timeline-day-label">3/3</div>
+        </div>
+        <div class="timeline-bars">
+          <div class="timeline-row"><div class="timeline-bar">
+            <div class="bar-seg" style="left:0%;width:3.19%;background:#3b82f6" title="00:00-00:53 (53分钟)"></div>
+            <div class="bar-seg" style="left:3.19%;width:15.84%;background:#10b981" title="00:53-04:51 (3h58m)"></div>
+            <div class="bar-seg" style="left:19.03%;width:22.71%;background:#f59e0b" title="04:51-08:13 (3h22m)"></div>
+            <div class="bar-seg" style="left:41.74%;width:22.57%;background:#ef4444" title="08:13-11:34 (3h21m)"></div>
+            <div class="bar-seg" style="left:64.31%;width:16.25%;background:#8b5cf6" title="11:34-14:21 (2h47m)"></div>
+            <div class="bar-seg" style="left:80.56%;width:10.42%;background:#ec4899" title="14:21-17:18 (2h57m)"></div>
+            <div class="bar-seg" style="left:90.97%;width:6.11%;background:#06b6d4" title="17:18-19:56 (2h38m)"></div>
+            <div class="bar-seg" style="left:97.08%;width:2.92%;background:#3b82f6" title="19:56-23:38 (3h42m)"></div>
+          </div></div>
+          <div class="timeline-row"><div class="timeline-bar">
+            <div class="bar-seg" style="left:0%;width:16.25%;background:#3b82f6" title="00:00-03:54 (3h54m)"></div>
+            <div class="bar-seg" style="left:16.25%;width:12.57%;background:#10b981" title="03:54-07:44 (3h50m)"></div>
+            <div class="bar-seg" style="left:28.82%;width:16.11%;background:#f59e0b" title="07:44-10:23 (2h39m)"></div>
+            <div class="bar-seg" style="left:44.93%;width:14.17%;background:#ef4444" title="10:23-12:56 (2h33m)"></div>
+            <div class="bar-seg" style="left:59.10%;width:18.40%;background:#8b5cf6" title="12:56-17:15 (4h19m)"></div>
+            <div class="bar-seg" style="left:77.50%;width:11.25%;background:#ec4899" title="17:15-19:50 (2h35m)"></div>
+          </div></div>
+          <div class="timeline-row"><div class="timeline-bar">
+            <div class="bar-seg" style="left:0%;width:2.08%;background:#3b82f6" title="00:00-00:03 (3分钟)"></div>
+            <div class="bar-seg" style="left:2.08%;width:15.97%;background:#10b981" title="00:03-03:50 (3h47m)"></div>
+            <div class="bar-seg" style="left:18.06%;width:12.15%;background:#f59e0b" title="03:50-07:09 (3h19m)"></div>
+            <div class="bar-seg" style="left:30.21%;width:6.60%;background:#ef4444" title="07:09-09:20 (2h11m)"></div>
+            <div class="bar-seg" style="left:36.81%;width:17.29%;background:#8b5cf6" title="09:20-12:42 (3h22m)"></div>
+            <div class="bar-seg" style="left:54.10%;width:22.71%;background:#ec4899" title="12:42-16:01 (3h19m)"></div>
+            <div class="bar-seg" style="left:76.81%;width:12.92%;background:#06b6d4" title="16:01-18:54 (2h53m)"></div>
+            <div class="bar-seg" style="left:89.72%;width:15.42%;background:#3b82f6" title="18:54-22:24 (3h30m)"></div>
+          </div></div>
+          <div class="timeline-row"><div class="timeline-bar">
+            <div class="bar-seg" style="left:0%;width:9.31%;background:#3b82f6" title="00:00-02:14 (2h14m)"></div>
+            <div class="bar-seg" style="left:9.31%;width:13.47%;background:#10b981" title="02:14-05:50 (3h36m)"></div>
+            <div class="bar-seg" style="left:22.78%;width:13.47%;background:#f59e0b" title="05:50-09:02 (3h12m)"></div>
+            <div class="bar-seg" style="left:36.25%;width:17.78%;background:#ef4444" title="09:02-12:36 (3h34m)"></div>
+            <div class="bar-seg" style="left:54.03%;width:9.65%;background:#8b5cf6" title="12:36-15:08 (2h32m)"></div>
+            <div class="bar-seg" style="left:63.68%;width:13.89%;background:#ec4899" title="15:08-18:12 (3h04m)"></div>
+            <div class="bar-seg" style="left:77.57%;background:#06b6d4;width:18.75%" title="18:12-21:45 (3h33m)"></div>
+          </div></div>
+          <div class="timeline-row"><div class="timeline-bar">
+            <div class="bar-seg" style="left:0%;width:9.10%;background:#3b82f6" title="00:00-02:11 (2h11m)"></div>
+            <div class="bar-seg" style="left:9.10%;width:15.63%;background:#10b981" title="02:11-06:00 (3h49m)"></div>
+            <div class="bar-seg" style="left:24.72%;width:9.79%;background:#f59e0b" title="06:00-08:43 (2h43m)"></div>
+            <div class="bar-seg" style="left:34.51%;width:7.50%;background:#ef4444" title="08:43-10:31 (1h48m)"></div>
+            <div class="bar-seg" style="left:42.01%;width:7.92%;background:#8b5cf6" title="10:31-12:23 (1h52m)"></div>
+            <div class="bar-seg" style="left:49.93%;width:8.33%;background:#ec4899" title="12:23-14:23 (2h00m)"></div>
+            <div class="bar-seg" style="left:58.26%;width:10.21%;background:#06b6d4" title="14:23-16:51 (2h28m)"></div>
+            <div class="bar-seg" style="left:68.47%;width:9.65%;background:#3b82f6" title="16:51-19:10 (2h19m)"></div>
+            <div class="bar-seg" style="left:78.13%;width:7.50%;background:#10b981" title="19:10-21:02 (1h52m)"></div>
+          </div></div>
+        </div>
+      </div>
+      <div class="timeline-labels">
+        <span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span>
+      </div>
+    </div>
+  </div>
 </div>
 </body>
 </html>
