@@ -4,177 +4,222 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920,height=1080">
 <meta http-equiv="refresh" content="600">
-<title>年糕宝宝 · 每日早教 2026-04-12</title>
+<title>年糕宝宝 · 每日早教 2026-04-13</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;color:#e8f0fe;background:#0a1628;}
-
-/* Background animation */
 .bg-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;overflow:hidden;}
-.bg-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.18;animation:orbFloat 20s ease-in-out infinite;}
-.bg-orb:nth-child(1){width:40vw;height:40vw;background:#1e40af;top:-10%;left:-10%;animation-delay:0s;}
-.bg-orb:nth-child(2){width:35vw;height:35vw;background:#059669;top:60%;right:-15%;animation-delay:-7s;}
-.bg-orb:nth-child(3){width:30vw;height:30vw;background:#0891b2;bottom:-10%;left:30%;animation-delay:-14s;}
-.bg-orb:nth-child(4){width:25vw;height:25vw;background:#2563eb;top:20%;right:20%;animation-delay:-3s;}
-@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1);}25%{transform:translate(3vw,-2vw) scale(1.05);}50%{transform:translate(-2vw,3vw) scale(0.95);}75%{transform:translate(2vw,2vw) scale(1.02);}}
-
-.page-container{position:relative;z-index:1;width:100%;height:100%;display:flex;flex-direction:column;padding:1.5vh 1.5vw;}
-
-/* Top section: left panel + right panel */
-.top-section{display:flex;flex:1;gap:1.2vw;min-height:0;}
-
-/* Left panel */
-.left-panel{width:28%;display:flex;flex-direction:column;gap:1vh;}
-
-/* Baby info card */
-.baby-card{background:rgba(30,58,138,0.25);border:1px solid rgba(59,130,246,0.2);border-radius:1.2vh;padding:1.2vh 1vw;animation:slideIn 0.8s ease-out;}
-.baby-card h2{font-size:2vh;color:#93c5fd;margin-bottom:0.3vh;}
-.baby-card .info-row{font-size:1.3vh;color:#bfdbfe;line-height:1.8;}
-
-/* Stats grid */
+.bg-gradient{position:absolute;width:100%;height:100%;background:linear-gradient(135deg,#0a1628 0%,#0f1d36 30%,#0c1a2e 60%,#0a1628 100%);}
+.page-container{position:relative;z-index:1;width:100%;height:100%;display:flex;flex-direction:column;padding:1.2vh 1.2vw;gap:1vh;}
+.top-section{display:flex;flex:1;gap:1vw;min-height:0;}
+.col-info{width:33.33%;display:flex;flex-direction:column;gap:0.8vh;}
+.col-info .col-title{font-size:2.5vh;color:#93c5fd;padding:0.5vh 0;}
+.info-row{display:flex;gap:0.8vh;}
+.info-card{background:rgba(30,58,138,0.25);border:1px solid rgba(59,130,246,0.2);border-radius:1.2vh;padding:1.2vh 1.5vw;flex:1;display:flex;flex-direction:column;justify-content:center;animation:slideIn 0.8s ease-out;}
+.info-card .info-label{font-size:1.2vh;color:#64748b;}
+.info-card .info-value{font-size:2.5vh;font-weight:700;color:#60a5fa;}
+.col-data{width:33.33%;display:flex;flex-direction:column;gap:1vh;}
 .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8vh;animation:slideIn 0.8s ease-out 0.1s both;}
 .stat-card{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1vh;padding:1vh 0.8vw;text-align:center;}
 .stat-card .stat-value{font-size:2.2vh;font-weight:700;color:#60a5fa;}
 .stat-card .stat-label{font-size:1.1vh;color:#94a3b8;margin-top:0.2vh;}
-
-/* Bar chart */
-.chart-section{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1vh;padding:1vh 1vw;flex:1;animation:slideIn 0.8s ease-out 0.2s both;display:flex;flex-direction:column;}
-.chart-title{font-size:1.3vh;color:#93c5fd;margin-bottom:0.5vh;}
-.chart-bars{display:flex;align-items:flex-end;gap:0.6vw;flex:1;}
-.chart-bar-col{display:flex;flex-direction:column;align-items:center;flex:1;height:100%;}
-.chart-bar{width:100%;border-radius:0.5vh 0.5vh 0 0;min-height:0.5vh;transition:height 1s ease;}
-.chart-bar.highlight{background:linear-gradient(to top,#059669,#34d399);}
-.chart-bar.normal{background:linear-gradient(to top,#1e40af,#3b82f6);}
-.chart-bar-val{font-size:1vh;color:#94a3b8;margin-top:0.3vh;}
-.chart-bar-label{font-size:1vh;color:#64748b;}
-
-/* Interval board */
-.interval-section{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1vh;padding:1vh 1vw;animation:slideIn 0.8s ease-out 0.3s both;max-height:18vh;overflow:hidden;}
-.interval-title{font-size:1.3vh;color:#93c5fd;margin-bottom:0.5vh;}
-.interval-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5vh;}
-.interval-item{background:rgba(15,23,42,0.4);border-radius:0.6vh;padding:0.5vh 0.6vw;}
-.interval-time{font-size:1.4vh;color:#60a5fa;font-weight:600;}
-.interval-gap{font-size:1vh;color:#64748b;}
-
-/* Right panel: activities */
-.right-panel{width:72%;display:flex;flex-direction:column;gap:1vh;}
-.section-title{font-size:2vh;color:#93c5fd;text-align:center;animation:pulse 3s ease-in-out infinite;margin:0.5vh 0;}
+.chart-card{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1vh;flex:1;animation:slideIn 0.8s ease-out 0.2s both;display:flex;flex-direction:column;overflow:hidden;}
+.col-edu{width:33.33%;display:flex;flex-direction:column;gap:0.8vh;}
+.edu-title{font-size:1.5vh;color:#93c5fd;text-align:center;animation:pulse 3s ease-in-out infinite;padding:0.3vh 0;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.85;}}
-
-.activities-grid{display:grid;grid-template-columns:1fr 1fr;gap:1vh;flex:1;}
-.activity-card{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1.2vh;padding:1.2vh 1.2vw;display:flex;flex-direction:column;animation:slideIn 0.8s ease-out both;}
+.edu-cards{display:flex;flex-direction:column;gap:0.6vh;flex:1;overflow:hidden;}
+.activity-card{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1vh;padding:0.8vh 1vw;flex:1;display:flex;flex-direction:column;justify-content:flex-start;gap:0.3vh;animation:slideIn 0.8s ease-out both;overflow:hidden;}
 .activity-card:nth-child(1){animation-delay:0.2s;}
 .activity-card:nth-child(2){animation-delay:0.3s;}
 .activity-card:nth-child(3){animation-delay:0.4s;}
 .activity-card:nth-child(4){animation-delay:0.5s;}
-.activity-card:nth-child(5){animation-delay:0.6s;grid-column:1/3;}
-.activity-num{font-size:1.2vh;color:#3b82f6;font-weight:700;margin-bottom:0.3vh;}
-.activity-title{font-size:1.6vh;font-weight:700;color:#e0f2fe;margin-bottom:0.4vh;}
-.activity-desc{font-size:1.15vh;color:#94a3b8;line-height:1.5;flex:1;}
-.activity-link{font-size:1vh;color:#38bdf8;margin-top:0.4vh;text-decoration:none;opacity:0.7;}
-.activity-link:hover{opacity:1;}
-
+.activity-card:nth-child(5){animation-delay:0.6s;}
+.activity-card .card-header{display:flex;align-items:center;gap:0.8vw;}
+.activity-card .activity-num{font-size:2vh;color:#3b82f6;font-weight:700;white-space:nowrap;}
+.activity-card .activity-title{font-size:1.6vh;font-weight:700;color:#e0f2fe;white-space:nowrap;}
+.activity-card .card-body{flex:1;}
+.activity-card .activity-desc{font-size:1.15vh;color:#94a3b8;line-height:1.3;}
+.activity-card .card-footer{text-align:right;}
+.activity-card .activity-link{font-size:1vh;color:#38bdf8;text-decoration:none;opacity:0.7;}
+.activity-card .activity-link:hover{opacity:1;}
 @keyframes slideIn{from{opacity:0;transform:translateY(1vh);}to{opacity:1;transform:translateY(0);}}
-
-/* Bottom: timeline */
-.bottom-section{margin-top:1vh;animation:slideIn 0.8s ease-out 0.7s both;}
-.timeline-title{font-size:1.4vh;color:#93c5fd;margin-bottom:0.5vh;display:flex;align-items:center;gap:0.5vw;}
-.timeline-container{display:flex;gap:0.8vw;}
-.timeline-labels-left{display:flex;flex-direction:column;justify-content:space-around;width:3.5vw;}
-.timeline-day-label{font-size:1.1vh;color:#64748b;text-align:right;}
-.timeline-bars{flex:1;display:flex;flex-direction:column;justify-content:space-around;}
-.timeline-row .timeline-bar{position:relative;height:2vh;background:rgba(255,255,255,0.05);border-radius:0.4vh;}
-.bar-segment{position:absolute;top:0;height:100%;border-radius:0.3vh;cursor:pointer;transition:opacity 0.2s,transform 0.2s;}
-.bar-segment:hover{opacity:0.85;transform:scaleY(1.15);}
-.timeline-labels{display:flex;justify-content:space-between;padding:0.3vh 0;}
-.time-label{font-size:1vh;color:#475569;}
+.bottom-section{animation:slideIn 0.8s ease-out 0.7s both;background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1.2vh;padding:1vh 1.5vw;height:28vh;}
 </style>
 </head>
 <body>
 <div class="bg-animation">
-  <div class="bg-orb"></div>
-  <div class="bg-orb"></div>
-  <div class="bg-orb"></div>
-  <div class="bg-orb"></div>
+  <div class="bg-gradient"></div>
+  <canvas id="particleCanvas"></canvas>
 </div>
+<script>
+(function(){
+  const canvas = document.getElementById('particleCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
+  function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  const particles = [];
+  const count = 80;
+  const colors = ['#3b82f6','#60a5fa','#06b6d4','#22d3ee','#10b981','#34d399','#0ea5e9','#38bdf8'];
+  for(let i = 0; i < count; i++){
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 25 + 8,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: -(Math.random() * 0.4 + 0.1),
+      color: colors[Math.floor(Math.random() * colors.length)],
+      alpha: Math.random() * 0.4 + 0.1,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.005
+    });
+  }
+  function draw(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for(const p of particles){
+      p.x += p.vx; p.y += p.vy; p.pulse += p.pulseSpeed;
+      const a = p.alpha * (0.6 + 0.4 * Math.sin(p.pulse));
+      if(p.y < -10) { p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
+      if(p.x < -10) p.x = canvas.width + 10;
+      if(p.x > canvas.width + 10) p.x = -10;
+      const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+      grad.addColorStop(0, p.color.slice(0,7) + Math.round(a * 80).toString(16).padStart(2,'0'));
+      grad.addColorStop(1, p.color.slice(0,7) + '00');
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2); ctx.fillStyle = grad; ctx.fill();
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color.slice(0,7) + Math.round(a * 255).toString(16).padStart(2,'0'); ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
 
 <div class="page-container">
   <div class="top-section">
-    <!-- Left Panel -->
-    <div class="left-panel">
-      <div class="baby-card">
-        <h2>👶 年糕宝宝</h2>
-        <div class="info-row">🎂 2026年1月9日出生</div>
-        <div class="info-row">📅 93天 · 3个月3天</div>
-        <div class="info-row">🧒 男宝 · Frisolac Prestige</div>
-        <div class="info-row">📆 2026年4月12日 星期日</div>
-      </div>
-
-      <div class="stats-grid">
-        <div class="stat-card"><div class="stat-value">980ml</div><div class="stat-label">昨日总奶量</div></div>
-        <div class="stat-card"><div class="stat-value">7次</div><div class="stat-label">喂养次数</div></div>
-        <div class="stat-card"><div class="stat-value">~3h17m</div><div class="stat-label">平均间隔</div></div>
-        <div class="stat-card"><div class="stat-value">140ml</div><div class="stat-label">单次奶量</div></div>
-      </div>
-
-      <div class="chart-section">
-        <div class="chart-title">📊 近5天奶量趋势</div>
-        <div class="chart-bars">
-          <div class="chart-bar-col"><div class="chart-bar normal" style="height:71%;"></div><div class="chart-bar-val">700</div><div class="chart-bar-label">4/7</div></div>
-          <div class="chart-bar-col"><div class="chart-bar normal" style="height:100%;"></div><div class="chart-bar-val">980</div><div class="chart-bar-label">4/8</div></div>
-          <div class="chart-bar-col"><div class="chart-bar normal" style="height:100%;"></div><div class="chart-bar-val">980</div><div class="chart-bar-label">4/9</div></div>
-          <div class="chart-bar-col"><div class="chart-bar normal" style="height:100%;"></div><div class="chart-bar-val">980</div><div class="chart-bar-label">4/10</div></div>
-          <div class="chart-bar-col"><div class="chart-bar highlight" style="height:100%;"></div><div class="chart-bar-val">980</div><div class="chart-bar-label">4/11</div></div>
+    <!-- Column 1: Baby Info -->
+    <div class="col-info">
+      <div class="col-title">👶 年糕宝宝</div>
+      <div class="info-row">
+        <div class="info-card">
+          <div class="info-label">天龄</div>
+          <div class="info-value">94 天</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">月龄</div>
+          <div class="info-value">3 个月 4 天</div>
         </div>
       </div>
-
-      <div class="interval-section">
-        <div class="interval-title">⏱ 昨日喂养间隔</div>
-        <div class="interval-grid">
-          <div class="interval-item"><div class="interval-time">02:35</div><div class="interval-gap">4h00m</div></div>
-          <div class="interval-item"><div class="interval-time">06:55</div><div class="interval-gap">4h19m</div></div>
-          <div class="interval-item"><div class="interval-time">10:13</div><div class="interval-gap">3h17m</div></div>
-          <div class="interval-item"><div class="interval-time">13:09</div><div class="interval-gap">2h55m</div></div>
-          <div class="interval-item"><div class="interval-time">16:27</div><div class="interval-gap">3h17m</div></div>
-          <div class="interval-item"><div class="interval-time">19:24</div><div class="interval-gap">2h56m</div></div>
-          <div class="interval-item"><div class="interval-time">23:37</div><div class="interval-gap">4h12m</div></div>
+      <div class="info-row">
+        <div class="info-card">
+          <div class="info-label">出生日期</div>
+          <div class="info-value">2026.01.09</div>
         </div>
+        <div class="info-card">
+          <div class="info-label">今天</div>
+          <div class="info-value">4月13日 周一</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">🎯 生长发育里程碑</div>
+        <div class="info-value" style="font-size:1.4vh;font-weight:400;color:#bfdbfe;line-height:1.6;">俯卧抬头45° ✅ · 跟视180° ✅ · 发声 ✅ · 咯咯笑 ✅<br>伸手抓物 🔄 · 翻身 🔄 · 抬头90° 🔄</div>
+      </div>
+      <div class="info-row">
+        <div class="info-card">
+          <div class="info-label">🌤 天气</div>
+          <div class="info-value" style="font-size:1.4vh;">🌫 15°C 薄雾<br>💧 94%</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">👔 穿衣建议</div>
+          <div class="info-value" style="font-size:1.4vh;">长袖连体衣<br>+ 薄外套</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">💡 今日育儿小知识</div>
+        <div class="info-value" style="font-size:1.4vh;font-weight:400;color:#bfdbfe;line-height:1.6;">3个月宝宝开始主动探索世界，伸手够物是手眼协调的重要里程碑。在宝宝面前悬挂玩具，鼓励伸手触碰。</div>
       </div>
     </div>
 
-    <!-- Right Panel -->
-    <div class="right-panel">
-      <div class="section-title">🌟 年糕宝宝今日早教 · 3月龄专属</div>
-      <div class="activities-grid">
+    <!-- Column 2: Data -->
+    <div class="col-data">
+      <div class="edu-title">📊 宝宝数据</div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-value">990ml</div><div class="stat-label">昨日总奶量</div></div>
+        <div class="stat-card"><div class="stat-value">7次</div><div class="stat-label">喂养次数</div></div>
+        <div class="stat-card"><div class="stat-value">~3h10m</div><div class="stat-label">平均间隔</div></div>
+        <div class="stat-card"><div class="stat-value">141ml</div><div class="stat-label">单次奶量</div></div>
+      </div>
+      <div class="chart-card">
+        <div id="milkChart" style="width:100%;flex:1;min-height:0;"></div>
+      </div>
+      <div class="chart-card">
+        <div id="weightChart" style="width:100%;flex:1;min-height:0;"></div>
+      </div>
+    </div>
+
+    <!-- Column 3: Education -->
+    <div class="col-edu">
+      <div class="edu-title">🌟 年糕宝宝今日早教 · 3月龄专属</div>
+      <div class="edu-cards">
         <div class="activity-card">
-          <div class="activity-num">01 🎯 大运动</div>
-          <div class="activity-title">俯卧抬头 · 肘撑练习</div>
-          <div class="activity-desc">让宝宝趴在硬面床上，用彩色摇铃在正前方吸引注意力，鼓励用肘部支撑抬起头和胸部。从30秒开始，逐渐延长至3-5分钟，每天3-4次。锻炼颈部和上背部肌肉。</div>
-          <a class="activity-link" href="https://www.mayoclinic.org/healthy-lifestyle/infant-and-toddler-health/in-depth/infant-development/art-20048012">📖 Mayo Clinic 婴儿发育指南</a>
+          <div class="card-header">
+            <span class="activity-num">01 🎯 大运动</span>
+            <span class="activity-title">俯卧抬头 · 肘撑练习</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">让宝宝趴在硬面床上，用彩色摇铃在正前方20cm处吸引注意力，鼓励用肘部支撑抬起头和胸部至90°，每次3-5分钟。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://www.healthyyoungminds.com/activities-for-3-month-old/">📖 Healthy Young Minds</a>
+          </div>
         </div>
         <div class="activity-card">
-          <div class="activity-num">02 👁 视觉发展</div>
-          <div class="activity-title">追视训练 · 彩色移动物体</div>
-          <div class="activity-desc">在宝宝眼前20-30cm处缓慢移动红、黄、蓝等高对比度玩具或卡片，引导宝宝用眼睛追踪物体。左右移动、上下移动、画圈均可，每次2-3分钟。促进视觉追踪能力和注意力发展。</div>
-          <a class="activity-link" href="https://www.healthychildren.org/English/ages-stages/baby/Pages/Developmental-Milestones-3-Months.aspx">📖 HealthyChildren.org 3月里程碑</a>
+          <div class="card-header">
+            <span class="activity-num">02 👁 视觉发展</span>
+            <span class="activity-title">彩色追视 · 悬挂玩具</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">在宝宝眼前20-30cm处缓慢左右移动红黄蓝高对比度玩具，引导眼睛追踪180°，促进视觉神经发育。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://zhuanlan.zhihu.com/p/427963873">📖 知乎·视觉追视训练</a>
+          </div>
         </div>
         <div class="activity-card">
-          <div class="activity-num">03 ✋ 精细动作</div>
-          <div class="activity-title">伸手够物 · 抓握启蒙</div>
-          <div class="activity-desc">将色彩鲜艳的轻质玩具（如布摇铃、软胶圈）放在宝宝刚好够不到的位置，鼓励伸手尝试。当宝宝触碰到时给予热情回应。每天练习多次，促进手眼协调发展。</div>
-          <a class="activity-link" href="https://blog.lovevery.com/age-range/3-4-months/">📖 Lovevery 3-4月发展指南</a>
+          <div class="card-header">
+            <span class="activity-num">03 ✋ 精细动作</span>
+            <span class="activity-title">伸手够物 · 抓握启蒙</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">将色彩鲜艳的轻质摇铃放在宝宝刚好够不到的位置，鼓励主动伸手尝试，锻炼手眼协调能力。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://blog.lovevery.com/age-range/3-4-months/">📖 Lovevery</a>
+          </div>
         </div>
         <div class="activity-card">
-          <div class="activity-num">04 🎵 听觉感知</div>
-          <div class="activity-title">声音追踪 · 音乐启蒙</div>
-          <div class="activity-desc">在宝宝左右两侧轻摇铃铛或播放轻柔音乐，观察宝宝是否能转头寻找声源。可以播放不同风格的儿歌、白噪音或大自然声音。锻炼听觉定位能力和音乐感知。</div>
-          <a class="activity-link" href="https://www.whattoexpect.com/first-year/month-by-month/month-3.aspx">📖 What To Expect 3月发展</a>
+          <div class="card-header">
+            <span class="activity-num">04 🎵 听觉感知</span>
+            <span class="activity-title">声音追踪 · 音乐启蒙</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">在宝宝左右两侧交替轻摇铃铛，观察宝宝能否准确转头寻找声源。播放轻柔音乐，培养节奏感。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://www.sensorylifestyle.com/baby-activities/top-activities-3-month-old-baby/">📖 Sensory Lifestyle</a>
+          </div>
         </div>
         <div class="activity-card">
-          <div class="activity-num">05 💬 社交情感</div>
-          <div class="activity-title">亲子对话 · 模仿互动</div>
-          <div class="activity-desc">面对宝宝，模仿ta发出的「啊」「哦」等声音，等宝宝回应后再继续，像真正的对话一样轮流进行。对宝宝的微笑和发声给予热烈回应。促进社交能力和语言发展基础。</div>
-          <a class="activity-link" href="https://www.unicef.cn/what-we-do/unicef-emergencies/covid-19/0-3-year-old-family-games">📖 UNICEF 亲子游戏指南</a>
+          <div class="card-header">
+            <span class="activity-num">05 💬 社交情感</span>
+            <span class="activity-title">亲子对话 · 模仿互动</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">面对面模仿宝宝发出的"咕咕""啊啊"声，等回应后再继续，像真正的对话一样轮流进行，促进社交发展。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://www.enfamil.com/articles/activities-for-your-3-month-old/">📖 Enfamil</a>
+          </div>
         </div>
       </div>
     </div>
@@ -182,79 +227,125 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
 
   <!-- Bottom: Feeding Timeline -->
   <div class="bottom-section">
-    <div class="timeline-title">📊 过去5天喂养时间线</div>
-    <div class="timeline-container">
-      <div class="timeline-labels-left">
-        <div class="timeline-day-label">4/7</div>
-        <div class="timeline-day-label">4/8</div>
-        <div class="timeline-day-label">4/9</div>
-        <div class="timeline-day-label">4/10</div>
-        <div class="timeline-day-label">4/11</div>
-      </div>
-      <div class="timeline-bars">
-        <!-- 4/7: 09:59 12:52 15:48 18:40 22:18 (incomplete - missing first 2) -->
-        <div class="timeline-row"><div class="timeline-bar">
-          <div class="bar-segment" style="left:0%;width:41.6%;background:#1e3a5f;" title="00:00-09:59 (睡眠)"></div>
-          <div class="bar-segment" style="left:41.6%;width:12.2%;background:#3b82f6;" title="09:59-12:52 (2h53m)"></div>
-          <div class="bar-segment" style="left:53.8%;width:12.3%;background:#10b981;" title="12:52-15:48 (2h56m)"></div>
-          <div class="bar-segment" style="left:66.1%;width:11.8%;background:#f59e0b;" title="15:48-18:40 (2h52m)"></div>
-          <div class="bar-segment" style="left:77.9%;width:15.4%;background:#ef4444;" title="18:40-22:18 (3h38m)"></div>
-          <div class="bar-segment" style="left:93.3%;width:6.7%;background:#06b6d4;" title="22:18-24:00 (1h42m)"></div>
-        </div></div>
-        <!-- 4/8: 02:25 05:33 09:10 12:04 16:00 18:56 22:30 -->
-        <div class="timeline-row"><div class="timeline-bar">
-          <div class="bar-segment" style="left:0%;width:10.1%;background:#1e3a5f;" title="00:00-02:25 (2h25m)"></div>
-          <div class="bar-segment" style="left:10.1%;width:13.1%;background:#3b82f6;" title="02:25-05:33 (3h08m)"></div>
-          <div class="bar-segment" style="left:23.2%;width:14.8%;background:#10b981;" title="05:33-09:10 (3h37m)"></div>
-          <div class="bar-segment" style="left:38.0%;width:12.3%;background:#f59e0b;" title="09:10-12:04 (2h54m)"></div>
-          <div class="bar-segment" style="left:50.3%;width:16.5%;background:#ef4444;" title="12:04-16:00 (3h56m)"></div>
-          <div class="bar-segment" style="left:66.8%;width:12.3%;background:#06b6d4;" title="16:00-18:56 (2h56m)"></div>
-          <div class="bar-segment" style="left:79.1%;width:14.6%;background:#8b5cf6;" title="18:56-22:30 (3h34m)"></div>
-          <div class="bar-segment" style="left:93.7%;width:6.3%;background:#ec4899;" title="22:30-24:00 (1h30m)"></div>
-        </div></div>
-        <!-- 4/9: 04:12 07:51 10:35 13:40 16:38 19:47 23:31 -->
-        <div class="timeline-row"><div class="timeline-bar">
-          <div class="bar-segment" style="left:0%;width:17.5%;background:#1e3a5f;" title="00:00-04:12 (4h12m)"></div>
-          <div class="bar-segment" style="left:17.5%;width:15.0%;background:#3b82f6;" title="04:12-07:51 (3h39m)"></div>
-          <div class="bar-segment" style="left:32.5%;width:11.7%;background:#10b981;" title="07:51-10:35 (2h44m)"></div>
-          <div class="bar-segment" style="left:44.2%;width:12.8%;background:#f59e0b;" title="10:35-13:40 (3h05m)"></div>
-          <div class="bar-segment" style="left:57.0%;width:12.4%;background:#ef4444;" title="13:40-16:38 (2h58m)"></div>
-          <div class="bar-segment" style="left:69.4%;width:12.9%;background:#06b6d4;" title="16:38-19:47 (3h09m)"></div>
-          <div class="bar-segment" style="left:82.3%;width:15.9%;background:#8b5cf6;" title="19:47-23:31 (3h44m)"></div>
-          <div class="bar-segment" style="left:98.2%;width:1.8%;background:#ec4899;" title="23:31-24:00 (29m)"></div>
-        </div></div>
-        <!-- 4/10: 03:12 06:51 09:48 13:03 15:44 19:03 22:34 -->
-        <div class="timeline-row"><div class="timeline-bar">
-          <div class="bar-segment" style="left:0%;width:13.3%;background:#1e3a5f;" title="00:00-03:12 (3h12m)"></div>
-          <div class="bar-segment" style="left:13.3%;width:15.1%;background:#3b82f6;" title="03:12-06:51 (3h39m)"></div>
-          <div class="bar-segment" style="left:28.4%;width:12.3%;background:#10b981;" title="06:51-09:48 (2h57m)"></div>
-          <div class="bar-segment" style="left:40.7%;width:13.2%;background:#f59e0b;" title="09:48-13:03 (3h15m)"></div>
-          <div class="bar-segment" style="left:53.9%;width:11.2%;background:#ef4444;" title="13:03-15:44 (2h41m)"></div>
-          <div class="bar-segment" style="left:65.1%;width:13.5%;background:#06b6d4;" title="15:44-19:03 (3h19m)"></div>
-          <div class="bar-segment" style="left:78.6%;width:13.9%;background:#8b5cf6;" title="19:03-22:34 (3h31m)"></div>
-          <div class="bar-segment" style="left:92.5%;width:7.5%;background:#ec4899;" title="22:34-24:00 (1h26m)"></div>
-        </div></div>
-        <!-- 4/11: 02:35 06:55 10:13 13:09 16:27 19:24 23:37 -->
-        <div class="timeline-row"><div class="timeline-bar">
-          <div class="bar-segment" style="left:0%;width:10.8%;background:#1e3a5f;" title="00:00-02:35 (2h35m)"></div>
-          <div class="bar-segment" style="left:10.8%;width:17.9%;background:#3b82f6;" title="02:35-06:55 (4h20m)"></div>
-          <div class="bar-segment" style="left:28.7%;width:13.2%;background:#10b981;" title="06:55-10:13 (3h18m)"></div>
-          <div class="bar-segment" style="left:41.9%;width:12.1%;background:#f59e0b;" title="10:13-13:09 (2h56m)"></div>
-          <div class="bar-segment" style="left:54.0%;width:13.6%;background:#ef4444;" title="13:09-16:27 (3h18m)"></div>
-          <div class="bar-segment" style="left:67.6%;width:12.3%;background:#06b6d4;" title="16:27-19:24 (2h57m)"></div>
-          <div class="bar-segment" style="left:79.9%;width:17.3%;background:#8b5cf6;" title="19:24-23:37 (4h13m)"></div>
-          <div class="bar-segment" style="left:97.2%;width:2.8%;background:#ec4899;" title="23:37-24:00 (23m)"></div>
-        </div></div>
-      </div>
-    </div>
-    <div class="timeline-labels" style="margin-left:4.3vw;">
-      <span class="time-label">00:00</span>
-      <span class="time-label">06:00</span>
-      <span class="time-label">12:00</span>
-      <span class="time-label">18:00</span>
-      <span class="time-label">24:00</span>
-    </div>
+    <div id="timelineChart" style="width:100%;height:100%;min-height:14vh;"></div>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script>
+// Milk trend chart (9 days: 4/4-4/12)
+(function(){
+  var chart = echarts.init(document.getElementById('milkChart'));
+  var dates = ['4/4','4/5','4/6','4/7','4/8','4/9','4/10','4/11','4/12'];
+  var milk  = [1070, 980, 840, 980, 980, 980, 980, 980, 990];
+  chart.setOption({
+    title:{text:'📊 近期奶量趋势',left:'center',textStyle:{color:'#93c5fd',fontSize:12,fontWeight:'normal'}},
+    grid:{left:'12%',right:'5%',top:'22%',bottom:'15%'},
+    xAxis:{type:'category',data:dates,axisLabel:{color:'#64748b',fontSize:9},axisLine:{lineStyle:{color:'rgba(255,255,255,0.1)'}}},
+    yAxis:{type:'value',axisLabel:{color:'#64748b',fontSize:9},splitLine:{lineStyle:{color:'rgba(255,255,255,0.05)'}},min:function(v){return v.min-100;}},
+    series:[{type:'line',data:milk,smooth:true,
+      lineStyle:{color:'#3b82f6',width:2},
+      itemStyle:{color:'#3b82f6'},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(59,130,246,0.3)'},{offset:1,color:'rgba(59,130,246,0.02)'}]}},
+      markLine:{silent:true,data:[{yAxis:900,label:{formatter:'目标 900ml',color:'#94a3b8',fontSize:8},lineStyle:{color:'#f59e0b',type:'dashed',width:1}}]}
+    }],
+    tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+p[0].value+'ml';}}
+  });
+  window.addEventListener('resize',function(){chart.resize();});
+})();
+
+// Weight trend chart
+(function(){
+  var chart = echarts.init(document.getElementById('weightChart'));
+  var dates = ['1/9','1/12','1/13','1/14','1/15','1/16','1/17','1/18','1/19','1/20','1/21','1/22','1/23','1/24','1/25','1/26','1/27','1/28','1/29','1/30','1/31','2/1','2/2','2/3','2/4','2/5','2/6','2/7','2/8','2/9','2/10','2/11','2/12','2/13','2/14','2/15','2/17','2/20','2/21','2/22','2/24','2/25','2/28','3/2','3/6','3/8','3/12','3/15','3/18','3/19','3/21','3/23','3/25','3/28','3/30','4/2','4/3','4/7','4/8','4/9','4/10','4/11','4/12'];
+  var weight = [3.46,3.33,3.36,3.36,3.38,3.43,3.5,3.51,3.56,3.64,3.7,3.76,3.78,3.82,3.88,3.9,3.96,4.0,4.07,4.12,4.18,4.22,4.3,4.38,4.42,4.52,4.59,4.67,4.73,4.8,4.85,4.92,4.97,5.03,5.08,5.11,5.35,5.47,5.5,5.51,5.6,5.68,6.06,6.0,6.2,6.15,6.3,6.5,6.45,6.45,6.6,6.7,6.85,6.9,6.9,7.0,7.15,7.2,7.3,7.35,7.2,7.4];
+  chart.setOption({
+    title:{text:'⚖️ 体重趋势 ('+weight.length+'次记录)',left:'center',textStyle:{color:'#93c5fd',fontSize:12,fontWeight:'normal'}},
+    grid:{left:'15%',right:'5%',top:'22%',bottom:'15%'},
+    xAxis:{type:'category',data:dates,axisLabel:{color:'#64748b',fontSize:7,rotate:45,interval:2},axisLine:{lineStyle:{color:'rgba(255,255,255,0.1)'}}},
+    yAxis:{type:'value',axisLabel:{color:'#64748b',fontSize:9,formatter:'{value}kg'},splitLine:{lineStyle:{color:'rgba(255,255,255,0.05)'}},min:3,max:8},
+    series:[{type:'line',data:weight,smooth:true,
+      lineStyle:{color:'#10b981',width:2},
+      itemStyle:{color:'#10b981'},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(16,185,129,0.3)'},{offset:1,color:'rgba(16,185,129,0.02)'}]}}
+    }],
+    tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+p[0].value+'kg';}}
+  });
+  window.addEventListener('resize',function(){chart.resize();});
+})();
+
+// Feeding timeline (5 days: 4/8-4/12)
+(function(){
+  var chart = echarts.init(document.getElementById('timelineChart'), null, {renderer:'canvas'});
+  var colors = ['#1e3a5f','#2563eb','#0891b2','#059669','#0ea5e9','#3b82f6','#06b6d4','#10b981','#22d3ee','#34d399'];
+  var rawData = {
+    '4/8':  {times:['02:25','05:33','09:10','12:04','16:00','18:56','22:30'],gaps:['4h06m','3h07m','3h36m','2h53m','3h55m','2h55m','3h33m']},
+    '4/9':  {times:['04:12','07:51','10:35','13:40','16:38','19:47','23:31'],gaps:['5h41m','3h38m','2h43m','3h04m','2h57m','3h08m','3h43m']},
+    '4/10': {times:['03:12','06:51','09:48','13:03','15:44','19:03','22:34'],gaps:['3h40m','3h38m','2h56m','3h14m','2h40m','3h18m','3h30m']},
+    '4/11': {times:['02:35','06:55','10:13','13:09','16:27','19:24','23:37'],gaps:['4h00m','4h19m','3h17m','2h55m','3h17m','2h56m','4h12m']},
+    '4/12': {times:['03:37','07:21','10:18','13:09','16:46','19:38','23:59'],gaps:['3h59m','3h43m','2h56m','2h50m','3h36m','2h51m','4h20m']}
+  };
+  var prevLast = {'4/8':'22:18','4/9':'22:30','4/10':'23:31','4/11':'22:34','4/12':'23:37'};
+  var days = Object.keys(rawData);
+  function t2m(t){var p=t.split(':');return +p[0]*60+(+p[1]);}
+  function m2t(m){var h=Math.floor(m/60),mm=m%60;return (h<10?'0':'')+h+':'+(mm<10?'0':'')+mm;}
+  var allData = [];
+  days.forEach(function(day, di){
+    var info = rawData[day];
+    var times = ['00:00'].concat(info.times);
+    var gaps = info.gaps;
+    var lastT = t2m(times[times.length-1]);
+    if(lastT < 1439) times.push('24:00');
+    for(var i=0;i<times.length-1;i++){
+      var labelText = '';
+      if(i === 0){
+        labelText = '\u2190' + (prevLast[day] || '--:--') + ' ' + gaps[0];
+      } else if(i === times.length-2 && lastT < 1439){
+        labelText = info.times[info.times.length-1];
+      } else {
+        labelText = info.times[i-1] + ' ' + gaps[i-1];
+      }
+      allData.push([t2m(times[i]), t2m(times[i+1]), di, i, labelText]);
+    }
+  });
+  chart.setOption({
+    tooltip:{
+      formatter:function(p){
+        var d=p.data,gap=d[1]-d[0];
+        return days[d[2]]+' '+m2t(d[0])+' - '+m2t(d[1])+' ('+Math.floor(gap/60)+'h'+gap%60+'m)';
+      }
+    },
+    grid:{left:'4%',right:'3%',top:'14%',bottom:'10%',containLabel:false},
+    title:{text:'📊 过去5天喂养时间线',left:'center',textStyle:{color:'#93c5fd',fontSize:13,fontWeight:'normal'}},
+    xAxis:{type:'value',min:0,max:1440,interval:360,
+      axisLabel:{color:'#64748b',fontSize:10,formatter:function(v){return m2t(v);}},
+      splitLine:{lineStyle:{color:'rgba(255,255,255,0.05)'}}},
+    yAxis:{type:'category',data:days,
+      axisLabel:{color:'#94a3b8',fontSize:11},
+      axisLine:{lineStyle:{color:'rgba(255,255,255,0.1)'}},
+      axisTick:{show:false}},
+    series:[{
+      type:'custom',
+      renderItem:function(params,api){
+        var start=api.value(0),end=api.value(1),dayIdx=api.value(2),segIdx=api.value(3),labelText=api.value(4);
+        var s=api.coord([start,dayIdx]),e=api.coord([end,dayIdx]);
+        var h=api.size([0,1])[1]*0.75;
+        var rect=echarts.graphic.clipRectByRect({
+          x:s[0],y:s[1]-h/2,width:e[0]-s[0],height:h
+        },{x:params.coordSys.x,y:params.coordSys.y,width:params.coordSys.width,height:params.coordSys.height});
+        if(!rect)return;
+        var labelX = s[0] + 3;
+        var labelY = s[1];
+        return {type:'group',children:[
+          {type:'rect',shape:rect,style:{fill:colors[segIdx%colors.length]}},
+          {type:'text',style:{text:labelText,x:labelX,y:labelY,textAlign:'left',textVerticalAlign:'middle',fill:'rgba(255,255,255,0.6)',fontSize:13.5}}
+        ]};
+      },
+      data:allData
+    }]
+  });
+  window.addEventListener('resize',function(){chart.resize();});
+})();
+</script>
 </body>
 </html>
