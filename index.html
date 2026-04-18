@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920,height=1080">
 <meta http-equiv="refresh" content="600">
-<title>年糕宝宝 · 每日早教 2026-04-17</title>
+<title>年糕宝宝 · 每日早教 2026-04-18</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;color:#e8f0fe;background:#0a1628;}
@@ -15,7 +15,6 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
 .page-container{position:relative;z-index:1;width:100%;height:100%;display:flex;flex-direction:column;padding:1.2vh 1.2vw;gap:1vh;}
 
 .top-section{display:flex;flex:1;gap:1vw;min-height:0;}
-
 .col-info{width:33.33%;display:flex;flex-direction:column;gap:0.8vh;}
 .col-info .col-title{font-size:2.5vh;color:#93c5fd;padding:0.5vh 0;}
 .info-row{display:flex;gap:0.8vh;}
@@ -53,6 +52,9 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
 @keyframes slideIn{from{opacity:0;transform:translateY(1vh);}to{opacity:1;transform:translateY(0);}}
 
 .bottom-section{animation:slideIn 0.8s ease-out 0.7s both;background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1.2vh;padding:1vh 1.5vw;height:28vh;}
+
+.countdown-badge{background:linear-gradient(135deg,#1e40af,#0891b2);border:1px solid rgba(96,165,250,0.4);border-radius:1.2vh;padding:1.2vh 1.5vw;animation:slideIn 0.8s ease-out 0.15s both;text-align:center;}
+.countdown-badge .badge-text{font-size:1.6vh;font-weight:700;color:#fbbf24;animation:pulse 2s ease-in-out infinite;}
 </style>
 </head>
 <body>
@@ -112,7 +114,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
       <div class="info-row">
         <div class="info-card">
           <div class="info-label">天龄</div>
-          <div class="info-value">98 天</div>
+          <div class="info-value">99 天</div>
         </div>
         <div class="info-card">
           <div class="info-label">月龄</div>
@@ -126,8 +128,11 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
         </div>
         <div class="info-card">
           <div class="info-label">今天</div>
-          <div class="info-value">4月17日 周五</div>
+          <div class="info-value">4月18日 周六</div>
         </div>
+      </div>
+      <div class="countdown-badge">
+        <div class="badge-text">🎉 明天百日！距离百日仅剩 1 天！</div>
       </div>
       <div class="info-card">
         <div class="info-label">🎯 生长发育里程碑</div>
@@ -136,7 +141,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
       <div class="info-row">
         <div class="info-card">
           <div class="info-label">🌤 天气</div>
-          <div class="info-value" style="font-size:1.4vh;">⛅ 17°C 局部多云<br>💧 83%</div>
+          <div class="info-value" style="font-size:1.4vh;">⛅ 15°C 局部多云<br>💧 94%</div>
         </div>
         <div class="info-card">
           <div class="info-label">👔 穿衣建议</div>
@@ -145,7 +150,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
       </div>
       <div class="info-card">
         <div class="info-label">💡 今日育儿小知识</div>
-        <div class="info-value" style="font-size:1.4vh;font-weight:400;color:#bfdbfe;line-height:1.6;">3个月宝宝开始建立昼夜节律，白天多互动、保持明亮环境，夜间喂奶保持安静昏暗，有助于宝宝区分昼夜。</div>
+        <div class="info-value" style="font-size:1.4vh;font-weight:400;color:#bfdbfe;line-height:1.6;">3个月宝宝开始"对话"了！模仿宝宝发出的声音并等待回应，这种轮流互动是语言发展的基础。</div>
       </div>
     </div>
 
@@ -153,10 +158,10 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
     <div class="col-data">
       <div class="edu-title">📊 宝宝数据</div>
       <div class="stats-grid">
-        <div class="stat-card"><div class="stat-value">990ml</div><div class="stat-label">昨日总奶量</div></div>
-        <div class="stat-card"><div class="stat-value">7次</div><div class="stat-label">喂养次数</div></div>
-        <div class="stat-card"><div class="stat-value">~3h15m</div><div class="stat-label">平均间隔</div></div>
-        <div class="stat-card"><div class="stat-value">141ml</div><div class="stat-label">单次奶量</div></div>
+        <div class="stat-card"><div class="stat-value">840ml</div><div class="stat-label">昨日总奶量</div></div>
+        <div class="stat-card"><div class="stat-value">6次</div><div class="stat-label">喂养次数</div></div>
+        <div class="stat-card"><div class="stat-value">~3h20m</div><div class="stat-label">平均间隔</div></div>
+        <div class="stat-card"><div class="stat-value">140ml</div><div class="stat-label">单次奶量</div></div>
       </div>
       <div class="chart-card">
         <div id="milkChart" style="width:100%;flex:1;min-height:0;"></div>
@@ -173,22 +178,10 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
         <div class="activity-card">
           <div class="card-header">
             <span class="activity-num">01 🎯 大运动</span>
-            <span class="activity-title">俯卧抬头 · 肘撑练习</span>
+            <span class="activity-title">毛巾卷卷乐 · 翻身前奏</span>
           </div>
           <div class="card-body">
-            <span class="activity-desc">让宝宝趴在硬面床上，用彩色摇铃在正前方吸引注意力，鼓励用肘部支撑抬起头和胸部，每次练习3-5分钟。</span>
-          </div>
-          <div class="card-footer">
-            <a class="activity-link" href="https://www.mayoclinic.org/healthy-lifestyle/infant-and-toddler-health/in-depth/infant-development/art-20048012">📖 Mayo Clinic</a>
-          </div>
-        </div>
-        <div class="activity-card">
-          <div class="card-header">
-            <span class="activity-num">02 👁 视觉发展</span>
-            <span class="activity-title">毛巾滚动 · 平衡游戏</span>
-          </div>
-          <div class="card-body">
-            <span class="activity-desc">把大毛巾铺床上，让宝宝躺在上面，轻轻拉动毛巾让宝宝缓慢滚动，锻炼平衡感和身体控制力。</span>
+            <span class="activity-desc">将大毛巾铺床上，让宝宝躺在上面，爸爸妈妈拉着毛巾慢慢推动宝宝滚动。锻炼平衡感和身体控制力。</span>
           </div>
           <div class="card-footer">
             <a class="activity-link" href="https://www.thepaper.cn/newsDetail_forward_26676479">📖 澎湃新闻</a>
@@ -196,23 +189,11 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
         </div>
         <div class="activity-card">
           <div class="card-header">
-            <span class="activity-num">03 ✋ 精细动作</span>
-            <span class="activity-title">袜子手环 · 踢腿探索</span>
+            <span class="activity-num">02 👁 视觉发展</span>
+            <span class="activity-title">照镜子游戏 · 自我认知</span>
           </div>
           <div class="card-body">
-            <span class="activity-desc">在宝宝袜子或手腕上系上铃铛、毛绒球，宝宝踢腿挥手时发出声音，帮助理解因果关系。</span>
-          </div>
-          <div class="card-footer">
-            <a class="activity-link" href="http://www.baby611.com/edu/zjgame/2021/212841.html">📖 宝宝六一</a>
-          </div>
-        </div>
-        <div class="activity-card">
-          <div class="card-header">
-            <span class="activity-num">04 🎵 听觉感知</span>
-            <span class="activity-title">声音追踪 · 方位辨别</span>
-          </div>
-          <div class="card-body">
-            <span class="activity-desc">在宝宝左右两侧轻摇铃铛或播放轻柔音乐，观察宝宝是否能转头寻找声源，锻炼听觉定位能力。</span>
+            <span class="activity-desc">抱着宝宝面对镜子，指着他的五官说"这是宝宝的鼻子"，也一起出现在镜子里。帮助发展自我意识和社交能力。</span>
           </div>
           <div class="card-footer">
             <a class="activity-link" href="https://www.healthyyoungminds.com/activities-for-3-month-old/">📖 Healthy Young Minds</a>
@@ -220,14 +201,38 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
         </div>
         <div class="activity-card">
           <div class="card-header">
-            <span class="activity-num">05 💬 社交情感</span>
-            <span class="activity-title">亲子对话 · 轮流模仿</span>
+            <span class="activity-num">03 ✋ 精细动作</span>
+            <span class="activity-title">铃铛袜子 · 踢腿探秘</span>
           </div>
           <div class="card-body">
-            <span class="activity-desc">模仿宝宝发出的声音，等回应后再继续，像真正对话一样轮流进行，促进语言和社交发展。</span>
+            <span class="activity-desc">在小袜子上缝上小铃铛，穿在宝宝脚上。宝宝踢腿时会听到声音，逐渐学会控制腿部动作来重复自己喜欢的声音。</span>
           </div>
           <div class="card-footer">
-            <a class="activity-link" href="https://raisingchildren.net.au/babies/development/development-tracker-3-12-months/3-4-months">📖 Raising Children</a>
+            <a class="activity-link" href="http://www.baby611.com/edu/zjgame/2021/212841.html">📖 宝宝巴士</a>
+          </div>
+        </div>
+        <div class="activity-card">
+          <div class="card-header">
+            <span class="activity-num">04 🎵 听觉感知</span>
+            <span class="activity-title">亲子音乐时光 · 节奏启蒙</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">播放柔和音乐，抱着宝宝随节奏轻摇。音乐能安抚情绪、促进大脑发育，还能建立节奏感。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://www.boppy.com/blogs/boppy/2-month-old-baby-activities">📖 Boppy</a>
+          </div>
+        </div>
+        <div class="activity-card">
+          <div class="card-header">
+            <span class="activity-num">05 💬 社交情感</span>
+            <span class="activity-title">表情模仿秀 · 情感连接</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">对宝宝做夸张的笑脸、吐舌头等表情，3个月宝宝开始模仿面部表情。这种互动增进亲子连接，促进社交发展。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://www.enfamil.com/articles/activities-for-your-3-month-old/">📖 Enfamil</a>
           </div>
         </div>
       </div>
@@ -242,11 +247,11 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
 
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <script>
-// Milk trend chart (10 days: 4/7 - 4/16)
+// Milk trend chart (10 days: 4/8 - 4/17)
 (function(){
   var chart = echarts.init(document.getElementById('milkChart'));
-  var dates = ['4/7','4/8','4/9','4/10','4/11','4/12','4/13','4/14','4/15','4/16'];
-  var milk  = [980,980,980,980,980,990,840,980,980,990];
+  var dates = ['4/8','4/9','4/10','4/11','4/12','4/13','4/14','4/15','4/16','4/17'];
+  var milk  = [980, 980, 980, 980, 990, 840, 980, 980, 990, 840];
   chart.setOption({
     title:{text:'📊 近10天奶量趋势',left:'center',textStyle:{color:'#93c5fd',fontSize:12,fontWeight:'normal'}},
     grid:{left:'12%',right:'5%',top:'22%',bottom:'15%'},
@@ -266,10 +271,10 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
 // Weight trend chart
 (function(){
   var chart = echarts.init(document.getElementById('weightChart'));
-  var dates = ['1/9','1/12','1/13','1/14','1/15','1/16','1/17','1/18','1/19','1/20','1/21','1/22','1/23','1/24','1/25','1/26','1/27','1/28','1/29','1/30','1/31','2/1','2/2','2/3','2/4','2/5','2/6','2/7','2/8','2/9','2/10','2/11','2/12','2/13','2/14','2/15','2/17','2/20','2/21','2/22','2/24','2/25','2/28','3/2','3/6','3/8','3/12','3/15','3/18','3/19','3/21','3/23','3/25','3/28','3/30','4/2','4/3','4/7','4/8','4/9','4/10','4/11','4/12','4/13','4/15','4/16'];
-  var weight = [3.46,3.33,3.36,3.36,3.38,3.43,3.5,3.51,3.56,3.64,3.7,3.76,3.78,3.82,3.88,3.9,3.96,4.0,4.07,4.12,4.18,4.22,4.3,4.38,4.42,4.52,4.59,4.67,4.73,4.8,4.85,4.92,4.97,5.03,5.08,5.11,5.35,5.47,5.5,5.51,5.6,5.68,6.06,6.0,6.2,6.15,6.3,6.5,6.45,6.45,6.6,6.7,6.85,6.9,6.9,7.0,7.15,7.2,7.3,7.35,7.2,7.4,7.4,7.45,7.4,7.5];
+  var dates = ['1/9','1/12','1/13','1/14','1/15','1/16','1/17','1/18','1/19','1/20','1/21','1/22','1/23','1/24','1/25','1/26','1/27','1/28','1/29','1/30','1/31','2/1','2/2','2/3','2/4','2/5','2/6','2/7','2/8','2/9','2/10','2/11','2/12','2/13','2/14','2/15','2/17','2/20','2/21','2/22','2/24','2/25','2/28','3/2','3/6','3/8','3/12','3/15','3/18','3/19','3/21','3/23','3/25','3/28','3/30','4/2','4/3','4/7','4/8','4/9','4/10','4/11','4/12','4/13','4/15','4/16','4/17'];
+  var weight = [3.46,3.33,3.36,3.36,3.38,3.43,3.5,3.51,3.56,3.64,3.7,3.76,3.78,3.82,3.88,3.9,3.96,4,4.07,4.12,4.18,4.22,4.3,4.38,4.42,4.52,4.59,4.67,4.73,4.8,4.85,4.92,4.97,5.03,5.08,5.11,5.35,5.47,5.5,5.51,5.6,5.68,6.06,6,6.2,6.15,6.3,6.5,6.45,6.45,6.6,6.7,6.85,6.9,6.9,7,7.15,7.2,7.3,7.35,7.2,7.4,7.4,7.45,7.4,7.5,7.5];
   chart.setOption({
-    title:{text:'⚖️ 体重趋势 ('+weight.length+'次记录) · 最新 7.5kg',left:'center',textStyle:{color:'#93c5fd',fontSize:12,fontWeight:'normal'}},
+    title:{text:'⚖️ 体重趋势 ('+weight.length+'次记录 · 当前 7.5kg)',left:'center',textStyle:{color:'#93c5fd',fontSize:12,fontWeight:'normal'}},
     grid:{left:'15%',right:'5%',top:'22%',bottom:'15%'},
     xAxis:{type:'category',data:dates,axisLabel:{color:'#64748b',fontSize:7,rotate:45,interval:2},axisLine:{lineStyle:{color:'rgba(255,255,255,0.1)'}}},
     yAxis:{type:'value',axisLabel:{color:'#64748b',fontSize:9,formatter:'{value}kg'},splitLine:{lineStyle:{color:'rgba(255,255,255,0.05)'}},min:3,max:8},
@@ -283,18 +288,18 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
   window.addEventListener('resize',function(){chart.resize();});
 })();
 
-// Feeding timeline (5 days: 4/12 - 4/16)
+// Feeding timeline (5 days: 4/13 - 4/17, prevLast = 4/12 23:59)
 (function(){
   var chart = echarts.init(document.getElementById('timelineChart'), null, {renderer:'canvas'});
   var colors = ['#1e3a5f','#2563eb','#0891b2','#059669','#0ea5e9','#3b82f6','#06b6d4','#10b981','#22d3ee','#34d399'];
   var rawData = {
-    '4/12': {times:['03:37','07:21','10:18','13:09','16:46','19:38','23:59'],gaps:['3h59m','3h43m','2h56m','2h50m','3h36m','2h51m','4h20m']},
     '4/13': {times:['04:29','07:16','10:40','14:10','16:58','19:54'],gaps:['4h29m','2h46m','3h23m','3h29m','2h47m','2h55m']},
-    '4/14': {times:['00:20','04:35','08:01','11:37','15:42','18:36','21:11'],gaps:['4h25m','4h14m','3h25m','3h35m','4h4m','2h53m','2h34m']},
-    '4/15': {times:['00:58','05:49','09:09','12:02','15:06','18:21','21:18'],gaps:['3h46m','4h50m','3h19m','2h52m','3h3m','3h13m','2h56m']},
-    '4/16': {times:['01:30','06:20','09:12','12:11','16:20','19:23','22:41'],gaps:['4h12m','4h49m','2h51m','2h58m','4h8m','3h2m','3h17m']}
+    '4/14': {times:['00:20','04:35','08:01','11:37','15:42','18:36','21:11'],gaps:['4h25m','4h14m','3h25m','3h35m','4h04m','2h53m','2h34m']},
+    '4/15': {times:['00:58','05:49','09:09','12:02','15:06','18:21','21:18'],gaps:['3h46m','4h50m','3h19m','2h52m','3h03m','3h13m','2h56m']},
+    '4/16': {times:['01:30','06:20','09:12','12:11','16:20','19:23','22:41'],gaps:['4h12m','4h49m','2h51m','2h58m','4h08m','3h02m','3h17m']},
+    '4/17': {times:['02:39','06:45','09:32','12:37','15:33','18:48'],gaps:['3h57m','4h05m','2h46m','3h04m','2h55m','3h14m']}
   };
-  var prevLast = {'4/12':'23:37','4/13':'23:59','4/14':'19:54','4/15':'21:11','4/16':'21:18'};
+  var prevLast = {'4/13':'23:59','4/14':'19:54','4/15':'21:11','4/16':'21:18','4/17':'22:41'};
   var days = Object.keys(rawData);
   function t2m(t){var p=t.split(':');return +p[0]*60+(+p[1]);}
   function m2t(m){var h=Math.floor(m/60),mm=m%60;return (h<10?'0':'')+h+':'+(mm<10?'0':'')+mm;}
