@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920,height=1080">
 <meta http-equiv="refresh" content="600">
-<title>年糕宝宝 · 每日早教 2026-05-29</title>
+<title>年糕宝宝 · 每日早教 2026-05-30</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;color:#e8f0fe;background:#0a1628;}
@@ -53,41 +53,39 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
 </div>
 <script>
 (function(){
-  const canvas = document.getElementById('particleCanvas');
-  const ctx = canvas.getContext('2d');
-  canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
-  function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-  resize(); window.addEventListener('resize', resize);
-  const particles = [];
-  const count = 80;
-  const colors = ['#3b82f6','#60a5fa','#06b6d4','#22d3ee','#10b981','#34d399','#0ea5e9','#38bdf8'];
-  for(let i = 0; i < count; i++){
+  var canvas=document.getElementById('particleCanvas');
+  var ctx=canvas.getContext('2d');
+  canvas.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%;';
+  function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  var particles=[];
+  var count=80;
+  var colors=['#3b82f6','#60a5fa','#06b6d4','#22d3ee','#10b981','#34d399','#0ea5e9','#38bdf8'];
+  for(var i=0;i<count;i++){
     particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 25 + 8,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: -(Math.random() * 0.4 + 0.1),
-      color: colors[Math.floor(Math.random() * colors.length)],
-      alpha: Math.random() * 0.4 + 0.1,
-      pulse: Math.random() * Math.PI * 2,
-      pulseSpeed: Math.random() * 0.02 + 0.005
+      x:Math.random()*canvas.width,y:Math.random()*canvas.height,
+      r:Math.random()*25+8,
+      vx:(Math.random()-0.5)*0.3,vy:-(Math.random()*0.4+0.1),
+      color:colors[Math.floor(Math.random()*colors.length)],
+      alpha:Math.random()*0.4+0.1,
+      pulse:Math.random()*Math.PI*2,pulseSpeed:Math.random()*0.02+0.005
     });
   }
   function draw(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for(const p of particles){
-      p.x += p.vx; p.y += p.vy; p.pulse += p.pulseSpeed;
-      const a = p.alpha * (0.6 + 0.4 * Math.sin(p.pulse));
-      if(p.y < -10) { p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
-      if(p.x < -10) p.x = canvas.width + 10;
-      if(p.x > canvas.width + 10) p.x = -10;
-      const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
-      grad.addColorStop(0, p.color.slice(0,7) + Math.round(a * 80).toString(16).padStart(2,'0'));
-      grad.addColorStop(1, p.color.slice(0,7) + '00');
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2); ctx.fillStyle = grad; ctx.fill();
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = p.color.slice(0,7) + Math.round(a * 255).toString(16).padStart(2,'0'); ctx.fill();
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(var j=0;j<particles.length;j++){
+      var p=particles[j];
+      p.x+=p.vx;p.y+=p.vy;p.pulse+=p.pulseSpeed;
+      var a=p.alpha*(0.6+0.4*Math.sin(p.pulse));
+      if(p.y<-10){p.y=canvas.height+10;p.x=Math.random()*canvas.width;}
+      if(p.x<-10)p.x=canvas.width+10;
+      if(p.x>canvas.width+10)p.x=-10;
+      var grad=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4);
+      grad.addColorStop(0,p.color.slice(0,7)+Math.round(a*80).toString(16).padStart(2,'0'));
+      grad.addColorStop(1,p.color.slice(0,7)+'00');
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r*4,0,Math.PI*2);ctx.fillStyle=grad;ctx.fill();
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=p.color.slice(0,7)+Math.round(a*255).toString(16).padStart(2,'0');ctx.fill();
     }
     requestAnimationFrame(draw);
   }
@@ -103,11 +101,11 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
       <div class="info-row">
         <div class="info-card">
           <div class="info-label">天龄</div>
-          <div class="info-value">140 天</div>
+          <div class="info-value">141 天</div>
         </div>
         <div class="info-card">
           <div class="info-label">月龄</div>
-          <div class="info-value">4 个月 20 天</div>
+          <div class="info-value">4 个月 21 天</div>
         </div>
       </div>
       <div class="info-row">
@@ -117,26 +115,26 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
         </div>
         <div class="info-card">
           <div class="info-label">今天</div>
-          <div class="info-value">5月29日 周五</div>
+          <div class="info-value">5月30日 周六</div>
         </div>
       </div>
       <div class="info-card">
         <div class="info-label">🎯 生长发育里程碑</div>
-        <div class="info-value" style="font-size:1.4vh;font-weight:400;color:#bfdbfe;line-height:1.6;">俯卧抬头90° ✅ · 跟视180° ✅ · 发声 ✅ · 伸手抓物 ✅<br>翻身 ✅ · 独坐（有支撑）🔄 · 扶站 🔄 · 扶走 🔄</div>
+        <div class="info-value" style="font-size:1.4vh;font-weight:400;color:#bfdbfe;line-height:1.6;">俯卧抬头90° ✅ · 跟视180° ✅ · 发声笑 ✅<br>伸手抓物 ✅ · 翻身 🔄 · 独坐片刻 🔄</div>
       </div>
       <div class="info-row">
         <div class="info-card">
           <div class="info-label">🌤 天气</div>
-          <div class="info-value" style="font-size:1.4vh;">☀️ 24°C 晴<br>💧 74%</div>
+          <div class="info-value" style="font-size:1.4vh;">☀️ 22°C 晴<br>💧 65%</div>
         </div>
         <div class="info-card">
           <div class="info-label">👔 穿衣建议</div>
-          <div class="info-value" style="font-size:1.4vh;">短袖连体衣<br>+ 薄毯备用</div>
+          <div class="info-value" style="font-size:1.4vh;">短袖连体衣<br>外出加薄帽</div>
         </div>
       </div>
       <div class="info-card">
         <div class="info-label">💡 今日育儿小知识</div>
-        <div class="info-value" style="font-size:1.4vh;font-weight:400;color:#bfdbfe;line-height:1.6;">4-5个月宝宝开始出现"分离焦虑"的萌芽，多与宝宝玩"躲猫猫"游戏，帮助建立"物体恒存"概念，也能缓解未来分离焦虑。</div>
+        <div class="info-value" style="font-size:1.4vh;font-weight:400;color:#bfdbfe;line-height:1.6;">4-5个月的宝宝开始学会翻身，多在地板上铺好爬行垫，给宝宝充足的俯卧和仰卧自由活动时间，有助于大运动发展。</div>
       </div>
     </div>
 
@@ -144,9 +142,9 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
     <div class="col-data">
       <div class="edu-title">📊 宝宝数据</div>
       <div class="stats-grid">
-        <div class="stat-card"><div class="stat-value">900ml</div><div class="stat-label">昨日总奶量</div></div>
-        <div class="stat-card"><div class="stat-value">6次</div><div class="stat-label">喂养次数</div></div>
-        <div class="stat-card"><div class="stat-value">~3h30m</div><div class="stat-label">平均间隔</div></div>
+        <div class="stat-card"><div class="stat-value">1050ml</div><div class="stat-label">昨日总奶量</div></div>
+        <div class="stat-card"><div class="stat-value">7次</div><div class="stat-label">喂养次数</div></div>
+        <div class="stat-card"><div class="stat-value">~3h10m</div><div class="stat-label">平均间隔</div></div>
         <div class="stat-card"><div class="stat-value">150ml</div><div class="stat-label">单次奶量</div></div>
       </div>
       <div class="chart-card">
@@ -164,22 +162,34 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
         <div class="activity-card">
           <div class="card-header">
             <span class="activity-num">01 🎯 大运动</span>
-            <span class="activity-title">翻身练习 · 俯仰转换</span>
+            <span class="activity-title">翻身练习 · 侧卧引导</span>
           </div>
           <div class="card-body">
-            <span class="activity-desc">让宝宝仰卧，用玩具引导向一侧翻身。可在侧面放彩色玩具吸引宝宝主动翻过去，完成后给予鼓励。</span>
+            <span class="activity-desc">宝宝仰卧时，用玩具在侧面吸引注意力，轻轻推宝宝臀部辅助翻身。4-5月是翻身敏感期，多练俯卧也能增强核心力量。</span>
           </div>
           <div class="card-footer">
-            <a class="activity-link" href="https://www.cdc.gov/act-early/milestones/4-months.html">📖 CDC</a>
+            <a class="activity-link" href="https://www.cdc.gov/act-early/milestones/4-months.html">📖 CDC Milestones</a>
           </div>
         </div>
         <div class="activity-card">
           <div class="card-header">
             <span class="activity-num">02 👁 视觉发展</span>
-            <span class="activity-title">彩色追视 · 镜子探索</span>
+            <span class="activity-title">镜子游戏 · 自我认知</span>
           </div>
           <div class="card-body">
-            <span class="activity-desc">在宝宝面前放一面安全小镜子，引导观察自己的脸。再缓慢移动镜子让宝宝追视，锻炼视觉追踪能力。</span>
+            <span class="activity-desc">抱宝宝面对安全镜子，指认"这是年糕！"，宝宝会对镜中影像产生兴趣，促进视觉追踪和自我认知萌芽。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://www.babycenter.com/baby/activities-play/activities-for-4-to-6-month-olds_41002304">📖 BabyCenter</a>
+          </div>
+        </div>
+        <div class="activity-card">
+          <div class="card-header">
+            <span class="activity-num">03 ✋ 精细动作</span>
+            <span class="activity-title">抓握训练 · 摇铃传递</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">提供不同材质的摇铃、布书让宝宝抓握。把玩具从一只手引导到另一只手，练习双手协调和中线跨越。</span>
           </div>
           <div class="card-footer">
             <a class="activity-link" href="https://zhuanlan.zhihu.com/p/293137261">📖 知乎育儿</a>
@@ -187,38 +197,26 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
         </div>
         <div class="activity-card">
           <div class="card-header">
-            <span class="activity-num">03 ✋ 精细动作</span>
-            <span class="activity-title">抓握训练 · 触觉探索</span>
-          </div>
-          <div class="card-body">
-            <span class="activity-desc">提供不同材质的玩具（摇铃、布书、牙胶），让宝宝伸手抓握。4个月宝宝已能主动伸手够物并握住。</span>
-          </div>
-          <div class="card-footer">
-            <a class="activity-link" href="https://www.pampers.com/en-us/baby/development/article/4-month-old-baby">📖 Pampers</a>
-          </div>
-        </div>
-        <div class="activity-card">
-          <div class="card-header">
             <span class="activity-num">04 🎵 听觉感知</span>
-            <span class="activity-title">声音定位 · 音乐互动</span>
+            <span class="activity-title">声音因果 · 敲击实验</span>
           </div>
           <div class="card-body">
-            <span class="activity-desc">在宝宝左右两侧摇铃或播放不同乐器声音，观察宝宝转头寻找声源。也可以哼唱简单旋律互动。</span>
+            <span class="activity-desc">让宝宝用小手敲打不同材质的物品（木碗、塑料杯），感受不同声音。4月宝宝开始理解"我的动作能产生声音"的因果关系。</span>
           </div>
           <div class="card-footer">
-            <a class="activity-link" href="https://helpmegrowmn.org/HMG/HelpfulRes/EncourageHealthDev/4Months/index.html">📖 Help Me Grow</a>
+            <a class="activity-link" href="https://blog.lovevery.com/child-development/activities-for-your-4-month-old-from-child-development-experts/">📖 Lovevery</a>
           </div>
         </div>
         <div class="activity-card">
           <div class="card-header">
             <span class="activity-num">05 💬 社交情感</span>
-            <span class="activity-title">躲猫猫 · 物体恒存</span>
+            <span class="activity-title">吹肚皮 · 亲子欢笑</span>
           </div>
           <div class="card-body">
-            <span class="activity-desc">用手遮住脸再露出，说"躲猫猫！"也可以用毛巾盖住玩具再揭开。帮助宝宝理解"看不到的东西仍然存在"。</span>
+            <span class="activity-desc">在宝宝肚皮上轻轻吹气发出声音，宝宝会觉得痒痒又好玩，激发笑声和发声。这种互动能促进亲子依恋和社交沟通能力。</span>
           </div>
           <div class="card-footer">
-            <a class="activity-link" href="https://www.healthyyoungminds.com/activities-for-4-month-old/">📖 Healthy Young Minds</a>
+            <a class="activity-link" href="https://m.ximalaya.com/ask/q9609596">📖 喜马拉雅育儿</a>
           </div>
         </div>
       </div>
@@ -233,11 +231,11 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
 
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <script>
-// Milk trend chart (10 days: 5/19-5/28)
+// Milk trend chart (10 days: 5/20-5/29)
 (function(){
-  var chart = echarts.init(document.getElementById('milkChart'));
-  var dates = ['5/19','5/20','5/21','5/22','5/23','5/24','5/25','5/26','5/27','5/28'];
-  var milk  = [850, 1000, 1000, 1000, 990, 990, 1010, 860, 1000, 900];
+  var chart=echarts.init(document.getElementById('milkChart'));
+  var dates=['5/20','5/21','5/22','5/23','5/24','5/25','5/26','5/27','5/28','5/29'];
+  var milk=[1000,1000,1000,990,990,1010,860,1000,900,1050];
   chart.setOption({
     title:{text:'📊 近10天奶量趋势',left:'center',textStyle:{color:'#93c5fd',fontSize:12,fontWeight:'normal'}},
     grid:{left:'12%',right:'5%',top:'22%',bottom:'15%'},
@@ -256,13 +254,14 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
 
 // Weight trend chart
 (function(){
-  var chart = echarts.init(document.getElementById('weightChart'));
-  var dates = ['1/9','1/12','1/17','1/19','1/26','2/2','2/9','2/15','2/21','2/28','3/6','3/12','3/18','3/25','3/30','4/3','4/8','4/11','4/16','4/18','4/21','4/26','4/29','5/3','5/7','5/11','5/14','5/19','5/24','5/27'];
-  var weight = [3.46,3.33,3.5,3.56,3.9,4.3,4.8,5.11,5.5,6.06,6.2,6.3,6.45,6.85,6.9,7.15,7.3,7.4,7.5,7.55,7.45,7.7,7.8,7.8,7.95,8,8.15,8.13,8.15,8.45];
+  var chart=echarts.init(document.getElementById('weightChart'));
+  var allData=[['1/9',3.46],['1/12',3.33],['1/13',3.36],['1/14',3.36],['1/15',3.38],['1/16',3.43],['1/17',3.5],['1/18',3.51],['1/19',3.56],['1/20',3.64],['1/21',3.7],['1/22',3.76],['1/23',3.78],['1/24',3.82],['1/25',3.88],['1/26',3.9],['1/27',3.96],['1/28',4.0],['1/29',4.07],['1/30',4.12],['1/31',4.18],['2/1',4.22],['2/2',4.3],['2/3',4.38],['2/4',4.42],['2/5',4.52],['2/6',4.59],['2/7',4.67],['2/8',4.73],['2/9',4.8],['2/10',4.85],['2/11',4.92],['2/12',4.97],['2/13',5.03],['2/14',5.08],['2/15',5.11],['2/17',5.35],['2/20',5.47],['2/21',5.5],['2/22',5.51],['2/24',5.6],['2/25',5.68],['2/28',6.06],['3/2',6.0],['3/6',6.2],['3/8',6.15],['3/12',6.3],['3/15',6.5],['3/18',6.45],['3/19',6.45],['3/21',6.6],['3/23',6.7],['3/25',6.85],['3/28',6.9],['3/30',6.9],['4/2',7.0],['4/3',7.15],['4/7',7.2],['4/8',7.3],['4/9',7.35],['4/10',7.2],['4/11',7.4],['4/12',7.4],['4/13',7.45],['4/15',7.4],['4/16',7.5],['4/17',7.5],['4/18',7.55],['4/20',7.55],['4/21',7.45],['4/23',7.55],['4/26',7.7],['4/27',7.75],['4/29',7.8],['5/2',7.8],['5/3',7.8],['5/4',7.85],['5/6',7.95],['5/7',7.95],['5/8',7.95],['5/9',8.05],['5/11',8.0],['5/12',8.1],['5/14',8.15],['5/17',8.1],['5/18',8.15],['5/19',8.13],['5/21',8.25],['5/22',8.2],['5/24',8.15],['5/25',8.25],['5/27',8.45],['5/29',8.45]];
+  var dates=allData.map(function(d){return d[0];});
+  var weight=allData.map(function(d){return d[1];});
   chart.setOption({
-    title:{text:'⚖️ 体重趋势 (96次记录 · 最新8.45kg)',left:'center',textStyle:{color:'#93c5fd',fontSize:12,fontWeight:'normal'}},
+    title:{text:'⚖️ 体重趋势 ('+weight.length+'次记录) | 最新 8.45kg',left:'center',textStyle:{color:'#93c5fd',fontSize:12,fontWeight:'normal'}},
     grid:{left:'15%',right:'5%',top:'22%',bottom:'15%'},
-    xAxis:{type:'category',data:dates,axisLabel:{color:'#64748b',fontSize:7,rotate:45,interval:0},axisLine:{lineStyle:{color:'rgba(255,255,255,0.1)'}}},
+    xAxis:{type:'category',data:dates,axisLabel:{color:'#64748b',fontSize:7,rotate:45,interval:4},axisLine:{lineStyle:{color:'rgba(255,255,255,0.1)'}}},
     yAxis:{type:'value',axisLabel:{color:'#64748b',fontSize:9,formatter:'{value}kg'},splitLine:{lineStyle:{color:'rgba(255,255,255,0.05)'}},min:3,max:9},
     series:[{type:'line',data:weight,smooth:true,
       lineStyle:{color:'#10b981',width:2},
@@ -274,38 +273,38 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
   window.addEventListener('resize',function(){chart.resize();});
 })();
 
-// Feeding timeline (5/24-5/28)
+// Feeding timeline (5/25-5/29)
 (function(){
-  var chart = echarts.init(document.getElementById('timelineChart'), null, {renderer:'canvas'});
-  var colors = ['#1e3a5f','#2563eb','#0891b2','#059669','#0ea5e9','#3b82f6','#06b6d4','#10b981','#22d3ee','#34d399'];
-  var rawData = {
-    '5/24':  {times:['02:28','06:33','10:02','12:50','16:18','19:24','23:51'],gaps:['6h41m','4h04m','3h29m','2h47m','3h27m','3h05m','4h26m']},
-    '5/25':  {times:['03:55','07:09','09:59','13:00','16:12','19:03','23:22'],gaps:['4h03m','3h13m','2h49m','3h00m','3h11m','2h50m','4h18m']},
-    '5/26':  {times:['05:19','08:42','11:56','15:32','18:35','22:09'],gaps:['5h56m','3h22m','3h13m','3h35m','3h02m','3h33m']},
-    '5/27':  {times:['02:51','06:46','09:44','12:21','16:04','19:05','23:27'],gaps:['4h41m','3h54m','2h57m','2h36m','3h42m','3h00m','4h21m']},
-    '5/28':  {times:['05:10','08:07','11:07','15:06','18:25','23:46'],gaps:['5h43m','2h57m','2h58m','3h59m','3h18m','5h20m']}
+  var chart=echarts.init(document.getElementById('timelineChart'),null,{renderer:'canvas'});
+  var colors=['#1e3a5f','#2563eb','#0891b2','#059669','#0ea5e9','#3b82f6','#06b6d4','#10b981','#22d3ee','#34d399'];
+  var rawData={
+    '5/25':{times:['03:55','07:09','09:59','13:00','16:12','19:03','23:22'],gaps:['4h03m','3h13m','2h49m','3h00m','3h11m','2h50m','4h18m']},
+    '5/26':{times:['05:19','08:42','11:56','15:32','18:35','22:09'],gaps:['5h56m','3h22m','3h13m','3h35m','3h02m','3h33m']},
+    '5/27':{times:['02:51','06:46','09:44','12:21','16:04','19:05','23:27'],gaps:['4h41m','3h54m','2h57m','2h36m','3h42m','3h00m','4h21m']},
+    '5/28':{times:['05:10','08:07','11:07','15:06','18:25','23:46'],gaps:['5h43m','2h57m','2h58m','3h59m','3h18m','5h20m']},
+    '5/29':{times:['03:58','07:12','10:19','13:15','16:21','19:14','22:28'],gaps:['4h11m','3h13m','3h06m','2h55m','3h05m','2h52m','3h13m']}
   };
-  var prevLast = {'5/24':'19:46','5/25':'23:51','5/26':'23:22','5/27':'22:09','5/28':'23:27'};
-  var days = Object.keys(rawData);
+  var prevLast={'5/25':'23:51','5/26':'23:22','5/27':'22:09','5/28':'23:27','5/29':'23:46'};
+  var days=Object.keys(rawData);
   function t2m(t){var p=t.split(':');return +p[0]*60+(+p[1]);}
   function m2t(m){var h=Math.floor(m/60),mm=m%60;return (h<10?'0':'')+h+':'+(mm<10?'0':'')+mm;}
-  var allData = [];
-  days.forEach(function(day, di){
-    var info = rawData[day];
-    var times = ['00:00'].concat(info.times);
-    var gaps = info.gaps;
-    var lastT = t2m(times[times.length-1]);
-    if(lastT < 1439) times.push('24:00');
+  var allData=[];
+  days.forEach(function(day,di){
+    var info=rawData[day];
+    var times=['00:00'].concat(info.times);
+    var gaps=info.gaps;
+    var lastT=t2m(times[times.length-1]);
+    if(lastT<1439)times.push('24:00');
     for(var i=0;i<times.length-1;i++){
-      var labelText = '';
-      if(i === 0){
-        labelText = '\u2190' + (prevLast[day] || '--:--') + ' ' + gaps[0];
-      } else if(i === times.length-2 && lastT < 1439){
-        labelText = info.times[info.times.length-1];
-      } else {
-        labelText = info.times[i-1] + ' ' + gaps[i-1];
+      var labelText='';
+      if(i===0){
+        labelText='\u2190'+(prevLast[day]||'--:--')+' '+gaps[0];
+      }else if(i===times.length-2&&lastT<1439){
+        labelText=info.times[info.times.length-1];
+      }else{
+        labelText=info.times[i-1]+' '+gaps[i-1];
       }
-      allData.push([t2m(times[i]), t2m(times[i+1]), di, i, labelText]);
+      allData.push([t2m(times[i]),t2m(times[i+1]),di,i,labelText]);
     }
   });
   chart.setOption({
@@ -334,11 +333,9 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
           x:s[0],y:s[1]-h/2,width:e[0]-s[0],height:h
         },{x:params.coordSys.x,y:params.coordSys.y,width:params.coordSys.width,height:params.coordSys.height});
         if(!rect)return;
-        var labelX = s[0] + 3;
-        var labelY = s[1];
         return {type:'group',children:[
           {type:'rect',shape:rect,style:{fill:colors[segIdx%colors.length]}},
-          {type:'text',style:{text:labelText,x:labelX,y:labelY,textAlign:'left',textVerticalAlign:'middle',fill:'rgba(255,255,255,0.6)',fontSize:13.5}}
+          {type:'text',style:{text:labelText,x:s[0]+3,y:s[1],textAlign:'left',textVerticalAlign:'middle',fill:'rgba(255,255,255,0.6)',fontSize:13.5}}
         ]};
       },
       data:allData
