@@ -4,26 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920,height=1080">
 <meta http-equiv="refresh" content="600">
-<title>年糕宝宝 · 每日早教 2026-06-07</title>
+<title>年糕宝宝 · 每日早教 2026-06-08</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;color:#e8f0fe;background:#0a1628;}
+
 .bg-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;overflow:hidden;}
 .bg-gradient{position:absolute;width:100%;height:100%;background:linear-gradient(135deg,#0a1628 0%,#0f1d36 30%,#0c1a2e 60%,#0a1628 100%);}
+
 .page-container{position:relative;z-index:1;width:100%;height:100%;display:flex;flex-direction:column;padding:1.2vh 1.2vw;gap:1vh;}
+
+/* Top section: 3 columns */
 .top-section{display:flex;flex:1;gap:1vw;min-height:0;}
+
+/* Column 1: Baby info */
 .col-info{width:33.33%;display:flex;flex-direction:column;gap:0.8vh;}
 .col-info .col-title{font-size:2.5vh;color:#93c5fd;padding:0.5vh 0;}
 .info-row{display:flex;gap:0.8vh;}
 .info-card{background:rgba(30,58,138,0.25);border:1px solid rgba(59,130,246,0.2);border-radius:1.2vh;padding:1.2vh 1.5vw;flex:1;display:flex;flex-direction:column;justify-content:center;animation:slideIn 0.8s ease-out;}
 .info-card .info-label{font-size:1.2vh;color:#64748b;}
 .info-card .info-value{font-size:2.5vh;font-weight:700;color:#60a5fa;}
+
+/* Column 2: Data */
 .col-data{width:33.33%;display:flex;flex-direction:column;gap:1vh;}
 .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8vh;animation:slideIn 0.8s ease-out 0.1s both;}
 .stat-card{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1vh;padding:1vh 0.8vw;text-align:center;}
 .stat-card .stat-value{font-size:2.2vh;font-weight:700;color:#60a5fa;}
 .stat-card .stat-label{font-size:1.1vh;color:#94a3b8;margin-top:0.2vh;}
+
 .chart-card{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1vh;flex:1;animation:slideIn 0.8s ease-out 0.2s both;display:flex;flex-direction:column;overflow:hidden;}
+
+/* Column 3: Activities */
 .col-edu{width:33.33%;display:flex;flex-direction:column;gap:0.8vh;}
 .edu-title{font-size:1.5vh;color:#93c5fd;text-align:center;animation:pulse 3s ease-in-out infinite;padding:0.3vh 0;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.85;}}
@@ -42,7 +53,10 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
 .activity-card .card-footer{text-align:right;}
 .activity-card .activity-link{font-size:1vh;color:#38bdf8;text-decoration:none;opacity:0.7;}
 .activity-card .activity-link:hover{opacity:1;}
+
 @keyframes slideIn{from{opacity:0;transform:translateY(1vh);}to{opacity:1;transform:translateY(0);}}
+
+/* Bottom: timeline */
 .bottom-section{animation:slideIn 0.8s ease-out 0.7s both;background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1.2vh;padding:1vh 1.5vw;height:28vh;}
 </style>
 </head>
@@ -53,38 +67,41 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
 </div>
 <script>
 (function(){
-  const canvas=document.getElementById('particleCanvas');
-  const ctx=canvas.getContext('2d');
-  canvas.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%;';
-  function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
-  resize();window.addEventListener('resize',resize);
-  const particles=[];
-  const count=80;
-  const colors=['#3b82f6','#60a5fa','#06b6d4','#22d3ee','#10b981','#34d399','#0ea5e9','#38bdf8'];
-  for(let i=0;i<count;i++){
+  const canvas = document.getElementById('particleCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
+  function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  const particles = [];
+  const count = 80;
+  const colors = ['#3b82f6','#60a5fa','#06b6d4','#22d3ee','#10b981','#34d399','#0ea5e9','#38bdf8'];
+  for(let i = 0; i < count; i++){
     particles.push({
-      x:Math.random()*canvas.width,y:Math.random()*canvas.height,
-      r:Math.random()*25+8,
-      vx:(Math.random()-0.5)*0.3,vy:-(Math.random()*0.4+0.1),
-      color:colors[Math.floor(Math.random()*colors.length)],
-      alpha:Math.random()*0.4+0.1,
-      pulse:Math.random()*Math.PI*2,pulseSpeed:Math.random()*0.02+0.005
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 25 + 8,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: -(Math.random() * 0.4 + 0.1),
+      color: colors[Math.floor(Math.random() * colors.length)],
+      alpha: Math.random() * 0.4 + 0.1,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.005
     });
   }
   function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     for(const p of particles){
-      p.x+=p.vx;p.y+=p.vy;p.pulse+=p.pulseSpeed;
-      const a=p.alpha*(0.6+0.4*Math.sin(p.pulse));
-      if(p.y<-10){p.y=canvas.height+10;p.x=Math.random()*canvas.width;}
-      if(p.x<-10)p.x=canvas.width+10;
-      if(p.x>canvas.width+10)p.x=-10;
-      const grad=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4);
-      grad.addColorStop(0,p.color.slice(0,7)+Math.round(a*80).toString(16).padStart(2,'0'));
-      grad.addColorStop(1,p.color.slice(0,7)+'00');
-      ctx.beginPath();ctx.arc(p.x,p.y,p.r*4,0,Math.PI*2);ctx.fillStyle=grad;ctx.fill();
-      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle=p.color.slice(0,7)+Math.round(a*255).toString(16).padStart(2,'0');ctx.fill();
+      p.x += p.vx; p.y += p.vy; p.pulse += p.pulseSpeed;
+      const a = p.alpha * (0.6 + 0.4 * Math.sin(p.pulse));
+      if(p.y < -10) { p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
+      if(p.x < -10) p.x = canvas.width + 10;
+      if(p.x > canvas.width + 10) p.x = -10;
+      const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+      grad.addColorStop(0, p.color.slice(0,7) + Math.round(a * 80).toString(16).padStart(2,'0'));
+      grad.addColorStop(1, p.color.slice(0,7) + '00');
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2); ctx.fillStyle = grad; ctx.fill();
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color.slice(0,7) + Math.round(a * 255).toString(16).padStart(2,'0'); ctx.fill();
     }
     requestAnimationFrame(draw);
   }
@@ -100,11 +117,11 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
       <div class="info-row">
         <div class="info-card">
           <div class="info-label">天龄</div>
-          <div class="info-value">149 天</div>
+          <div class="info-value">150 天</div>
         </div>
         <div class="info-card">
           <div class="info-label">月龄</div>
-          <div class="info-value">4 个月 29 天</div>
+          <div class="info-value">4 个月 28 天</div>
         </div>
       </div>
       <div class="info-row">
@@ -114,26 +131,26 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
         </div>
         <div class="info-card">
           <div class="info-label">今天</div>
-          <div class="info-value">6月7日 周日</div>
+          <div class="info-value">6月8日 周一</div>
         </div>
       </div>
       <div class="info-card">
         <div class="info-label">🎯 生长发育里程碑</div>
-        <div class="info-value" style="font-size:1.4vh;font-weight:400;color:#bfdbfe;line-height:1.6;">俯卧抬头45° ✅ · 跟视180° ✅ · 发声 ✅ · 伸手抓物 ✅ · 翻身 ✅<br>抬头90° ✅ · 靠坐支撑 🔄 · 翻身返回 🔄 · 传递物体 🔄</div>
+        <div class="info-value" style="font-size:1.4vh;font-weight:400;color:#bfdbfe;line-height:1.6;">俯卧抬头 ✅ · 跟视180° ✅ · 发声 ✅ · 伸手抓物 ✅<br>翻身 🔄 · 独坐(有支撑) 🔄 · 腿部承重 🔄</div>
       </div>
       <div class="info-row">
         <div class="info-card">
           <div class="info-label">🌤 天气</div>
-          <div class="info-value" style="font-size:1.4vh;">⛅ 23°C 局部多云<br>💧 83%</div>
+          <div class="info-value" style="font-size:1.4vh;">⛅ 22°C 局部多云<br>💧 73%</div>
         </div>
         <div class="info-card">
           <div class="info-label">👔 穿衣建议</div>
-          <div class="info-value" style="font-size:1.4vh;">短袖连体衣<br>+ 薄长袖外套</div>
+          <div class="info-value" style="font-size:1.4vh;">短袖连体衣<br>+ 薄长袖备用</div>
         </div>
       </div>
       <div class="info-card">
         <div class="info-label">💡 今日育儿小知识</div>
-        <div class="info-value" style="font-size:1.4vh;font-weight:400;color:#bfdbfe;line-height:1.6;">5个月的宝宝开始理解因果关系，会故意扔玩具观察结果。这是认知发展的重要标志，多给宝宝提供不同材质和声响的玩具探索。</div>
+        <div class="info-value" style="font-size:1.4vh;font-weight:400;color:#bfdbfe;line-height:1.6;">5个月宝宝开始能辨别声音的来源方向，多在不同方位发出声响，帮助宝宝建立空间听觉感知。</div>
       </div>
     </div>
 
@@ -143,7 +160,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
       <div class="stats-grid">
         <div class="stat-card"><div class="stat-value">900ml</div><div class="stat-label">昨日总奶量</div></div>
         <div class="stat-card"><div class="stat-value">6次</div><div class="stat-label">喂养次数</div></div>
-        <div class="stat-card"><div class="stat-value">~3h59m</div><div class="stat-label">平均间隔</div></div>
+        <div class="stat-card"><div class="stat-value">~4h21m</div><div class="stat-label">平均间隔</div></div>
         <div class="stat-card"><div class="stat-value">150ml</div><div class="stat-label">单次奶量</div></div>
       </div>
       <div class="chart-card">
@@ -161,61 +178,61 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
         <div class="activity-card">
           <div class="card-header">
             <span class="activity-num">01 🎯 大运动</span>
-            <span class="activity-title">翻身练习 · 靠坐训练</span>
+            <span class="activity-title">翻身训练 · 肘撑练习</span>
           </div>
           <div class="card-body">
-            <span class="activity-desc">用玩具引导宝宝从仰卧翻到俯卧再翻回来，练习靠坐在枕头或靠垫上，锻炼躯干力量和平衡感。</span>
+            <span class="activity-desc">让宝宝趴在硬面床上，用玩具在一侧吸引注意力，引导从俯卧翻到仰卧，锻炼躯干肌肉力量。</span>
           </div>
           <div class="card-footer">
-            <a class="activity-link" href="https://www.babycenter.com/baby/month-by-month/5-month-old-baby-milestones-and-development_720">📖 BabyCenter</a>
+            <a class="activity-link" href="https://zhuanlan.zhihu.com/p/77367206">📖 知乎育儿</a>
           </div>
         </div>
         <div class="activity-card">
           <div class="card-header">
-            <span class="activity-num">02 👁 视觉认知</span>
-            <span class="activity-title">因果关系 · 扔物探索</span>
+            <span class="activity-num">02 👁 视觉发展</span>
+            <span class="activity-title">伸手够物 · 距离感知</span>
           </div>
           <div class="card-body">
-            <span class="activity-desc">给宝宝不同材质的玩具，让他扔下观察掉落和声音，促进因果认知和深度感知能力发展。</span>
+            <span class="activity-desc">将彩色玩具放在宝宝刚好够不到的位置，鼓励伸手抓取，训练手眼协调和距离感。</span>
           </div>
           <div class="card-footer">
-            <a class="activity-link" href="https://huckleberrycare.com/blog/5-month-old-baby-milestones-development-growth-speech-language-and-more">📖 Huckleberry</a>
+            <a class="activity-link" href="https://www.mama.cn/z/23936/">📖 妈妈网</a>
           </div>
         </div>
         <div class="activity-card">
           <div class="card-header">
             <span class="activity-num">03 ✋ 精细动作</span>
-            <span class="activity-title">抓握传递 · 手眼协调</span>
+            <span class="activity-title">抓握探索 · 质感体验</span>
           </div>
           <div class="card-body">
-            <span class="activity-desc">给宝宝两个小玩具，引导从一只手传递到另一只手，锻炼双手协调和掌心抓握能力。</span>
+            <span class="activity-desc">提供不同材质的物品（丝带、布料、纸），让宝宝触摸和抓握，促进触觉和精细动作发展。</span>
           </div>
           <div class="card-footer">
-            <a class="activity-link" href="https://www.parents.com/5-month-old-baby-8558257">📖 Parents</a>
+            <a class="activity-link" href="https://blog.lovevery.com/child-development/fun-developmental-activities-for-babies-5-6-months/">📖 Lovevery</a>
           </div>
         </div>
         <div class="activity-card">
           <div class="card-header">
             <span class="activity-num">04 🎵 听觉感知</span>
-            <span class="activity-title">声音追踪 · 节奏互动</span>
+            <span class="activity-title">追踪声源 · 眼睛追踪</span>
           </div>
           <div class="card-body">
-            <span class="activity-desc">在宝宝左右两侧摇铃或播放音乐，观察转头寻找声源。跟随音乐节奏轻拍宝宝身体，培养节奏感。</span>
+            <span class="activity-desc">在宝宝面前持摇铃移动，让宝宝用眼睛追踪物体移动，练习不同速度的视觉追踪能力。</span>
           </div>
           <div class="card-footer">
-            <a class="activity-link" href="https://heloa.app/en/blog/0-12-months/development/5-month-old-baby">📖 Heloa</a>
+            <a class="activity-link" href="https://www.enfamil.com/articles/activities-for-your-5-month-old/">📖 Enfamil</a>
           </div>
         </div>
         <div class="activity-card">
           <div class="card-header">
             <span class="activity-num">05 💬 社交情感</span>
-            <span class="activity-title">亲子对话 · 表情模仿</span>
+            <span class="activity-title">互动游戏 · 吹泡泡</span>
           </div>
           <div class="card-body">
-            <span class="activity-desc">面对面对宝宝说话，夸张表情让宝宝模仿。5个月宝宝会发出更多元音和辅音组合，及时回应鼓励发声。</span>
+            <span class="activity-desc">和宝宝面对面吹泡泡、唱儿歌，鼓励发出声音回应，发展社交技能和亲子 bonding。</span>
           </div>
           <div class="card-footer">
-            <a class="activity-link" href="https://www.patpat.com/blogs/baby-milestone/5-month-old-baby-development-milestones-growth-guide">📖 PatPat</a>
+            <a class="activity-link" href="https://www.healthyyoungminds.com/activities-for-5-month-old/">📖 Healthy Young Minds</a>
           </div>
         </div>
       </div>
@@ -230,11 +247,11 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
 
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <script>
-// Milk trend chart (10 days: 5/28 - 6/6)
+// Milk trend chart (10 days: 5/29 - 6/7)
 (function(){
-  var chart=echarts.init(document.getElementById('milkChart'));
-  var dates=['5/28','5/29','5/30','5/31','6/1','6/2','6/3','6/4','6/5','6/6'];
-  var milk=[900,1050,900,720,1050,900,900,900,900,900];
+  var chart = echarts.init(document.getElementById('milkChart'));
+  var dates = ['5/29','5/30','5/31','6/1','6/2','6/3','6/4','6/5','6/6','6/7'];
+  var milk  = [1050,900,720,1050,900,900,900,900,900,900];
   chart.setOption({
     title:{text:'📊 近10天奶量趋势',left:'center',textStyle:{color:'#93c5fd',fontSize:12,fontWeight:'normal'}},
     grid:{left:'12%',right:'5%',top:'22%',bottom:'15%'},
@@ -253,16 +270,16 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
 
 // Weight trend chart
 (function(){
-  var chart=echarts.init(document.getElementById('weightChart'));
-  var rawData=[{"date":"2026-01-09","weight":3.46},{"date":"2026-01-12","weight":3.33},{"date":"2026-01-13","weight":3.36},{"date":"2026-01-14","weight":3.36},{"date":"2026-01-15","weight":3.38},{"date":"2026-01-16","weight":3.43},{"date":"2026-01-17","weight":3.5},{"date":"2026-01-18","weight":3.51},{"date":"2026-01-19","weight":3.56},{"date":"2026-01-20","weight":3.64},{"date":"2026-01-21","weight":3.7},{"date":"2026-01-22","weight":3.76},{"date":"2026-01-23","weight":3.78},{"date":"2026-01-24","weight":3.82},{"date":"2026-01-25","weight":3.88},{"date":"2026-01-26","weight":3.9},{"date":"2026-01-27","weight":3.96},{"date":"2026-01-28","weight":4},{"date":"2026-01-29","weight":4.07},{"date":"2026-01-30","weight":4.12},{"date":"2026-01-31","weight":4.18},{"date":"2026-02-01","weight":4.22},{"date":"2026-02-02","weight":4.3},{"date":"2026-02-03","weight":4.38},{"date":"2026-02-04","weight":4.42},{"date":"2026-02-05","weight":4.52},{"date":"2026-02-06","weight":4.59},{"date":"2026-02-07","weight":4.67},{"date":"2026-02-08","weight":4.73},{"date":"2026-02-09","weight":4.8},{"date":"2026-02-10","weight":4.85},{"date":"2026-02-11","weight":4.92},{"date":"2026-02-12","weight":4.97},{"date":"2026-02-13","weight":5.03},{"date":"2026-02-14","weight":5.08},{"date":"2026-02-15","weight":5.11},{"date":"2026-02-17","weight":5.35},{"date":"2026-02-20","weight":5.47},{"date":"2026-02-21","weight":5.5},{"date":"2026-02-22","weight":5.51},{"date":"2026-02-24","weight":5.6},{"date":"2026-02-25","weight":5.68},{"date":"2026-02-28","weight":6.06},{"date":"2026-03-02","weight":6},{"date":"2026-03-06","weight":6.2},{"date":"2026-03-08","weight":6.15},{"date":"2026-03-12","weight":6.3},{"date":"2026-03-15","weight":6.5},{"date":"2026-03-18","weight":6.45},{"date":"2026-03-19","weight":6.45},{"date":"2026-03-21","weight":6.6},{"date":"2026-03-23","weight":6.7},{"date":"2026-03-25","weight":6.85},{"date":"2026-03-28","weight":6.9},{"date":"2026-03-30","weight":6.9},{"date":"2026-04-02","weight":7},{"date":"2026-04-03","weight":7.15},{"date":"2026-04-07","weight":7.2},{"date":"2026-04-08","weight":7.3},{"date":"2026-04-09","weight":7.35},{"date":"2026-04-10","weight":7.2},{"date":"2026-04-11","weight":7.4},{"date":"2026-04-12","weight":7.4},{"date":"2026-04-13","weight":7.45},{"date":"2026-04-15","weight":7.4},{"date":"2026-04-16","weight":7.5},{"date":"2026-04-17","weight":7.5},{"date":"2026-04-18","weight":7.55},{"date":"2026-04-20","weight":7.55},{"date":"2026-04-21","weight":7.45},{"date":"2026-04-23","weight":7.55},{"date":"2026-04-26","weight":7.7},{"date":"2026-04-27","weight":7.75},{"date":"2026-04-29","weight":7.8},{"date":"2026-05-02","weight":7.8},{"date":"2026-05-03","weight":7.8},{"date":"2026-05-04","weight":7.85},{"date":"2026-05-06","weight":7.95},{"date":"2026-05-07","weight":7.95},{"date":"2026-05-08","weight":7.95},{"date":"2026-05-09","weight":8.05},{"date":"2026-05-11","weight":8},{"date":"2026-05-12","weight":8.1},{"date":"2026-05-14","weight":8.15},{"date":"2026-05-17","weight":8.1},{"date":"2026-05-18","weight":8.15},{"date":"2026-05-19","weight":8.13},{"date":"2026-05-21","weight":8.25},{"date":"2026-05-22","weight":8.2},{"date":"2026-05-24","weight":8.15},{"date":"2026-05-25","weight":8.25},{"date":"2026-05-27","weight":8.45},{"date":"2026-05-29","weight":8.45}];
-  var dates=rawData.map(function(d){var p=d.date.split('-');return (+p[1])+'/'+(+p[2]);});
-  var weights=rawData.map(function(d){return d.weight;});
+  var chart = echarts.init(document.getElementById('weightChart'));
+  var allData = [{"date":"1/9","w":3.46},{"date":"1/12","w":3.33},{"date":"1/13","w":3.36},{"date":"1/14","w":3.36},{"date":"1/15","w":3.38},{"date":"1/16","w":3.43},{"date":"1/17","w":3.5},{"date":"1/18","w":3.51},{"date":"1/19","w":3.56},{"date":"1/20","w":3.64},{"date":"1/21","w":3.7},{"date":"1/22","w":3.76},{"date":"1/23","w":3.78},{"date":"1/24","w":3.82},{"date":"1/25","w":3.88},{"date":"1/26","w":3.9},{"date":"1/27","w":3.96},{"date":"1/28","w":4.0},{"date":"1/29","w":4.07},{"date":"1/30","w":4.12},{"date":"1/31","w":4.18},{"date":"2/1","w":4.22},{"date":"2/2","w":4.3},{"date":"2/3","w":4.38},{"date":"2/4","w":4.42},{"date":"2/5","w":4.52},{"date":"2/6","w":4.59},{"date":"2/7","w":4.67},{"date":"2/8","w":4.73},{"date":"2/9","w":4.8},{"date":"2/10","w":4.85},{"date":"2/11","w":4.92},{"date":"2/12","w":4.97},{"date":"2/13","w":5.03},{"date":"2/14","w":5.08},{"date":"2/15","w":5.11},{"date":"2/17","w":5.35},{"date":"2/20","w":5.47},{"date":"2/21","w":5.5},{"date":"2/22","w":5.51},{"date":"2/24","w":5.6},{"date":"2/25","w":5.68},{"date":"2/28","w":6.06},{"date":"3/2","w":6.0},{"date":"3/6","w":6.2},{"date":"3/8","w":6.15},{"date":"3/12","w":6.3},{"date":"3/15","w":6.5},{"date":"3/18","w":6.45},{"date":"3/19","w":6.45},{"date":"3/21","w":6.6},{"date":"3/23","w":6.7},{"date":"3/25","w":6.85},{"date":"3/28","w":6.9},{"date":"3/30","w":6.9},{"date":"4/2","w":7.0},{"date":"4/3","w":7.15},{"date":"4/7","w":7.2},{"date":"4/8","w":7.3},{"date":"4/9","w":7.35},{"date":"4/10","w":7.2},{"date":"4/11","w":7.4},{"date":"4/12","w":7.4},{"date":"4/13","w":7.45},{"date":"4/15","w":7.4},{"date":"4/16","w":7.5},{"date":"4/17","w":7.5},{"date":"4/18","w":7.55},{"date":"4/20","w":7.55},{"date":"4/21","w":7.45},{"date":"4/23","w":7.55},{"date":"4/26","w":7.7},{"date":"4/27","w":7.75},{"date":"4/29","w":7.8},{"date":"5/2","w":7.8},{"date":"5/3","w":7.8},{"date":"5/4","w":7.85},{"date":"5/6","w":7.95},{"date":"5/7","w":7.95},{"date":"5/8","w":7.95},{"date":"5/9","w":8.05},{"date":"5/11","w":8.0},{"date":"5/12","w":8.1},{"date":"5/14","w":8.15},{"date":"5/17","w":8.1},{"date":"5/18","w":8.15},{"date":"5/19","w":8.13},{"date":"5/21","w":8.25},{"date":"5/22","w":8.2},{"date":"5/24","w":8.15},{"date":"5/25","w":8.25},{"date":"5/27","w":8.45},{"date":"5/29","w":8.45}];
+  var dates = allData.map(function(d){return d.date;});
+  var weights = allData.map(function(d){return d.w;});
   chart.setOption({
-    title:{text:'⚖️ 体重趋势 ('+rawData.length+'次记录 · 最新'+weights[weights.length-1]+'kg)',left:'center',textStyle:{color:'#93c5fd',fontSize:12,fontWeight:'normal'}},
+    title:{text:'⚖️ 体重趋势 ('+allData.length+'次记录)',left:'center',textStyle:{color:'#93c5fd',fontSize:12,fontWeight:'normal'}},
     grid:{left:'15%',right:'5%',top:'22%',bottom:'15%'},
     xAxis:{type:'category',data:dates,axisLabel:{color:'#64748b',fontSize:7,rotate:45,interval:4},axisLine:{lineStyle:{color:'rgba(255,255,255,0.1)'}}},
     yAxis:{type:'value',axisLabel:{color:'#64748b',fontSize:9,formatter:'{value}kg'},splitLine:{lineStyle:{color:'rgba(255,255,255,0.05)'}},min:3,max:9},
-    series:[{type:'line',data:weights,smooth:true,
+    series:[{type:'line',data:weights,smooth:true,showSymbol:false,
       lineStyle:{color:'#10b981',width:2},
       itemStyle:{color:'#10b981'},
       areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(16,185,129,0.3)'},{offset:1,color:'rgba(16,185,129,0.02)'}]}}
@@ -272,38 +289,47 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
   window.addEventListener('resize',function(){chart.resize();});
 })();
 
-// Feeding timeline (5 days: 6/2 - 6/6)
+// Feeding timeline (5 days: 6/3 - 6/7)
 (function(){
-  var chart=echarts.init(document.getElementById('timelineChart'),null,{renderer:'canvas'});
-  var colors=['#1e3a5f','#2563eb','#0891b2','#059669','#0ea5e9','#3b82f6','#06b6d4','#10b981','#22d3ee','#34d399'];
-  var rawData={
-    '6/2':{times:['05:59','09:04','11:43','15:37','18:20','22:59'],gaps:['6h24m','3h04m','2h38m','3h53m','2h42m','4h38m']},
-    '6/3':{times:['05:56','08:58','11:47','15:56','18:57','23:36'],gaps:['6h56m','3h01m','2h48m','4h08m','3h00m','4h38m']},
-    '6/4':{times:['06:41','09:44','12:40','15:33','18:24','23:04'],gaps:['7h04m','3h02m','2h55m','2h52m','2h50m','4h39m']},
-    '6/5':{times:['06:13','09:06','12:07','15:13','18:16','23:11'],gaps:['7h08m','2h52m','3h00m','3h05m','3h02m','4h54m']},
-    '6/6':{times:['06:10','09:01','12:01','15:43','18:34','23:11'],gaps:['6h58m','2h50m','2h59m','3h41m','2h50m','4h36m']}
+  var chart = echarts.init(document.getElementById('timelineChart'), null, {renderer:'canvas'});
+  var colors = ['#1e3a5f','#2563eb','#0891b2','#059669','#0ea5e9','#3b82f6','#06b6d4','#10b981','#22d3ee','#34d399'];
+  var rawData = {
+    '6/3':  {times:['05:56','08:58','11:47','15:56','18:57','23:36'],gaps:['6h56m','3h01m','2h48m','4h08m','3h00m','4h38m']},
+    '6/4':  {times:['06:41','09:44','12:40','15:33','18:24','23:04'],gaps:['7h04m','3h02m','2h55m','2h52m','2h50m','4h39m']},
+    '6/5':  {times:['06:13','09:06','12:07','15:13','18:16','23:11'],gaps:['7h08m','2h52m','3h00m','3h05m','3h02m','4h54m']},
+    '6/6':  {times:['06:10','09:01','12:01','15:43','18:34','23:11'],gaps:['6h58m','2h50m','2h59m','3h41m','2h50m','4h36m']},
+    '6/7':  {times:['05:49','09:29','14:25','15:05','18:00','23:09'],gaps:['6h37m','3h39m','4h55m','2h53m','2h55m','5h08m']}
   };
-  var prevLast={'6/2':'23:34','6/3':'22:59','6/4':'23:36','6/5':'23:04','6/6':'23:11'};
-  var days=Object.keys(rawData);
+  var prevLast = {'6/3':'22:59','6/4':'23:36','6/5':'23:04','6/6':'23:11','6/7':'23:11'};
+  var days = Object.keys(rawData);
   function t2m(t){var p=t.split(':');return +p[0]*60+(+p[1]);}
   function m2t(m){var h=Math.floor(m/60),mm=m%60;return (h<10?'0':'')+h+':'+(mm<10?'0':'')+mm;}
-  var allData=[];
-  days.forEach(function(day,di){
-    var info=rawData[day];
-    var times=['00:00'].concat(info.times);
-    var gaps=info.gaps;
-    var lastT=t2m(times[times.length-1]);
-    if(lastT<1439)times.push('24:00');
+  var allSegs = [];
+  days.forEach(function(day, di){
+    var info = rawData[day];
+    var times = ['00:00'].concat(info.times);
+    var gaps = info.gaps;
+    var lastT = t2m(times[times.length-1]);
+    if(lastT < 1439) times.push('24:00');
     for(var i=0;i<times.length-1;i++){
-      var labelText='';
-      if(i===0){labelText='\u2190'+(prevLast[day]||'--:--')+' '+gaps[0];}
-      else if(i===times.length-2&&lastT<1439){labelText=info.times[info.times.length-1];}
-      else{labelText=info.times[i-1]+' '+gaps[i-1];}
-      allData.push([t2m(times[i]),t2m(times[i+1]),di,i,labelText]);
+      var labelText = '';
+      if(i === 0){
+        labelText = '\u2190' + (prevLast[day] || '--:--') + ' ' + gaps[0];
+      } else if(i === times.length-2 && lastT < 1439){
+        labelText = info.times[info.times.length-1];
+      } else {
+        labelText = info.times[i-1] + ' ' + gaps[i-1];
+      }
+      allSegs.push([t2m(times[i]), t2m(times[i+1]), di, i, labelText]);
     }
   });
   chart.setOption({
-    tooltip:{formatter:function(p){var d=p.data,gap=d[1]-d[0];return days[d[2]]+' '+m2t(d[0])+' - '+m2t(d[1])+' ('+Math.floor(gap/60)+'h'+gap%60+'m)';}},
+    tooltip:{
+      formatter:function(p){
+        var d=p.data,gap=d[1]-d[0];
+        return days[d[2]]+' '+m2t(d[0])+' - '+m2t(d[1])+' ('+Math.floor(gap/60)+'h'+gap%60+'m)';
+      }
+    },
     grid:{left:'4%',right:'3%',top:'14%',bottom:'10%',containLabel:false},
     title:{text:'📊 过去5天喂养时间线',left:'center',textStyle:{color:'#93c5fd',fontSize:13,fontWeight:'normal'}},
     xAxis:{type:'value',min:0,max:1440,interval:360,
@@ -319,14 +345,16 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
         var start=api.value(0),end=api.value(1),dayIdx=api.value(2),segIdx=api.value(3),labelText=api.value(4);
         var s=api.coord([start,dayIdx]),e=api.coord([end,dayIdx]);
         var h=api.size([0,1])[1]*0.75;
-        var rect=echarts.graphic.clipRectByRect({x:s[0],y:s[1]-h/2,width:e[0]-s[0],height:h},{x:params.coordSys.x,y:params.coordSys.y,width:params.coordSys.width,height:params.coordSys.height});
+        var rect=echarts.graphic.clipRectByRect({
+          x:s[0],y:s[1]-h/2,width:e[0]-s[0],height:h
+        },{x:params.coordSys.x,y:params.coordSys.y,width:params.coordSys.width,height:params.coordSys.height});
         if(!rect)return;
         return {type:'group',children:[
           {type:'rect',shape:rect,style:{fill:colors[segIdx%colors.length]}},
           {type:'text',style:{text:labelText,x:s[0]+3,y:s[1],textAlign:'left',textVerticalAlign:'middle',fill:'rgba(255,255,255,0.6)',fontSize:13.5}}
         ]};
       },
-      data:allData
+      data:allSegs
     }]
   });
   window.addEventListener('resize',function(){chart.resize();});
