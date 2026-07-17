@@ -2,346 +2,365 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=1920,height=1080">
 <meta http-equiv="refresh" content="600">
-<title>👶 年糕宝宝 · 2026年7月16日 · 半岁快乐</title>
-<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<title>年糕宝宝 · 每日早教 2026-07-17</title>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-html,body { width:100vw; height:100vh; overflow:hidden; background:#0a1628; color:#e0f2fe; font-family:'Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif; }
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;color:#e8f0fe;background:#0a1628;}
 
-#particles { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+.bg-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;overflow:hidden;}
+.bg-gradient{position:absolute;width:100%;height:100%;background:linear-gradient(135deg,#0a1628 0%,#0f1d36 30%,#0c1a2e 60%,#0a1628 100%);}
 
-.container { position:relative; z-index:1; display:flex; flex-direction:column; width:100vw; height:100vh; padding:0.8vh 1vw; gap:0.6vh; }
+.page-container{position:relative;z-index:1;width:100%;height:100%;display:flex;flex-direction:column;padding:1.2vh 1.2vw;gap:1vh;}
 
-.top-section { display:flex; flex:1; gap:1vw; min-height:0; }
-.col { flex:1; display:flex; flex-direction:column; gap:0.6vh; min-width:0; overflow:hidden; }
+/* Top section: 3 columns */
+.top-section{display:flex;flex:1;gap:1vw;min-height:0;}
 
-.col-title { font-size:1.5vw; font-weight:700; color:#7dd3fc; margin-bottom:0.3vh; text-shadow:0 0 12px rgba(125,211,252,0.4); }
+/* Column 1: Baby info */
+.col-info{width:33.33%;display:flex;flex-direction:column;gap:0.8vh;}
+.col-info .col-title{font-size:2.5vh;color:#93c5fd;padding:0.5vh 0;}
+.info-row{display:flex;gap:0.8vh;}
+.info-card{background:rgba(30,58,138,0.25);border:1px solid rgba(59,130,246,0.2);border-radius:1.2vh;padding:1.2vh 1.5vw;flex:1;display:flex;flex-direction:column;justify-content:center;animation:slideIn 0.8s ease-out;}
+.info-card .info-label{font-size:1.2vh;color:#64748b;}
+.info-card .info-value{font-size:2.5vh;font-weight:700;color:#60a5fa;}
 
-.card { background:rgba(30,58,138,0.2); border:1px solid rgba(59,130,246,0.15); border-radius:1.2vh; padding:0.8vh 1vw; display:flex; flex-direction:column; animation:slideIn 0.6s ease-out backwards; }
-.card-label { font-size:0.85vw; color:#94a3b8; font-weight:500; }
-.card-value { font-size:1.8vw; font-weight:700; color:#e0f2fe; line-height:1.2; }
-.card-sub { font-size:0.75vw; color:#64748b; }
+/* Column 2: Data */
+.col-data{width:33.33%;display:flex;flex-direction:column;gap:1vh;}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8vh;animation:slideIn 0.8s ease-out 0.1s both;}
+.stat-card{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1vh;padding:1vh 0.8vw;text-align:center;}
+.stat-card .stat-value{font-size:2.2vh;font-weight:700;color:#60a5fa;}
+.stat-card .stat-label{font-size:1.1vh;color:#94a3b8;margin-top:0.2vh;}
 
-.card-row { display:flex; gap:0.6vw; }
+.chart-card{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1vh;flex:1;animation:slideIn 0.8s ease-out 0.2s both;display:flex;flex-direction:column;overflow:hidden;}
 
-/* Left column */
-.info-card { flex:0 0 auto; }
-.milestone-item { display:flex; align-items:center; gap:0.4vw; font-size:0.8vw; margin:0.2vh 0; }
-.milestone-done { color:#34d399; }
-.milestone-active { color:#fbbf24; }
-.milestone-future { color:#475569; }
+/* Column 3: Activities */
+.col-edu{width:33.33%;display:flex;flex-direction:column;gap:0.8vh;}
+.edu-title{font-size:1.5vh;color:#93c5fd;text-align:center;animation:pulse 3s ease-in-out infinite;padding:0.3vh 0;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.85;}}
+.edu-cards{display:flex;flex-direction:column;gap:0.6vh;flex:1;overflow:hidden;}
+.activity-card{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1vh;padding:0.8vh 1vw;flex:1;display:flex;flex-direction:column;justify-content:flex-start;gap:0.3vh;animation:slideIn 0.8s ease-out both;overflow:hidden;}
+.activity-card:nth-child(1){animation-delay:0.2s;}
+.activity-card:nth-child(2){animation-delay:0.3s;}
+.activity-card:nth-child(3){animation-delay:0.4s;}
+.activity-card:nth-child(4){animation-delay:0.5s;}
+.activity-card:nth-child(5){animation-delay:0.6s;}
+.activity-card .card-header{display:flex;align-items:center;gap:0.8vw;}
+.activity-card .activity-num{font-size:2vh;color:#3b82f6;font-weight:700;white-space:nowrap;}
+.activity-card .activity-title{font-size:1.6vh;font-weight:700;color:#e0f2fe;white-space:nowrap;}
+.activity-card .card-body{flex:1;}
+.activity-card .activity-desc{font-size:1.15vh;color:#94a3b8;line-height:1.3;}
+.activity-card .card-footer{text-align:right;}
+.activity-card .activity-link{font-size:1vh;color:#38bdf8;text-decoration:none;opacity:0.7;}
+.activity-card .activity-link:hover{opacity:1;}
 
-/* Middle column */
-.stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.6vw; }
-.chart-container { flex:1; min-height:0; }
+@keyframes slideIn{from{opacity:0;transform:translateY(1vh);}to{opacity:1;transform:translateY(0);}}
 
-/* Right column */
-.activity-card { background:rgba(30,58,138,0.2); border:1px solid rgba(59,130,246,0.15); border-radius:1.2vh; padding:0.8vh 1vw; display:flex; flex-direction:column; gap:0.3vh; animation:slideIn 0.6s ease-out backwards; }
-.activity-num { font-size:1.5vw; font-weight:800; color:#0ea5e9; line-height:1; }
-.activity-title { font-size:1vw; font-weight:700; color:#e0f2fe; }
-.activity-cat { font-size:0.7vw; color:#06b6d4; background:rgba(6,182,212,0.15); padding:0.1vh 0.4vw; border-radius:0.5vh; display:inline-block; }
-.activity-desc { font-size:0.78vw; color:#94a3b8; line-height:1.4; }
-.activity-link { font-size:0.7vw; color:#3b82f6; text-decoration:none; text-align:right; }
-.activity-link:hover { color:#60a5fa; }
-
-.bottom-section { height:26vh; flex-shrink:0; }
-.bottom-title { font-size:1.2vw; font-weight:700; color:#7dd3fc; margin-bottom:0.3vh; }
-
-/* Half-year celebration banner */
-.half-year-badge {
-    position:absolute; top:0.5vh; right:1vw; z-index:10;
-    background:linear-gradient(135deg,#2563eb,#06b6d4); padding:0.3vh 1vw; border-radius:2vh;
-    font-size:1vw; font-weight:800; color:#fff; animation:pulse 2s ease-in-out infinite;
-    box-shadow:0 0 20px rgba(6,182,212,0.6);
-}
-
-/* Animations */
-@keyframes slideIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
-@keyframes pulse { 0%,100%{transform:scale(1); opacity:1;} 50%{transform:scale(1.05); opacity:0.9;} }
-
-/* Stagger animations */
-.card:nth-child(1){animation-delay:0.1s}
-.card:nth-child(2){animation-delay:0.2s}
-.card:nth-child(3){animation-delay:0.3s}
-.card:nth-child(4){animation-delay:0.4s}
-.activity-card:nth-child(1){animation-delay:0.1s}
-.activity-card:nth-child(2){animation-delay:0.2s}
-.activity-card:nth-child(3){animation-delay:0.3s}
-.activity-card:nth-child(4){animation-delay:0.4s}
-.activity-card:nth-child(5){animation-delay:0.5s}
+/* Bottom: timeline */
+.bottom-section{animation:slideIn 0.8s ease-out 0.7s both;background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1.2vh;padding:1vh 1.5vw;height:28vh;}
 </style>
 </head>
 <body>
-<canvas id="particles"></canvas>
-
-<div class="half-year-badge">🎉 半岁快乐！6个月！</div>
-
-<div class="container">
-<div class="top-section">
-
-<!-- LEFT COLUMN -->
-<div class="col">
-<div class="col-title">👶 年糕宝宝</div>
-
-<div class="card-row">
-<div class="card info-card" style="flex:1">
-<div class="card-label">天龄</div>
-<div class="card-value">188</div>
-<div class="card-sub">天</div>
+<div class="bg-animation">
+  <div class="bg-gradient"></div>
+  <canvas id="particleCanvas"></canvas>
 </div>
-<div class="card info-card" style="flex:1">
-<div class="card-label">月龄</div>
-<div class="card-value">6<span style="font-size:1vw;color:#94a3b8">.5</span></div>
-<div class="card-sub">个月 8天</div>
-</div>
-</div>
-
-<div class="card-row">
-<div class="card info-card" style="flex:1">
-<div class="card-label">出生日期</div>
-<div class="card-value" style="font-size:1.2vw">2026-01-09</div>
-</div>
-<div class="card info-card" style="flex:1">
-<div class="card-label">今天</div>
-<div class="card-value" style="font-size:1.2vw">07-16 周四</div>
-</div>
-</div>
-
-<div class="card info-card" style="animation-delay:0.3s">
-<div class="card-label" style="margin-bottom:0.4vh">🌱 生长发育里程碑</div>
-<div class="milestone-item milestone-done">✅ 抬头稳 (2月达成)</div>
-<div class="milestone-item milestone-done">✅ 翻身自如 (4月达成)</div>
-<div class="milestone-item milestone-done">✅ 主动抓握 (4月达成)</div>
-<div class="milestone-item milestone-active">🔄 独坐练习中 (当前目标)</div>
-<div class="milestone-item milestone-active">🔄 辅食添加中 (当前阶段)</div>
-<div class="milestone-item milestone-future">⬜ 爬行 (8-10月预期)</div>
-<div class="milestone-item milestone-future">⬜ 扶站 (9-11月预期)</div>
-</div>
-
-<div class="card-row">
-<div class="card info-card" style="flex:1">
-<div class="card-label">🌡️ 天气</div>
-<div class="card-value" style="font-size:1.1vw">☀️ 晴 32°C</div>
-<div class="card-sub">湿度 75%</div>
-</div>
-<div class="card info-card" style="flex:1">
-<div class="card-label">👕 穿衣建议</div>
-<div class="card-value" style="font-size:0.9vw">短袖连体衣，外出戴帽防晒</div>
-</div>
-</div>
-
-<div class="card info-card" style="animation-delay:0.5s">
-<div class="card-label">💡 每日育儿知识</div>
-<div style="font-size:0.75vw; color:#94a3b8; line-height:1.5; margin-top:0.3vh">
-6月龄是添加辅食的关键期。从单一食材开始，每次只引入一种新食物，观察3-5天无过敏反应后再加下一种。首选强化铁米粉、蔬菜泥、水果泥。奶量仍为主食，每日约800-1000ml。
-</div>
-</div>
-</div>
-
-<!-- MIDDLE COLUMN -->
-<div class="col">
-<div class="col-title">📊 宝宝数据</div>
-
-<div class="stats-grid">
-<div class="card">
-<div class="card-label">昨日总奶量</div>
-<div class="card-value">1080<span style="font-size:1vw;color:#94a3b8"> ml</span></div>
-</div>
-<div class="card">
-<div class="card-label">喂养次数</div>
-<div class="card-value">6<span style="font-size:1vw;color:#94a3b8"> 次</span></div>
-</div>
-<div class="card">
-<div class="card-label">平均间隔</div>
-<div class="card-value" style="font-size:1.4vw">4h11m</div>
-</div>
-<div class="card">
-<div class="card-label">单次奶量</div>
-<div class="card-value">180<span style="font-size:1vw;color:#94a3b8"> ml</span></div>
-</div>
-</div>
-
-<div class="card chart-container">
-<div class="card-label" style="margin-bottom:0.3vh">📈 近10天每日总奶量</div>
-<div id="milkChart" style="width:100%;flex:1;min-height:0"></div>
-</div>
-
-<div class="card chart-container">
-<div class="card-label" style="margin-bottom:0.3vh">⚖️ 体重趋势 (当前 9.0 kg)</div>
-<div id="weightChart" style="width:100%;flex:1;min-height:0"></div>
-</div>
-</div>
-
-<!-- RIGHT COLUMN -->
-<div class="col">
-<div class="col-title">🌟 年糕宝宝今日早教 · 6月龄专属</div>
-
-<div class="activity-card">
-<div style="display:flex;align-items:center;gap:0.5vw">
-<span class="activity-num">01</span>
-<span class="activity-cat">大运动</span>
-</div>
-<div class="activity-title">翻身与独坐练习</div>
-<div class="activity-desc">用玩具引导宝宝从仰卧翻到俯卧，辅助宝宝练习短时间独坐，每次3-5分钟，锻炼核心肌群。</div>
-<a class="activity-link" href="https://www.babycenter.com/baby/baby-development" target="_blank">来源: BabyCenter →</a>
-</div>
-
-<div class="activity-card">
-<div style="display:flex;align-items:center;gap:0.5vw">
-<span class="activity-num">02</span>
-<span class="activity-cat">视觉认知</span>
-</div>
-<div class="activity-title">镜子互动游戏</div>
-<div class="activity-desc">抱宝宝到镜子前，让ta观察镜中影像，指着镜像说话，促进自我认知和视觉追踪能力。</div>
-<a class="activity-link" href="https://pathways.org/growth-development/6-months/" target="_blank">来源: Pathways.org →</a>
-</div>
-
-<div class="activity-card">
-<div style="display:flex;align-items:center;gap:0.5vw">
-<span class="activity-num">03</span>
-<span class="activity-cat">精细动作</span>
-</div>
-<div class="activity-title">双手抓握积木</div>
-<div class="activity-desc">提供不同材质、颜色、大小的积木或摇铃，鼓励宝宝双手传递，锻炼手眼协调和抓握力。</div>
-<a class="activity-link" href="https://www.zhihu.com/question/285948142" target="_blank">来源: 知乎育儿 →</a>
-</div>
-
-<div class="activity-card">
-<div style="display:flex;align-items:center;gap:0.5vw">
-<span class="activity-num">04</span>
-<span class="activity-cat">听觉发展</span>
-</div>
-<div class="activity-title">声音寻源游戏</div>
-<div class="activity-desc">在宝宝视线外摇铃或播放轻柔音乐，引导宝宝转头寻找声源，锻炼听觉定位和颈部力量。</div>
-<a class="activity-link" href="https://www.babytree.com/learn/article-6month" target="_blank">来源: 宝宝树 →</a>
-</div>
-
-<div class="activity-card">
-<div style="display:flex;align-items:center;gap:0.5vw">
-<span class="activity-num">05</span>
-<span class="activity-cat">社交情感</span>
-</div>
-<div class="activity-title">躲猫猫互动</div>
-<div class="activity-desc">用双手遮脸再露出，配合夸张表情和声音，帮助宝宝建立客体永久性概念，增进亲子感情。</div>
-<a class="activity-link" href="https://www.babycenter.com/baby/baby-development" target="_blank">来源: BabyCenter →</a>
-</div>
-
-</div>
-</div>
-
-<!-- BOTTOM: 5-DAY FEEDING TIMELINE -->
-<div class="bottom-section card">
-<div class="bottom-title">📊 近5天喂养时间线</div>
-<div id="timelineChart" style="width:100%;height:calc(100% - 2vh)"></div>
-</div>
-
-</div>
-
 <script>
-// === PARTICLES ===
 (function(){
-const c=document.getElementById('particles'),x=c.getContext('2d');
-let w,h,p=[];
-function resize(){w=c.width=innerWidth;h=c.height=innerHeight;}
-resize();addEventListener('resize',resize);
-const cols=['#1e3a5f','#2563eb','#0891b2','#059669','#0ea5e9','#3b82f6','#06b6d4','#10b981','#22d3ee','#34d399'];
-for(let i=0;i<80;i++){p.push({x:Math.random()*w,y:Math.random()*h,r:8+Math.random()*25,vy:-0.2-Math.random()*0.4,vx:(Math.random()-0.5)*0.15,c:cols[Math.floor(Math.random()*cols.length)],a:0.08+Math.random()*0.18});}
-function draw(){x.clearRect(0,0,w,h);for(let i of p){i.y+=i.vy;i.x+=i.vx;if(i.y<-50)i.y=h+50;if(i.x<-50)i.x=w+50;if(i.x>w+50)i.x=-50;x.beginPath();x.arc(i.x,i.y,i.r,0,Math.PI*2);x.fillStyle=i.c;x.globalAlpha=i.a;x.shadowBlur=20;x.shadowColor=i.c;x.fill();}requestAnimationFrame(draw);}
-draw();
+  const canvas = document.getElementById('particleCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
+  function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  const particles = [];
+  const count = 80;
+  const colors = ['#3b82f6','#60a5fa','#06b6d4','#22d3ee','#10b981','#34d399','#0ea5e9','#38bdf8'];
+  for(let i = 0; i < count; i++){
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 25 + 8,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: -(Math.random() * 0.4 + 0.1),
+      color: colors[Math.floor(Math.random() * colors.length)],
+      alpha: Math.random() * 0.4 + 0.1,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.005
+    });
+  }
+  function draw(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for(const p of particles){
+      p.x += p.vx; p.y += p.vy; p.pulse += p.pulseSpeed;
+      const a = p.alpha * (0.6 + 0.4 * Math.sin(p.pulse));
+      if(p.y < -10) { p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
+      if(p.x < -10) p.x = canvas.width + 10;
+      if(p.x > canvas.width + 10) p.x = -10;
+      const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+      grad.addColorStop(0, p.color.slice(0,7) + Math.round(a * 80).toString(16).padStart(2,'0'));
+      grad.addColorStop(1, p.color.slice(0,7) + '00');
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2); ctx.fillStyle = grad; ctx.fill();
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color.slice(0,7) + Math.round(a * 255).toString(16).padStart(2,'0'); ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+
+<div class="page-container">
+  <div class="top-section">
+    <!-- Column 1: Baby Info -->
+    <div class="col-info">
+      <div class="col-title">👶 年糕宝宝</div>
+      <div class="info-row">
+        <div class="info-card">
+          <div class="info-label">天龄</div>
+          <div class="info-value">189 天</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">月龄</div>
+          <div class="info-value">6 个月 9 天</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-card">
+          <div class="info-label">出生日期</div>
+          <div class="info-value">2026.01.09</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">今天</div>
+          <div class="info-value">7月17日 周五</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">🎯 生长发育里程碑</div>
+        <div class="info-value" style="font-size:1.4vh;font-weight:400;color:#bfdbfe;line-height:1.6;">俯卧抬头90° ✅ · 翻身 ✅ · 主动抓物 ✅<br>独坐 🔄 · 扶站 🔄 · 换手传递 🔄</div>
+      </div>
+      <div class="info-row">
+        <div class="info-card">
+          <div class="info-label">🌤 天气</div>
+          <div class="info-value" style="font-size:1.4vh;">🌫 32°C 雾霾<br>💧 75%</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">👔 穿衣建议</div>
+          <div class="info-value" style="font-size:1.4vh;">薄棉短袖<br>空调26°C</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">💡 今日育儿小知识</div>
+        <div class="info-value" style="font-size:1.4vh;font-weight:400;color:#bfdbfe;line-height:1.6;">6个月的宝宝可以开始添加辅食了！从高铁米粉开始，由稀到稠、由少到多，每次只引入一种新食物，观察3-5天无过敏再尝试下一种。</div>
+      </div>
+    </div>
+
+    <!-- Column 2: Data -->
+    <div class="col-data">
+      <div class="edu-title">📊 宝宝数据</div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-value">1080ml</div><div class="stat-label">昨日总奶量</div></div>
+        <div class="stat-card"><div class="stat-value">6次</div><div class="stat-label">喂养次数</div></div>
+        <div class="stat-card"><div class="stat-value">~3h18m</div><div class="stat-label">平均间隔</div></div>
+        <div class="stat-card"><div class="stat-value">180ml</div><div class="stat-label">单次奶量</div></div>
+      </div>
+      <div class="chart-card">
+        <div id="milkChart" style="width:100%;flex:1;min-height:0;"></div>
+      </div>
+      <div class="chart-card">
+        <div id="weightChart" style="width:100%;flex:1;min-height:0;"></div>
+      </div>
+    </div>
+
+    <!-- Column 3: Education -->
+    <div class="col-edu">
+      <div class="edu-title">🌟 年糕宝宝今日早教 · 6月龄专属</div>
+      <div class="edu-cards">
+        <div class="activity-card">
+          <div class="card-header">
+            <span class="activity-num">01 🏃 大运动</span>
+            <span class="activity-title">独坐练习 · 撒手平衡</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">让宝宝坐在地垫上，用玩具吸引注意力，慢慢松开支撑的手，每次尝试10-15秒，逐渐延长时间。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://www.mayoclinic.org/healthy-lifestyle/infant-and-toddler-health/in-depth/infant-development/art-20048178">📖 Mayo Clinic</a>
+          </div>
+        </div>
+        <div class="activity-card">
+          <div class="card-header">
+            <span class="activity-num">02 🖐 精细动作</span>
+            <span class="activity-title">换手传递 · 双手敲击</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">给宝宝一个小积木，鼓励他从一只手换到另一只手，或给他两个积木让他对敲，锻炼双手协作能力。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://zhuanlan.zhihu.com/p/42498296">📖 知乎育儿</a>
+          </div>
+        </div>
+        <div class="activity-card">
+          <div class="card-header">
+            <span class="activity-num">03 👁 视觉认知</span>
+            <span class="activity-title">照镜子 · 认五官</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">抱着宝宝照镜子，指着他/你的五官说出名称，宝宝开始对镜像产生兴趣，能促进自我认知发展。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://www.cdc.gov/act-early/milestones/6-months.html">📖 CDC</a>
+          </div>
+        </div>
+        <div class="activity-card">
+          <div class="card-header">
+            <span class="activity-num">04 🎵 听觉语言</span>
+            <span class="activity-title">名字回应 · 巴勃对话</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">从不同方向叫宝宝的名字，观察是否能转头寻找。模仿宝宝的咿呀声并回应，鼓励双向交流。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://www.unicef.org/parenting/child-development/your-babys-developmental-milestones-6-months">📖 UNICEF</a>
+          </div>
+        </div>
+        <div class="activity-card">
+          <div class="card-header">
+            <span class="activity-num">05 💬 社交情感</span>
+            <span class="activity-title">绘本共读 · 表情模仿</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">每天花5-10分钟和宝宝一起看彩色绘本，指着图片说话。做夸张的笑脸、惊讶表情让宝宝模仿。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://www.thepaper.cn/newsDetail_forward_2107302">📖 澎湃亲子</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom: Feeding Timeline -->
+  <div class="bottom-section">
+    <div id="timelineChart" style="width:100%;height:100%;min-height:14vh;"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script>
+// Milk trend chart (10 days)
+(function(){
+  var chart = echarts.init(document.getElementById('milkChart'));
+  var dates = ['7/8','7/9','7/10','7/11','7/12','7/13','7/14','7/15','7/16','今日'];
+  var milk  = [1080, 1080, 1080, 900, 1260, 1080, 1080, 1080, 1080, 180];
+  chart.setOption({
+    title:{text:'📊 近10天奶量趋势',left:'center',textStyle:{color:'#93c5fd',fontSize:12,fontWeight:'normal'}},
+    grid:{left:'12%',right:'5%',top:'22%',bottom:'15%'},
+    xAxis:{type:'category',data:dates,axisLabel:{color:'#64748b',fontSize:9},axisLine:{lineStyle:{color:'rgba(255,255,255,0.1)'}}},
+    yAxis:{type:'value',axisLabel:{color:'#64748b',fontSize:9},splitLine:{lineStyle:{color:'rgba(255,255,255,0.05)'}},min:function(v){return v.min-100;}},
+    series:[{type:'line',data:milk,smooth:true,
+      lineStyle:{color:'#3b82f6',width:2},
+      itemStyle:{color:'#3b82f6'},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(59,130,246,0.3)'},{offset:1,color:'rgba(59,130,246,0.02)'}]}},
+      markLine:{silent:true,data:[{yAxis:1000,label:{formatter:'目标 1000ml',color:'#94a3b8',fontSize:8},lineStyle:{color:'#f59e0b',type:'dashed',width:1}}]}
+    }],
+    tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+p[0].value+'ml';}}
+  });
+  window.addEventListener('resize',function(){chart.resize();});
 })();
 
-// === MILK CHART ===
-const mc=echarts.init(document.getElementById('milkChart'));
-mc.setOption({
-    grid:{left:'8%',right:'4%',top:'10%',bottom:'12%'},
-    xAxis:{type:'category',data:["07-06", "07-07", "07-08", "07-09", "07-10", "07-11", "07-12", "07-13", "07-14", "07-15"],axisLine:{lineStyle:{color:'#475569'}},axisLabel:{color:'#94a3b8',fontSize:10}},
-    yAxis:{type:'value',min:800,max:1400,axisLine:{show:false},axisLabel:{color:'#94a3b8',fontSize:10,formatter:'{value}ml'},splitLine:{lineStyle:{color:'rgba(71,85,105,0.15)'}}},
-    series:[{
-        data:[1080, 1080, 1080, 1080, 1080, 900, 1260, 1080, 1080, 1080],
-        type:'line',smooth:true,
-        lineStyle:{color:'#06b6d4',width:2.5},
-        itemStyle:{color:'#06b6d4'},
-        areaStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'rgba(6,182,212,0.4)'},{offset:1,color:'rgba(6,182,212,0.02)'}])},
-        symbolSize:6,label:{show:true,position:'top',color:'#7dd3fc',fontSize:9,formatter:function(p){return p.value+'ml'}}
-    }]
-});
-window.addEventListener('resize',()=>mc.resize());
+// Weight trend chart
+(function(){
+  var chart = echarts.init(document.getElementById('weightChart'));
+  var allData = [{"date":"2026-01-09","w":3.46},{"date":"2026-01-12","w":3.33},{"date":"2026-01-13","w":3.36},{"date":"2026-01-14","w":3.36},{"date":"2026-01-15","w":3.38},{"date":"2026-01-16","w":3.43},{"date":"2026-01-17","w":3.5},{"date":"2026-01-18","w":3.51},{"date":"2026-01-19","w":3.56},{"date":"2026-01-20","w":3.64},{"date":"2026-01-21","w":3.7},{"date":"2026-01-22","w":3.76},{"date":"2026-01-23","w":3.78},{"date":"2026-01-24","w":3.82},{"date":"2026-01-25","w":3.88},{"date":"2026-01-26","w":3.9},{"date":"2026-01-27","w":3.96},{"date":"2026-01-28","w":4.0},{"date":"2026-01-29","w":4.07},{"date":"2026-01-30","w":4.12},{"date":"2026-01-31","w":4.18},{"date":"2026-02-01","w":4.22},{"date":"2026-02-02","w":4.3},{"date":"2026-02-03","w":4.38},{"date":"2026-02-04","w":4.42},{"date":"2026-02-05","w":4.52},{"date":"2026-02-06","w":4.59},{"date":"2026-02-07","w":4.67},{"date":"2026-02-08","w":4.73},{"date":"2026-02-09","w":4.8},{"date":"2026-02-10","w":4.85},{"date":"2026-02-11","w":4.92},{"date":"2026-02-12","w":4.97},{"date":"2026-02-13","w":5.03},{"date":"2026-02-14","w":5.08},{"date":"2026-02-15","w":5.11},{"date":"2026-02-17","w":5.35},{"date":"2026-02-20","w":5.47},{"date":"2026-02-21","w":5.5},{"date":"2026-02-22","w":5.51},{"date":"2026-02-24","w":5.6},{"date":"2026-02-25","w":5.68},{"date":"2026-02-28","w":6.06},{"date":"2026-03-02","w":6.0},{"date":"2026-03-06","w":6.2},{"date":"2026-03-08","w":6.15},{"date":"2026-03-12","w":6.3},{"date":"2026-03-15","w":6.5},{"date":"2026-03-18","w":6.45},{"date":"2026-03-19","w":6.45},{"date":"2026-03-21","w":6.6},{"date":"2026-03-23","w":6.7},{"date":"2026-03-25","w":6.85},{"date":"2026-03-28","w":6.9},{"date":"2026-03-30","w":6.9},{"date":"2026-04-02","w":7.0},{"date":"2026-04-03","w":7.15},{"date":"2026-04-07","w":7.2},{"date":"2026-04-08","w":7.3},{"date":"2026-04-09","w":7.35},{"date":"2026-04-10","w":7.2},{"date":"2026-04-11","w":7.4},{"date":"2026-04-12","w":7.4},{"date":"2026-04-13","w":7.45},{"date":"2026-04-15","w":7.4},{"date":"2026-04-16","w":7.5},{"date":"2026-04-17","w":7.5},{"date":"2026-04-18","w":7.55},{"date":"2026-04-20","w":7.55},{"date":"2026-04-21","w":7.45},{"date":"2026-04-23","w":7.55},{"date":"2026-04-26","w":7.7},{"date":"2026-04-27","w":7.75},{"date":"2026-04-29","w":7.8},{"date":"2026-05-02","w":7.8},{"date":"2026-05-03","w":7.8},{"date":"2026-05-04","w":7.85},{"date":"2026-05-06","w":7.95},{"date":"2026-05-07","w":7.95},{"date":"2026-05-08","w":7.95},{"date":"2026-05-09","w":8.05},{"date":"2026-05-11","w":8.0},{"date":"2026-05-12","w":8.1},{"date":"2026-05-14","w":8.15},{"date":"2026-05-17","w":8.1},{"date":"2026-05-18","w":8.15},{"date":"2026-05-19","w":8.13},{"date":"2026-05-21","w":8.25},{"date":"2026-05-22","w":8.2},{"date":"2026-05-24","w":8.15},{"date":"2026-05-25","w":8.25},{"date":"2026-05-27","w":8.45},{"date":"2026-05-29","w":8.45},{"date":"2026-06-07","w":8.5},{"date":"2026-06-11","w":8.5},{"date":"2026-06-14","w":8.5},{"date":"2026-06-16","w":8.6},{"date":"2026-06-17","w":8.65},{"date":"2026-07-02","w":8.7},{"date":"2026-07-09","w":8.85},{"date":"2026-07-13","w":9.0},{"date":"2026-07-15","w":9.05}];
+  var dates = allData.map(function(d){var p=d.date.split('-');return p[1]+'/'+p[2];});
+  var weights = allData.map(function(d){return d.w;});
+  chart.setOption({
+    title:{text:'⚖️ 体重趋势 ('+allData.length+'次记录) · 最新9.05kg',left:'center',textStyle:{color:'#93c5fd',fontSize:12,fontWeight:'normal'}},
+    grid:{left:'15%',right:'5%',top:'22%',bottom:'15%'},
+    xAxis:{type:'category',data:dates,axisLabel:{color:'#64748b',fontSize:6,rotate:45,interval:3},axisLine:{lineStyle:{color:'rgba(255,255,255,0.1)'}}},
+    yAxis:{type:'value',axisLabel:{color:'#64748b',fontSize:9,formatter:'{value}kg'},splitLine:{lineStyle:{color:'rgba(255,255,255,0.05)'}},min:3,max:10},
+    series:[{type:'line',data:weights,smooth:true,
+      lineStyle:{color:'#10b981',width:2},
+      itemStyle:{color:'#10b981'},
+      areaStyle:{color:{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{offset:0,color:'rgba(16,185,129,0.3)'},{offset:1,color:'rgba(16,185,129,0.02)'}]}}
+    }],
+    tooltip:{trigger:'axis',formatter:function(p){return p[0].name+': '+p[0].value+'kg';}}
+  });
+  window.addEventListener('resize',function(){chart.resize();});
+})();
 
-// === WEIGHT CHART ===
-const wc=echarts.init(document.getElementById('weightChart'));
-const wd=[["01-09", 3.46], ["01-12", 3.33], ["01-13", 3.36], ["01-14", 3.36], ["01-15", 3.38], ["01-16", 3.43], ["01-17", 3.5], ["01-18", 3.51], ["01-19", 3.56], ["01-20", 3.64], ["01-21", 3.7], ["01-22", 3.76], ["01-23", 3.78], ["01-24", 3.82], ["01-25", 3.88], ["01-26", 3.9], ["01-27", 3.96], ["01-28", 4.0], ["01-29", 4.07], ["01-30", 4.12], ["01-31", 4.18], ["02-01", 4.22], ["02-02", 4.3], ["02-03", 4.38], ["02-04", 4.42], ["02-05", 4.52], ["02-06", 4.59], ["02-07", 4.67], ["02-08", 4.73], ["02-09", 4.8], ["02-10", 4.85], ["02-11", 4.92], ["02-12", 4.97], ["02-13", 5.03], ["02-14", 5.08], ["02-15", 5.11], ["02-17", 5.35], ["02-20", 5.47], ["02-21", 5.5], ["02-22", 5.51], ["02-24", 5.6], ["02-25", 5.68], ["02-28", 6.06], ["03-02", 6.0], ["03-06", 6.2], ["03-08", 6.15], ["03-12", 6.3], ["03-15", 6.5], ["03-18", 6.45], ["03-19", 6.45], ["03-21", 6.6], ["03-23", 6.7], ["03-25", 6.85], ["03-28", 6.9], ["03-30", 6.9], ["04-02", 7.0], ["04-03", 7.15], ["04-07", 7.2], ["04-08", 7.3], ["04-09", 7.35], ["04-10", 7.2], ["04-11", 7.4], ["04-12", 7.4], ["04-13", 7.45], ["04-15", 7.4], ["04-16", 7.5], ["04-17", 7.5], ["04-18", 7.55], ["04-20", 7.55], ["04-21", 7.45], ["04-23", 7.55], ["04-26", 7.7], ["04-27", 7.75], ["04-29", 7.8], ["05-02", 7.8], ["05-03", 7.8], ["05-04", 7.85], ["05-06", 7.95], ["05-07", 7.95], ["05-08", 7.95], ["05-09", 8.05], ["05-11", 8.0], ["05-12", 8.1], ["05-14", 8.15], ["05-17", 8.1], ["05-18", 8.15], ["05-19", 8.13], ["05-21", 8.25], ["05-22", 8.2], ["05-24", 8.15], ["05-25", 8.25], ["05-27", 8.45], ["05-29", 8.45], ["06-07", 8.5], ["06-11", 8.5], ["06-14", 8.5], ["06-16", 8.6], ["06-17", 8.65], ["07-02", 8.7], ["07-09", 8.85], ["07-13", 9.0]];
-wc.setOption({
-    grid:{left:'10%',right:'4%',top:'8%',bottom:'12%'},
-    xAxis:{type:'category',data:wd.map(d=>d[0]),axisLine:{lineStyle:{color:'#475569'}},axisLabel:{color:'#94a3b8',fontSize:8,interval:6}},
-    yAxis:{type:'value',min:3,max:10,axisLine:{show:false},axisLabel:{color:'#94a3b8',fontSize:10,formatter:'{value}kg'},splitLine:{lineStyle:{color:'rgba(71,85,105,0.15)'}}},
-    series:[{
-        data:wd.map(d=>d[1]),
-        type:'line',smooth:true,
-        lineStyle:{color:'#059669',width:2.5},
-        itemStyle:{color:'#059669'},
-        areaStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'rgba(5,150,105,0.35)'},{offset:1,color:'rgba(5,150,105,0.02)'}])},
-        symbolSize:4,
-        markPoint:{data:[{type:'max',name:'最大'}],symbolSize:40,label:{fontSize:9,color:'#fff'}}
-    }]
-});
-window.addEventListener('resize',()=>wc.resize());
-
-// === TIMELINE CHART ===
-const tc=echarts.init(document.getElementById('timelineChart'));
-const tdata=[{"value": ["7/12 周日", 0, 18, "←18:30", "5h47m", 0], "itemStyle": {"color": "#1e3a5f"}}, {"value": ["7/12 周日", 18, 335, "00:18", "5h16m", 1], "itemStyle": {"color": "#2563eb"}}, {"value": ["7/12 周日", 335, 557, "05:35", "3h41m", 2], "itemStyle": {"color": "#0891b2"}}, {"value": ["7/12 周日", 557, 755, "09:17", "3h17m", 3], "itemStyle": {"color": "#059669"}}, {"value": ["7/12 周日", 755, 941, "12:35", "3h5m", 4], "itemStyle": {"color": "#0ea5e9"}}, {"value": ["7/12 周日", 941, 1126, "15:41", "4h4m", 5], "itemStyle": {"color": "#3b82f6"}}, {"value": ["7/12 周日", 1126, 1420, "18:46", "4h54m", 6], "itemStyle": {"color": "#06b6d4"}}, {"value": ["7/12 周日", 1420, 1440, "23:40", "", 7], "itemStyle": {"color": "#10b981"}}, {"value": ["7/13 周一", 0, 387, "←23:40", "6h46m", 0], "itemStyle": {"color": "#1e3a5f"}}, {"value": ["7/13 周一", 387, 586, "06:27", "3h18m", 1], "itemStyle": {"color": "#2563eb"}}, {"value": ["7/13 周一", 586, 761, "09:46", "2h54m", 2], "itemStyle": {"color": "#0891b2"}}, {"value": ["7/13 周一", 761, 972, "12:41", "3h30m", 3], "itemStyle": {"color": "#059669"}}, {"value": ["7/13 周一", 972, 1148, "16:12", "2h55m", 4], "itemStyle": {"color": "#0ea5e9"}}, {"value": ["7/13 周一", 1148, 1365, "19:08", "3h36m", 5], "itemStyle": {"color": "#3b82f6"}}, {"value": ["7/13 周一", 1365, 1440, "22:45", "", 6], "itemStyle": {"color": "#06b6d4"}}, {"value": ["7/14 周二", 0, 257, "←22:45", "5h31m", 0], "itemStyle": {"color": "#1e3a5f"}}, {"value": ["7/14 周二", 257, 458, "04:17", "3h20m", 1], "itemStyle": {"color": "#2563eb"}}, {"value": ["7/14 周二", 458, 644, "07:38", "3h5m", 2], "itemStyle": {"color": "#0891b2"}}, {"value": ["7/14 周二", 644, 929, "10:44", "4h44m", 3], "itemStyle": {"color": "#059669"}}, {"value": ["7/14 周二", 929, 1121, "15:29", "3h11m", 4], "itemStyle": {"color": "#0ea5e9"}}, {"value": ["7/14 周二", 1121, 1357, "18:41", "3h55m", 5], "itemStyle": {"color": "#3b82f6"}}, {"value": ["7/14 周二", 1357, 1440, "22:37", "", 6], "itemStyle": {"color": "#06b6d4"}}, {"value": ["7/15 周三", 0, 326, "←22:37", "6h48m", 0], "itemStyle": {"color": "#1e3a5f"}}, {"value": ["7/15 周三", 326, 507, "05:26", "3h", 1], "itemStyle": {"color": "#2563eb"}}, {"value": ["7/15 周三", 507, 709, "08:27", "3h21m", 2], "itemStyle": {"color": "#0891b2"}}, {"value": ["7/15 周三", 709, 984, "11:49", "4h34m", 3], "itemStyle": {"color": "#059669"}}, {"value": ["7/15 周三", 984, 1165, "16:24", "3h", 4], "itemStyle": {"color": "#0ea5e9"}}, {"value": ["7/15 周三", 1165, 1431, "19:25", "4h25m", 5], "itemStyle": {"color": "#3b82f6"}}, {"value": ["7/15 周三", 1431, 1440, "23:51", "", 6], "itemStyle": {"color": "#06b6d4"}}, {"value": ["7/16 周四", 0, 360, "←23:51", "6h8m", 0], "itemStyle": {"color": "#1e3a5f"}}, {"value": ["7/16 周四", 360, 1440, "06:00", "", 1], "itemStyle": {"color": "#2563eb"}}];
-const cats=["7/12 \u5468\u65e5", "7/13 \u5468\u4e00", "7/14 \u5468\u4e8c", "7/15 \u5468\u4e09", "7/16 \u5468\u56db"];
-
-tc.setOption({
-    grid:{left:'7%',right:'3%',top:'5%',bottom:'8%'},
-    xAxis:{type:'value',min:0,max:1440,interval:180,
-        axisLabel:{color:'#94a3b8',fontSize:10,formatter:function(v){let h=Math.floor(v/60);let m=v%60;return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')}},
-        axisLine:{lineStyle:{color:'#475569'}},
-        splitLine:{lineStyle:{color:'rgba(71,85,105,0.1)'}}
+// Feeding timeline
+(function(){
+  var chart = echarts.init(document.getElementById('timelineChart'), null, {renderer:'canvas'});
+  var colors = ['#1e3a5f','#2563eb','#0891b2','#059669','#0ea5e9','#3b82f6','#06b6d4','#10b981','#22d3ee','#34d399'];
+  var rawData = {
+    '7/13': {times:['06:27','09:46','12:41','16:12','19:08','22:45'],gaps:['6h46m','3h18m','2h54m','3h30m','2h55m','3h36m']},
+    '7/14': {times:['04:17','07:38','10:44','15:29','18:41','22:37'],gaps:['5h31m','3h20m','3h05m','4h44m','3h11m','3h55m']},
+    '7/15': {times:['05:26','08:27','11:49','16:24','19:25','23:51'],gaps:['6h48m','3h00m','3h21m','4h34m','3h00m','4h25m']},
+    '7/16': {times:['06:00','09:26','12:55','16:10','19:16','23:33'],gaps:['6h08m','3h25m','3h28m','3h14m','3h05m','4h16m']},
+    '7/17': {times:['06:19'],gaps:['6h45m']}
+  };
+  var prevLast = {'7/13':'23:19','7/14':'22:45','7/15':'22:37','7/16':'23:51','7/17':'23:33'};
+  var days = Object.keys(rawData);
+  function t2m(t){var p=t.split(':');return +p[0]*60+(+p[1]);}
+  function m2t(m){var h=Math.floor(m/60),mm=m%60;return (h<10?'0':'')+h+':'+(mm<10?'0':'')+mm;}
+  var allData = [];
+  days.forEach(function(day, di){
+    var info = rawData[day];
+    var times = ['00:00'].concat(info.times);
+    var gaps = info.gaps;
+    var lastT = t2m(times[times.length-1]);
+    if(lastT < 1439) times.push('24:00');
+    for(var i=0;i<times.length-1;i++){
+      var labelText = '';
+      if(i === 0){
+        labelText = '\u2190' + (prevLast[day] || '--:--') + ' ' + gaps[0];
+      } else if(i === times.length-2 && lastT < 1439){
+        labelText = info.times[info.times.length-1];
+      } else {
+        labelText = info.times[i-1] + ' ' + gaps[i-1];
+      }
+      allData.push([t2m(times[i]), t2m(times[i+1]), di, i, labelText]);
+    }
+  });
+  chart.setOption({
+    tooltip:{
+      formatter:function(p){
+        var d=p.data,gap=d[1]-d[0];
+        return days[d[2]]+' '+m2t(d[0])+' - '+m2t(d[1])+' ('+Math.floor(gap/60)+'h'+gap%60+'m)';
+      }
     },
-    yAxis:{type:'category',data:cats,axisLine:{lineStyle:{color:'#475569'}},axisLabel:{color:'#94a3b8',fontSize:11}},
+    grid:{left:'4%',right:'3%',top:'14%',bottom:'10%',containLabel:false},
+    title:{text:'📊 过去5天喂养时间线',left:'center',textStyle:{color:'#93c5fd',fontSize:13,fontWeight:'normal'}},
+    xAxis:{type:'value',min:0,max:1440,interval:360,
+      axisLabel:{color:'#64748b',fontSize:10,formatter:function(v){return m2t(v);}},
+      splitLine:{lineStyle:{color:'rgba(255,255,255,0.05)'}}},
+    yAxis:{type:'category',data:days,
+      axisLabel:{color:'#94a3b8',fontSize:11},
+      axisLine:{lineStyle:{color:'rgba(255,255,255,0.1)'}},
+      axisTick:{show:false}},
     series:[{
-        type:'custom',
-        renderItem:function(params,api){
-            const cat=api.value(0);
-            const start=api.coord([api.value(1),cat]);
-            const end=api.coord([api.value(2),cat]);
-            const label=api.value(3);
-            const gap=api.value(4);
-            const idx=api.value(5);
-            const h=api.size([0,1])[1]*0.75;
-            const mid=start[1];
-            
-            // Bar
-            const rect={type:'rect',shape:{x:start[0],y:mid-h/2,width:end[0]-start[0],height:h,r:[3,3,3,3]},
-                style:{fill:api.visual('color'),opacity:0.85}};
-            
-            // Label text
-            const labelText=gap?label+' '+gap:label;
-            const barWidth=end[0]-start[0];
-            const fontSize=barWidth>55?11:(barWidth>35?9:0);
-            
-            const items=[rect];
-            if(fontSize>0){
-                items.push({type:'text',style:{text:labelText,x:(start[0]+end[0])/2,y:mid,fill:'rgba(255,255,255,0.9)',fontSize:fontSize,fontWeight:500,textAlign:'center',textVerticalAlign:'middle'},silent:true});
-            }
-            
-            return {type:'group',children:items};
-        },
-        data:tdata,
-        encode:{x:[1,2],y:0},
-        tooltip:{
-            formatter:function(p){
-                const start=p.value[1];const end=p.value[2];
-                function fmt(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
-                let gapText=p.value[4]?' ('+p.value[4]+')':'';
-                return p.value[0]+'<br/>'+fmt(start)+' - '+fmt(end)+gapText;
-            }
-        }
+      type:'custom',
+      renderItem:function(params,api){
+        var start=api.value(0),end=api.value(1),dayIdx=api.value(2),segIdx=api.value(3),labelText=api.value(4);
+        var s=api.coord([start,dayIdx]),e=api.coord([end,dayIdx]);
+        var h=api.size([0,1])[1]*0.75;
+        var rect=echarts.graphic.clipRectByRect({
+          x:s[0],y:s[1]-h/2,width:e[0]-s[0],height:h
+        },{x:params.coordSys.x,y:params.coordSys.y,width:params.coordSys.width,height:params.coordSys.height});
+        if(!rect)return;
+        var labelX = s[0] + 3;
+        var labelY = s[1];
+        return {type:'group',children:[
+          {type:'rect',shape:rect,style:{fill:colors[segIdx%colors.length]}},
+          {type:'text',style:{text:labelText,x:labelX,y:labelY,textAlign:'left',textVerticalAlign:'middle',fill:'rgba(255,255,255,0.6)',fontSize:13.5}}
+        ]};
+      },
+      data:allData
     }]
-});
-window.addEventListener('resize',()=>tc.resize());
+  });
+  window.addEventListener('resize',function(){chart.resize();});
+})();
 </script>
 </body>
 </html>
