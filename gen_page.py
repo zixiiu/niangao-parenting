@@ -1,0 +1,397 @@
+#!/usr/bin/env python3
+"""Generate niangao daily education page for 2026-08-27"""
+import json
+
+# === DATA ===
+# Age
+days_old = 230
+months_old = 7
+month_days = 20
+
+# Yesterday stats (2026-08-24)
+yesterday_milk = 1080
+yesterday_feeds = 6
+yesterday_avg_gap = "~3h55m"
+yesterday_per_feed = 180
+
+# Weather
+weather_text = "阵雨 27°C"
+weather_humidity = "89%"
+clothing = "短袖薄款衣物"
+clothing_extra = "出门备伞，避免淋雨着凉"
+
+# 10-day milk data (oldest to newest)
+milk_dates = ['8/18','8/19','8/20','8/21','8/22','8/23','8/24','8/25','8/26','8/27']
+milk_data = [1100, 900, 1080, 1100, 1100, 1120, 1100, 900, 1080, 360]
+
+# Weight data (date, weight) - all records
+weight_records = [
+    ("1/9",3.46),("1/12",3.33),("1/13",3.36),("1/14",3.36),("1/15",3.38),
+    ("1/16",3.43),("1/17",3.5),("1/18",3.51),("1/19",3.56),("1/20",3.64),
+    ("1/21",3.7),("1/22",3.76),("1/23",3.78),("1/24",3.82),("1/25",3.88),
+    ("1/26",3.9),("1/27",3.96),("1/28",4.0),("1/29",4.07),("1/30",4.12),
+    ("1/31",4.18),("2/1",4.22),("2/2",4.3),("2/3",4.38),("2/4",4.42),
+    ("2/5",4.52),("2/6",4.59),("2/7",4.67),("2/8",4.73),("2/9",4.8),
+    ("2/10",4.85),("2/11",4.92),("2/12",4.97),("2/13",5.03),("2/14",5.08),
+    ("2/15",5.11),("2/17",5.35),("2/20",5.47),("2/21",5.5),("2/22",5.51),
+    ("2/24",5.6),("2/25",5.68),("2/28",6.06),("3/2",6.0),("3/6",6.2),
+    ("3/8",6.15),("3/12",6.3),("3/15",6.5),("3/18",6.45),("3/19",6.45),
+    ("3/21",6.6),("3/23",6.7),("3/25",6.85),("3/28",6.9),("3/30",6.9),
+    ("4/2",7.0),("4/3",7.15),("4/7",7.2),("4/8",7.3),("4/9",7.35),
+    ("4/10",7.2),("4/11",7.4),("4/12",7.4),("4/13",7.45),("4/15",7.4),
+    ("4/16",7.5),("4/17",7.5),("4/18",7.55),("4/20",7.55),("4/21",7.45),
+    ("4/23",7.55),("4/26",7.7),("4/27",7.75),("4/29",7.8),("5/2",7.8),
+    ("5/3",7.8),("5/4",7.85),("5/6",7.95),("5/7",7.95),("5/8",7.95),
+    ("5/9",8.05),("5/11",8.0),("5/12",8.1),("5/14",8.15),("5/17",8.1),
+    ("5/18",8.15),("5/19",8.13),("5/21",8.25),("5/22",8.2),("5/24",8.15),
+    ("5/25",8.25),("5/27",8.45),("5/29",8.45),("6/7",8.5),("6/11",8.5),
+    ("6/14",8.5),("6/16",8.6),("6/17",8.65),("7/2",8.7),("7/9",8.85),
+    ("7/13",9.0),("7/15",9.05),("7/20",9.05),("7/22",9.1),("7/23",9.15),
+    ("7/31",9.45),("8/5",9.5),("8/14",9.65),("8/17",9.7),("8/23",9.75),
+]
+w_dates = [r[0] for r in weight_records]
+w_values = [r[1] for r in weight_records]
+
+# 5-day feeding timeline
+timeline_data = {
+    '8/23': {'times':['02:39','07:39','10:40','14:52','18:32','23:25'],'gaps':['5h00m','4h59m','3h00m','4h11m','3h39m','4h52m']},
+    '8/24': {'times':['06:19','09:53','14:00','17:09','20:26','23:56'],'gaps':['6h53m','3h34m','4h05m','3h09m','3h16m','3h29m']},
+    '8/25': {'times':['06:06','09:46','14:41','17:24','20:21'],'gaps':['6h09m','3h40m','4h54m','2h43m','2h56m']},
+    '8/26': {'times':['02:35','06:27','09:47','14:54','17:49','20:53'],'gaps':['6h13m','3h51m','3h19m','5h05m','2h55m','3h03m']},
+    '8/27': {'times':['01:11','06:18'],'gaps':['4h18m','5h06m']},
+}
+prev_last = {'8/23':'21:38','8/24':'23:25','8/25':'23:56','8/26':'20:21','8/27':'20:53'}
+
+# === Build weight chart data ===
+w_dates_js = json.dumps(w_dates, ensure_ascii=False)
+w_values_js = json.dumps(w_values)
+
+# === Build milk chart data ===
+milk_dates_js = json.dumps(milk_dates, ensure_ascii=False)
+milk_data_js = json.dumps(milk_data)
+
+# === Build timeline JS ===
+timeline_js = json.dumps(timeline_data, ensure_ascii=False)
+prev_last_js = json.dumps(prev_last, ensure_ascii=False)
+
+html = f'''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920,height=1080">
+<meta http-equiv="refresh" content="600">
+<title>年糕宝宝 · 每日早教 2026-08-27</title>
+<style>
+*{{margin:0;padding:0;box-sizing:border-box;}}
+html,body{{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;color:#e8f0fe;background:#0a1628;}}
+.bg-animation{{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;overflow:hidden;}}
+.bg-gradient{{position:absolute;width:100%;height:100%;background:linear-gradient(135deg,#0a1628 0%,#0f1d36 30%,#0c1a2e 60%,#0a1628 100%);}}
+.page-container{{position:relative;z-index:1;width:100%;height:100%;display:flex;flex-direction:column;padding:1.2vh 1.2vw;gap:1vh;}}
+.top-section{{display:flex;flex:1;gap:1vw;min-height:0;}}
+.col-info{{width:33.33%;display:flex;flex-direction:column;gap:0.8vh;}}
+.col-info .col-title{{font-size:2.5vh;color:#93c5fd;padding:0.5vh 0;}}
+.info-row{{display:flex;gap:0.8vh;}}
+.info-card{{background:rgba(30,58,138,0.25);border:1px solid rgba(59,130,246,0.2);border-radius:1.2vh;padding:1.2vh 1.5vw;flex:1;display:flex;flex-direction:column;justify-content:center;animation:slideIn 0.8s ease-out;}}
+.info-card .info-label{{font-size:1.2vh;color:#64748b;}}
+.info-card .info-value{{font-size:2.5vh;font-weight:700;color:#60a5fa;}}
+.col-data{{width:33.33%;display:flex;flex-direction:column;gap:1vh;}}
+.stats-grid{{display:grid;grid-template-columns:1fr 1fr;gap:0.8vh;animation:slideIn 0.8s ease-out 0.1s both;}}
+.stat-card{{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1vh;padding:1vh 0.8vw;text-align:center;}}
+.stat-card .stat-value{{font-size:2.2vh;font-weight:700;color:#60a5fa;}}
+.stat-card .stat-label{{font-size:1.1vh;color:#94a3b8;margin-top:0.2vh;}}
+.chart-card{{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1vh;flex:1;animation:slideIn 0.8s ease-out 0.2s both;display:flex;flex-direction:column;overflow:hidden;}}
+.col-edu{{width:33.33%;display:flex;flex-direction:column;gap:0.8vh;}}
+.edu-title{{font-size:1.5vh;color:#93c5fd;text-align:center;animation:pulse 3s ease-in-out infinite;padding:0.3vh 0;}}
+@keyframes pulse{{0%,100%{{opacity:1;}}50%{{opacity:0.85;}}}}
+.edu-cards{{display:flex;flex-direction:column;gap:0.6vh;flex:1;overflow:hidden;}}
+.activity-card{{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1vh;padding:0.8vh 1vw;flex:1;display:flex;flex-direction:column;justify-content:flex-start;gap:0.3vh;animation:slideIn 0.8s ease-out both;overflow:hidden;}}
+.activity-card:nth-child(1){{animation-delay:0.2s;}}
+.activity-card:nth-child(2){{animation-delay:0.3s;}}
+.activity-card:nth-child(3){{animation-delay:0.4s;}}
+.activity-card:nth-child(4){{animation-delay:0.5s;}}
+.activity-card:nth-child(5){{animation-delay:0.6s;}}
+.activity-card .card-header{{display:flex;align-items:center;gap:0.8vw;}}
+.activity-card .activity-num{{font-size:2vh;color:#3b82f6;font-weight:700;white-space:nowrap;}}
+.activity-card .activity-title{{font-size:1.6vh;font-weight:700;color:#e0f2fe;white-space:nowrap;}}
+.activity-card .card-body{{flex:1;}}
+.activity-card .activity-desc{{font-size:1.15vh;color:#94a3b8;line-height:1.3;}}
+.activity-card .card-footer{{text-align:right;}}
+.activity-card .activity-link{{font-size:1vh;color:#38bdf8;text-decoration:none;opacity:0.7;}}
+.activity-card .activity-link:hover{{opacity:1;}}
+@keyframes slideIn{{from{{opacity:0;transform:translateY(1vh);}}to{{opacity:1;transform:translateY(0);}}}}
+.bottom-section{{animation:slideIn 0.8s ease-out 0.7s both;background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1.2vh;padding:1vh 1.5vw;height:28vh;}}
+</style>
+</head>
+<body>
+<div class="bg-animation">
+  <div class="bg-gradient"></div>
+  <canvas id="particleCanvas"></canvas>
+</div>
+<script>
+(function(){{
+  var canvas=document.getElementById('particleCanvas');
+  var ctx=canvas.getContext('2d');
+  canvas.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%;';
+  function resize(){{canvas.width=window.innerWidth;canvas.height=window.innerHeight;}}
+  resize();window.addEventListener('resize',resize);
+  var particles=[];
+  var count=80;
+  var colors=['#3b82f6','#60a5fa','#06b6d4','#22d3ee','#10b981','#34d399','#0ea5e9','#38bdf8'];
+  for(var i=0;i<count;i++){{particles.push({{x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*25+8,vx:(Math.random()-0.5)*0.3,vy:-(Math.random()*0.4+0.1),color:colors[Math.floor(Math.random()*colors.length)],alpha:Math.random()*0.4+0.1,pulse:Math.random()*Math.PI*2,pulseSpeed:Math.random()*0.02+0.005}});}}
+  function draw(){{ctx.clearRect(0,0,canvas.width,canvas.height);for(var j=0;j<particles.length;j++){{var p=particles[j];p.x+=p.vx;p.y+=p.vy;p.pulse+=p.pulseSpeed;var a=p.alpha*(0.6+0.4*Math.sin(p.pulse));if(p.y<-10){{p.y=canvas.height+10;p.x=Math.random()*canvas.width;}}if(p.x<-10)p.x=canvas.width+10;if(p.x>canvas.width+10)p.x=-10;var grad=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4);grad.addColorStop(0,p.color.slice(0,7)+Math.round(a*80).toString(16).padStart(2,'0'));grad.addColorStop(1,p.color.slice(0,7)+'00');ctx.beginPath();ctx.arc(p.x,p.y,p.r*4,0,Math.PI*2);ctx.fillStyle=grad;ctx.fill();ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.color.slice(0,7)+Math.round(a*255).toString(16).padStart(2,'0');ctx.fill();}}requestAnimationFrame(draw);}}
+  draw();
+}})();
+</script>
+
+<div class="page-container">
+  <div class="top-section">
+    <!-- Column 1: Baby Info -->
+    <div class="col-info">
+      <div class="col-title">👶 年糕宝宝</div>
+      <div class="info-row">
+        <div class="info-card">
+          <div class="info-label">天龄</div>
+          <div class="info-value">{days_old} 天</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">月龄</div>
+          <div class="info-value">{months_old} 个月 {month_days} 天</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-card">
+          <div class="info-label">出生日期</div>
+          <div class="info-value">2026.01.09</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">今天</div>
+        <div class="info-value">8月27日 周四</div>
+        </div>
+      </div>
+      <div class="info-card">
+          <div class="info-label">🎯 生长发育里程碑 · 7月龄探索期</div>
+        <div class="info-value" style="font-size:1.4vh;font-weight:400;color:#bfdbfe;line-height:1.6;">抬头90° ✅ · 翻身 ✅ · 伸手抓物 ✅ · 笑出声 ✅<br>支撑坐 🔄 · 双手传递 🔄 · 连续翻身 🔄 · 咿呀学语 🔄</div>
+      </div>
+      <div class="info-row">
+        <div class="info-card">
+          <div class="info-label">🌤 天气</div>
+          <div class="info-value" style="font-size:1.4vh;">⛈ {weather_text}<br>💧 {weather_humidity}</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">👔 穿衣建议</div>
+          <div class="info-value" style="font-size:1.4vh;">{clothing}<br>{clothing_extra}</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">💡 今日育儿小知识</div>
+        <div class="info-value" style="font-size:1.4vh;font-weight:400;color:#bfdbfe;line-height:1.6;">7个月宝宝正通过移动和探索建立空间认知。把玩具放在可触及但需要转身或伸手的位置，给他时间自己尝试，家长全程守护。</div>
+      </div>
+    </div>
+
+    <!-- Column 2: Data -->
+    <div class="col-data">
+      <div class="edu-title">📊 宝宝数据</div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-value">{yesterday_milk}ml</div><div class="stat-label">昨日总奶量</div></div>
+        <div class="stat-card"><div class="stat-value">{yesterday_feeds}次</div><div class="stat-label">喂养次数</div></div>
+        <div class="stat-card"><div class="stat-value">{yesterday_avg_gap}</div><div class="stat-label">平均间隔</div></div>
+        <div class="stat-card"><div class="stat-value">{yesterday_per_feed}ml</div><div class="stat-label">单次奶量</div></div>
+      </div>
+      <div class="chart-card">
+        <div id="milkChart" style="width:100%;flex:1;min-height:0;"></div>
+      </div>
+      <div class="chart-card">
+        <div id="weightChart" style="width:100%;flex:1;min-height:0;"></div>
+      </div>
+    </div>
+
+    <!-- Column 3: Education -->
+    <div class="col-edu">
+      <div class="edu-title">🌟 年糕宝宝今日早教 · {months_old}月龄专属</div>
+      <div class="edu-cards">
+        <div class="activity-card">
+          <div class="card-header">
+            <span class="activity-num">01 💪 大运动</span>
+            <span class="activity-title">爬行取物 · 核心力量</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">让宝宝趴在安全垫上，把软玩具放在前方稍远处，鼓励伸手、转身或匍匐靠近。全程守护，锻炼肩背与核心力量。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://pathways.org/videos/7-to-9-month-baby-motor-milestones-to-look-for-2">📖 Pathways.org</a>
+          </div>
+        </div>
+        <div class="activity-card">
+          <div class="card-header">
+            <span class="activity-num">02 👁 认知发展</span>
+            <span class="activity-title">躲猫猫 · 找回玩具</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">用薄纱巾半遮住玩具，留一点边角让宝宝寻找；找到后立即回应和鼓励，帮助理解物体恒存。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://pathways.org/activities">📖 Pathways.org</a>
+          </div>
+        </div>
+        <div class="activity-card">
+          <div class="card-header">
+            <span class="activity-num">03 ✋ 精细动作</span>
+            <span class="activity-title">软积木 · 抓握传递</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">给宝宝两块大号软积木，示范拿起、敲一敲、从一手传到另一手。只用不会脱落小部件的安全玩具。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://pathways.org/videos/sensory-activities-7-9-months">📖 Pathways.org</a>
+          </div>
+        </div>
+        <div class="activity-card">
+          <div class="card-header">
+            <span class="activity-num">04 🎵 听觉感知</span>
+            <span class="activity-title">摇铃定位 · 听声转头</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">在宝宝视线外左右两侧轻摇安全摇铃，等他转头寻找声音，再移到眼前展示。声音轻柔、距离适中。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://www.babycenter.com/baby/activities-play/activities-for-7-to-9-month-olds_41002306">📖 BabyCenter</a>
+          </div>
+        </div>
+        <div class="activity-card">
+          <div class="card-header">
+            <span class="activity-num">05 💬 社交情感</span>
+            <span class="activity-title">轮流发声 · 亲子对话</span>
+          </div>
+          <div class="card-body">
+            <span class="activity-desc">面对面模仿宝宝的“啊啊”“咿咿”，停下来等待回应，再加入简单音节。轮流互动 3—5 分钟即可。</span>
+          </div>
+          <div class="card-footer">
+            <a class="activity-link" href="https://pathways.org/activities">📖 Pathways.org</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom: Feeding Timeline -->
+  <div class="bottom-section">
+    <div id="timelineChart" style="width:100%;height:100%;min-height:14vh;"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script>
+// Milk trend chart (10 days)
+(function(){{
+  var chart=echarts.init(document.getElementById('milkChart'));
+  var dates={milk_dates_js};
+  var milk={milk_data_js};
+  chart.setOption({{
+    title:{{text:'📊 近10天奶量趋势',left:'center',textStyle:{{color:'#93c5fd',fontSize:12,fontWeight:'normal'}}}},
+    grid:{{left:'12%',right:'5%',top:'22%',bottom:'15%'}},
+    xAxis:{{type:'category',data:dates,axisLabel:{{color:'#64748b',fontSize:9}},axisLine:{{lineStyle:{{color:'rgba(255,255,255,0.1)'}}}}}},
+    yAxis:{{type:'value',axisLabel:{{color:'#64748b',fontSize:9}},splitLine:{{lineStyle:{{color:'rgba(255,255,255,0.05)'}}}},min:function(v){{return v.min-100;}}}},
+    series:[{{type:'line',data:milk,smooth:true,
+      lineStyle:{{color:'#3b82f6',width:2}},
+      itemStyle:{{color:'#3b82f6'}},
+      areaStyle:{{color:{{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{{offset:0,color:'rgba(59,130,246,0.3)'}},{{offset:1,color:'rgba(59,130,246,0.02)'}}]}}}},
+      markLine:{{silent:true,data:[{{yAxis:900,label:{{formatter:'目标 900ml',color:'#94a3b8',fontSize:8}},lineStyle:{{color:'#f59e0b',type:'dashed',width:1}}}}]}}
+    }}],
+    tooltip:{{trigger:'axis',formatter:function(p){{return p[0].name+': '+p[0].value+'ml';}}}}
+  }});
+  window.addEventListener('resize',function(){{chart.resize();}});
+}})();
+
+// Weight trend chart
+(function(){{
+  var chart=echarts.init(document.getElementById('weightChart'));
+  var dates={w_dates_js};
+  var weight={w_values_js};
+  chart.setOption({{
+    title:{{text:'⚖️ 体重趋势 ('+weight.length+'次记录) · 最新'+weight[weight.length-1]+'kg',left:'center',textStyle:{{color:'#93c5fd',fontSize:12,fontWeight:'normal'}}}},
+    grid:{{left:'15%',right:'5%',top:'22%',bottom:'15%'}},
+    xAxis:{{type:'category',data:dates,axisLabel:{{color:'#64748b',fontSize:7,rotate:45,interval:3}},axisLine:{{lineStyle:{{color:'rgba(255,255,255,0.1)'}}}}}},
+    yAxis:{{type:'value',axisLabel:{{color:'#64748b',fontSize:9,formatter:'{{value}}kg'}},splitLine:{{lineStyle:{{color:'rgba(255,255,255,0.05)'}}}},min:3,max:9}},
+    series:[{{type:'line',data:weight,smooth:true,
+      lineStyle:{{color:'#10b981',width:2}},
+      itemStyle:{{color:'#10b981'}},
+      areaStyle:{{color:{{type:'linear',x:0,y:0,x2:0,y2:1,colorStops:[{{offset:0,color:'rgba(16,185,129,0.3)'}},{{offset:1,color:'rgba(16,185,129,0.02)'}}]}}}}
+    }}],
+    tooltip:{{trigger:'axis',formatter:function(p){{return p[0].name+': '+p[0].value+'kg';}}}}
+  }});
+  window.addEventListener('resize',function(){{chart.resize();}});
+}})();
+
+// Feeding timeline
+(function(){{
+  var chart=echarts.init(document.getElementById('timelineChart'),null,{{renderer:'canvas'}});
+  var colors=['#1e3a5f','#2563eb','#0891b2','#059669','#0ea5e9','#3b82f6','#06b6d4','#10b981','#22d3ee','#34d399'];
+  var rawData={timeline_js};
+  var prevLast={prev_last_js};
+  var days=Object.keys(rawData);
+  function t2m(t){{var p=t.split(':');return +p[0]*60+(+p[1]);}}
+  function m2t(m){{var h=Math.floor(m/60),mm=m%60;return (h<10?'0':'')+h+':'+(mm<10?'0':'')+mm;}}
+  var allData=[];
+  days.forEach(function(day,di){{
+    var info=rawData[day];
+    var times=['00:00'].concat(info.times);
+    var gaps=info.gaps;
+    var lastT=t2m(times[times.length-1]);
+    if(lastT<1439)times.push('24:00');
+    for(var i=0;i<times.length-1;i++){{
+      var labelText='';
+      if(i===0){{
+        labelText='\\u2190'+(prevLast[day]||'--:--')+' '+gaps[0];
+      }}else if(i===times.length-2&&lastT<1439){{
+        labelText=info.times[info.times.length-1];
+      }}else{{
+        labelText=info.times[i-1]+' '+gaps[i-1];
+      }}
+      allData.push([t2m(times[i]),t2m(times[i+1]),di,i,labelText]);
+    }}
+  }});
+  chart.setOption({{
+    tooltip:{{
+      formatter:function(p){{
+        var d=p.data,gap=d[1]-d[0];
+        return days[d[2]]+' '+m2t(d[0])+' - '+m2t(d[1])+' ('+Math.floor(gap/60)+'h'+gap%60+'m)';
+      }}
+    }},
+    grid:{{left:'4%',right:'3%',top:'14%',bottom:'10%',containLabel:false}},
+    title:{{text:'📊 过去5天喂养时间线',left:'center',textStyle:{{color:'#93c5fd',fontSize:13,fontWeight:'normal'}}}},
+    xAxis:{{type:'value',min:0,max:1440,interval:360,
+      axisLabel:{{color:'#64748b',fontSize:10,formatter:function(v){{return m2t(v);}}}},
+      splitLine:{{lineStyle:{{color:'rgba(255,255,255,0.05)'}}}}}},
+    yAxis:{{type:'category',data:days,
+      axisLabel:{{color:'#94a3b8',fontSize:11}},
+      axisLine:{{lineStyle:{{color:'rgba(255,255,255,0.1)'}}}},
+      axisTick:{{show:false}}}},
+    series:[{{
+      type:'custom',
+      renderItem:function(params,api){{
+        var start=api.value(0),end=api.value(1),dayIdx=api.value(2),segIdx=api.value(3),labelText=api.value(4);
+        var s=api.coord([start,dayIdx]),e=api.coord([end,dayIdx]);
+        var h=api.size([0,1])[1]*0.75;
+        var rect=echarts.graphic.clipRectByRect({{
+          x:s[0],y:s[1]-h/2,width:e[0]-s[0],height:h
+        }},{{x:params.coordSys.x,y:params.coordSys.y,width:params.coordSys.width,height:params.coordSys.height}});
+        if(!rect)return;
+        return{{type:'group',children:[
+          {{type:'rect',shape:rect,style:{{fill:colors[segIdx%colors.length]}}}},
+          {{type:'text',style:{{text:labelText,x:s[0]+3,y:s[1],textAlign:'left',textVerticalAlign:'middle',fill:'rgba(255,255,255,0.6)',fontSize:13.5}}}}
+        ]}};
+      }},
+      data:allData
+    }}]
+  }});
+  window.addEventListener('resize',function(){{chart.resize();}});
+}})();
+</script>
+</body>
+</html>'''
+
+with open('/home/claw/.openclaw/workspace-niangao-edu/niangao-output/index.html', 'w', encoding='utf-8') as f:
+    f.write(html)
+
+print("HTML page generated successfully!")
+print(f"Size: {len(html)} bytes")

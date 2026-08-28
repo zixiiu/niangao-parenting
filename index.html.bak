@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920,height=1080">
+<meta http-equiv="refresh" content="600">
+<title>年糕宝宝 · 每日早教 2026-04-12</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;color:#e8f0fe;background:#0a1628;}
+
+/* Background animation - floating particles */
+.bg-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;overflow:hidden;}
+.bg-gradient{position:absolute;width:100%;height:100%;background:linear-gradient(135deg,#0a1628 0%,#0f1d36 30%,#0c1a2e 60%,#0a1628 100%);}
+.particle{position:absolute;border-radius:50%;pointer-events:none;opacity:0;animation:particleFloat linear infinite;}
+@keyframes particleFloat{
+  0%{opacity:0;transform:translateY(0) translateX(0);}
+  10%{opacity:var(--p-opacity);}
+  90%{opacity:var(--p-opacity);}
+  100%{opacity:0;transform:translateY(calc(-100vh - 20px)) translateX(var(--p-drift));}
+}
+
+.page-container{position:relative;z-index:1;width:100%;height:100%;display:flex;flex-direction:column;padding:1.5vh 1.5vw;}
+
+/* Top section: left panel + right panel */
+.top-section{display:flex;flex:1;gap:1.2vw;min-height:0;}
+
+/* Left panel */
+.left-panel{width:28%;display:flex;flex-direction:column;gap:1vh;}
+
+/* Baby info card */
+.baby-card{background:rgba(30,58,138,0.25);border:1px solid rgba(59,130,246,0.2);border-radius:1.2vh;padding:1.2vh 1vw;animation:slideIn 0.8s ease-out;}
+.baby-card h2{font-size:2vh;color:#93c5fd;margin-bottom:0.3vh;}
+.baby-card .info-row{font-size:1.3vh;color:#bfdbfe;line-height:1.8;}
+
+/* Stats grid */
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8vh;animation:slideIn 0.8s ease-out 0.1s both;}
+.stat-card{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1vh;padding:1vh 0.8vw;text-align:center;}
+.stat-card .stat-value{font-size:2.2vh;font-weight:700;color:#60a5fa;}
+.stat-card .stat-label{font-size:1.1vh;color:#94a3b8;margin-top:0.2vh;}
+
+/* Bar chart */
+.chart-section{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1vh;padding:1vh 1vw;flex:1;animation:slideIn 0.8s ease-out 0.2s both;display:flex;flex-direction:column;}
+.chart-title{font-size:1.3vh;color:#93c5fd;margin-bottom:0.5vh;}
+.chart-bars{display:flex;align-items:flex-end;gap:0.6vw;flex:1;}
+.chart-bar-col{display:flex;flex-direction:column;align-items:center;flex:1;height:100%;}
+.chart-bar{width:100%;border-radius:0.5vh 0.5vh 0 0;min-height:0.5vh;transition:height 1s ease;}
+.chart-bar.highlight{background:linear-gradient(to top,#059669,#34d399);}
+.chart-bar.normal{background:linear-gradient(to top,#1e40af,#3b82f6);}
+.chart-bar-val{font-size:1vh;color:#94a3b8;margin-top:0.3vh;}
+.chart-bar-label{font-size:1vh;color:#64748b;}
+
+/* Interval board */
+.interval-section{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1vh;padding:1vh 1vw;animation:slideIn 0.8s ease-out 0.3s both;max-height:18vh;overflow:hidden;}
+.interval-title{font-size:1.3vh;color:#93c5fd;margin-bottom:0.5vh;}
+.interval-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5vh;}
+.interval-item{background:rgba(15,23,42,0.4);border-radius:0.6vh;padding:0.5vh 0.6vw;}
+.interval-time{font-size:1.4vh;color:#60a5fa;font-weight:600;}
+.interval-gap{font-size:1vh;color:#64748b;}
+
+/* Right panel: activities */
+.right-panel{width:72%;display:flex;flex-direction:column;gap:1vh;}
+.section-title{font-size:1.8vh;color:#93c5fd;text-align:center;animation:pulse 3s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.85;}}
+
+.activities-card{background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1.2vh;padding:1vh 1.2vw;flex:1;display:flex;flex-direction:column;animation:slideIn 0.8s ease-out 0.2s both;overflow:hidden;}
+.activity-item{display:flex;gap:0.8vw;align-items:center;flex:1;}
+.activity-item .activity-num{min-width:9vw;font-size:1.6vh;color:#3b82f6;font-weight:700;}
+.activity-item .activity-title{font-size:1.7vh;font-weight:700;color:#e0f2fe;white-space:nowrap;min-width:11vw;}
+.activity-item .activity-desc{font-size:1.4vh;color:#94a3b8;line-height:1.4;flex:1;}
+.activity-item .activity-link{font-size:1.2vh;color:#38bdf8;text-decoration:none;opacity:0.7;white-space:nowrap;}
+.activity-item .activity-link:hover{opacity:1;}
+.activity-divider{height:1px;background:rgba(59,130,246,0.12);}
+.activity-num{font-size:1.2vh;color:#3b82f6;font-weight:700;margin-bottom:0.3vh;}
+.activity-title{font-size:1.6vh;font-weight:700;color:#e0f2fe;margin-bottom:0.4vh;}
+.activity-desc{font-size:1.15vh;color:#94a3b8;line-height:1.5;flex:1;}
+.activity-link{font-size:1vh;color:#38bdf8;margin-top:0.4vh;text-decoration:none;opacity:0.7;}
+.activity-link:hover{opacity:1;}
+
+@keyframes slideIn{from{opacity:0;transform:translateY(1vh);}to{opacity:1;transform:translateY(0);}}
+
+/* Bottom: timeline */
+.bottom-section{margin-top:1vh;animation:slideIn 0.8s ease-out 0.7s both;background:rgba(30,58,138,0.2);border:1px solid rgba(59,130,246,0.15);border-radius:1.2vh;padding:1vh 1.5vw;height:28vh;}
+/* timeline styles removed - using ECharts */
+</style>
+</head>
+<body>
+<div class="bg-animation">
+  <div class="bg-gradient"></div>
+  <canvas id="particleCanvas"></canvas>
+</div>
+<script>
+(function(){
+  const canvas = document.getElementById('particleCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
+  function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+
+  const particles = [];
+  const count = 80;
+  const colors = ['#3b82f6','#60a5fa','#06b6d4','#22d3ee','#10b981','#34d399','#0ea5e9','#38bdf8'];
+
+  for(let i = 0; i < count; i++){
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 25 + 8,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: -(Math.random() * 0.4 + 0.1),
+      color: colors[Math.floor(Math.random() * colors.length)],
+      alpha: Math.random() * 0.4 + 0.1,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.005
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for(const p of particles){
+      p.x += p.vx;
+      p.y += p.vy;
+      p.pulse += p.pulseSpeed;
+      const a = p.alpha * (0.6 + 0.4 * Math.sin(p.pulse));
+
+      if(p.y < -10) { p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
+      if(p.x < -10) p.x = canvas.width + 10;
+      if(p.x > canvas.width + 10) p.x = -10;
+
+      // glow
+      const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+      grad.addColorStop(0, p.color.slice(0,7) + Math.round(a * 80).toString(16).padStart(2,'0'));
+      grad.addColorStop(1, p.color.slice(0,7) + '00');
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      // core
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color.slice(0,7) + Math.round(a * 255).toString(16).padStart(2,'0');
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+
+<div class="page-container">
+  <div class="top-section">
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <div class="baby-card">
+        <h2>👶 年糕宝宝</h2>
+        <div class="info-row">🎂 2026年1月9日出生</div>
+        <div class="info-row">📅 93天 · 3个月3天</div>
+        <div class="info-row">🧒 男宝 · Frisolac Prestige</div>
+        <div class="info-row">📆 2026年4月12日 星期日</div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-value">980ml</div><div class="stat-label">昨日总奶量</div></div>
+        <div class="stat-card"><div class="stat-value">7次</div><div class="stat-label">喂养次数</div></div>
+        <div class="stat-card"><div class="stat-value">~3h17m</div><div class="stat-label">平均间隔</div></div>
+        <div class="stat-card"><div class="stat-value">140ml</div><div class="stat-label">单次奶量</div></div>
+      </div>
+
+      <div class="chart-section">
+        <div class="chart-title">📊 近5天奶量趋势</div>
+        <div class="chart-bars">
+          <div class="chart-bar-col"><div class="chart-bar normal" style="height:71%;"></div><div class="chart-bar-val">700</div><div class="chart-bar-label">4/7</div></div>
+          <div class="chart-bar-col"><div class="chart-bar normal" style="height:100%;"></div><div class="chart-bar-val">980</div><div class="chart-bar-label">4/8</div></div>
+          <div class="chart-bar-col"><div class="chart-bar normal" style="height:100%;"></div><div class="chart-bar-val">980</div><div class="chart-bar-label">4/9</div></div>
+          <div class="chart-bar-col"><div class="chart-bar normal" style="height:100%;"></div><div class="chart-bar-val">980</div><div class="chart-bar-label">4/10</div></div>
+          <div class="chart-bar-col"><div class="chart-bar highlight" style="height:100%;"></div><div class="chart-bar-val">980</div><div class="chart-bar-label">4/11</div></div>
+        </div>
+      </div>
+
+      <div class="interval-section">
+        <div class="interval-title">⏱ 昨日喂养间隔</div>
+        <div class="interval-grid">
+          <div class="interval-item"><div class="interval-time">02:35</div><div class="interval-gap">4h00m</div></div>
+          <div class="interval-item"><div class="interval-time">06:55</div><div class="interval-gap">4h19m</div></div>
+          <div class="interval-item"><div class="interval-time">10:13</div><div class="interval-gap">3h17m</div></div>
+          <div class="interval-item"><div class="interval-time">13:09</div><div class="interval-gap">2h55m</div></div>
+          <div class="interval-item"><div class="interval-time">16:27</div><div class="interval-gap">3h17m</div></div>
+          <div class="interval-item"><div class="interval-time">19:24</div><div class="interval-gap">2h56m</div></div>
+          <div class="interval-item"><div class="interval-time">23:37</div><div class="interval-gap">4h12m</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <div class="activities-card">
+        <div class="section-title">🌟 年糕宝宝今日早教 · 3月龄专属</div>
+        <div class="activity-divider"></div>
+        <div class="activity-item">
+          <span class="activity-num">01 🎯 大运动</span>
+          <span class="activity-title">俯卧抬头 · 肘撑练习</span>
+          <span class="activity-desc">让宝宝趴在硬面床上，用彩色摇铃在正前方吸引注意力，鼓励用肘部支撑抬起头和胸部。从30秒开始，逐渐延长至3-5分钟。</span>
+          <a class="activity-link" href="https://www.mayoclinic.org/healthy-lifestyle/infant-and-toddler-health/in-depth/infant-development/art-20048012">📖 Mayo Clinic</a>
+        </div>
+        <div class="activity-divider"></div>
+        <div class="activity-item">
+          <span class="activity-num">02 👁 视觉发展</span>
+          <span class="activity-title">追视训练 · 彩色移动物体</span>
+          <span class="activity-desc">在宝宝眼前20-30cm处缓慢移动红、黄、蓝等高对比度玩具，引导宝宝用眼睛追踪物体。每次2-3分钟。</span>
+          <a class="activity-link" href="https://www.healthychildren.org/English/ages-stages/baby/Pages/Developmental-Milestones-3-Months.aspx">📖 HealthyChildren</a>
+        </div>
+        <div class="activity-divider"></div>
+        <div class="activity-item">
+          <span class="activity-num">03 ✋ 精细动作</span>
+          <span class="activity-title">伸手够物 · 抓握启蒙</span>
+          <span class="activity-desc">将色彩鲜艳的轻质玩具放在宝宝刚好够不到的位置，鼓励伸手尝试。每天练习多次，促进手眼协调发展。</span>
+          <a class="activity-link" href="https://blog.lovevery.com/age-range/3-4-months/">📖 Lovevery</a>
+        </div>
+        <div class="activity-divider"></div>
+        <div class="activity-item">
+          <span class="activity-num">04 🎵 听觉感知</span>
+          <span class="activity-title">声音追踪 · 音乐启蒙</span>
+          <span class="activity-desc">在宝宝左右两侧轻摇铃铛或播放轻柔音乐，观察宝宝是否能转头寻找声源。锻炼听觉定位能力。</span>
+          <a class="activity-link" href="https://www.whattoexpect.com/first-year/month-by-month/month-3.aspx">📖 What To Expect</a>
+        </div>
+        <div class="activity-divider"></div>
+        <div class="activity-item">
+          <span class="activity-num">05 💬 社交情感</span>
+          <span class="activity-title">亲子对话 · 模仿互动</span>
+          <span class="activity-desc">模仿宝宝发出的声音，等宝宝回应后再继续，像真正的对话一样轮流进行。促进社交能力和语言发展。</span>
+          <a class="activity-link" href="https://www.unicef.cn/what-we-do/unicef-emergencies/covid-19/0-3-year-old-family-games">📖 UNICEF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom: Feeding Timeline -->
+  <div class="bottom-section">
+    <div id="timelineChart" style="width:100%;height:100%;min-height:14vh;"></div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script>
+(function(){
+  var chart = echarts.init(document.getElementById('timelineChart'), null, {renderer:'canvas'});
+  var colors = ['#1e3a5f','#3b82f6','#10b981','#f59e0b','#ef4444','#06b6d4','#8b5cf6','#ec4899','#14b8a6','#f97316'];
+
+  var rawData = {
+    '4/7':  ['02:25','05:33','09:59','12:52','15:48','18:40','22:18'],
+    '4/8':  ['04:12','07:51','09:10','12:04','16:00','18:56','22:30'],
+    '4/9':  ['03:12','06:51','10:35','13:40','16:38','19:47','23:31'],
+    '4/10': ['02:35','06:55','09:48','13:03','15:44','19:03','22:34'],
+    '4/11': ['02:35','06:55','10:13','13:09','16:27','19:24','23:37']
+  };
+
+  var days = Object.keys(rawData);
+  function t2m(t){var p=t.split(':');return +p[0]*60+(+p[1]);}
+  function m2t(m){var h=Math.floor(m/60),mm=m%60;return (h<10?'0':'')+h+':'+(mm<10?'0':'')+mm;}
+
+  var allData = [];
+  days.forEach(function(day, di){
+    var times = ['00:00'].concat(rawData[day]);
+    for(var i=0;i<times.length-1;i++){
+      allData.push([t2m(times[i]), t2m(times[i+1]), di, i]);
+    }
+  });
+
+  chart.setOption({
+    tooltip: {
+      formatter: function(p){
+        var d=p.data, gap=d[1]-d[0];
+        return days[d[2]]+' '+m2t(d[0])+' - '+m2t(d[1])+' ('+Math.floor(gap/60)+'h'+gap%60+'m)';
+      }
+    },
+    grid: {left:'4%',right:'3%',top:'14%',bottom:'10%',containLabel:false},
+    title: {
+      text: '📊 过去5天喂养时间线',
+      left: 'center',
+      textStyle: {color:'#93c5fd', fontSize:13, fontWeight:'normal'}
+    },
+    xAxis: {
+      type:'value',min:0,max:1440,interval:360,
+      axisLabel:{color:'#64748b',fontSize:10,formatter:function(v){return m2t(v);}},
+      splitLine:{lineStyle:{color:'rgba(255,255,255,0.05)'}}
+    },
+    yAxis: {
+      type:'category',data:days,
+      axisLabel:{color:'#94a3b8',fontSize:11},
+      axisLine:{lineStyle:{color:'rgba(255,255,255,0.1)'}},
+      axisTick:{show:false}
+    },
+    series:[{
+      type:'custom',
+      renderItem:function(params,api){
+        var start=api.value(0),end=api.value(1),dayIdx=api.value(2),segIdx=api.value(3);
+        var s=api.coord([start,dayIdx]),e=api.coord([end,dayIdx]);
+        var h=api.size([0,1])[1]*0.75;
+        var rect=echarts.graphic.clipRectByRect({
+          x:s[0],y:s[1]-h/2,width:e[0]-s[0],height:h
+        },{x:params.coordSys.x,y:params.coordSys.y,width:params.coordSys.width,height:params.coordSys.height});
+        if(!rect)return;
+        return {type:'rect',shape:rect,style:{fill:colors[segIdx%colors.length]}};
+      },
+      data:allData
+    }]
+  });
+  window.addEventListener('resize',function(){chart.resize();});
+})();
+</script>
+</body>
+</html>
