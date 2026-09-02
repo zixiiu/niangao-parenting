@@ -1,28 +1,28 @@
 #!/usr/bin/env python3
-"""Generate niangao daily education page for 2026-08-27"""
+"""Generate niangao daily education page for 2026-09-02"""
 import json
 
 # === DATA ===
 # Age
-days_old = 230
+days_old = 236
 months_old = 7
-month_days = 20
+month_days = 26
 
-# Yesterday stats (2026-08-24)
-yesterday_milk = 1080
-yesterday_feeds = 6
-yesterday_avg_gap = "~3h55m"
+# Yesterday stats (2026-09-01)
+yesterday_milk = 720
+yesterday_feeds = 4
+yesterday_avg_gap = "~3h46m"
 yesterday_per_feed = 180
 
 # Weather
-weather_text = "阵雨 27°C"
-weather_humidity = "89%"
+weather_text = "阴 26°C"
+weather_humidity = "85%"
 clothing = "短袖薄款衣物"
-clothing_extra = "出门备伞，避免淋雨着凉"
+clothing_extra = "早晚备薄外套，注意通风"
 
 # 10-day milk data (oldest to newest)
-milk_dates = ['8/18','8/19','8/20','8/21','8/22','8/23','8/24','8/25','8/26','8/27']
-milk_data = [1100, 900, 1080, 1100, 1100, 1120, 1100, 900, 1080, 360]
+milk_dates = ['8/24','8/25','8/26','8/27','8/28','8/29','8/30','8/31','9/1','9/2']
+milk_data = [1100, 900, 1080, 1080, 720, 720, 900, 1010, 720, 180]
 
 # Weight data (date, weight) - all records
 weight_records = [
@@ -47,20 +47,20 @@ weight_records = [
     ("5/25",8.25),("5/27",8.45),("5/29",8.45),("6/7",8.5),("6/11",8.5),
     ("6/14",8.5),("6/16",8.6),("6/17",8.65),("7/2",8.7),("7/9",8.85),
     ("7/13",9.0),("7/15",9.05),("7/20",9.05),("7/22",9.1),("7/23",9.15),
-    ("7/31",9.45),("8/5",9.5),("8/14",9.65),("8/17",9.7),("8/23",9.75),
+    ("7/31",9.45),("8/5",9.5),("8/14",9.65),("8/17",9.7),("8/23",9.75),("8/29",9.95),
 ]
 w_dates = [r[0] for r in weight_records]
 w_values = [r[1] for r in weight_records]
 
 # 5-day feeding timeline
 timeline_data = {
-    '8/23': {'times':['02:39','07:39','10:40','14:52','18:32','23:25'],'gaps':['5h00m','4h59m','3h00m','4h11m','3h39m','4h52m']},
-    '8/24': {'times':['06:19','09:53','14:00','17:09','20:26','23:56'],'gaps':['6h53m','3h34m','4h05m','3h09m','3h16m','3h29m']},
-    '8/25': {'times':['06:06','09:46','14:41','17:24','20:21'],'gaps':['6h09m','3h40m','4h54m','2h43m','2h56m']},
-    '8/26': {'times':['02:35','06:27','09:47','14:54','17:49','20:53'],'gaps':['6h13m','3h51m','3h19m','5h05m','2h55m','3h03m']},
-    '8/27': {'times':['01:11','06:18'],'gaps':['4h18m','5h06m']},
+    '8/29': {'times':['06:09','09:32','14:56','18:03'],'gaps':['10h59m','3h23m','5h23m','3h06m']},
+    '8/30': {'times':['00:43','07:09','10:00','15:27','18:45'],'gaps':['6h40m','6h25m','2h50m','5h27m','3h17m']},
+    '8/31': {'times':['03:33','07:39','11:35','14:38','17:39','22:10'],'gaps':['8h47m','4h05m','3h55m','3h02m','3h01m','4h31m']},
+    '9/1': {'times':['07:07','10:40','15:29','18:24'],'gaps':['8h56m','3h33m','4h49m','2h55m']},
+    '9/2': {'times':['06:23'],'gaps':['11h58m']},
 }
-prev_last = {'8/23':'21:38','8/24':'23:25','8/25':'23:56','8/26':'20:21','8/27':'20:53'}
+prev_last = {'8/29':'19:09','8/30':'18:03','8/31':'18:45','9/1':'22:10','9/2':'18:24'}
 
 # === Build weight chart data ===
 w_dates_js = json.dumps(w_dates, ensure_ascii=False)
@@ -80,7 +80,7 @@ html = f'''<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920,height=1080">
 <meta http-equiv="refresh" content="600">
-<title>年糕宝宝 · 每日早教 2026-08-27</title>
+<title>年糕宝宝 · 每日早教 2026-09-02</title>
 <style>
 *{{margin:0;padding:0;box-sizing:border-box;}}
 html,body{{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;color:#e8f0fe;background:#0a1628;}}
@@ -165,7 +165,7 @@ html,body{{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','M
         </div>
         <div class="info-card">
           <div class="info-label">今天</div>
-        <div class="info-value">8月27日 周四</div>
+        <div class="info-value">9月2日 周三</div>
         </div>
       </div>
       <div class="info-card">
@@ -175,7 +175,7 @@ html,body{{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','M
       <div class="info-row">
         <div class="info-card">
           <div class="info-label">🌤 天气</div>
-          <div class="info-value" style="font-size:1.4vh;">⛈ {weather_text}<br>💧 {weather_humidity}</div>
+          <div class="info-value" style="font-size:1.4vh;">☁️ {weather_text}<br>💧 {weather_humidity}</div>
         </div>
         <div class="info-card">
           <div class="info-label">👔 穿衣建议</div>
