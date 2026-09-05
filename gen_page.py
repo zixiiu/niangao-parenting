@@ -15,14 +15,14 @@ yesterday_avg_gap = "~4h42m"
 yesterday_per_feed = 200
 
 # Weather
-weather_text = "附近有阵雨 26°C"
-weather_humidity = "79%"
+weather_text = "小雨 26°C"
+weather_humidity = "82%"
 clothing = "短袖薄款衣物"
 clothing_extra = "有雨备薄外套，室内注意防凉"
 
 # 10-day milk data (oldest to newest)
 milk_dates = ['8/27','8/28','8/29','8/30','8/31','9/1','9/2','9/3','9/4','9/5']
-milk_data = [720, 720, 720, 900, 1010, 720, 920, 800, 1200, 200]
+milk_data = [1080, 720, 720, 900, 1010, 720, 940, 800, 1200, 200]
 
 # Weight data (date, weight) - all records
 weight_records = [
