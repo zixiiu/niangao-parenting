@@ -1,28 +1,28 @@
 #!/usr/bin/env python3
-"""Generate niangao daily education page for 2026-09-02"""
+"""Generate niangao daily education page for 2026-09-05"""
 import json
 
 # === DATA ===
 # Age
-days_old = 236
+days_old = 239
 months_old = 7
-month_days = 26
+month_days = 29
 
-# Yesterday stats (2026-09-01)
-yesterday_milk = 720
-yesterday_feeds = 4
-yesterday_avg_gap = "~3h46m"
-yesterday_per_feed = 180
+# Yesterday stats (2026-09-03)
+yesterday_milk = 1200
+yesterday_feeds = 6
+yesterday_avg_gap = "~4h42m"
+yesterday_per_feed = 200
 
 # Weather
-weather_text = "阴 26°C"
-weather_humidity = "85%"
+weather_text = "附近有阵雨 26°C"
+weather_humidity = "79%"
 clothing = "短袖薄款衣物"
-clothing_extra = "早晚备薄外套，注意通风"
+clothing_extra = "有雨备薄外套，室内注意防凉"
 
 # 10-day milk data (oldest to newest)
-milk_dates = ['8/24','8/25','8/26','8/27','8/28','8/29','8/30','8/31','9/1','9/2']
-milk_data = [1100, 900, 1080, 1080, 720, 720, 900, 1010, 720, 180]
+milk_dates = ['8/27','8/28','8/29','8/30','8/31','9/1','9/2','9/3','9/4','9/5']
+milk_data = [720, 720, 720, 900, 1010, 720, 920, 800, 1200, 200]
 
 # Weight data (date, weight) - all records
 weight_records = [
@@ -54,13 +54,13 @@ w_values = [r[1] for r in weight_records]
 
 # 5-day feeding timeline
 timeline_data = {
-    '8/29': {'times':['06:09','09:32','14:56','18:03'],'gaps':['10h59m','3h23m','5h23m','3h06m']},
-    '8/30': {'times':['00:43','07:09','10:00','15:27','18:45'],'gaps':['6h40m','6h25m','2h50m','5h27m','3h17m']},
-    '8/31': {'times':['03:33','07:39','11:35','14:38','17:39','22:10'],'gaps':['8h47m','4h05m','3h55m','3h02m','3h01m','4h31m']},
-    '9/1': {'times':['07:07','10:40','15:29','18:24'],'gaps':['8h56m','3h33m','4h49m','2h55m']},
-    '9/2': {'times':['06:23'],'gaps':['11h58m']},
+    '9/1': {'times':['07:07','10:40','15:29','18:24'],'gaps':['8h56m','3h33m','4h48m','2h54m']},
+    '9/2': {'times':['06:23','09:22','15:17','18:47','22:37'],'gaps':['11h58m','2h58m','5h54m','3h29m','3h51m']},
+    '9/3': {'times':['06:22','10:12','15:30','19:01'],'gaps':['7h45m','3h49m','5h17m','3h30m']},
+    '9/4': {'times':['00:08','06:23','09:40','15:13','18:41','23:44'],'gaps':['5h06m','6h14m','3h16m','5h32m','3h27m','5h02m']},
+    '9/5': {'times':['06:40'],'gaps':['6h55m']},
 }
-prev_last = {'8/29':'19:09','8/30':'18:03','8/31':'18:45','9/1':'22:10','9/2':'18:24'}
+prev_last = {'9/1':'22:10','9/2':'18:24','9/3':'22:37','9/4':'19:01','9/5':'23:44'}
 
 # === Build weight chart data ===
 w_dates_js = json.dumps(w_dates, ensure_ascii=False)
@@ -80,7 +80,7 @@ html = f'''<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920,height=1080">
 <meta http-equiv="refresh" content="600">
-<title>年糕宝宝 · 每日早教 2026-09-02</title>
+<title>年糕宝宝 · 每日早教 2026-09-05</title>
 <style>
 *{{margin:0;padding:0;box-sizing:border-box;}}
 html,body{{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;color:#e8f0fe;background:#0a1628;}}
@@ -165,7 +165,7 @@ html,body{{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','M
         </div>
         <div class="info-card">
           <div class="info-label">今天</div>
-        <div class="info-value">9月2日 周三</div>
+        <div class="info-value">9月5日 周六</div>
         </div>
       </div>
       <div class="info-card">
