@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 import datetime as dt, json, os, re, ssl, urllib.request
 
-TODAY = dt.date(2026, 9, 7)
+TODAY = dt.date(2026, 9, 9)
 BIRTH = dt.date(2026, 1, 9)
 BASE = '/home/claw/.openclaw/workspace-niangao-edu/niangao-output'
 SRC = os.path.join(BASE, 'gen_page.py')
+if os.path.exists('/home/claw/.openclaw/workspace-niangao-edu/niangao-config.env'):
+    for line in open('/home/claw/.openclaw/workspace-niangao-edu/niangao-config.env', encoding='utf-8'):
+        if '=' in line and not line.lstrip().startswith('#'):
+            k, v = line.strip().split('=', 1); os.environ.setdefault(k, v)
 key = os.environ['NOTION_API_KEY']
 headers = {'Authorization': 'Bearer '+key, 'Notion-Version': '2022-06-28', 'Content-Type': 'application/json'}
 ctx = ssl.create_default_context()
@@ -57,11 +61,10 @@ for d in [TODAY-dt.timedelta(days=i) for i in range(4,-1,-1)]:
     before=by.get(str(d-dt.timedelta(days=1)),[])
     prev[f'{d.month}/{d.day}']=before[-1]['time'] if before else '--:--'
 src=re.sub(r'(?ms)^timeline_data\s*=\s*\{.*?^prev_last\s*=\s*.*?\n', 'timeline_data = '+repr(timeline)+'\nprev_last = '+repr(prev)+'\n', src, count=1)
-src=replace_var(src,'weather_text','附近有阵雨 23°C')
-src=replace_var(src,'weather_humidity','82%')
+src=replace_var(src,'weather_text','附近有阵雨 23°C · 风 18km/h')
+src=replace_var(src,'weather_humidity','76%')
 src=replace_var(src,'clothing','短袖薄款衣物')
 src=replace_var(src,'clothing_extra','有雨备薄外套，室内注意防凉')
-src=src.replace('2026-09-06','2026-09-07').replace('9月6日 周日','9月7日 周一')
-src=src.replace('</body>', '<div style="position:fixed;top:1.2vh;right:1.2vw;padding:.6vh 1vw;border:1px solid rgba(125,211,252,.35);border-radius:999px;background:rgba(8,47,73,.55);color:#bae6fd;font-size:1.4vh;z-index:5;animation:pulse 3s ease-in-out infinite">🌫️ 白露 · 秋意初现</div></body>')
+src=src.replace('2026-09-06','2026-09-09').replace('9月6日 周日','9月9日 周三').replace('2026-09-07','2026-09-09').replace('9月7日 周一','9月9日 周三')
 exec(compile(src,'gen_page.py','exec'),{})
 print('updated', TODAY, 'days', days, 'months', int(days/30.44), 'feeds', len(feeds))
