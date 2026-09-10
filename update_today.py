@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import datetime as dt, json, os, re, ssl, urllib.request
 
-TODAY = dt.date(2026, 9, 9)
+TODAY = dt.date(2026, 9, 10)
 BIRTH = dt.date(2026, 1, 9)
 BASE = '/home/claw/.openclaw/workspace-niangao-edu/niangao-output'
 SRC = os.path.join(BASE, 'gen_page.py')
@@ -65,6 +65,6 @@ src=replace_var(src,'weather_text','附近有阵雨 23°C · 风 18km/h')
 src=replace_var(src,'weather_humidity','76%')
 src=replace_var(src,'clothing','短袖薄款衣物')
 src=replace_var(src,'clothing_extra','有雨备薄外套，室内注意防凉')
-src=src.replace('2026-09-06','2026-09-09').replace('9月6日 周日','9月9日 周三').replace('2026-09-07','2026-09-09').replace('9月7日 周一','9月9日 周三')
+src=src.replace('2026-09-06','2026-09-10').replace('9月6日 周日','9月10日 周四').replace('2026-09-07','2026-09-10').replace('9月7日 周一','9月10日 周四').replace('2026-09-09','2026-09-10').replace('9月9日 周三','9月10日 周四')
 exec(compile(src,'gen_page.py','exec'),{})
 print('updated', TODAY, 'days', days, 'months', int(days/30.44), 'feeds', len(feeds))
