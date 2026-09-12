@@ -61,10 +61,11 @@ for d in [TODAY-dt.timedelta(days=i) for i in range(4,-1,-1)]:
     before=by.get(str(d-dt.timedelta(days=1)),[])
     prev[f'{d.month}/{d.day}']=before[-1]['time'] if before else '--:--'
 src=re.sub(r'(?ms)^timeline_data\s*=\s*\{.*?^prev_last\s*=\s*.*?\n', 'timeline_data = '+repr(timeline)+'\nprev_last = '+repr(prev)+'\n', src, count=1)
-replace_var(src,'weather_text','烟霾 24°C · 风 8km/h')
-replace_var(src,'weather_humidity','70%')
-replace_var(src,'clothing','短袖薄款衣物')
-replace_var(src,'clothing_extra','空气质量欠佳，减少户外活动')
+src=replace_var(src,'weather_text','烟霾 24°C · 风 8km/h')
+src=replace_var(src,'weather_humidity','70%')
+src=replace_var(src,'clothing','短袖薄款衣物')
+src=replace_var(src,'clothing_extra','空气质量欠佳，减少户外活动')
+src=src.replace('7月龄探索期','8月龄探索期').replace('7个月宝宝','8个月宝宝')
 for old in ['2026-09-06','2026-09-07','2026-09-09','2026-09-10','2026-09-11']:
     src=src.replace(old,'2026-09-12')
 for old in ['9月6日 周日','9月7日 周一','9月9日 周三','9月10日 周四','9月11日 周五']:
