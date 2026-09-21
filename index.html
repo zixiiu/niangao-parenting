@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1920,height=1080">
 <meta http-equiv="refresh" content="600">
-<title>年糕宝宝 · 每日早教 2026-09-20</title>
+<title>年糕宝宝 · 每日早教 2026-09-21</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Microsoft YaHei',sans-serif;color:#e8f0fe;background:#0a1628;}
@@ -75,11 +75,11 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
       <div class="info-row">
         <div class="info-card">
           <div class="info-label">天龄</div>
-          <div class="info-value">254 天</div>
+          <div class="info-value">255 天</div>
         </div>
         <div class="info-card">
           <div class="info-label">月龄</div>
-          <div class="info-value">8 个月 14 天</div>
+          <div class="info-value">8 个月 15 天</div>
         </div>
       </div>
       <div class="info-row">
@@ -89,7 +89,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
         </div>
         <div class="info-card">
           <div class="info-label">今天</div>
-        <div class="info-value">9月20日 周日</div>
+        <div class="info-value">9月21日 周一</div>
         </div>
       </div>
       <div class="info-card">
@@ -99,7 +99,7 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
       <div class="info-row">
         <div class="info-card">
           <div class="info-label">🌤 天气</div>
-          <div class="info-value" style="font-size:1.4vh;">☁️ Sunny +77°F · 风 ↙6mph<br>💧 72%</div>
+          <div class="info-value" style="font-size:1.4vh;">☁️ Sunny 23°C · 风 ↓5mph<br>💧 78%</div>
         </div>
         <div class="info-card">
           <div class="info-label">👔 穿衣建议</div>
@@ -116,10 +116,10 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
     <div class="col-data">
       <div class="edu-title">📊 宝宝数据</div>
       <div class="stats-grid">
-        <div class="stat-card"><div class="stat-value">1100ml</div><div class="stat-label">昨日总奶量</div></div>
-        <div class="stat-card"><div class="stat-value">6次</div><div class="stat-label">喂养次数</div></div>
-        <div class="stat-card"><div class="stat-value">~4h17m</div><div class="stat-label">平均间隔</div></div>
-        <div class="stat-card"><div class="stat-value">183ml</div><div class="stat-label">单次奶量</div></div>
+        <div class="stat-card"><div class="stat-value">880ml</div><div class="stat-label">昨日总奶量</div></div>
+        <div class="stat-card"><div class="stat-value">5次</div><div class="stat-label">喂养次数</div></div>
+        <div class="stat-card"><div class="stat-value">~4h09m</div><div class="stat-label">平均间隔</div></div>
+        <div class="stat-card"><div class="stat-value">176ml</div><div class="stat-label">单次奶量</div></div>
       </div>
       <div class="chart-card">
         <div id="milkChart" style="width:100%;flex:1;min-height:0;"></div>
@@ -208,8 +208,8 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
 // Milk trend chart (10 days)
 (function(){
   var chart=echarts.init(document.getElementById('milkChart'));
-  var dates=["9/11", "9/12", "9/13", "9/14", "9/15", "9/16", "9/17", "9/18", "9/19", "9/20"];
-  var milk=[900, 920, 720, 1120, 900, 920, 1120, 900, 1100, 200];
+  var dates=["9/12", "9/13", "9/14", "9/15", "9/16", "9/17", "9/18", "9/19", "9/20", "9/21"];
+  var milk=[920, 720, 1120, 900, 920, 1120, 900, 1100, 880, 200];
   chart.setOption({
     title:{text:'📊 近10天奶量趋势',left:'center',textStyle:{color:'#93c5fd',fontSize:12,fontWeight:'normal'}},
     grid:{left:'12%',right:'5%',top:'22%',bottom:'15%'},
@@ -250,8 +250,8 @@ html,body{width:100vw;height:100vh;overflow:hidden;font-family:'PingFang SC','Mi
 (function(){
   var chart=echarts.init(document.getElementById('timelineChart'),null,{renderer:'canvas'});
   var colors=['#1e3a5f','#2563eb','#0891b2','#059669','#0ea5e9','#3b82f6','#06b6d4','#10b981','#22d3ee','#34d399'];
-  var rawData={"9/16": {"times": ["06:25", "10:13", "13:32", "16:44", "23:33"], "gaps": ["8h13m", "3h47m", "3h18m", "3h11m", "6h48m"]}, "9/17": {"times": ["05:25", "08:46", "12:09", "15:13", "18:52", "22:38"], "gaps": ["5h51m", "3h20m", "3h22m", "3h2m", "3h39m", "3h45m"]}, "9/18": {"times": ["05:18", "08:19", "11:26", "17:14", "20:30"], "gaps": ["6h39m", "3h0m", "3h6m", "5h47m", "3h15m"]}, "9/19": {"times": ["02:20", "07:16", "10:29", "15:11", "19:29", "23:45"], "gaps": ["5h49m", "4h55m", "3h12m", "4h41m", "4h17m", "4h15m"]}, "9/20": {"times": ["06:43"], "gaps": ["6h57m"]}};
-  var prevLast={"9/16": "22:11", "9/17": "23:33", "9/18": "22:38", "9/19": "20:30", "9/20": "23:45"};
+  var rawData={"9/17": {"times": ["05:25", "08:46", "12:09", "15:13", "18:52", "22:38"], "gaps": ["5h51m", "3h20m", "3h22m", "3h2m", "3h39m", "3h45m"]}, "9/18": {"times": ["05:18", "08:19", "11:26", "17:14", "20:30"], "gaps": ["6h39m", "3h0m", "3h6m", "5h47m", "3h15m"]}, "9/19": {"times": ["02:20", "07:16", "10:29", "15:11", "19:29", "23:45"], "gaps": ["5h49m", "4h55m", "3h12m", "4h41m", "4h17m", "4h15m"]}, "9/20": {"times": ["06:43", "10:29", "14:55", "18:39", "23:20"], "gaps": ["6h57m", "3h45m", "4h25m", "3h43m", "4h40m"]}, "9/21": {"times": ["06:46"], "gaps": ["7h25m"]}};
+  var prevLast={"9/17": "23:33", "9/18": "22:38", "9/19": "20:30", "9/20": "23:45", "9/21": "23:20"};
   var days=Object.keys(rawData);
   function t2m(t){var p=t.split(':');return +p[0]*60+(+p[1]);}
   function m2t(m){var h=Math.floor(m/60),mm=m%60;return (h<10?'0':'')+h+':'+(mm<10?'0':'')+mm;}
