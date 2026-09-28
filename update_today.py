@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import datetime as dt, json, os, re, ssl, urllib.request
 
-TODAY = dt.date(2026, 9, 12)
+TODAY = dt.date.today()
 BIRTH = dt.date(2026, 1, 9)
 BASE = '/home/claw/.openclaw/workspace-niangao-edu/niangao-output'
 SRC = os.path.join(BASE, 'gen_page.py')
@@ -34,6 +34,18 @@ feeds.sort(key=lambda x:(x['date'],x['time']))
 by={}
 for x in feeds: by.setdefault(x['date'],[]).append(x)
 
+# Refresh all weight records from the separate 年糕Weight database.
+weight_rows=[]; cursor=None
+for _ in range(10):
+    body={'page_size':100,'sorts':[{'property':'日期','direction':'ascending'}]}
+    if cursor: body['start_cursor']=cursor
+    res=api('databases/31854ae6-6704-80fb-9ba5-d32f012e7d72/query', body)
+    for row in res.get('results',[]):
+        p=row.get('properties',{}); date_prop=p.get('日期',{}).get('date') or {}; w=p.get('体重',{}).get('number')
+        if date_prop.get('start') and w is not None: weight_rows.append((date_prop['start'][:10],w))
+    if not res.get('has_more'): break
+    cursor=res.get('next_cursor')
+
 def replace_var(src, name, value):
     return re.sub(r'(?m)^'+re.escape(name)+r'\s*=\s*.*$', name+' = '+repr(value), src, count=1)
 
@@ -54,6 +66,8 @@ src=replace_var(src,'yesterday_per_feed',round(sum(x['ml'] for x in y)/len(y)) i
 dates=[TODAY-dt.timedelta(days=i) for i in range(9,-1,-1)]
 src=replace_var(src,'milk_dates',[f'{d.month}/{d.day}' for d in dates])
 src=replace_var(src,'milk_data',[sum(x['ml'] for x in by.get(str(d),[])) for d in dates])
+weights_literal=repr([(f'{dt.date.fromisoformat(d).month}/{dt.date.fromisoformat(d).day}',w) for d,w in sorted(weight_rows)])
+src=re.sub(r'(?ms)^weight_records\s*=\s*\[.*?^\]\n', 'weight_records = '+weights_literal+'\n', src, count=1)
 timeline={}; prev={}
 for d in [TODAY-dt.timedelta(days=i) for i in range(4,-1,-1)]:
     arr=by.get(str(d),[])
@@ -61,14 +75,36 @@ for d in [TODAY-dt.timedelta(days=i) for i in range(4,-1,-1)]:
     before=by.get(str(d-dt.timedelta(days=1)),[])
     prev[f'{d.month}/{d.day}']=before[-1]['time'] if before else '--:--'
 src=re.sub(r'(?ms)^timeline_data\s*=\s*\{.*?^prev_last\s*=\s*.*?\n', 'timeline_data = '+repr(timeline)+'\nprev_last = '+repr(prev)+'\n', src, count=1)
-src=replace_var(src,'weather_text','烟霾 24°C · 风 8km/h')
-src=replace_var(src,'weather_humidity','70%')
-src=replace_var(src,'clothing','短袖薄款衣物')
-src=replace_var(src,'clothing_extra','空气质量欠佳，减少户外活动')
-src=src.replace('7月龄探索期','8月龄探索期').replace('7个月宝宝','8个月宝宝')
-for old in ['2026-09-06','2026-09-07','2026-09-09','2026-09-10','2026-09-11']:
-    src=src.replace(old,'2026-09-12')
-for old in ['9月6日 周日','9月7日 周一','9月9日 周三','9月10日 周四','9月11日 周五']:
-    src=src.replace(old,'9月12日 周六')
+weather_text = '天气数据暂不可用'
+weather_humidity = '--'
+try:
+    import subprocess
+    raw = subprocess.check_output(['curl','-s','--retry','3','--retry-delay','2','--retry-all-errors','https://wttr.in/Shanghai?format=%C+%t+%h+%w&lang=zh'], text=True, timeout=20).strip()
+    if raw:
+        import re
+        temp = re.search(r'[+-]?\d+°[CF]', raw)
+        hum = re.search(r'\d+%', raw)
+        wind = re.search(r'(?:[←→↖↗↙↘↑↓]\s*)?\d+\s*(?:km/h|mph)', raw)
+        condition = raw[:temp.start()].strip() if temp else raw
+        # wttr.in may return Fahrenheit in this environment; normalize for the page.
+        if temp and temp.group(0).endswith('°F'):
+            f = int(re.search(r'[+-]?\d+', temp.group(0)).group(0))
+            raw_c = round((f - 32) * 5 / 9)
+            weather_text = (condition + ' ' if condition else '') + f'{raw_c}°C'
+        else:
+            weather_text = (condition + ' ' if condition else '') + (temp.group(0) if temp else '')
+        if wind: weather_text += ' · 风 ' + wind.group(0)
+        weather_humidity = hum.group(0) if hum else '--'
+except Exception:
+    pass
+src=replace_var(src,'weather_text',weather_text)
+src=replace_var(src,'weather_humidity',weather_humidity)
+src=replace_var(src,'clothing','短袖薄款衣物，按体感增减')
+src=replace_var(src,'clothing_extra','室内外温差大时备薄外套，避免捂汗')
+src=src.replace('7月龄探索期','8月龄探索期').replace('7个月宝宝','8个月宝宝').replace('· 7月龄','· 8月龄')
+# Refresh every human-facing date in the template, including dates from a prior run.
+weekday_cn = '一二三四五六日'[TODAY.weekday()]
+src = re.sub(r'2026-\d{2}-\d{2}', str(TODAY), src)
+src = re.sub(r'\d{1,2}月\d{1,2}日 周[一二三四五六日]', f'{TODAY.month}月{TODAY.day}日 周{weekday_cn}', src)
 exec(compile(src,'gen_page.py','exec'),{})
 print('updated', TODAY, 'days', days, 'months', int(days/30.44), 'feeds', len(feeds))
